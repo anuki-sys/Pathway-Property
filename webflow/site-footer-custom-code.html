@@ -1,0 +1,19 @@
+<!--
+Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
+Site settings > Custom code > Footer code.
+
+Subscribe popup ("Don't Fall Behind... Subscribe Now"):
+  - shows 20 seconds after DOM ready
+  - shows only once per visitor (cookie "alert", 10 year expiry)
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js" ></script><script>
+$(document).ready(function(){
+if (!Cookies.get('alert')) { setTimeout(function(){
+$('.popup-overlay').css('display','flex');
+Cookies.set('alert', true, { expires: 3650 });
+}, 20000);
+}
+});
+// Documentation at https://github.com/js-cookie/js-cookie
+</script>
