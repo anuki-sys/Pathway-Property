@@ -1,0 +1,14 @@
+<!--
+Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
+Site settings > Custom code > Head code.
+
+Holds the subscribe popup (.popup-overlay) shut while the page is loading, so a
+page-load interaction cannot flash it on screen. The footer script lifts the
+lock after 20 seconds.
+-->
+<style>
+html.pp-popup-lock .popup-overlay { display: none !important; }
+</style>
+<script>
+document.documentElement.classList.add('pp-popup-lock');
+</script>

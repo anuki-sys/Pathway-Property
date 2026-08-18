@@ -2,18 +2,46 @@
 Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
 Site settings > Custom code > Footer code.
 
-Subscribe popup ("Don't Fall Behind... Subscribe Now"):
-  - shows 20 seconds after DOM ready
-  - shows at most once every 7 days per visitor (cookie "alert")
+Subscribe popup ("Don't Fall Behind... Subscribe Now", .popup-overlay):
+  - held shut by the pp-popup-lock class set in the head code
+  - opens 20 seconds after load
+  - at most once every 7 days per browser (cookie "pp_popup_seen")
 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.1/js.cookie.min.js" ></script><script>
-$(document).ready(function(){
-if (!Cookies.get('alert')) { setTimeout(function(){
-$('.popup-overlay').css('display','flex');
-Cookies.set('alert', true, { expires: 7 });
-}, 20000);
-}
-});
-// Documentation at https://github.com/js-cookie/js-cookie
+<script>
+(function () {
+  var COOKIE = 'pp_popup_seen', DELAY = 20000, DAYS = 7;
+
+  function seen() {
+    return document.cookie.split('; ').indexOf(COOKIE + '=1') !== -1;
+  }
+
+  function remember() {
+    var d = new Date();
+    d.setTime(d.getTime() + DAYS * 86400000);
+    document.cookie = COOKIE + '=1; expires=' + d.toUTCString() + '; path=/; SameSite=Lax';
+  }
+
+  function setDisplay(value) {
+    var els = document.querySelectorAll('.popup-overlay');
+    for (var i = 0; i < els.length; i++) els[i].style.display = value;
+  }
+
+  setTimeout(function () {
+    var show = !seen();
+    // Clear whatever a page-load interaction left behind, then release the lock.
+    setDisplay(show ? 'flex' : 'none');
+    document.documentElement.classList.remove('pp-popup-lock');
+    if (show) remember();
+  }, DELAY);
+
+  // Make sure the popup can always be dismissed.
+  document.addEventListener('click', function (e) {
+    if (!e.target || !e.target.closest) return;
+    if (e.target.closest('.shut-pop-up, .close-button') ||
+        e.target.closest('.popup-overlay .secondary-button') ||
+        (e.target.classList && e.target.classList.contains('popup-overlay'))) {
+      setDisplay('none');
+    }
+  });
+})();
 </script>
