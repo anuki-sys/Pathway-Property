@@ -376,18 +376,34 @@ details[open] summary:after{content:"–"}
 details .a{padding:0 28px 24px;max-width:56em}
 details .a p{font-size:.9375rem}
 
-/* booking ------------------------------------------------------- */
+/* booking — full-width card, no orphaned column ------------------ */
 .booking{background:var(--green);color:var(--on-green);border-radius:100px 100px 0 0;margin-top:48px;padding:96px 0 40px}
 .booking h2{color:var(--shell);margin-bottom:16px}
 .booking .eyebrow{color:var(--mint)}
-.booking-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:start;margin-top:40px}
-.booking-lede{font-size:1.0625rem;color:var(--on-green-70);max-width:32em}
-.booking-points{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
-.booking-points li{position:relative;padding-left:30px;font-size:.9375rem;color:var(--on-green-70)}
-.booking-points li:before{content:"";position:absolute;left:0;top:.55em;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--mint)}
-.booking-card{background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);border-radius:40px;padding:34px 32px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.tabs-label{font-size:.8125rem;font-weight:600;color:var(--mint);margin:22px 0 10px}
+.booking-head{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:end;margin-bottom:34px}
+.booking-lede{font-size:1.0625rem;color:var(--on-green-70);max-width:34em;margin:0}
+.booking-contact{display:flex;flex-wrap:wrap;gap:36px;margin-top:22px}
+.booking-contact .k{font-size:.8125rem;font-weight:600;color:var(--mint);margin-bottom:2px}
+.booking-contact .v{font-size:1.0625rem;font-weight:600;color:var(--shell);text-decoration:none}
+
+.booking-points{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.booking-points li{
+  position:relative;padding:15px 20px 15px 46px;
+  border:1px solid var(--on-green-45);border-radius:22px;
+  font-size:.9375rem;color:var(--on-green-70);
+}
+.booking-points li:before{content:"";position:absolute;left:20px;top:1.45em;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--mint)}
+
+.booking-card{background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);border-radius:40px;padding:34px 36px}
+.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
+.form-grid .field{margin-bottom:0}
+.field-wide{grid-column:1 / -1}
+
+.booking-foot{
+  display:grid;grid-template-columns:minmax(300px,.85fr) 1.15fr;gap:28px;align-items:center;
+  margin-top:28px;padding-top:26px;border-top:1px solid var(--on-green-45);
+}
+.tabs-label{font-size:.8125rem;font-weight:600;color:var(--mint);margin:0 0 10px}
 .tabs{display:flex;flex-wrap:wrap;gap:8px}
 .tab{
   border:1.5px solid var(--on-green-45);background:transparent;color:var(--on-green);
@@ -397,12 +413,25 @@ details .a p{font-size:.9375rem}
 .tab:hover{border-color:var(--on-green)}
 .tab[aria-selected="true"]{background:var(--shell);color:var(--ink);border-color:var(--shell)}
 .tab-panel{
-  margin-top:16px;border:1px dashed var(--on-green-45);border-radius:24px;
-  padding:20px 22px;font-size:.875rem;color:var(--on-green-70);
+  border:1px dashed var(--on-green-45);border-radius:26px;padding:18px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
 }
-.tab-panel .cal-name{color:var(--shell);font-weight:600;font-size:.9375rem;margin-bottom:4px}
-.tab-panel .cal-note{margin-bottom:16px}
-@media(max-width:940px){.booking-grid{grid-template-columns:1fr;gap:36px}.field-row{grid-template-columns:1fr}}
+.tab-panel .cal-name{color:var(--shell);font-weight:600;font-size:1rem;margin-bottom:2px}
+.tab-panel .cal-note{font-size:.875rem;color:var(--on-green-70)}
+.tab-panel .btn{flex-shrink:0}
+
+@media(max-width:1040px){
+  .booking-head{grid-template-columns:1fr;gap:26px;align-items:start}
+  .booking-points{grid-template-columns:1fr}
+  .booking-foot{grid-template-columns:1fr;align-items:stretch}
+}
+@media(max-width:760px){
+  .form-grid{grid-template-columns:1fr 1fr}
+  .booking-card{padding:26px 22px;border-radius:32px}
+  .tab-panel{flex-direction:column;align-items:stretch;gap:16px}
+  .tab-panel .btn{width:100%}
+}
+@media(max-width:520px){.form-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.booking{border-radius:50px 50px 0 0;padding:64px 0 32px}}
 
 /* footer --------------------------------------------------------- */
@@ -860,61 +889,68 @@ details .a p{font-size:.9375rem}
 <!-- 10. BOOKING + FOOTER -->
 <section class="booking" id="book">
   <div class="wrap">
-    <div class="eyebrow">Start here</div>
-    <h2>Let's find out what your budget actually buys.</h2>
-    <div class="booking-grid">
+    <div class="booking-head">
+      <div>
+        <div class="eyebrow">Start here</div>
+        <h2>Let's find out what your budget actually buys.</h2>
+      </div>
       <div>
         <p class="booking-lede">Answer five quick questions and pick the agent for your area. Fifteen minutes, free, and you'll get a straight answer on whether we can help — either way.</p>
-        <ul class="booking-points">
-          <li>A read on what your budget buys in your suburbs right now</li>
-          <li>The homes coming up off-market that match your brief</li>
-          <li>An honest yes or no on whether you need us at all</li>
-        </ul>
-        <div class="closing-contact" style="display:flex;flex-wrap:wrap;gap:40px;margin-top:44px;padding-top:28px;border-top:1px solid var(--on-green-45)">
-          <div><div style="font-size:.8125rem;font-weight:600;color:var(--mint);margin-bottom:2px">Phone</div><a style="font-size:1.0625rem;font-weight:600;color:var(--shell);text-decoration:none" href="tel:0421657559">0421 657 559</a></div>
-          <div><div style="font-size:.8125rem;font-weight:600;color:var(--mint);margin-bottom:2px">Email</div><a style="font-size:1.0625rem;font-weight:600;color:var(--shell);text-decoration:none" href="mailto:tanuj@pathwayprop.com.au">tanuj@pathwayprop.com.au</a></div>
+        <div class="booking-contact">
+          <div><div class="k">Phone</div><a class="v" href="tel:0421657559">0421 657 559</a></div>
+          <div><div class="k">Email</div><a class="v" href="mailto:tanuj@pathwayprop.com.au">tanuj@pathwayprop.com.au</a></div>
         </div>
       </div>
+    </div>
 
-      <div class="booking-card">
-        <div class="field-row">
-          <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name"></div>
-          <div class="field"><label for="b-phone">Phone</label><input id="b-phone" type="tel" placeholder="04…"></div>
-        </div>
+    <ul class="booking-points">
+      <li>A read on what your budget buys in your suburbs right now</li>
+      <li>The homes coming up off-market that match your brief</li>
+      <li>An honest yes or no on whether you need us at all</li>
+    </ul>
+
+    <div class="booking-card">
+      <div class="form-grid">
+        <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name"></div>
+        <div class="field"><label for="b-phone">Phone</label><input id="b-phone" type="tel" placeholder="04…"></div>
         <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" placeholder="you@email.com"></div>
-        <div class="field-row">
-          <div class="field"><label for="b-budget">Budget</label>
-            <select id="b-budget">
-              <option>Under $600k</option><option>$600k – $800k</option><option>$800k – $1m</option>
-              <option>$1m – $1.3m</option><option>$1.3m+</option><option>Not sure yet</option>
-            </select>
-          </div>
-          <div class="field"><label for="b-when">When are you buying?</label>
-            <select id="b-when">
-              <option>In the next 3 months</option><option>3 – 6 months</option>
-              <option>6 – 12 months</option><option>Just starting to look</option>
-            </select>
-          </div>
+        <div class="field"><label for="b-budget">Budget</label>
+          <select id="b-budget">
+            <option>Under $600k</option><option>$600k – $800k</option><option>$800k – $1m</option>
+            <option>$1m – $1.3m</option><option>$1.3m+</option><option>Not sure yet</option>
+          </select>
         </div>
-        <div class="field"><label for="b-suburbs">Suburbs you're looking at</label><input id="b-suburbs" type="text" placeholder="Berwick, Officer…"></div>
+        <div class="field"><label for="b-when">When are you buying?</label>
+          <select id="b-when">
+            <option>In the next 3 months</option><option>3 – 6 months</option>
+            <option>6 – 12 months</option><option>Just starting to look</option>
+          </select>
+        </div>
         <div class="field"><label for="b-stage">Where are you up to?</label>
           <select id="b-stage">
             <option>Still working out my budget</option><option>Pre-approved and searching</option>
             <option>Been to a few auctions</option><option>Found something I like</option>
           </select>
         </div>
+        <div class="field field-wide"><label for="b-suburbs">Suburbs you're looking at</label><input id="b-suburbs" type="text" placeholder="Berwick, Officer, Narre Warren…"></div>
+      </div>
 
-        <div class="tabs-label">Choose whose calendar to book</div>
-        <div class="tabs" role="tablist" aria-label="Choose an agent">
-          <button class="tab" role="tab" id="tab-tanuj" aria-controls="panel-cal" aria-selected="true" data-name="Tanuj Singh" data-area="Melbourne South East" data-cal="https://calendar.app.google/uVUJEXzLsU1i73S97">Tanuj</button>
-          <button class="tab" role="tab" id="tab-arshad" aria-controls="panel-cal" aria-selected="false" data-name="Arshad Zacky" data-area="Corridor to confirm" data-cal="">Arshad</button>
-          <button class="tab" role="tab" id="tab-nirvan" aria-controls="panel-cal" aria-selected="false" data-name="Nirvan Jamshidpey" data-area="Corridor to confirm" data-cal="">Nirvan</button>
-          <button class="tab" role="tab" id="tab-abhimaan" aria-controls="panel-cal" aria-selected="false" data-name="Abhimaan Bhargava" data-area="Corridor to confirm" data-cal="">Abhimaan</button>
+      <div class="booking-foot">
+        <div>
+          <div class="tabs-label">Choose whose calendar to book</div>
+          <div class="tabs" role="tablist" aria-label="Choose an agent">
+            <button class="tab" role="tab" id="tab-tanuj" aria-controls="panel-cal" aria-selected="true" data-name="Tanuj Singh" data-area="Melbourne South East" data-cal="https://calendar.app.google/uVUJEXzLsU1i73S97">Tanuj</button>
+            <button class="tab" role="tab" id="tab-arshad" aria-controls="panel-cal" aria-selected="false" data-name="Arshad Zacky" data-area="Corridor to confirm" data-cal="">Arshad</button>
+            <button class="tab" role="tab" id="tab-nirvan" aria-controls="panel-cal" aria-selected="false" data-name="Nirvan Jamshidpey" data-area="Corridor to confirm" data-cal="">Nirvan</button>
+            <button class="tab" role="tab" id="tab-abhimaan" aria-controls="panel-cal" aria-selected="false" data-name="Abhimaan Bhargava" data-area="Corridor to confirm" data-cal="">Abhimaan</button>
+          </div>
         </div>
         <div class="tab-panel" id="panel-cal" role="tabpanel" aria-labelledby="tab-tanuj">
-          <div class="cal-name" id="cal-name">Tanuj Singh</div>
-          <div class="cal-note" id="cal-note">Melbourne South East · 15-minute consult</div>
-          <a class="btn btn-cream btn-block" id="cal-link" href="https://calendar.app.google/uVUJEXzLsU1i73S97">Book with Tanuj</a>
+          <div>
+            <div class="cal-name" id="cal-name">Tanuj Singh</div>
+            <div class="cal-note" id="cal-note">Melbourne South East · 15-minute consult</div>
+          </div>
+          <a class="btn btn-cream" id="cal-link" href="https://calendar.app.google/uVUJEXzLsU1i73S97">Book with Tanuj</a>
         </div>
       </div>
     </div>
