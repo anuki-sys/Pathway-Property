@@ -10,13 +10,16 @@ Read from the live Webflow site so these pages match it rather than approximate 
 
 | Token | Value | Where it comes from |
 | --- | --- | --- |
-| Sand (page ground) | `#ECD4B3` | `Background 01` variable / `.body` background |
-| Blanched almond | `#E5DCC9` | `Blanched Almond` variable |
-| Card cream | `#F5F2EB` | `.article-card`, `.offering-card`, `.review-card` |
-| Off-white | `#FAF8F5` | `Untitled UI Gray50` / `.navbar-container` |
+| Page ground | `#FAF8F5` | `Untitled UI Gray50` — the site's off-white, also its navbar fill |
+| Card / band fill | `#F5F2EB` | `.article-card`, `.offering-card`, `.review-card` |
 | Midnight (ink + outlines) | `#090D2B` | `Midnight` variable |
 | Body text | `rgba(9,13,43,.6)` | tag style on `p` |
 | Pathway green | `#206E65` | `PATHWAY GREEN` variable |
+| On-green text | `#F1EFE9` | green panels and footer |
+
+The site also defines a sand `#ECD4B3` (`Background 01`) and a blanched almond
+`#E5DCC9`. **Do not use them as the page ground** — the brief is an off-white
+page, not a peach one.
 
 ## House rules the site follows
 
@@ -31,10 +34,41 @@ Read from the live Webflow site so these pages match it rather than approximate 
   midnight outline — not a full-width sticky bar.
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
-- **Footer:** Pathway green slab with rounded top corners, sitting on the sand.
+- **Footer:** Pathway green slab with rounded top corners.
+
+## Imagery
+
+Every photo and video slot is a `<figure class="shot">`. The figure paints a
+green rooflines placeholder with a label describing the shot; an `<img>` sits
+on top of it, so dropping a real photo in is a one-line change and a missing
+photo degrades to the labelled placeholder rather than a broken image.
+
+Three slots are already wired to existing site assets as a starting point
+(hero, hero inset, good-fit). Everything else needs real photography —
+particularly the proof strip and the video testimonials, which must be actual
+clients, and the agent and team portraits.
+
+Candidate assets already on the site (from the Webflow asset library):
+`tom-rumble-…`, `dillon-kydd-…`, `r-architecture-…`, `pat-whelen-…`,
+`blaire-harmon-…`, `esther-zheng-…`, `cristine-enero-…`, `opollo-photography-…`,
+plus `Gal 1–5.webp` and `Hero 1–4.webp`.
 
 ## Pages
 
 | File | Intended path | Status |
 | --- | --- | --- |
-| `buyers-agent-melbourne-south-east.html` | TBC (e.g. `/melbourne-south-east`) | Draft — fee block, Tanuj headshot and two nav hrefs still to confirm |
+| `buyers-agent-melbourne-south-east.html` | TBC (e.g. `/melbourne-south-east`) | Draft |
+
+### Open items on the south east page
+
+- Photography and video testimonials for all image slots.
+- Corridors for Arshad, Nirvan and Abhimaan (only Tanuj's is confirmed).
+- Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
+  (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
+  "calendar link to confirm" state.
+- Individual roles for Rahul, Shamindri, Ali Al Hilo, Rumeysa and Shashyani.
+- Form endpoints: the off-market, booking and newsletter forms are marked up
+  but not wired to a handler.
+- Interactive corridor map to replace the placeholder SVG.
+- Two nav hrefs (`/services/buyers-advocacy`, `/resources`) to confirm against
+  the live nav.
