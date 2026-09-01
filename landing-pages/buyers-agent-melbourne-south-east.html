@@ -17,11 +17,12 @@
 :root{
   color-scheme:light;
 
-  --shell:#FAF8F5;         /* page ground — Untitled UI Gray50, as the site */
+  --ground:#BCD3D0;        /* page ground — the site's sage (.primary-body) */
+  --shell:#FAF8F5;         /* surfaces: navbar, cards, light buttons */
   --cream:#F5F2EB;         /* card + alternating band fill */
   --ink:#090D2B;           /* Midnight — text and every outline */
-  --ink-60:rgba(9,13,43,.6);
-  --ink-45:rgba(9,13,43,.45);
+  --ink-60:rgba(9,13,43,.7);
+  --ink-45:rgba(9,13,43,.62);
   --hair:rgba(9,13,43,.14);
   --green:#206E65;         /* PATHWAY GREEN */
   --green-deep:#17544D;
@@ -30,6 +31,7 @@
   --on-green-70:rgba(241,239,233,.72);
   --on-green-45:rgba(241,239,233,.45);
   --mint:#9CC7BE;
+  --star:#E9A02C;
 
   --stroke:1.5px solid var(--ink);
   --pill:1000px;
@@ -42,7 +44,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;background:var(--shell);color:var(--ink);
+  margin:0;background:var(--ground);color:var(--ink);
   font-family:var(--font);font-size:16px;line-height:1.7;
   -webkit-font-smoothing:antialiased;padding-top:104px;
 }
@@ -189,7 +191,18 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .play svg{margin-left:3px}
 
 /* hero ----------------------------------------------------------- */
-.hero{padding:48px 0 88px}
+.hero{position:relative;padding:48px 0 88px}
+.hero-clouds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.cloud{position:absolute;fill:#fff;opacity:.85}
+.cloud-1{top:6%;left:-4%;width:230px;animation:drift 34s ease-in-out infinite}
+.cloud-2{top:34%;right:-3%;width:150px;animation:drift 28s ease-in-out infinite reverse}
+.cloud-3{bottom:6%;left:12%;width:180px;animation:drift 40s ease-in-out infinite}
+@keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(26px)}}
+.hero .wrap{position:relative;z-index:1}
+.rating{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:.9375rem;color:var(--ink-60)}
+.stars{display:flex;gap:3px}
+.stars svg{display:block;fill:var(--star)}
+@media(max-width:940px){.cloud-3{display:none}}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .hero h1 em{font-style:normal;color:var(--green);display:block}
 .hero-lede{font-size:1.125rem;max-width:33em;margin-top:22px}
@@ -438,9 +451,16 @@ details .a p{font-size:.9375rem}
 }
 .sub-form input::placeholder{color:rgba(241,239,233,.42)}
 .sub-note{font-size:.75rem;color:var(--on-green-45);margin-top:10px}
+.foot-contact{
+  display:flex;flex-wrap:wrap;gap:44px;
+  margin-top:44px;padding-top:28px;border-top:1px solid var(--on-green-45);
+}
+.foot-contact .k{font-size:.8125rem;font-weight:600;color:var(--mint);margin-bottom:2px}
+.foot-contact .v{font-size:1.0625rem;font-weight:600;color:var(--shell);text-decoration:none}
+.foot-contact a.v:hover{text-decoration:underline}
 .foot-in{
   display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;
-  margin-top:48px;padding-top:24px;border-top:1px solid var(--on-green-45);
+  margin-top:32px;padding-top:24px;border-top:1px solid var(--on-green-45);
   font-size:.875rem;color:var(--on-green-70);
 }
 .foot-in a{color:var(--on-green-70);text-decoration:none;margin-right:20px}
@@ -496,8 +516,23 @@ details .a p{font-size:.9375rem}
 
 <!-- 1. HERO -->
 <header class="hero">
+  <div class="hero-clouds" aria-hidden="true">
+    <svg class="cloud cloud-1" viewBox="0 0 200 62"><path d="M22 60C10 60 0 52 0 42s10-18 22-18c4-10 14-17 26-17 10 0 19 5 24 13 3-2 7-3 11-3 12 0 22 9 22 20 0 1 0 2-.2 3 10 1 17 8 17 16 0 9-8 16-18 16H22z"/></svg>
+    <svg class="cloud cloud-2" viewBox="0 0 200 62"><path d="M22 60C10 60 0 52 0 42s10-18 22-18c4-10 14-17 26-17 10 0 19 5 24 13 3-2 7-3 11-3 12 0 22 9 22 20 0 1 0 2-.2 3 10 1 17 8 17 16 0 9-8 16-18 16H22z"/></svg>
+    <svg class="cloud cloud-3" viewBox="0 0 200 62"><path d="M22 60C10 60 0 52 0 42s10-18 22-18c4-10 14-17 26-17 10 0 19 5 24 13 3-2 7-3 11-3 12 0 22 9 22 20 0 1 0 2-.2 3 10 1 17 8 17 16 0 9-8 16-18 16H22z"/></svg>
+  </div>
   <div class="wrap hero-grid">
     <div>
+      <div class="rating">
+        <span>Rated 5 Stars on Google</span>
+        <span class="stars" role="img" aria-label="Five out of five stars">
+          <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
+        </span>
+      </div>
       <h1>Every agent at that inspection works for the seller. <em>We work only for you.</em></h1>
       <p class="hero-lede">You'll buy a home a handful of times in your life. The people across the table do it every week. We put someone who lives and buys in the south east on your side — to find the homes, tell you what they're really worth, and hold the line when it counts.</p>
       <div class="hero-actions">
@@ -942,6 +977,12 @@ details .a p{font-size:.9375rem}
         </div>
         <p class="sub-note">By subscribing you agree to our privacy policy.</p>
       </div>
+    </div>
+
+    <div class="foot-contact">
+      <div><div class="k">Phone</div><a class="v" href="tel:0421657559">0421 657 559</a></div>
+      <div><div class="k">Email</div><a class="v" href="mailto:tanuj@pathwayprop.com.au">tanuj@pathwayprop.com.au</a></div>
+      <div><div class="k">Where we buy</div><span class="v">Dandenong to Pakenham</span></div>
     </div>
 
     <div class="foot-in">

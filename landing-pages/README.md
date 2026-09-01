@@ -10,16 +10,21 @@ Read from the live Webflow site so these pages match it rather than approximate 
 
 | Token | Value | Where it comes from |
 | --- | --- | --- |
-| Page ground | `#FAF8F5` | `Untitled UI Gray50` — the site's off-white, also its navbar fill |
+| Page ground | `#BCD3D0` | `.primary-body` — the site's pale sage |
+| Surfaces | `#FAF8F5` | `Untitled UI Gray50` — navbar pill, light buttons, dropdowns |
 | Card / band fill | `#F5F2EB` | `.article-card`, `.offering-card`, `.review-card` |
+| Star gold | `#E9A02C` | the "Rated 5 Stars on Google" row |
 | Midnight (ink + outlines) | `#090D2B` | `Midnight` variable |
 | Body text | `rgba(9,13,43,.6)` | tag style on `p` |
 | Pathway green | `#206E65` | `PATHWAY GREEN` variable |
 | On-green text | `#F1EFE9` | green panels and footer |
 
 The site also defines a sand `#ECD4B3` (`Background 01`) and a blanched almond
-`#E5DCC9`. **Do not use them as the page ground** — the brief is an off-white
-page, not a peach one.
+`#E5DCC9`. **Do not use them as the page ground** — the ground is the sage.
+
+Because the sage is darker than an off-white, the muted inks are set at 70%
+and 62% rather than 60% and 45%, which keeps body copy and small labels above
+4.5:1 on both the sage and the cream cards.
 
 ## House rules the site follows
 
@@ -35,6 +40,8 @@ page, not a peach one.
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
+- **Motifs:** a "Rated 5 Stars on Google" row above the headline and soft
+  white clouds drifting behind the hero, both lifted from the main site.
 
 ## Imagery
 
