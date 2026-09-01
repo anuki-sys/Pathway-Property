@@ -191,23 +191,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .play svg{margin-left:3px}
 
 /* hero ----------------------------------------------------------- */
-.hero{position:relative;padding:48px 0 calc(min(19vw,290px) + 20px)}
+.hero{position:relative;padding:48px 0 88px}
 .hero-clouds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .cloud{position:absolute;fill:#fff;opacity:.85}
 .cloud-1{top:6%;left:-4%;width:230px;animation:drift 34s ease-in-out infinite}
 .cloud-2{top:34%;right:-3%;width:150px;animation:drift 28s ease-in-out infinite reverse}
 @keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(26px)}}
 .hero .wrap{position:relative;z-index:1}
-.hero-scene{position:absolute;left:0;right:0;bottom:0;z-index:0;pointer-events:none;line-height:0}
-.hero-scene .scene{display:block;width:100%;height:auto}
 .rating{display:flex;align-items:center;gap:12px;margin-bottom:20px;font-size:.9375rem;color:var(--ink-60)}
 .stars{display:flex;gap:3px}
 .stars svg{display:block;fill:var(--star)}
 @media(max-width:1080px){.hero-clouds{display:none}}
-@media(max-width:620px){
-  .hero{padding-bottom:calc(min(30vw,150px) + 16px)}
-  .hero-scene .scene{width:150%;margin-left:-25%}
-}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .hero h1 em{font-style:normal;color:var(--green);display:block}
 .hero-lede{font-size:1.125rem;max-width:33em;margin-top:22px}
@@ -524,51 +518,6 @@ details .a p{font-size:.9375rem}
   <div class="hero-clouds" aria-hidden="true">
     <svg class="cloud cloud-1" viewBox="0 0 200 62"><path d="M22 60C10 60 0 52 0 42s10-18 22-18c4-10 14-17 26-17 10 0 19 5 24 13 3-2 7-3 11-3 12 0 22 9 22 20 0 1 0 2-.2 3 10 1 17 8 17 16 0 9-8 16-18 16H22z"/></svg>
     <svg class="cloud cloud-2" viewBox="0 0 200 62"><path d="M22 60C10 60 0 52 0 42s10-18 22-18c4-10 14-17 26-17 10 0 19 5 24 13 3-2 7-3 11-3 12 0 22 9 22 20 0 1 0 2-.2 3 10 1 17 8 17 16 0 9-8 16-18 16H22z"/></svg>
-  </div>
-  <div class="hero-scene" aria-hidden="true">
-    <svg class="scene" viewBox="0 0 1200 250" role="img" aria-label="Illustration of a suburban home among gum trees">
-      <!-- landform -->
-      <path d="M170 250C188 168 338 128 600 128s412 40 430 122H170z" fill="#206E65"/>
-      <path d="M600 128c262 0 412 40 430 122H648c-6-52-24-92-48-122z" fill="#17544D" opacity=".5"/>
-      <path d="M170 250c18-82 168-122 430-122-46 34-70 76-76 122H170z" fill="#2E8478" opacity=".45"/>
-      <path d="M232 250c26-30 118-52 368-52s342 22 368 52H232z" fill="#123F39" opacity=".22"/>
-      <!-- back trees, left -->
-      <g fill="#17544D">
-        <path d="M286 172l20-92 20 92z"/><path d="M330 176l16-74 16 74z"/>
-        <path d="M846 176l16-74 16 74z"/><path d="M886 180l14-64 14 64z"/>
-      </g>
-      <!-- gums -->
-      <g>
-        <rect x="386" y="86" width="5" height="82" fill="#123F39"/>
-        <ellipse cx="388" cy="82" rx="44" ry="44" fill="#2E8478"/>
-        <rect x="806" y="96" width="5" height="74" fill="#123F39"/>
-        <ellipse cx="808" cy="92" rx="38" ry="38" fill="#206E65"/>
-        <rect x="922" y="120" width="4" height="56" fill="#123F39"/>
-        <ellipse cx="924" cy="116" rx="28" ry="28" fill="#9CC7BE" opacity=".75"/>
-        <rect x="256" y="126" width="4" height="52" fill="#123F39"/>
-        <ellipse cx="258" cy="122" rx="26" ry="26" fill="#9CC7BE" opacity=".6"/>
-      </g>
-      <!-- driveway -->
-      <path d="M578 154c-3 38-20 68-52 96h148c-32-28-49-58-52-96z" fill="#E8E2D6" opacity=".85"/>
-      <!-- house -->
-      <rect x="520" y="98" width="10" height="24" fill="#090D2B"/>
-      <path d="M452 124L600 90l148 34z" fill="#090D2B"/>
-      <rect x="472" y="124" width="256" height="32" fill="#F5F2EB"/>
-      <rect x="492" y="132" width="18" height="13" fill="#E9A02C"/>
-      <rect x="522" y="132" width="18" height="13" fill="#E9A02C"/>
-      <rect x="588" y="133" width="14" height="23" fill="#206E65"/>
-      <rect x="646" y="130" width="62" height="26" fill="#9FBDB8"/>
-      <rect x="646" y="130" width="62" height="4" fill="#8FB0AB"/>
-      <!-- front planting -->
-      <g fill="#17544D" opacity=".55">
-        <ellipse cx="432" cy="182" rx="34" ry="15"/>
-        <ellipse cx="768" cy="186" rx="38" ry="16"/>
-        <ellipse cx="352" cy="205" rx="26" ry="11"/>
-      </g>
-      <g fill="#F5F2EB" opacity=".3">
-        <circle cx="470" cy="214" r="3"/><circle cx="512" cy="228" r="3"/><circle cx="700" cy="220" r="3"/>
-      </g>
-    </svg>
   </div>
   <div class="wrap hero-grid">
     <div>
