@@ -40,8 +40,11 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
-- **Motifs:** a "Rated 5 Stars on Google" row above the headline and soft
-  white clouds drifting behind the hero, both lifted from the main site.
+- **Motifs:** a "Rated 5 Stars on Google" row above the headline, soft white
+  clouds drifting behind the hero, and a flat-vector scene along the hero's
+  bottom edge — all in the spirit of the main site's illustrations, drawn in
+  the brand palette rather than copied. The clouds are hidden below 1080px,
+  where the hero becomes a single column and they would land on the headline.
 
 ## Imagery
 
