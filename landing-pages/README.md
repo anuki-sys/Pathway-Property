@@ -36,7 +36,9 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 - **Big radii:** buttons, inputs and the navbar are fully round (`1000px`);
   cards are 30px or 50px; the footer slab is `100px 100px 0 0`.
 - **Navbar:** fixed, 15px from the top, a floating off-white pill with a
-  midnight outline — not a full-width sticky bar.
+  midnight outline — not a full-width sticky bar. The logo is the brand mark
+  (dark green field, white path sweeping through it, Pathway green sail) with
+  the two-line wordmark set in Plus Jakarta Sans 600/400.
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
@@ -81,6 +83,9 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler.
 - Interactive corridor map to replace the placeholder SVG.
+- The nav logo is an inline SVG redraw of the brand mark. Swap it for the
+  official logo file before this goes live — on the Webflow build it will use
+  the site's own logo asset anyway.
 - Nav submenu contents for About, Services, Partners and Event — the carets
   match the live nav but the items themselves come from the site's global
   navbar component in Webflow, which isn't readable through the API.
