@@ -194,25 +194,45 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .pill-soft{border-color:transparent;background:rgba(241,239,233,.12)}
 @media(max-width:900px){.area-grid{grid-template-columns:1fr;gap:34px}}
 
-/* how it works — numbered rail ----------------------------------- */
-.rail{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,auto);grid-auto-flow:column;gap:0 64px}
-.rail-item{
-  position:relative;padding:0 0 36px 62px;
-  border-left:1.5px solid var(--hair);
+/* how it works — one ordered timeline ---------------------------- */
+.flow{margin-top:44px}
+.flow-step{
+  position:relative;display:grid;
+  grid-template-columns:56px 250px 1fr auto;gap:0 28px;
+  align-items:start;padding:26px 0;border-top:1px solid var(--hair);
 }
-.rail-item:nth-child(3),.rail-item:nth-child(6){padding-bottom:0}
-.rail-num{
-  position:absolute;left:-21px;top:0;width:42px;height:42px;border-radius:50%;
-  border:var(--stroke);background:var(--green);color:var(--shell);
+.flow-step:last-child{border-bottom:1px solid var(--hair)}
+.flow-step:before{content:"";position:absolute;left:21px;top:0;bottom:0;width:1.5px;background:var(--hair)}
+.flow-step:first-child:before{top:48px}
+.flow-step:last-child:before{bottom:auto;height:48px}
+.flow-num{
+  grid-column:1;grid-row:1;position:relative;z-index:1;
+  width:44px;height:44px;border:var(--stroke);border-radius:50%;
+  background:var(--green);color:var(--shell);
   display:grid;place-items:center;font-size:.9375rem;font-weight:600;
 }
-.rail-item h3{font-size:1.1875rem;margin-bottom:8px;padding-top:8px}
-.rail-item p{font-size:.9375rem;margin-bottom:10px}
-.rail-when{
-  display:inline-block;border:1.5px solid rgba(32,110,101,.35);border-radius:var(--pill);
+.flow-step h3{grid-column:2;grid-row:1;font-size:1.1875rem;padding-top:8px}
+.flow-step p{grid-column:3;grid-row:1;font-size:.9375rem;padding-top:9px;margin:0;max-width:44em}
+.flow-when{
+  grid-column:4;grid-row:1;margin-top:9px;justify-self:end;white-space:nowrap;
+  border:1.5px solid rgba(32,110,101,.35);border-radius:var(--pill);
   padding:4px 14px;font-size:.8125rem;font-weight:600;color:var(--green);
 }
-@media(max-width:860px){.rail{grid-template-columns:1fr;grid-template-rows:none;grid-auto-flow:row}.rail-item:nth-child(3){padding-bottom:36px}}
+@media(max-width:1040px){
+  .flow-step{grid-template-columns:56px 1fr auto;gap:0 20px}
+  .flow-step h3{grid-column:2;grid-row:1;padding-top:8px}
+  .flow-step p{grid-column:2;grid-row:2;padding-top:6px}
+  .flow-when{grid-column:3;grid-row:1}
+}
+@media(max-width:680px){
+  .flow-step{grid-template-columns:44px 1fr;gap:0 16px;padding:22px 0}
+  .flow-step:before{left:15px}
+  .flow-num{width:32px;height:32px;font-size:.875rem}
+  .flow-step:first-child:before{top:38px}
+  .flow-step:last-child:before{height:38px}
+  .flow-step h3{padding-top:2px}
+  .flow-when{grid-column:2;grid-row:3;justify-self:start;margin-top:12px}
+}
 
 /* off market ----------------------------------------------------- */
 .om-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
@@ -513,42 +533,42 @@ details .a p{font-size:.9375rem}
   <div class="wrap">
     <div class="eyebrow">How it works</div>
     <h2>Six steps, from first call to keys in your hand.</h2>
-    <div class="rail">
-      <div class="rail-item">
-        <span class="rail-num">1</span>
+    <div class="flow">
+      <div class="flow-step">
+        <span class="flow-num">1</span>
         <h3>The first call</h3>
         <p>Fifteen minutes, free. What you want, what you can spend, and whether we're the right fit. If we're not, we'll say so on the call.</p>
-        <span class="rail-when">15 minutes</span>
+        <span class="flow-when">15 minutes</span>
       </div>
-      <div class="rail-item">
-        <span class="rail-num">4</span>
-        <h3>Inspect and assess</h3>
-        <p>We attend and report back. Building and pest, flood, zoning and planning all checked before you fall in love with something.</p>
-        <span class="rail-when">As homes come up</span>
-      </div>
-      <div class="rail-item">
-        <span class="rail-num">2</span>
+      <div class="flow-step">
+        <span class="flow-num">2</span>
         <h3>Your brief</h3>
         <p>Suburbs, must-haves and deal-breakers, plus an honest read on what your budget actually buys around here right now.</p>
-        <span class="rail-when">Week 1</span>
+        <span class="flow-when">Week 1</span>
       </div>
-      <div class="rail-item">
-        <span class="rail-num">5</span>
-        <h3>Value and negotiate</h3>
-        <p>An independent line on what it's worth, held firm — on price, and on settlement, conditions and deposit.</p>
-        <span class="rail-when">Auction or private sale</span>
-      </div>
-      <div class="rail-item">
-        <span class="rail-num">3</span>
+      <div class="flow-step">
+        <span class="flow-num">3</span>
         <h3>The search</h3>
         <p>We work the agents, off-markets and pre-markets across the corridor, so you're seeing homes before they hit realestate.com.au.</p>
-        <span class="rail-when">Weekly shortlists</span>
+        <span class="flow-when">Weekly shortlists</span>
       </div>
-      <div class="rail-item">
-        <span class="rail-num">6</span>
+      <div class="flow-step">
+        <span class="flow-num">4</span>
+        <h3>Inspect and assess</h3>
+        <p>We attend and report back. Building and pest, flood, zoning and planning all checked before you fall in love with something.</p>
+        <span class="flow-when">As homes come up</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">5</span>
+        <h3>Value and negotiate</h3>
+        <p>An independent line on what it's worth, held firm — on price, and on settlement, conditions and deposit.</p>
+        <span class="flow-when">Auction or private sale</span>
+      </div>
+      <div class="flow-step">
+        <span class="flow-num">6</span>
         <h3>Through to keys</h3>
         <p>Contract, conveyancer, broker and deadlines all coordinated. One person to call the whole way through.</p>
-        <span class="rail-when">Contract to settlement</span>
+        <span class="flow-when">Contract to settlement</span>
       </div>
     </div>
   </div>
