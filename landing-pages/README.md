@@ -70,5 +70,8 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler.
 - Interactive corridor map to replace the placeholder SVG.
-- Two nav hrefs (`/services/buyers-advocacy`, `/resources`) to confirm against
-  the live nav.
+- Nav submenu contents for About, Services, Partners and Event — the carets
+  match the live nav but the items themselves come from the site's global
+  navbar component in Webflow, which isn't readable through the API.
+- The three other corridors in the "Where we buy" dropdown (East, North,
+  West) are marked "coming soon" and need real URLs once those pages exist.

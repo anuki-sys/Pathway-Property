@@ -86,22 +86,80 @@ p:last-child{margin-bottom:0}
 .btn-block{width:100%}
 a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:8px}
 
-/* navbar --------------------------------------------------------- */
+/* navbar — mirrors the site's global nav component ---------------- */
 .navbar{position:fixed;top:15px;left:0;right:0;z-index:2000;padding:0 5%}
 .navbar-container{
-  max-width:var(--wrap);margin:0 auto;display:flex;align-items:center;gap:24px;
+  position:relative;max-width:var(--wrap);margin:0 auto;
+  display:flex;align-items:center;gap:20px;
   padding:10px 15px 10px 25px;border:var(--stroke);border-radius:var(--pill);background:var(--shell);
 }
 .navbar-logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0}
 .text-logo{font-size:20px;font-weight:600;letter-spacing:-1px;line-height:1.05;color:var(--ink)}
 .text-logo span{display:block;font-weight:400;letter-spacing:-.5px}
-.navbar-menu{display:flex;align-items:center;gap:2px;margin-left:auto}
-.navbar-link{padding:.75rem .9rem;font-size:14px;line-height:1;text-decoration:none;color:var(--ink);border-radius:var(--pill);transition:background-color .3s ease}
+
+.navbar-menu{display:flex;align-items:center;gap:2px;margin-left:1.5rem;flex:1 1 auto}
+.nav-item{position:relative}
+.navbar-link{
+  display:flex;align-items:center;gap:6px;
+  padding:.75rem .85rem;border:0;background:transparent;
+  font-family:var(--font);font-size:14px;font-weight:400;line-height:1;color:var(--ink);
+  text-decoration:none;white-space:nowrap;cursor:pointer;border-radius:var(--pill);
+  transition:background-color .3s ease;
+}
 .navbar-link:hover{background:var(--green-tint)}
-.navbar-buttons{display:flex;align-items:center;gap:.5rem;flex-shrink:0}
-.navbar-buttons .btn{padding:.7rem 1.2rem;font-size:14px}
-@media(max-width:1120px){.navbar-menu{display:none}.navbar-container{justify-content:space-between}}
-@media(max-width:560px){.nav-phone{display:none}.navbar-container{padding-left:18px}.text-logo{font-size:18px}}
+.caret{flex-shrink:0;transition:transform .3s ease}
+[aria-expanded="true"] .caret{transform:rotate(180deg)}
+
+.nav-dropdown{
+  position:absolute;top:calc(100% + 14px);left:0;min-width:290px;z-index:10;
+  background:var(--shell);border:var(--stroke);border-radius:26px;padding:10px;
+  display:none;
+}
+.nav-item.is-open .nav-dropdown{display:block}
+.nav-dropdown a{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  padding:11px 16px;border-radius:18px;font-size:14px;color:var(--ink);text-decoration:none;
+  transition:background-color .3s ease;
+}
+.nav-dropdown a:hover{background:var(--green-tint)}
+.nav-dropdown a[aria-current="page"]{background:var(--green-tint);font-weight:600;color:var(--green)}
+.dd-note{font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-45);white-space:nowrap}
+.nav-dropdown a[aria-current="page"] .dd-note{color:var(--green)}
+.dd-soon{color:var(--ink-45)}
+
+.navbar-buttons{display:flex;align-items:center;gap:.5rem;flex-shrink:0;margin-left:auto}
+.navbar-buttons .btn{padding:.7rem 1.35rem;font-size:14px}
+
+.nav-toggle{
+  display:none;width:44px;height:44px;margin-left:auto;flex-shrink:0;
+  border:var(--stroke);border-radius:50%;background:transparent;cursor:pointer;
+  padding:0;place-items:center;
+}
+.nav-toggle span{display:block;width:18px;height:1.5px;background:var(--ink);margin:3px auto;transition:transform .3s ease,opacity .3s ease}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-4.5px) rotate(-45deg)}
+
+@media(max-width:1180px){
+  .nav-toggle{display:grid}
+  .navbar-menu{
+    position:absolute;top:calc(100% + 12px);left:0;right:0;
+    margin:0;flex-direction:column;align-items:stretch;gap:2px;
+    background:var(--shell);border:var(--stroke);border-radius:30px;padding:14px;
+    display:none;
+  }
+  .navbar-menu.is-open{display:flex}
+  .navbar-link{padding:.85rem 1rem;font-size:15px;justify-content:space-between;width:100%}
+  .nav-dropdown{position:static;display:none;min-width:0;border:0;border-radius:0;padding:0 0 6px 12px;background:transparent}
+  .nav-item.is-open .nav-dropdown{display:block}
+  .navbar-buttons{margin-left:0}
+  .navbar-buttons .btn{padding:.7rem 1.1rem}
+}
+@media(max-width:620px){
+  .navbar-container{padding-left:18px;gap:10px}
+  .text-logo{font-size:18px}
+  .nav-enquire{display:none}
+}
 
 /* image slots ---------------------------------------------------- */
 .shot{
@@ -366,6 +424,8 @@ details .a p{font-size:.9375rem}
 </head>
 <body>
 
+<!-- On the Webflow build this is the site's global navbar component.
+     The markup below mirrors it so the page can be reviewed standalone. -->
 <nav class="navbar">
   <div class="navbar-container">
     <a class="navbar-logo" href="/">
@@ -376,16 +436,34 @@ details .a p{font-size:.9375rem}
       </svg>
       <span class="text-logo">pathway<span>property</span></span>
     </a>
-    <div class="navbar-menu">
-      <a class="navbar-link" href="/about">About</a>
-      <a class="navbar-link" href="/services/buyers-advocacy">Services</a>
-      <a class="navbar-link" href="#area">Where we buy</a>
-      <a class="navbar-link" href="#agents">Our agents</a>
-      <a class="navbar-link" href="/resources">Resources</a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="navbar-menu" id="nav-menu">
+      <div class="nav-item"><a class="navbar-link" href="/about">About <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="nav-item"><a class="navbar-link" href="/resources">Resources</a></div>
+      <div class="nav-item"><a class="navbar-link" href="/tools">Tools</a></div>
+      <div class="nav-item"><a class="navbar-link" href="/services">Services <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+
+      <div class="nav-item has-menu">
+        <button class="navbar-link nav-trigger" aria-expanded="false" aria-controls="dd-where">Where we buy <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dropdown" id="dd-where">
+          <a href="/melbourne-south-east" aria-current="page">Melbourne South East <span class="dd-note">You are here</span></a>
+          <a href="#">Melbourne East <span class="dd-note dd-soon">Coming soon</span></a>
+          <a href="#">Melbourne North <span class="dd-note dd-soon">Coming soon</span></a>
+          <a href="#">Melbourne West <span class="dd-note dd-soon">Coming soon</span></a>
+        </div>
+      </div>
+
+      <div class="nav-item"><a class="navbar-link" href="/partners">Partners <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+      <div class="nav-item"><a class="navbar-link" href="/events">Event <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
     </div>
+
     <div class="navbar-buttons">
-      <a class="btn btn-secondary nav-phone" href="tel:0421657559">0421 657 559</a>
-      <a class="btn btn-primary" href="#book">Book a consult</a>
+      <a class="btn btn-secondary nav-enquire" href="/contact">Enquire</a>
+      <a class="btn btn-primary" href="tel:0421657559">Call Now</a>
     </div>
   </div>
 </nav>
@@ -927,6 +1005,44 @@ details .a p{font-size:.9375rem}
   });
 
   build();
+})();
+
+/* navbar — mobile menu and the "Where we buy" dropdown */
+(function(){
+  var toggle=document.getElementById('nav-toggle'),
+      menu=document.getElementById('nav-menu'),
+      items=document.querySelectorAll('.nav-item.has-menu');
+
+  toggle.addEventListener('click',function(){
+    var open=menu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+  });
+
+  function close(item){
+    item.classList.remove('is-open');
+    item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+  }
+  items.forEach(function(item){
+    var trigger=item.querySelector('.nav-trigger');
+    trigger.addEventListener('click',function(e){
+      e.stopPropagation();
+      var open=!item.classList.contains('is-open');
+      items.forEach(close);
+      if(open){item.classList.add('is-open');trigger.setAttribute('aria-expanded','true')}
+    });
+  });
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.nav-item.has-menu'))items.forEach(close);
+    if(menu.classList.contains('is-open')&&!e.target.closest('.navbar-container')){
+      menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');
+    }
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    items.forEach(close);
+    menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');
+  });
 })();
 
 /* process flow — reveal each card as it comes into view */
