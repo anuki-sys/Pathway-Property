@@ -332,34 +332,59 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .form-note a{color:var(--mint);font-weight:600}
 @media(max-width:900px){.om-grid{grid-template-columns:1fr;gap:34px}}
 
-/* agent slider --------------------------------------------------- */
+/* agent slider — one card at a time, tabs carry the other three ---- */
+.agent-controls{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}
+.agent-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.agent-tab{
+  border:1.5px solid var(--ink);border-radius:var(--pill);background:transparent;
+  padding:9px 20px;font-family:var(--font);font-size:.875rem;font-weight:500;color:var(--ink);
+  cursor:pointer;transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+}
+.agent-tab:hover{background:var(--green-tint)}
+.agent-tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:#fff}
+
 .slider-nav{display:flex;gap:10px}
 .arrow{
   width:48px;height:48px;border-radius:50%;border:var(--stroke);background:transparent;
   color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:1.2rem;
-  transition:background-color .3s ease,color .3s ease;
+  transition:background-color .3s ease,color .3s ease,opacity .3s ease;
 }
 .arrow:hover:not([disabled]){background:var(--ink);color:var(--shell)}
-.arrow[disabled]{opacity:.3;cursor:default}
-.track-wrap{overflow:hidden;margin-top:34px;padding:4px}
-.track{display:flex;gap:24px;transition:transform .45s cubic-bezier(.4,0,.2,1)}
-.agent-card{
-  flex:0 0 82%;background:var(--cream);border:var(--stroke);border-radius:50px;
-  padding:34px;display:grid;grid-template-columns:270px 1fr;gap:36px;align-items:center;
+.arrow[disabled]{opacity:.28;cursor:default}
+
+/* native scroll-snap: swipes and works with the script disabled */
+.track-wrap{
+  margin-top:24px;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;
 }
-.agent-card .shot{aspect-ratio:4/5;border-radius:30px}
+.track-wrap::-webkit-scrollbar{display:none}
+.track{display:flex}
+.agent-card{
+  flex:0 0 100%;scroll-snap-align:start;
+  background:var(--cream);border:var(--stroke);border-radius:50px;padding:40px;
+  display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:center;
+}
+.agent-card .shot{aspect-ratio:4/5;border-radius:36px}
+.agent-body{position:relative}
+.agent-count{
+  position:absolute;top:2px;right:0;font-size:.75rem;font-weight:700;
+  letter-spacing:.14em;color:var(--ink-45);font-variant-numeric:tabular-nums;
+}
 .agent-role{
   display:inline-block;background:var(--green-tint);color:var(--green);border-radius:var(--pill);
-  padding:5px 15px;font-size:.8125rem;font-weight:600;margin-bottom:14px;
+  padding:5px 15px;font-size:.8125rem;font-weight:600;margin-bottom:16px;
 }
-.agent-card h3{font-size:1.75rem;font-weight:700;letter-spacing:-.03em;margin-bottom:4px}
-.agent-where{color:var(--green);font-weight:600;font-size:.9375rem;margin-bottom:14px}
-.agent-card p{font-size:.9375rem;margin-bottom:20px}
-.dots{display:flex;gap:8px;justify-content:center;margin-top:26px}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--hair);border:none;padding:0;cursor:pointer;transition:width .3s ease,background-color .3s ease}
-.dot[aria-current="true"]{background:var(--green);width:24px;border-radius:99px}
-.swipe-hint{text-align:center;font-size:.8125rem;color:var(--ink-45);margin-top:12px}
-@media(max-width:900px){.agent-card{flex-basis:88%;grid-template-columns:1fr;padding:26px;border-radius:36px}.agent-card .shot{max-width:220px;aspect-ratio:1}}
+.agent-card h3{font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:6px}
+.agent-where{color:var(--green);font-weight:600;font-size:.9375rem;margin-bottom:16px}
+.agent-card p{font-size:.9375rem;margin-bottom:26px;max-width:38em}
+
+@media(max-width:520px){.agent-tab{padding:8px 14px;font-size:.8125rem}}
+@media(max-width:900px){
+  .agent-card{grid-template-columns:1fr;gap:26px;padding:26px;border-radius:36px;justify-items:start}
+  .agent-card .shot{width:100%;max-width:240px;aspect-ratio:1;border-radius:28px}
+  .agent-card h3{font-size:1.625rem}
+  .agent-count{position:static;display:block;margin-bottom:10px}
+}
 
 /* meet the team -------------------------------------------------- */
 .team{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}
@@ -778,10 +803,15 @@ details .a p{font-size:.9375rem}
 <!-- 7. AGENT SLIDER -->
 <section class="section" id="agents">
   <div class="wrap">
-    <div class="head-row">
-      <div>
-        <div class="eyebrow">Who you'll be dealing with</div>
-        <h2>Pick the agent for your area.</h2>
+    <div class="eyebrow">Who you'll be dealing with</div>
+    <h2>Pick the agent for your area.</h2>
+
+    <div class="agent-controls">
+      <div class="agent-tabs" role="tablist" aria-label="Choose an agent">
+        <button class="agent-tab" role="tab" aria-selected="true" aria-controls="agent-tanuj" data-index="0">Tanuj</button>
+        <button class="agent-tab" role="tab" aria-selected="false" aria-controls="agent-arshad" data-index="1">Arshad</button>
+        <button class="agent-tab" role="tab" aria-selected="false" aria-controls="agent-nirvan" data-index="2">Nirvan</button>
+        <button class="agent-tab" role="tab" aria-selected="false" aria-controls="agent-abhimaan" data-index="3">Abhimaan</button>
       </div>
       <div class="slider-nav">
         <button class="arrow" id="prev" aria-label="Previous agent" aria-controls="track">‹</button>
@@ -789,13 +819,14 @@ details .a p{font-size:.9375rem}
       </div>
     </div>
 
-    <div class="track-wrap">
+    <div class="track-wrap" id="track-wrap" tabindex="0" aria-label="Agents">
       <div class="track" id="track">
-        <article class="agent-card">
+        <article class="agent-card" id="agent-tanuj" role="group" aria-roledescription="slide" aria-label="1 of 4: Tanuj Singh">
           <figure class="shot">
             <div class="slot"><b>Portrait</b>Tanuj on location in the south east</div>
           </figure>
-          <div>
+          <div class="agent-body">
+            <div class="agent-count">01 / 04</div>
             <span class="agent-role">Buyer's Agent</span>
             <h3>Tanuj Singh</h3>
             <div class="agent-where">Melbourne South East</div>
@@ -803,12 +834,12 @@ details .a p{font-size:.9375rem}
             <a class="btn btn-primary" href="#book" data-agent="tanuj">Book with Tanuj</a>
           </div>
         </article>
-
-        <article class="agent-card">
+        <article class="agent-card" id="agent-arshad" role="group" aria-roledescription="slide" aria-label="2 of 4: Arshad Zacky">
           <figure class="shot">
             <div class="slot"><b>Portrait</b>Arshad on location</div>
           </figure>
-          <div>
+          <div class="agent-body">
+            <div class="agent-count">02 / 04</div>
             <span class="agent-role">Head of Client Success</span>
             <h3>Arshad Zacky</h3>
             <div class="agent-where">Corridor to confirm</div>
@@ -816,12 +847,12 @@ details .a p{font-size:.9375rem}
             <a class="btn btn-primary" href="#book" data-agent="arshad">Book with Arshad</a>
           </div>
         </article>
-
-        <article class="agent-card">
+        <article class="agent-card" id="agent-nirvan" role="group" aria-roledescription="slide" aria-label="3 of 4: Nirvan Jamshidpey">
           <figure class="shot">
             <div class="slot"><b>Portrait</b>Nirvan on location</div>
           </figure>
-          <div>
+          <div class="agent-body">
+            <div class="agent-count">03 / 04</div>
             <span class="agent-role">Head of Deal Acquisition</span>
             <h3>Nirvan Jamshidpey</h3>
             <div class="agent-where">Corridor to confirm</div>
@@ -829,13 +860,13 @@ details .a p{font-size:.9375rem}
             <a class="btn btn-primary" href="#book" data-agent="nirvan">Book with Nirvan</a>
           </div>
         </article>
-
-        <article class="agent-card">
+        <article class="agent-card" id="agent-abhimaan" role="group" aria-roledescription="slide" aria-label="4 of 4: Abhimaan Bhargava">
           <figure class="shot">
             <div class="slot"><b>Portrait</b>Abhimaan on location</div>
           </figure>
-          <div>
-            <span class="agent-role">Support &amp; Settlement</span>
+          <div class="agent-body">
+            <div class="agent-count">04 / 04</div>
+            <span class="agent-role">Support & Settlement</span>
             <h3>Abhimaan Bhargava</h3>
             <div class="agent-where">Corridor to confirm</div>
             <p>Keeps the paperwork, the conveyancer and the deadlines moving, so settlement day is uneventful.</p>
@@ -844,8 +875,6 @@ details .a p{font-size:.9375rem}
         </article>
       </div>
     </div>
-    <div class="dots" id="dots"></div>
-    <p class="swipe-hint">Swipe or use the arrows to see all four agents.</p>
   </div>
 </section>
 
@@ -1008,60 +1037,62 @@ details .a p{font-size:.9375rem}
 </script>
 
 <script>
-/* agent slider — one card at a time, next card peeking */
+/* agent slider — scroll-snap, driven by the tabs and arrows */
 (function(){
-  var track=document.getElementById('track'),prev=document.getElementById('prev'),
-      next=document.getElementById('next'),dots=document.getElementById('dots'),i=0;
+  var wrap=document.getElementById('track-wrap'),
+      track=document.getElementById('track'),
+      prev=document.getElementById('prev'),
+      next=document.getElementById('next'),
+      tabs=Array.prototype.slice.call(document.querySelectorAll('.agent-tab')),
+      cards=Array.prototype.slice.call(track.children),
+      i=0;
 
-  function last(){return track.children.length-1}
-  function step(){
-    var card=track.children[0];
-    if(!card)return 0;
-    var gap=parseFloat(getComputedStyle(track).columnGap||getComputedStyle(track).gap)||24;
-    return card.getBoundingClientRect().width+gap;
+  function go(n,smooth){
+    i=Math.max(0,Math.min(cards.length-1,n));
+    wrap.scrollTo({left:cards[i].offsetLeft-cards[0].offsetLeft,behavior:smooth===false?'auto':'smooth'});
+    sync();
   }
-  function draw(){
-    track.style.transform='translateX(-'+(i*step())+'px)';
-    prev.disabled=i<=0;next.disabled=i>=last();
-    Array.prototype.forEach.call(dots.children,function(d,n){
-      d.setAttribute('aria-current',n===i?'true':'false');
-    });
+  function sync(){
+    prev.disabled=i<=0;
+    next.disabled=i>=cards.length-1;
+    tabs.forEach(function(t,n){t.setAttribute('aria-selected',n===i?'true':'false')});
   }
-  function build(){
-    dots.innerHTML='';
-    for(var n=0;n<=last();n++){
-      var b=document.createElement('button');
-      b.className='dot';
-      b.setAttribute('aria-label','Show agent '+(n+1)+' of '+(last()+1));
-      (function(k){b.addEventListener('click',function(){i=k;draw()})})(n);
-      dots.appendChild(b);
-    }
-    draw();
-  }
-  prev.addEventListener('click',function(){if(i>0){i--;draw()}});
-  next.addEventListener('click',function(){if(i<last()){i++;draw()}});
-  window.addEventListener('resize',draw);
 
-  /* touch swipe */
-  var x0=null;
-  track.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
-  track.addEventListener('touchend',function(e){
-    if(x0===null)return;
-    var dx=e.changedTouches[0].clientX-x0;
-    if(dx<-40&&i<last())i++;
-    else if(dx>40&&i>0)i--;
-    x0=null;draw();
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){go(+tab.getAttribute('data-index'))});
+  });
+  prev.addEventListener('click',function(){go(i-1)});
+  next.addEventListener('click',function(){go(i+1)});
+  wrap.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'){e.preventDefault();go(i+1)}
+    if(e.key==='ArrowLeft'){e.preventDefault();go(i-1)}
+  });
+
+  /* a swipe or a trackpad scroll moves the card, so keep the tabs in step */
+  var t=null;
+  wrap.addEventListener('scroll',function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      var mid=wrap.scrollLeft+wrap.clientWidth/2,best=0,dist=Infinity;
+      cards.forEach(function(c,n){
+        var d=Math.abs((c.offsetLeft-cards[0].offsetLeft)+c.offsetWidth/2-mid);
+        if(d<dist){dist=d;best=n}
+      });
+      i=best;sync();
+    },90);
   },{passive:true});
+
+  window.addEventListener('resize',function(){go(i,false)});
 
   /* "Book with X" jumps to the booking form and selects that agent's tab */
   document.querySelectorAll('[data-agent]').forEach(function(a){
     a.addEventListener('click',function(){
-      var t=document.getElementById('tab-'+a.getAttribute('data-agent'));
-      if(t)t.click();
+      var b=document.getElementById('tab-'+a.getAttribute('data-agent'));
+      if(b)b.click();
     });
   });
 
-  build();
+  sync();
 })();
 
 /* navbar — mobile menu and the "Where we buy" dropdown */
