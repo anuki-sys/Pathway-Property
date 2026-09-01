@@ -381,18 +381,8 @@ details .a p{font-size:.9375rem}
 .booking h2{color:var(--shell);margin-bottom:16px}
 .booking .eyebrow{color:var(--mint)}
 .booking-head{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:end;margin-bottom:34px}
-.booking-lede{font-size:1.0625rem;color:var(--on-green-70);max-width:34em;margin:0}
-.booking-contact{display:flex;flex-wrap:wrap;gap:36px;margin-top:22px}
-.booking-contact .k{font-size:.8125rem;font-weight:600;color:var(--mint);margin-bottom:2px}
-.booking-contact .v{font-size:1.0625rem;font-weight:600;color:var(--shell);text-decoration:none}
-
-.booking-points{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.booking-points li{
-  position:relative;padding:15px 20px 15px 46px;
-  border:1px solid var(--on-green-45);border-radius:22px;
-  font-size:.9375rem;color:var(--on-green-70);
-}
-.booking-points li:before{content:"";position:absolute;left:20px;top:1.45em;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--mint)}
+.booking-head h2{margin-bottom:0}
+.booking-lede{font-size:1.0625rem;color:var(--on-green-70);max-width:34em;margin:0 0 6px}
 
 .booking-card{background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);border-radius:40px;padding:34px 36px}
 .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
@@ -421,8 +411,7 @@ details .a p{font-size:.9375rem}
 .tab-panel .btn{flex-shrink:0}
 
 @media(max-width:1040px){
-  .booking-head{grid-template-columns:1fr;gap:26px;align-items:start}
-  .booking-points{grid-template-columns:1fr}
+  .booking-head{grid-template-columns:1fr;gap:22px;align-items:start}
   .booking-foot{grid-template-columns:1fr;align-items:stretch}
 }
 @media(max-width:760px){
@@ -890,24 +879,9 @@ details .a p{font-size:.9375rem}
 <section class="booking" id="book">
   <div class="wrap">
     <div class="booking-head">
-      <div>
-        <div class="eyebrow">Start here</div>
-        <h2>Let's find out what your budget actually buys.</h2>
-      </div>
-      <div>
-        <p class="booking-lede">Answer five quick questions and pick the agent for your area. Fifteen minutes, free, and you'll get a straight answer on whether we can help — either way.</p>
-        <div class="booking-contact">
-          <div><div class="k">Phone</div><a class="v" href="tel:0421657559">0421 657 559</a></div>
-          <div><div class="k">Email</div><a class="v" href="mailto:tanuj@pathwayprop.com.au">tanuj@pathwayprop.com.au</a></div>
-        </div>
-      </div>
+      <h2>Let's find out what your budget actually buys.</h2>
+      <p class="booking-lede">Answer five quick questions and pick the agent for your area. Fifteen minutes, free, and you'll get a straight answer on whether we can help — either way.</p>
     </div>
-
-    <ul class="booking-points">
-      <li>A read on what your budget buys in your suburbs right now</li>
-      <li>The homes coming up off-market that match your brief</li>
-      <li>An honest yes or no on whether you need us at all</li>
-    </ul>
 
     <div class="booking-card">
       <div class="form-grid">
