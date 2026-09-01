@@ -295,9 +295,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 
 /* off market ----------------------------------------------------- */
-.om-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+.om-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:stretch}
 .om-grid .shot{aspect-ratio:16/10;border-radius:30px;margin-top:26px}
-.form-card{background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);border-radius:30px;padding:32px 30px}
+.om-col{display:flex;flex-direction:column}
+.om-col .shot{margin-top:auto}
+.form-card{
+  background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
+  border-radius:30px;padding:32px 30px;
+  display:flex;flex-direction:column;
+}
+.form-card .btn{margin-top:auto}
+.form-card .field:last-of-type{margin-bottom:22px}
 .form-card h3{margin-bottom:8px}
 .form-card p{font-size:.9375rem;margin-bottom:20px}
 .field{margin-bottom:12px}
@@ -693,7 +701,7 @@ details .a p{font-size:.9375rem}
     <div class="panel-green">
       <div class="eyebrow">Off-market and direct to vendor</div>
       <div class="om-grid">
-        <div>
+        <div class="om-col">
           <h2>The best home for you might not be for sale yet.</h2>
           <p style="margin-top:16px">Watch Tanuj walk through the off-markets and pre-markets currently in front of our south east buyers — the homes that never make it to a portal.</p>
           <p>And if the right one still isn't there, we go and knock. We approach owners directly on your behalf, so what you can buy isn't limited to what happens to be listed this month.</p>
@@ -708,7 +716,7 @@ details .a p{font-size:.9375rem}
           <div class="field"><label for="om-name">Name</label><input id="om-name" type="text" placeholder="Your name"></div>
           <div class="field"><label for="om-email">Email</label><input id="om-email" type="email" placeholder="you@email.com"></div>
           <div class="field"><label for="om-suburbs">Suburbs you're looking at</label><input id="om-suburbs" type="text" placeholder="Berwick, Officer…"></div>
-          <a class="btn btn-cream btn-block" href="#" style="margin-top:8px">Send me the list</a>
+          <a class="btn btn-cream btn-block" href="#">Send me the list</a>
           <p class="form-note">Or skip the form — <a href="#book">book a consult</a> and we'll walk you through them.</p>
         </div>
       </div>
