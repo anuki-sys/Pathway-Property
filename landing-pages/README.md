@@ -57,9 +57,11 @@ on top of it, so dropping a real photo in is a one-line change and a missing
 photo degrades to the labelled placeholder rather than a broken image.
 
 Three slots are already wired to existing site assets as a starting point
-(hero, hero inset, good-fit). Everything else needs real photography —
-particularly the proof strip and the video testimonials, which must be actual
-clients, and the agent and team portraits.
+(hero, hero inset, value section). Everything else needs real photography —
+the "Recent buys" strip is six sold photos and must be actual clients, and
+the agent and team portraits are still to come. Video testimonials were
+removed from that strip; the only video slot left is the off-market walk
+through in the green panel.
 
 Candidate assets already on the site (from the Webflow asset library):
 `tom-rumble-…`, `dillon-kydd-…`, `r-architecture-…`, `pat-whelen-…`,
