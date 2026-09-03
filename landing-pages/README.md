@@ -58,10 +58,13 @@ photo degrades to the labelled placeholder rather than a broken image.
 
 Three slots are already wired to existing site assets as a starting point
 (hero, hero inset, value section). Everything else needs real photography —
-the "Recent buys" strip is six sold photos and must be actual clients, and
-the agent and team portraits are still to come. Video testimonials were
-removed from that strip; the only video slot left is the off-market walk
-through in the green panel.
+the agent portraits, the team portraits, the podcast thumbnail and the
+"Recent buys" strip, which must be actual clients.
+
+"Recent buys" is an auto-scrolling marquee. Its tiles are written out twice so
+the loop is seamless: **whatever you change in the first set, change in the
+second**. Six tiles is the target; three works too. It pauses on hover and on
+focus, and becomes a plain horizontal scroller under reduced motion.
 
 Candidate assets already on the site (from the Webflow asset library):
 `tom-rumble-…`, `dillon-kydd-…`, `r-architecture-…`, `pat-whelen-…`,
@@ -77,19 +80,22 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
 ### Open items on the south east page
 
 - Photography and video testimonials for all image slots.
-- Corridors for Arshad, Nirvan and Abhimaan (only Tanuj's is confirmed).
 - Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
   (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
   "calendar link to confirm" state.
 - Individual roles for Rahul, Shamindri, Ali Al Hilo, Rumeysa and Shashyani.
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler.
-- Interactive corridor map to replace the placeholder SVG.
+- Interactive map to replace the placeholder SVG.
+- Real YouTube and Spotify links on the podcast section (both are `#`).
 - The nav logo is an inline SVG redraw of the brand mark. Swap it for the
   official logo file before this goes live — on the Webflow build it will use
   the site's own logo asset anyway.
 - Nav submenu contents for About, Services, Partners and Event — the carets
   match the live nav but the items themselves come from the site's global
   navbar component in Webflow, which isn't readable through the API.
-- The three other corridors in the "Where we buy" dropdown (East, North,
+- The three other areas in the "Where we buy" nav dropdown (East, North,
   West) are marked "coming soon" and need real URLs once those pages exist.
+  Note this sits slightly against the 3 Sep call, which asked for coverage to
+  stay open-ended — the page body no longer assigns agents to corridors, but
+  the nav dropdown still lists locations because that is where the page lives.

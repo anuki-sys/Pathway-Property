@@ -86,7 +86,7 @@ p:last-child{margin-bottom:0}
 .btn-on-green:hover{background:rgba(241,239,233,.14);border-color:var(--on-green)}
 .btn-sm{padding:.65rem 1.15rem;font-size:.875rem}
 .btn-block{width:100%}
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:8px}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--green);outline-offset:3px;border-radius:8px}
 
 /* navbar — mirrors the site's global nav component ---------------- */
 .navbar{position:fixed;top:15px;left:0;right:0;z-index:2000;padding:0 5%}
@@ -220,11 +220,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   .hero-media .shot-main{border-radius:36px}
 }
 
-/* proof ---------------------------------------------------------- */
-.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:20px;margin-top:36px}
-.proof-grid>.shot{aspect-ratio:4/5;height:100%;min-height:320px}
-@media(max-width:900px){.proof-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.proof-grid{grid-template-columns:1fr}}
+/* proof — auto-scrolling strip of sold photos --------------------- */
+.marquee{margin-top:36px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.marquee-track{display:flex;gap:20px;width:max-content;animation:marquee 46s linear infinite}
+.marquee:hover .marquee-track,.marquee:focus-within .marquee-track{animation-play-state:paused}
+.marquee .shot{flex:0 0 300px;aspect-ratio:4/5}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 10px))}}
+@media(max-width:640px){.marquee .shot{flex-basis:230px}}
+@media (prefers-reduced-motion: reduce){
+  .marquee{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+  .marquee-track{animation:none}
+}
 
 /* good fit ------------------------------------------------------- */
 .fit-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
@@ -249,10 +255,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .area-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:52px;align-items:center}
 .map-box{background:rgba(255,255,255,.06);border:1px solid var(--on-green-45);border-radius:30px;padding:22px}
 .map-box svg{width:100%;height:auto;display:block}
-.corridor-key{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:16px;font-size:.875rem;font-weight:500}
-.corridor-key span{display:flex;align-items:center;gap:8px;color:var(--on-green-70)}
-.corridor-key i{width:11px;height:11px;border-radius:3px;display:block}
-.pill-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pill-label{margin-top:26px;font-size:.8125rem;font-weight:600;color:var(--mint)}
+.pill-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .pill{border:1.5px solid var(--on-green-45);border-radius:var(--pill);padding:9px 19px;font-size:.9375rem;font-weight:500;color:var(--on-green)}
 .pill-soft{border-color:transparent;background:rgba(241,239,233,.12)}
 @media(max-width:900px){.area-grid{grid-template-columns:1fr;gap:34px}}
@@ -315,12 +319,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .form-card p{font-size:.9375rem;margin-bottom:20px}
 .field{margin-bottom:12px}
 .field label{display:block;font-size:.8125rem;font-weight:600;color:var(--mint);margin-bottom:5px}
-.field input,.field select{
+.field input,.field select,.field textarea{
   width:100%;padding:12px 18px;border-radius:var(--pill);
   border:1.5px solid var(--on-green-45);background:rgba(0,0,0,.16);color:var(--on-green);
   font-family:var(--font);font-size:.9375rem;
 }
-.field input::placeholder{color:rgba(241,239,233,.42)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(241,239,233,.42)}
+.field textarea{border-radius:24px;resize:vertical;min-height:92px;line-height:1.6}
 .form-note{font-size:.8125rem;color:var(--on-green-70);margin-top:14px}
 .form-note a{color:var(--mint);font-weight:600}
 @media(max-width:900px){.om-grid{grid-template-columns:1fr;gap:34px}}
@@ -368,7 +373,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   padding:5px 15px;font-size:.8125rem;font-weight:600;margin-bottom:16px;
 }
 .agent-card h3{font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:6px}
-.agent-where{color:var(--green);font-weight:600;font-size:.9375rem;margin-bottom:16px}
 .agent-card p{font-size:.9375rem;margin-bottom:26px;max-width:38em}
 
 @media(max-width:520px){.agent-tab{padding:8px 14px;font-size:.8125rem}}
@@ -391,6 +395,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 @media(max-width:1000px){.team{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.team{grid-template-columns:1fr 1fr}}
+
+/* podcast ---------------------------------------------------------- */
+.pod{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-top:34px}
+.pod .shot{aspect-ratio:16/9;border-radius:30px}
+.pod-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.pod-actions .btn{gap:.6rem}
+.pod-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.pod-tag{border:1.5px solid var(--hair);border-radius:var(--pill);padding:6px 15px;font-size:.8125rem;font-weight:600;color:var(--ink-60)}
+@media(max-width:900px){.pod{grid-template-columns:1fr;gap:28px}}
 
 /* faq ------------------------------------------------------------ */
 .faq{display:flex;flex-direction:column;gap:12px;margin-top:38px}
@@ -582,25 +595,46 @@ details .a p{font-size:.9375rem}
       </div>
       <a class="btn btn-secondary" href="#book">Book a consult</a>
     </div>
-    <div class="proof-grid">
-      <figure class="shot">
-        <div class="slot"><b>Sold photo</b>Client + sold board</div>
-      </figure>
-      <figure class="shot">
-        <div class="slot"><b>Sold photo</b>Handover / keys moment</div>
-      </figure>
-      <figure class="shot">
-        <div class="slot"><b>Sold photo</b>Client + sold board</div>
-      </figure>
-      <figure class="shot">
-        <div class="slot"><b>Sold photo</b>Client + sold board</div>
-      </figure>
-      <figure class="shot">
-        <div class="slot"><b>Sold photo</b>Inspection in progress</div>
-      </figure>
-      <figure class="shot">
-        <div class="slot"><b>Sold photo</b>Client + sold board</div>
-      </figure>
+    <div class="marquee" aria-label="Recent purchases">
+      <div class="marquee-track">
+        <figure class="shot">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <figure class="shot">
+          <div class="slot"><b>Sold photo</b>Handover / keys moment</div>
+        </figure>
+        <figure class="shot">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <figure class="shot">
+          <div class="slot"><b>Sold photo</b>Inspection in progress</div>
+        </figure>
+        <figure class="shot">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <figure class="shot">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <!-- duplicated for a seamless loop; keep both copies in sync -->
+        <figure class="shot" aria-hidden="true">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <figure class="shot" aria-hidden="true">
+          <div class="slot"><b>Sold photo</b>Handover / keys moment</div>
+        </figure>
+        <figure class="shot" aria-hidden="true">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <figure class="shot" aria-hidden="true">
+          <div class="slot"><b>Sold photo</b>Inspection in progress</div>
+        </figure>
+        <figure class="shot" aria-hidden="true">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+        <figure class="shot" aria-hidden="true">
+          <div class="slot"><b>Sold photo</b>Client + sold board</div>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -610,29 +644,29 @@ details .a p{font-size:.9375rem}
   <div class="wrap fit-grid">
     <div>
       <div class="eyebrow">Why buyers bring us in</div>
-      <h2>The part most buyers are doing blind.</h2>
+      <h2>A seasoned professional on your side of the table.</h2>
       <ul class="fit-list">
         <li>
-          <h3>A seasoned professional in your corner</h3>
-          <p>You'll do this once or twice in your life. The agent across the table does it every week, and they are paid to beat you. We even that up.</p>
+          <h3>Experience that matches the other side</h3>
+          <p>The agents you meet at inspections are professionals who negotiate every week. We bring that same experience to your side of the table, so the conversation is an even one.</p>
         </li>
         <li>
-          <h3>One person managing everyone else</h3>
-          <p>Conveyancer, broker, building and pest, the selling agent, the deadlines. We run all of it, so none of it lands back on you at 9pm.</p>
+          <h3>One person coordinating every professional</h3>
+          <p>Building and pest inspectors, your finance broker, the conveyancer, the selling agent and every date in the contract. We keep all of them moving so you are never the one chasing.</p>
         </li>
         <li>
-          <h3>Certainty on the offer and the contract</h3>
-          <p>What to offer, what the contract actually says, which conditions matter and which are a trap. This is where the money is won or lost.</p>
+          <h3>Clarity on the offer and the contract</h3>
+          <p>What to offer, what the contract actually says and which conditions are worth having. You will know exactly where you stand before you sign anything.</p>
         </li>
         <li>
-          <h3>Someone who holds the line in a negotiation</h3>
-          <p>An independent read on what a home is worth, then the discipline to stop at that number when everyone in the room wants you to keep going.</p>
+          <h3>An independent read on value</h3>
+          <p>What a home is genuinely worth, backed by what has sold around it, and the discipline to stay at that number when the room gets competitive.</p>
         </li>
       </ul>
     </div>
     <figure class="shot">
       <div class="slot"><b>Photo</b>A buyer and agent at an inspection, or a negotiation in progress</div>
-      <img onerror="this.remove()" src="https://s3.amazonaws.com/webflow-prod-assets/64d063d22c0ee57d46bfca71/653bad997fc49bd75a89b49d_dillon-kydd-XGvwt544g8k-unsplash.jpg" alt="A home in Melbourne's south east">
+      <img onerror="this.remove()" src="https://s3.amazonaws.com/webflow-prod-assets/64d063d22c0ee57d46bfca71/653bad997fc49bd75a89b49d_dillon-kydd-XGvwt544g8k-unsplash.jpg" alt="A home in Melbourne">
     </figure>
   </div>
 </section>
@@ -644,37 +678,32 @@ details .a p{font-size:.9375rem}
       <div class="eyebrow">Where we buy</div>
       <div class="area-grid">
         <div>
-          <h2>Melbourne isn't one market. So we don't cover it with one agent.</h2>
-          <p style="margin-top:18px">Each corridor has its own buyer's agent who is at inspections there weekly — who knows which streets flood, which estates are still being built, and which agents actually return calls.</p>
+          <h2>Wherever you're looking in Melbourne.</h2>
+          <p style="margin-top:18px">We buy across Melbourne and its growth corridors. Tell us the suburbs on your list and we'll tell you what your budget does there, what's coming up, and where the value actually sits.</p>
+          <div class="pill-label">Suburbs we're in regularly</div>
           <div class="pill-grid">
             <span class="pill">Glen Waverley</span><span class="pill">Oakleigh</span><span class="pill">Brighton</span><span class="pill">Ringwood</span>
             <span class="pill">Dandenong</span><span class="pill">Berwick</span><span class="pill">Narre Warren</span>
             <span class="pill">Cranbourne</span><span class="pill">Pakenham</span>
-            <span class="pill pill-soft">Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and surrounds</span>
+            <span class="pill pill-soft">and everywhere in between</span>
           </div>
-          <div style="margin-top:34px"><a class="btn btn-cream" href="#agents">Pick your area</a></div>
+          <div style="margin-top:34px"><a class="btn btn-cream" href="#agents">Meet the agents</a></div>
         </div>
         <div>
           <div class="map-box">
-            <svg viewBox="0 0 420 360" role="img" aria-label="Map of Melbourne showing four buying corridors, with the south east corridor highlighted">
-              <defs><style>.z{stroke:rgba(255,255,255,.25);stroke-width:1.5}</style></defs>
-              <path class="z" d="M150 20 L300 40 L330 120 L230 150 L120 120 Z" fill="rgba(255,255,255,.10)"/>
-              <path class="z" d="M20 90 L120 120 L230 150 L200 240 L60 220 Z" fill="rgba(255,255,255,.08)"/>
+            <svg viewBox="0 0 420 360" role="img" aria-label="Illustrative map of greater Melbourne">
+              <defs><style>.z{stroke:rgba(255,255,255,.28);stroke-width:1.5}</style></defs>
+              <path class="z" d="M150 20 L300 40 L330 120 L230 150 L120 120 Z" fill="rgba(255,255,255,.12)"/>
+              <path class="z" d="M20 90 L120 120 L230 150 L200 240 L60 220 Z" fill="rgba(255,255,255,.12)"/>
               <path class="z" d="M330 120 L400 170 L360 250 L250 235 L230 150 Z" fill="rgba(255,255,255,.12)"/>
-              <path class="z" d="M200 240 L250 235 L360 250 L340 340 L180 330 Z" fill="#2E8478" stroke="#9CC7BE" stroke-width="2.5"/>
-              <text x="215" y="90" fill="rgba(255,255,255,.65)" font-family="Plus Jakarta Sans" font-size="13" text-anchor="middle">North</text>
-              <text x="115" y="180" fill="rgba(255,255,255,.65)" font-family="Plus Jakarta Sans" font-size="13" text-anchor="middle">West</text>
-              <text x="310" y="195" fill="rgba(255,255,255,.65)" font-family="Plus Jakarta Sans" font-size="13" text-anchor="middle">East</text>
-              <text x="262" y="292" fill="#FAF8F5" font-family="Plus Jakarta Sans" font-size="15" font-weight="600" text-anchor="middle">South East</text>
-              <circle cx="246" cy="308" r="4" fill="#FAF8F5"/><circle cx="212" cy="300" r="4" fill="#FAF8F5"/>
-              <circle cx="288" cy="315" r="4" fill="#FAF8F5"/><circle cx="316" cy="300" r="4" fill="#FAF8F5"/>
+              <path class="z" d="M200 240 L250 235 L360 250 L340 340 L180 330 Z" fill="rgba(255,255,255,.12)"/>
+              <text x="215" y="200" fill="#FAF8F5" font-family="Plus Jakarta Sans" font-size="16" font-weight="600" text-anchor="middle">Greater Melbourne</text>
+              <circle cx="246" cy="288" r="4.5" fill="#9CC7BE"/><circle cx="182" cy="176" r="4.5" fill="#9CC7BE"/>
+              <circle cx="300" cy="196" r="4.5" fill="#9CC7BE"/><circle cx="212" cy="96" r="4.5" fill="#9CC7BE"/>
+              <circle cx="316" cy="300" r="4.5" fill="#9CC7BE"/><circle cx="120" cy="150" r="4.5" fill="#9CC7BE"/>
             </svg>
           </div>
-          <div class="corridor-key">
-            <span><i style="background:#2E8478"></i> South East — Tanuj Singh</span>
-            <span><i style="background:rgba(255,255,255,.25)"></i> Other corridors — see our agents</span>
-          </div>
-          <p class="form-note">Placeholder map. To be replaced with an interactive Mapbox or Google Maps build: corridor polygons, pins for recent purchases, click a corridor to see its specialist.</p>
+          <p class="form-note">Placeholder map. To be replaced with an interactive Mapbox or Google Maps build, with pins for recent purchases.</p>
         </div>
       </div>
     </div>
@@ -720,7 +749,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">Weekly shortlists</span>
             </div>
             <h3>The search</h3>
-            <p>We work the agents, off-markets and pre-markets across the corridor, so you're seeing homes before they hit realestate.com.au.</p>
+            <p>We work the agents, off-markets and pre-markets across your suburbs, so you're seeing homes before they hit realestate.com.au.</p>
           </div>
         </article>
         <article class="flow-card" style="--i:3">
@@ -753,7 +782,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">Contract to settlement</span>
             </div>
             <h3>Through to keys</h3>
-            <p>Contract, conveyancer, broker and deadlines all coordinated. One person to call the whole way through.</p>
+            <p>We coordinate everyone involved — building and pest inspectors, your finance broker, the conveyancer and the selling agent — and every date in the contract. One person to call, from the day you sign to the day you collect the keys.</p>
           </div>
         </article>
     </div>
@@ -793,7 +822,7 @@ details .a p{font-size:.9375rem}
 <section class="section" id="agents">
   <div class="wrap">
     <div class="eyebrow">Who you'll be dealing with</div>
-    <h2>Pick the agent for your area.</h2>
+    <h2>The people you'll be working with.</h2>
 
     <div class="agent-controls">
       <div class="agent-tabs" role="tablist" aria-label="Choose an agent">
@@ -818,8 +847,7 @@ details .a p{font-size:.9375rem}
             <div class="agent-count">01 / 04</div>
             <span class="agent-role">Buyer's Agent</span>
             <h3>Tanuj Singh</h3>
-            <div class="agent-where">Melbourne South East</div>
-            <p>Grew up in the corridor and studied at Monash. Involved in over $100 million of property transactions, and the person who runs your search from the first call through to settlement.</p>
+            <p>Grew up in Melbourne's south east and studied at Monash. Involved in over $100 million of property transactions, and the person who runs your search from the first call through to settlement.</p>
             <a class="btn btn-primary" href="#book" data-agent="tanuj">Book with Tanuj</a>
           </div>
         </article>
@@ -831,7 +859,6 @@ details .a p{font-size:.9375rem}
             <div class="agent-count">02 / 04</div>
             <span class="agent-role">Head of Client Success</span>
             <h3>Arshad Zacky</h3>
-            <div class="agent-where">Corridor to confirm</div>
             <p>Oversees how every client file is run, and the person clients call when they want a second opinion on a shortlist or an offer.</p>
             <a class="btn btn-primary" href="#book" data-agent="arshad">Book with Arshad</a>
           </div>
@@ -844,7 +871,6 @@ details .a p{font-size:.9375rem}
             <div class="agent-count">03 / 04</div>
             <span class="agent-role">Head of Deal Acquisition</span>
             <h3>Nirvan Jamshidpey</h3>
-            <div class="agent-where">Corridor to confirm</div>
             <p>Legal expertise and commercial know-how behind every offer and contract that goes out the door.</p>
             <a class="btn btn-primary" href="#book" data-agent="nirvan">Book with Nirvan</a>
           </div>
@@ -857,7 +883,6 @@ details .a p{font-size:.9375rem}
             <div class="agent-count">04 / 04</div>
             <span class="agent-role">Support & Settlement</span>
             <h3>Abhimaan Bhargava</h3>
-            <div class="agent-where">Corridor to confirm</div>
             <p>Keeps the paperwork, the conveyancer and the deadlines moving, so settlement day is uneventful.</p>
             <a class="btn btn-primary" href="#book" data-agent="abhimaan">Book with Abhimaan</a>
           </div>
@@ -911,11 +936,11 @@ details .a p{font-size:.9375rem}
       <details><summary>Is a buyer's agent worth it for a first home buyer?</summary>
         <div class="a"><p>Often, yes, because first home buyers are the most outgunned people in the room. You're doing this once; the selling agent does it weekly. The value shows up in three places: not overpaying, not buying something with a problem you didn't spot, and not spending six months of weekends losing auctions. If your situation doesn't warrant it, we'll tell you that on the call.</p></div></details>
       <details><summary>Which suburbs do you cover?</summary>
-        <div class="a"><p>Glen Waverley, Oakleigh, Brighton and Ringwood through to Dandenong, Berwick, Narre Warren, Cranbourne and Pakenham, plus the suburbs between them including Officer, Clyde, Hallam, Hampton Park, Beaconsfield and Lynbrook. Looking elsewhere in Melbourne? Pathway Property has a specialist for each corridor — tell us where you're looking and we'll introduce you.</p></div></details>
+        <div class="a"><p>Glen Waverley, Oakleigh, Brighton and Ringwood through to Dandenong, Berwick, Narre Warren, Cranbourne and Pakenham, plus the suburbs between them including Officer, Clyde, Hallam, Hampton Park, Beaconsfield and Lynbrook. Looking elsewhere in Melbourne? Tell us where you're looking and we'll let you know how we can help.</p></div></details>
       <details><summary>What's the difference between a buyer's agent and a real estate agent?</summary>
         <div class="a"><p>The selling agent is engaged and paid by the vendor and is legally acting for them. Their job is to get the highest price. A buyer's agent is engaged and paid by you and never takes a fee from a seller, so the job is the opposite one.</p></div></details>
       <details><summary>Can you find homes that aren't listed online?</summary>
-        <div class="a"><p>Yes. We work off-market and pre-market listings through the agent network across the corridor, and if the right home still isn't available we'll approach owners directly on your behalf. It doesn't work every time. When it does, you're the only buyer in the conversation.</p></div></details>
+        <div class="a"><p>Yes. We work off-market and pre-market listings through the agent network across Melbourne, and if the right home still isn't available we'll approach owners directly on your behalf. It doesn't work every time. When it does, you're the only buyer in the conversation.</p></div></details>
       <details><summary>Do you work with property investors?</summary>
         <div class="a"><p>Not through this office. If you're buying an investment property, the national Pathway Property team handles that — we'll introduce you.</p></div></details>
       <details><summary>How long does it take to buy a home with a buyer's agent?</summary>
@@ -927,6 +952,37 @@ details .a p{font-size:.9375rem}
 </section>
 
 <!-- 10. BOOKING + FOOTER -->
+<!-- 10. PODCAST -->
+<section class="section-tight" id="podcast">
+  <div class="wrap">
+    <div class="eyebrow">Resources</div>
+    <h2>The Melbourne Property Podcast, every week.</h2>
+    <div class="pod">
+      <figure class="shot">
+        <div class="slot"><b>Latest episode</b>YouTube thumbnail for the current week's episode</div>
+        <span class="play"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M15 9L1 17V1z" fill="#090D2B"/></svg></span>
+      </figure>
+      <div>
+        <p class="lead">A weekly read on the Melbourne market — what sold, what it went for, which suburbs are moving and what that means if you're buying right now. Same team, same numbers we use on client calls.</p>
+        <div class="pod-meta">
+          <span class="pod-tag">New episode weekly</span>
+          <span class="pod-tag">Around 30 minutes</span>
+        </div>
+        <div class="pod-actions">
+          <a class="btn btn-primary" href="#">
+            <svg width="18" height="13" viewBox="0 0 24 17" aria-hidden="true"><path d="M23.5 2.7A3 3 0 0 0 21.4.6C19.5 0 12 0 12 0S4.5 0 2.6.6A3 3 0 0 0 .5 2.7 31 31 0 0 0 0 8.5c0 2 .2 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 17 12 17 12 17s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1c.3-1.9.5-3.8.5-5.8s-.2-3.9-.5-5.8z" fill="currentColor"/><path d="M9.6 12.1V4.9l6.3 3.6z" fill="#206E65"/></svg>
+            Watch on YouTube
+          </a>
+          <a class="btn btn-secondary" href="#">
+            <svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 .25c-2.8-1.7-6.4-2.1-10.5-1.15a.75.75 0 1 1-.34-1.46c4.5-1.03 8.4-.6 11.6 1.36.35.22.46.68.24 1zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.2-1.97-8.1-2.54-11.9-1.39a.94.94 0 0 1-.54-1.8c4.34-1.32 9.73-.68 13.4 1.59.44.27.58.85.31 1.29zm.13-3.4C15.26 8.36 8.9 8.15 5.24 9.26a1.12 1.12 0 1 1-.65-2.15C8.79 5.83 15.8 6.08 20.2 8.68a1.12 1.12 0 1 1-1.14 1.94z" fill="currentColor"/></svg>
+            Listen on Spotify
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="booking" id="book">
   <div class="wrap">
     <div class="booking-head">
@@ -936,6 +992,7 @@ details .a p{font-size:.9375rem}
 
     <div class="booking-card">
       <div class="form-grid">
+        <div class="field field-wide"><label for="b-suburbs">Suburbs you're looking at</label><input id="b-suburbs" type="text" placeholder="Glen Waverley, Berwick, Oakleigh…"></div>
         <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name"></div>
         <div class="field"><label for="b-phone">Phone</label><input id="b-phone" type="tel" placeholder="04…"></div>
         <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" placeholder="you@email.com"></div>
@@ -961,29 +1018,23 @@ details .a p{font-size:.9375rem}
             <option>6 – 12 months</option><option>Just starting to look</option>
           </select>
         </div>
-        <div class="field"><label for="b-stage">Where are you up to?</label>
-          <select id="b-stage">
-            <option>Still working out my budget</option><option>Pre-approved and searching</option>
-            <option>Been to a few auctions</option><option>Found something I like</option>
-          </select>
-        </div>
-        <div class="field field-wide"><label for="b-suburbs">Suburbs you're looking at</label><input id="b-suburbs" type="text" placeholder="Berwick, Officer, Narre Warren…"></div>
+        <div class="field field-wide"><label for="b-notes">Anything else we should know?</label><textarea id="b-notes" rows="3" placeholder="Must-haves, a property you've seen, where you're up to — whatever helps us prepare for the call."></textarea></div>
       </div>
 
       <div class="booking-foot">
         <div>
           <div class="tabs-label">Choose whose calendar to book</div>
           <div class="tabs" role="tablist" aria-label="Choose an agent">
-            <button class="tab" role="tab" id="tab-tanuj" aria-controls="panel-cal" aria-selected="true" data-name="Tanuj Singh" data-area="Melbourne South East" data-cal="https://calendar.app.google/uVUJEXzLsU1i73S97">Tanuj</button>
-            <button class="tab" role="tab" id="tab-arshad" aria-controls="panel-cal" aria-selected="false" data-name="Arshad Zacky" data-area="Corridor to confirm" data-cal="">Arshad</button>
-            <button class="tab" role="tab" id="tab-nirvan" aria-controls="panel-cal" aria-selected="false" data-name="Nirvan Jamshidpey" data-area="Corridor to confirm" data-cal="">Nirvan</button>
-            <button class="tab" role="tab" id="tab-abhimaan" aria-controls="panel-cal" aria-selected="false" data-name="Abhimaan Bhargava" data-area="Corridor to confirm" data-cal="">Abhimaan</button>
+            <button class="tab" role="tab" id="tab-tanuj" aria-controls="panel-cal" aria-selected="true" data-name="Tanuj Singh" data-area="Buyer's Agent" data-cal="https://calendar.app.google/uVUJEXzLsU1i73S97">Tanuj</button>
+            <button class="tab" role="tab" id="tab-arshad" aria-controls="panel-cal" aria-selected="false" data-name="Arshad Zacky" data-area="Pathway Property" data-cal="">Arshad</button>
+            <button class="tab" role="tab" id="tab-nirvan" aria-controls="panel-cal" aria-selected="false" data-name="Nirvan Jamshidpey" data-area="Pathway Property" data-cal="">Nirvan</button>
+            <button class="tab" role="tab" id="tab-abhimaan" aria-controls="panel-cal" aria-selected="false" data-name="Abhimaan Bhargava" data-area="Pathway Property" data-cal="">Abhimaan</button>
           </div>
         </div>
         <div class="tab-panel" id="panel-cal" role="tabpanel" aria-labelledby="tab-tanuj">
           <div>
             <div class="cal-name" id="cal-name">Tanuj Singh</div>
-            <div class="cal-note" id="cal-note">Melbourne South East · 15-minute consult</div>
+            <div class="cal-note" id="cal-note">Buyer's Agent · 15-minute consult</div>
           </div>
           <a class="btn btn-cream" id="cal-link" href="https://calendar.app.google/uVUJEXzLsU1i73S97">Book with Tanuj</a>
         </div>
@@ -994,7 +1045,7 @@ details .a p{font-size:.9375rem}
     <div class="newsletter">
       <div>
         <h3>South east market notes, once a month.</h3>
-        <p>What sold, what it went for, and what's coming up off-market in the corridor. No spam, unsubscribe any time.</p>
+        <p>What sold, what it went for, and what's coming up off-market in your suburbs. No spam, unsubscribe any time.</p>
       </div>
       <div>
         <div class="sub-form">
