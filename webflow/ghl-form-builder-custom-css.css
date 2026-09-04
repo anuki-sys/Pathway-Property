@@ -1,26 +1,23 @@
 /*
-Pathway Property - GoHighLevel "Website Enquiry Form" (om3C2pvl8k921QOQIzZ3)
+Pathway Property - brand styling for the GoHighLevel form
+"Website Enquiry Form" (id om3C2pvl8k921QOQIzZ3).
 
-WHERE THIS GOES: GoHighLevel > Sites > Forms > Website Enquiry Form >
-Styles / Options > Custom CSS. It does NOT go in Webflow.
+Paste into: GoHighLevel > Sites > Forms > Website Enquiry Form
+            > Styles > Custom CSS
 
-The form is served to the website inside a cross-origin iframe, so nothing on
-the Webflow side can reach into it. Everything below reproduces the styling of
-the Webflow contact form it replaced:
+Also set in the form builder's own style panel:
+  - Form background: Transparent (falls back to #E5DCC9 if unavailable)
+  - Form width: 100%
 
-  Midnight (text, borders, button fill)   #090D2B   var --midnight
-  Cream card behind the form              #E5DCC9   var --untitled-ui-primary300
-  Button hover fill                       #FAF8F5   var --untitled-ui-gray50
-  Muted body copy                         rgba(9, 13, 43, 0.6)
-  Typeface                                Plus Jakarta Sans
-  Field spacing                           30px
-  Field style                             underline only, 1.5px, transparent fill
-  Button                                  fully rounded pill, 0.8em / 2.25em padding
-
-Also set, in the form builder's own style panel (not here):
-  - Form background: Transparent, so the cream Webflow card shows through.
-    If transparent is not available, set it to #E5DCC9.
-  - Form width: 100%.
+Reproduces the Webflow contact form this replaced:
+  Midnight (text, borders, button fill)  #090D2B
+  Cream card behind the form             #E5DCC9
+  Button hover fill                      #FAF8F5
+  Muted body copy                        rgba(9, 13, 43, 0.6)
+  Typeface                               Plus Jakarta Sans
+  Fields                                 underline only, 1.5px, transparent
+  Field spacing                          30px
+  Button                                 rounded pill, 0.8em / 2.25em padding
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
