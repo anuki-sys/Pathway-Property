@@ -13,9 +13,15 @@ them from here, the panel writes inline styles that CSS then has to fight:
   Font                 Plus Jakarta Sans
   Label colour         #090D2B
   Field text colour    #090D2B
-  Button background    #090D2B
-  Button text          #FFFFFF
   Field spacing        whatever reads well - this file no longer sets it
+
+In the SUBMIT BUTTON's own settings panel (it writes inline styles that beat
+this file, so set it there, not here):
+
+  Button background    #090D2B      <- currently Pathway Green, change it
+  Button text          #FFFFFF
+  Button border radius max / 100    <- gives the pill
+  Button width         auto, not full width
 
 This file only does what the panel cannot: strips the field boxes back to a
 single underline, makes the submit button a full pill with the site's hover,
@@ -89,6 +95,12 @@ select:focus,
   box-shadow: none !important;
 }
 
+/* GHL puts an icon inside the email field, absolutely positioned at the left
+   edge. Zero left padding lets the text run underneath it. */
+input[type="email"] {
+  padding-left: 2.25em !important;
+}
+
 ::placeholder {
   color: var(--pp-muted) !important;
   font-family: var(--pp-font) !important;
@@ -117,7 +129,12 @@ textarea:-webkit-autofill {
 .ql-toolbar,
 [class*="dropdown-toggle"],
 [class*="multiselect"],
-[class*="rich-text"] {
+[class*="rich-text"],
+form [class*="select"]:not(option):not(optgroup),
+form [role="combobox"],
+form [role="listbox"],
+form .form-select,
+#_builder-form [class*="select"]:not(option):not(optgroup) {
   background-color: transparent !important;
   border: none !important;
   border-bottom: 1.5px solid var(--pp-midnight) !important;
