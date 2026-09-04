@@ -5,19 +5,21 @@ Pathway Property - brand styling for the GoHighLevel form
 Paste into: GoHighLevel > Sites > Forms > Website Enquiry Form
             > Styles > Custom CSS
 
-Also set in the form builder's own style panel:
-  - Form background: Transparent (falls back to #E5DCC9 if unavailable)
-  - Form width: 100%
+SET THESE IN THE FORM BUILDER'S OWN STYLE PANEL FIRST - do not try to force
+them from here, the panel writes inline styles that CSS then has to fight:
 
-Reproduces the Webflow contact form this replaced:
-  Midnight (text, borders, button fill)  #090D2B
-  Cream card behind the form             #E5DCC9
-  Button hover fill                      #FAF8F5
-  Muted body copy                        rgba(9, 13, 43, 0.6)
-  Typeface                               Plus Jakarta Sans
-  Fields                                 underline only, 1.5px, transparent
-  Field spacing                          30px
-  Button                                 rounded pill, 0.8em / 2.25em padding
+  Form background      Transparent  (or #E5DCC9 if transparent is unavailable)
+  Form width           100%
+  Font                 Plus Jakarta Sans
+  Label colour         #090D2B
+  Field text colour    #090D2B
+  Button background    #090D2B
+  Button text          #FFFFFF
+  Field spacing        whatever reads well - this file no longer sets it
+
+This file only does what the panel cannot: strips the field boxes back to a
+single underline, makes the submit button a full pill with the site's hover,
+and flattens any dropdown or rich-text widget to match the plain fields.
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
@@ -37,42 +39,24 @@ body,
 #app,
 .form-builder--wrapper,
 .form-builder--main,
-form,
 #_builder-form {
   background-color: transparent !important;
   font-family: var(--pp-font) !important;
   color: var(--pp-midnight) !important;
 }
 
-/* ---------- Headings and labels ---------- */
+/* ---------- Labels ---------- */
 
-h1, h2, h3, h4, h5, h6,
 label,
 .form-builder--label,
 .hl_field_label {
   font-family: var(--pp-font) !important;
   color: var(--pp-midnight) !important;
-}
-
-h4,
-label,
-.form-builder--label,
-.hl_field_label {
-  font-size: 18px !important;
   font-weight: 600 !important;
   line-height: 1.3em !important;
 }
 
-p,
-.form-builder--description,
-.text-description {
-  font-family: var(--pp-font) !important;
-  color: var(--pp-muted) !important;
-  font-size: 16px !important;
-  line-height: 1.7em !important;
-}
-
-/* ---------- Fields: underline only, on a transparent fill ---------- */
+/* ---------- Text fields: one underline, no box ---------- */
 
 input[type="text"],
 input[type="email"],
@@ -83,17 +67,13 @@ input[type="date"],
 input[type="password"],
 textarea,
 select,
-.form-control,
-.input,
-.hl-text-input {
+.form-control {
   background-color: transparent !important;
   border: none !important;
   border-bottom: 1.5px solid var(--pp-midnight) !important;
   border-radius: 0 !important;
   box-shadow: none !important;
-  padding: 0.8em 1.25em !important;
-  margin-bottom: 0 !important;
-  width: 100% !important;
+  padding: 0.8em 0 !important;
   font-family: var(--pp-font) !important;
   font-size: 16px !important;
   line-height: 1.5em !important;
@@ -112,7 +92,6 @@ select:focus,
 ::placeholder {
   color: var(--pp-muted) !important;
   font-family: var(--pp-font) !important;
-  line-height: 1.5em !important;
   opacity: 1 !important;
 }
 
@@ -126,23 +105,43 @@ textarea:-webkit-autofill {
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
-/* 30px between fields, matching .input-field-wrapper on the Webflow form. */
-.form-builder--item,
-.field-container,
-.form-group,
-.mb-4 {
-  margin-bottom: 30px !important;
+/* ---------- Dropdown and rich-text widgets ----------
+   These are custom components, not <input>/<textarea>, so they keep their own
+   white rounded box unless flattened by name. Covers the common libraries GHL
+   ships: vue-select, vue-multiselect and Quill. */
+
+.vs__dropdown-toggle,
+.multiselect__tags,
+.ql-container,
+.ql-editor,
+.ql-toolbar,
+[class*="dropdown-toggle"],
+[class*="multiselect"],
+[class*="rich-text"] {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1.5px solid var(--pp-midnight) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--pp-font) !important;
+  color: var(--pp-midnight) !important;
+}
+
+/* The open dropdown menu still needs a solid background to be readable. */
+.vs__dropdown-menu,
+.multiselect__content-wrapper,
+[class*="dropdown-menu"] {
+  background-color: var(--pp-off-white) !important;
+  border: 1.5px solid var(--pp-midnight) !important;
+  border-radius: 12px !important;
+  font-family: var(--pp-font) !important;
+  color: var(--pp-midnight) !important;
 }
 
 /* ---------- Checkboxes and radios ---------- */
 
 input[type="checkbox"],
 input[type="radio"] {
-  width: auto !important;
-  margin-top: 5.5px !important;
-  border: 1.5px solid var(--pp-midnight) !important;
-  background-color: var(--pp-cream) !important;
-  box-shadow: 1px 1px 0 0 var(--pp-midnight) !important;
   accent-color: var(--pp-midnight) !important;
 }
 
@@ -150,29 +149,21 @@ input[type="checkbox"] + label,
 input[type="radio"] + label,
 .checkbox-label,
 .radio-label {
-  font-family: var(--pp-font) !important;
-  font-size: 16px !important;
   font-weight: 400 !important;
   line-height: 1.5em !important;
-  color: var(--pp-midnight) !important;
 }
 
-/* ---------- Submit button: midnight pill ---------- */
+/* ---------- Submit button only ----------
+   Deliberately NOT a bare `button` selector: that also catches the phone
+   country picker and the field icons and turns them into pills. */
 
-button,
 button[type="submit"],
-.btn,
-.btn-primary,
-.n-btn,
 .ghl-footer-portal-btn,
-#_builder-form button {
-  display: inline-block !important;
+#_builder-form button[type="submit"] {
   width: auto !important;
   padding: 0.8em 2.25em !important;
   border: 1.5px solid var(--pp-midnight) !important;
   border-radius: 1000px !important;
-  background-color: var(--pp-midnight) !important;
-  color: #FFFFFF !important;
   font-family: var(--pp-font) !important;
   font-size: 16px !important;
   font-weight: 500 !important;
@@ -182,18 +173,13 @@ button[type="submit"],
   transition: all 300ms ease !important;
 }
 
-button:hover,
 button[type="submit"]:hover,
-.btn:hover,
-.btn-primary:hover,
-.n-btn:hover,
 .ghl-footer-portal-btn:hover,
-#_builder-form button:hover {
+#_builder-form button[type="submit"]:hover {
   background-color: var(--pp-off-white) !important;
   color: var(--pp-midnight) !important;
   border: 1.5px solid var(--pp-midnight) !important;
   box-shadow: 1px 1px 0 0 var(--pp-midnight) !important;
-  font-weight: 500 !important;
 }
 
 /* ---------- Validation ---------- */
