@@ -1,19 +1,21 @@
 <!--
 Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
 Contact page (/contact) > HTML Embed inside .contact-form-wrapper.
+This file mirrors that embed's contents exactly - keep the two in step.
 
-Replaces the native Webflow "contact form" with the GoHighLevel form
-"Website Enquiry Form" (form id om3C2pvl8k921QOQIzZ3).
+GoHighLevel form "Website Enquiry Form" (id om3C2pvl8k921QOQIzZ3).
+Replaces the native Webflow "contact form", which is still on this page but
+hidden by the .forms.legacy-hidden combo class, so the change is reversible.
 
-The old Webflow form element is kept in the Designer but set to hidden, so the
-change is reversible. The "Ready To Get Started?" heading and the intro line
-still come from Webflow elements above this embed - only the fields, the
-checkboxes and the submit button are now served by GoHighLevel.
+The heading and intro line above are still Webflow elements. Only the fields
+and the submit button come from GoHighLevel.
 
-Styling note: the GoHighLevel form renders in a cross-origin iframe, so the CSS
-below can only size and frame it. The colours and typography INSIDE the form
-have to be set in the GoHighLevel form builder - paste
-webflow/ghl-form-builder-custom-css.css into that form's Custom CSS field.
+The form renders in a cross-origin iframe, so the CSS here can only size and
+frame it. Its colours and type are set in the GoHighLevel form builder - see
+webflow/ghl-form-builder-custom-css.css in the Pathway-Property repo.
+
+height/data-height must match the form's height in GoHighLevel (currently
+796). form_embed.js resizes the iframe after load; this is the fallback.
 -->
 <style>
   .pp-ghl-form {
@@ -24,8 +26,6 @@ webflow/ghl-form-builder-custom-css.css into that form's Custom CSS field.
     display: block;
     width: 100%;
     border: none;
-    /* Lets the cream .contact-form-wrapper card show through, provided the
-       GoHighLevel form background is set to transparent. */
     background-color: transparent;
     overflow: hidden;
   }
@@ -34,7 +34,7 @@ webflow/ghl-form-builder-custom-css.css into that form's Custom CSS field.
 <div class="pp-ghl-form">
   <iframe
     src="https://api.leadconnectorhq.com/widget/form/om3C2pvl8k921QOQIzZ3"
-    style="width:100%;height:792px;border:none;background-color:transparent"
+    style="width:100%;height:796px;border:none;background-color:transparent"
     id="inline-om3C2pvl8k921QOQIzZ3"
     data-layout="{'id':'INLINE'}"
     data-trigger-type="alwaysShow"
@@ -44,7 +44,7 @@ webflow/ghl-form-builder-custom-css.css into that form's Custom CSS field.
     data-deactivation-type="neverDeactivate"
     data-deactivation-value=""
     data-form-name="Website Enquiry Form"
-    data-height="792"
+    data-height="796"
     data-layout-iframe-id="inline-om3C2pvl8k921QOQIzZ3"
     data-form-id="om3C2pvl8k921QOQIzZ3"
     data-cookie-consent="true"
