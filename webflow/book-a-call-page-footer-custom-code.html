@@ -5,42 +5,61 @@ Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
 Two jobs:
 
 1. Layout. The page reuses the Contact page's two-column card, but here the
-   calendar takes the full width and the contact details sit underneath it as a
-   strip. These overrides are page-level, so the Contact page keeps its own
-   two-column layout untouched. They are written as child selectors rather than
-   Webflow's generated class names, which change if anyone renames a class.
+   calendar takes the full width and the contact details sit underneath it in a
+   single row. Every override below is page-level: .left-contat-details,
+   .div-block-23 and .form-wrapper are shared with the Contact page and must
+   keep their own layout there.
+
+   Note these blocks are ALREADY display:flex in the Designer, laid out as tall
+   columns for the Contact page's left rail. Setting display:flex here changes
+   nothing - flex-direction, gap and padding are what actually need overriding.
 
 2. The calendar. It is injected into the empty .pp-booking-calendar block rather
    than sitting in the layout, because Webflow strips raw <iframe> elements from
    the canvas. The trade-off: the calendar does NOT appear in Designer Preview,
-   since custom code only runs on a published site. Everything around it
-   previews normally.
+   since custom code only runs on a published site.
 -->
 <style>
 /* One full-width column instead of details | form. */
 .contact-grid { display: block; }
 
-/* The details block, now a strip under the calendar. */
+/* Close the gap above the calendar. 30px of it is .form-wrapper's row gap;
+   what remains is padding inside GoHighLevel's own iframe, which we cannot
+   reach from out here, so the negative margin absorbs some of it. */
+.form-wrapper.ghl-embed { grid-row-gap: 0px; row-gap: 0px; }
+.pp-booking-calendar { margin-top: -18px; }
+
+/* The details block: one row under the calendar, not the Contact page's tall
+   column. It arrives here as flex-direction:column with a 10em gap and 50px
+   padding, so all three have to be overridden by name. */
 .left-contat-details {
-  margin-top: 32px;
-  padding-top: 28px;
-  border-top: 1px solid rgba(17, 28, 51, 0.12);
-  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 28px 40px;
+  align-items: center;
+  justify-content: flex-start;
+  grid-column-gap: 56px;
+  grid-row-gap: 24px;
+  gap: 24px 56px;
+  height: auto;
+  margin-top: 26px;
+  padding: 26px 0 0;
+  border-top: 1px solid rgba(17, 28, 51, 0.12);
 }
 /* The three quick links, side by side. */
 .left-contat-details > div:first-child {
-  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 28px 44px;
-  flex: 1 1 420px;
+  align-items: center;
+  grid-column-gap: 56px;
+  grid-row-gap: 24px;
+  gap: 24px 56px;
+  height: auto;
 }
-.left-contat-details > div:first-child > div { margin: 0; }
-/* Follow Us, pushed to the end of the strip. */
-.left-contat-details > div:last-child { margin: 0; flex: 0 0 auto; }
+/* Follow Us, pushed to the far end of the row. */
+.left-contat-details > div:last-child {
+  margin-left: auto;
+  height: auto;
+}
 </style>
 <script>
 (function () {
