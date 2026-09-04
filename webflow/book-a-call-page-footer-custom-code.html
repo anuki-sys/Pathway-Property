@@ -1,0 +1,40 @@
+<!--
+Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
+"Book a Call" page (/book-a-call) > Page settings > Custom code > Footer code.
+
+Drops the GoHighLevel "Discovery Call" calendar into the empty
+.pp-booking-calendar block in the page layout. It is injected here rather than
+sitting in the layout because Webflow strips raw <iframe> elements from the
+canvas.
+
+The calendar will NOT appear in Designer Preview - custom code only runs on a
+published site. Everything around it (heading, copy, columns) previews normally.
+-->
+<script>
+(function () {
+  var CALENDAR_ID = 'y5S2LntDv7EcKh9wdIs6';
+  var slot = document.querySelector('.pp-booking-calendar');
+  if (!slot || slot.querySelector('iframe')) return;
+
+  var frame = document.createElement('iframe');
+  frame.src = 'https://api.leadconnectorhq.com/widget/booking/' + CALENDAR_ID;
+  // GoHighLevel's script resizes the iframe it finds under this id.
+  frame.id = CALENDAR_ID + '_' + Date.now();
+  frame.title = 'Book a Discovery Call';
+  frame.setAttribute('allow', 'payment');
+  frame.setAttribute('scrolling', 'no');
+  frame.style.width = '100%';
+  frame.style.border = 'none';
+  frame.style.overflow = 'hidden';
+  frame.style.display = 'block';
+  // Height until GoHighLevel measures the calendar; also the fallback if that
+  // handshake never lands.
+  frame.style.height = '700px';
+  slot.appendChild(frame);
+
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.src = 'https://link.msgsndr.com/js/form_embed.js';
+  document.body.appendChild(s);
+})();
+</script>
