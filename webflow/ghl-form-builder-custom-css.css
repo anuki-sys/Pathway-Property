@@ -1,0 +1,210 @@
+/*
+Pathway Property - GoHighLevel "Website Enquiry Form" (om3C2pvl8k921QOQIzZ3)
+
+WHERE THIS GOES: GoHighLevel > Sites > Forms > Website Enquiry Form >
+Styles / Options > Custom CSS. It does NOT go in Webflow.
+
+The form is served to the website inside a cross-origin iframe, so nothing on
+the Webflow side can reach into it. Everything below reproduces the styling of
+the Webflow contact form it replaced:
+
+  Midnight (text, borders, button fill)   #090D2B   var --midnight
+  Cream card behind the form              #E5DCC9   var --untitled-ui-primary300
+  Button hover fill                       #FAF8F5   var --untitled-ui-gray50
+  Muted body copy                         rgba(9, 13, 43, 0.6)
+  Typeface                                Plus Jakarta Sans
+  Field spacing                           30px
+  Field style                             underline only, 1.5px, transparent fill
+  Button                                  fully rounded pill, 0.8em / 2.25em padding
+
+Also set, in the form builder's own style panel (not here):
+  - Form background: Transparent, so the cream Webflow card shows through.
+    If transparent is not available, set it to #E5DCC9.
+  - Form width: 100%.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --pp-midnight: #090D2B;
+  --pp-cream: #E5DCC9;
+  --pp-off-white: #FAF8F5;
+  --pp-muted: rgba(9, 13, 43, 0.6);
+  --pp-font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ---------- Canvas ---------- */
+
+html,
+body,
+#app,
+.form-builder--wrapper,
+.form-builder--main,
+form,
+#_builder-form {
+  background-color: transparent !important;
+  font-family: var(--pp-font) !important;
+  color: var(--pp-midnight) !important;
+}
+
+/* ---------- Headings and labels ---------- */
+
+h1, h2, h3, h4, h5, h6,
+label,
+.form-builder--label,
+.hl_field_label {
+  font-family: var(--pp-font) !important;
+  color: var(--pp-midnight) !important;
+}
+
+h4,
+label,
+.form-builder--label,
+.hl_field_label {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  line-height: 1.3em !important;
+}
+
+p,
+.form-builder--description,
+.text-description {
+  font-family: var(--pp-font) !important;
+  color: var(--pp-muted) !important;
+  font-size: 16px !important;
+  line-height: 1.7em !important;
+}
+
+/* ---------- Fields: underline only, on a transparent fill ---------- */
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+input[type="date"],
+input[type="password"],
+textarea,
+select,
+.form-control,
+.input,
+.hl-text-input {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1.5px solid var(--pp-midnight) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 0.8em 1.25em !important;
+  margin-bottom: 0 !important;
+  width: 100% !important;
+  font-family: var(--pp-font) !important;
+  font-size: 16px !important;
+  line-height: 1.5em !important;
+  color: var(--pp-midnight) !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+.form-control:focus {
+  outline: none !important;
+  border-bottom: 1.5px solid var(--pp-midnight) !important;
+  box-shadow: none !important;
+}
+
+::placeholder {
+  color: var(--pp-muted) !important;
+  font-family: var(--pp-font) !important;
+  line-height: 1.5em !important;
+  opacity: 1 !important;
+}
+
+/* Chrome autofill would otherwise paint the field white. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--pp-midnight) !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--pp-cream) inset !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* 30px between fields, matching .input-field-wrapper on the Webflow form. */
+.form-builder--item,
+.field-container,
+.form-group,
+.mb-4 {
+  margin-bottom: 30px !important;
+}
+
+/* ---------- Checkboxes and radios ---------- */
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto !important;
+  margin-top: 5.5px !important;
+  border: 1.5px solid var(--pp-midnight) !important;
+  background-color: var(--pp-cream) !important;
+  box-shadow: 1px 1px 0 0 var(--pp-midnight) !important;
+  accent-color: var(--pp-midnight) !important;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label,
+.checkbox-label,
+.radio-label {
+  font-family: var(--pp-font) !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  line-height: 1.5em !important;
+  color: var(--pp-midnight) !important;
+}
+
+/* ---------- Submit button: midnight pill ---------- */
+
+button,
+button[type="submit"],
+.btn,
+.btn-primary,
+.n-btn,
+.ghl-footer-portal-btn,
+#_builder-form button {
+  display: inline-block !important;
+  width: auto !important;
+  padding: 0.8em 2.25em !important;
+  border: 1.5px solid var(--pp-midnight) !important;
+  border-radius: 1000px !important;
+  background-color: var(--pp-midnight) !important;
+  color: #FFFFFF !important;
+  font-family: var(--pp-font) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  line-height: 1.5em !important;
+  box-shadow: none !important;
+  cursor: pointer !important;
+  transition: all 300ms ease !important;
+}
+
+button:hover,
+button[type="submit"]:hover,
+.btn:hover,
+.btn-primary:hover,
+.n-btn:hover,
+.ghl-footer-portal-btn:hover,
+#_builder-form button:hover {
+  background-color: var(--pp-off-white) !important;
+  color: var(--pp-midnight) !important;
+  border: 1.5px solid var(--pp-midnight) !important;
+  box-shadow: 1px 1px 0 0 var(--pp-midnight) !important;
+  font-weight: 500 !important;
+}
+
+/* ---------- Validation ---------- */
+
+.invalid-feedback,
+.error,
+.field-error {
+  font-family: var(--pp-font) !important;
+  font-size: 14px !important;
+  color: #B42318 !important;
+}

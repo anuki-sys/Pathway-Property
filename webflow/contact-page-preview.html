@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pathway Property - Contact form preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --midnight: #090D2B;
+    --page-bg: #ECD4B3;
+    --container-bg: #FAF8F5;
+    --card-bg: #E5DCC9;
+    --muted: rgba(9, 13, 43, 0.6);
+    --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 40px 20px 80px;
+    background-color: var(--page-bg);
+    font-family: var(--font);
+    color: var(--midnight);
+  }
+
+  .note {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding: 20px 24px;
+    border: 1.5px dashed var(--midnight);
+    border-radius: 16px;
+    background: rgba(250, 248, 245, 0.75);
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .note h1 { margin: 0 0 8px; font-size: 18px; font-weight: 700; letter-spacing: 0; }
+  .note ul { margin: 8px 0 0; padding-left: 18px; }
+  .note li { margin-bottom: 4px; }
+
+  /* .container / .contact-container */
+  .contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    padding: 30px;
+    border: 1.5px solid var(--midnight);
+    border-radius: 50px;
+    background-color: var(--container-bg);
+  }
+
+  /* .contact-grid */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    gap: 30px;
+  }
+  @media (max-width: 991px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
+
+  .details-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    border: 1.5px dashed rgba(9, 13, 43, 0.35);
+    border-radius: 30px;
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  /* .contact-form-wrapper - the cream card the form sits in */
+  .contact-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 50px;
+    border-radius: 30px;
+    background-color: var(--card-bg);
+  }
+  @media (max-width: 767px) {
+    .contact-form-wrapper { padding: 30px; }
+  }
+
+  /* .form-wrapper.ghl-embed */
+  .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+  }
+
+  /* .form-spacing */
+  .form-spacing {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  h2 {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--midnight);
+    font-size: 3.125em;
+    line-height: 1em;
+    font-weight: 600;
+    letter-spacing: -2.5px;
+  }
+  @media (max-width: 767px) {
+    h2 { font-size: 2.25em; letter-spacing: -1.5px; }
+  }
+
+  .text-regular {
+    font-family: var(--font);
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.7em;
+  }
+
+  .pp-ghl-form { width: 100%; }
+  .pp-ghl-form iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    overflow: hidden;
+  }
+</style>
+</head>
+<body>
+
+<div class="note">
+  <h1>Preview - Contact page with the GoHighLevel form</h1>
+  <p style="margin:0">
+    Everything outside the form (the cream card, its 50px padding and 30px corners, the
+    heading, the intro line, the off-white outer container) is rendered here with the exact
+    values pulled from the live Webflow site, so this is what the page will look like.
+  </p>
+  <ul>
+    <li><strong>The form itself loads live from GoHighLevel.</strong> Until the custom CSS is pasted into the GoHighLevel form builder, it will still show its own default styling - white fill, boxed inputs, default button.</li>
+    <li>Once that CSS is in, the fields become underline-only on transparent, the type becomes Plus Jakarta Sans in Midnight <code>#090D2B</code>, and the button becomes the midnight pill.</li>
+    <li>Nothing has been published. The Webflow site is unchanged until you say go.</li>
+  </ul>
+</div>
+
+<div class="contact-container">
+  <div class="contact-grid">
+
+    <div class="details-placeholder">
+      (existing contact details column -<br>unchanged by this work)
+    </div>
+
+    <div class="contact-form-wrapper">
+      <div class="form-wrapper">
+
+        <div class="form-spacing">
+          <h2>Ready To Get Started? We Know We Are!</h2>
+          <div class="text-regular">Tell us more about yourself, and what you've got in Mind</div>
+        </div>
+
+        <div class="pp-ghl-form">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/om3C2pvl8k921QOQIzZ3"
+            style="width:100%;height:839px;border:none;background-color:transparent"
+            id="inline-om3C2pvl8k921QOQIzZ3"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="Website Enquiry Form"
+            data-height="839"
+            data-layout-iframe-id="inline-om3C2pvl8k921QOQIzZ3"
+            data-form-id="om3C2pvl8k921QOQIzZ3"
+            data-cookie-consent="true"
+            data-cookie-consent-provider="auto"
+            title="Website Enquiry Form"
+            scrolling="no"
+          ></iframe>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
+</body>
+</html>

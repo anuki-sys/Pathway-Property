@@ -1,0 +1,56 @@
+<!--
+Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
+Contact page (/contact) > HTML Embed inside .contact-form-wrapper.
+
+Replaces the native Webflow "contact form" with the GoHighLevel form
+"Website Enquiry Form" (form id om3C2pvl8k921QOQIzZ3).
+
+The old Webflow form element is kept in the Designer but set to hidden, so the
+change is reversible. The "Ready To Get Started?" heading and the intro line
+still come from Webflow elements above this embed - only the fields, the
+checkboxes and the submit button are now served by GoHighLevel.
+
+Styling note: the GoHighLevel form renders in a cross-origin iframe, so the CSS
+below can only size and frame it. The colours and typography INSIDE the form
+have to be set in the GoHighLevel form builder - paste
+webflow/ghl-form-builder-custom-css.css into that form's Custom CSS field.
+-->
+<style>
+  .pp-ghl-form {
+    width: 100%;
+  }
+
+  .pp-ghl-form iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    /* Lets the cream .contact-form-wrapper card show through, provided the
+       GoHighLevel form background is set to transparent. */
+    background-color: transparent;
+    overflow: hidden;
+  }
+</style>
+
+<div class="pp-ghl-form">
+  <iframe
+    src="https://api.leadconnectorhq.com/widget/form/om3C2pvl8k921QOQIzZ3"
+    style="width:100%;height:839px;border:none;background-color:transparent"
+    id="inline-om3C2pvl8k921QOQIzZ3"
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Website Enquiry Form"
+    data-height="839"
+    data-layout-iframe-id="inline-om3C2pvl8k921QOQIzZ3"
+    data-form-id="om3C2pvl8k921QOQIzZ3"
+    data-cookie-consent="true"
+    data-cookie-consent-provider="auto"
+    title="Website Enquiry Form"
+    scrolling="no"
+  ></iframe>
+</div>
+<script src="https://link.msgsndr.com/js/form_embed.js"></script>
