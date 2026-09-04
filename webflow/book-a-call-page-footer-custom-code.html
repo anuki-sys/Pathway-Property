@@ -2,14 +2,46 @@
 Pathway Property Website (Webflow site id 64d063d22c0ee57d46bfca71)
 "Book a Call" page (/book-a-call) > Page settings > Custom code > Footer code.
 
-Drops the GoHighLevel "Discovery Call" calendar into the empty
-.pp-booking-calendar block in the page layout. It is injected here rather than
-sitting in the layout because Webflow strips raw <iframe> elements from the
-canvas.
+Two jobs:
 
-The calendar will NOT appear in Designer Preview - custom code only runs on a
-published site. Everything around it (heading, copy, columns) previews normally.
+1. Layout. The page reuses the Contact page's two-column card, but here the
+   calendar takes the full width and the contact details sit underneath it as a
+   strip. These overrides are page-level, so the Contact page keeps its own
+   two-column layout untouched. They are written as child selectors rather than
+   Webflow's generated class names, which change if anyone renames a class.
+
+2. The calendar. It is injected into the empty .pp-booking-calendar block rather
+   than sitting in the layout, because Webflow strips raw <iframe> elements from
+   the canvas. The trade-off: the calendar does NOT appear in Designer Preview,
+   since custom code only runs on a published site. Everything around it
+   previews normally.
 -->
+<style>
+/* One full-width column instead of details | form. */
+.contact-grid { display: block; }
+
+/* The details block, now a strip under the calendar. */
+.left-contat-details {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(17, 28, 51, 0.12);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 28px 40px;
+}
+/* The three quick links, side by side. */
+.left-contat-details > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 44px;
+  flex: 1 1 420px;
+}
+.left-contat-details > div:first-child > div { margin: 0; }
+/* Follow Us, pushed to the end of the strip. */
+.left-contat-details > div:last-child { margin: 0; flex: 0 0 auto; }
+</style>
 <script>
 (function () {
   var CALENDAR_ID = 'y5S2LntDv7EcKh9wdIs6';
