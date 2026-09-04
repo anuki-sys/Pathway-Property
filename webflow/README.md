@@ -33,5 +33,7 @@ it; the right column now holds the booking heading, a short "what to expect"
 list, and an empty `.pp-booking-calendar` block that the page footer code fills
 with the calendar.
 
-GoHighLevel's "Website Enquiry Form" is set to redirect to this page on submit
-(Sites > Forms > Builder > Settings > On Submit).
+GoHighLevel's "Website Enquiry Form" should redirect here on submit
+(Sites > Forms > Builder > Settings > On Submit > Redirect to URL). That redirect
+opens in a new tab: the form is embedded in an iframe, so GoHighLevel cannot
+navigate the parent page and breaks out instead. There is no setting for it.
