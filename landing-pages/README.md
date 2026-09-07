@@ -60,12 +60,12 @@ The hero carries the "purchased off-market" client photo from the Webflow
 CDN, framed 4:3.6 with `object-position: 50% 46%` so the sky and footpath are
 trimmed and the faces and the sign sit centred.
 
-Seven headshots are also served from the Webflow CDN: Tanuj, Arshad and Nirvan
-in the agent slider, and Rahul, Shamindri, Ali Al Hilo and Shashyani in Meet
-the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
+Eight headshots are also served from the Webflow CDN: Tanuj, Arshad, Nirvan
+and Abhimaan in the agent slider, and Rahul, Shamindri, Ali Al Hilo and
+Shashyani in Meet the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
 tall frame rather than centred.
 
-Still needed: headshots for **Abhimaan** and **Rumeysa**, the podcast
+Still needed: a headshot for **Rumeysa**, the podcast
 thumbnail, and the "Recent buys" strip, which must be actual clients.
 
 "Recent buys" is an auto-scrolling marquee. Its tiles are written out twice so
