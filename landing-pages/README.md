@@ -65,8 +65,8 @@ and Abhimaan in the agent slider, and Rahul, Shamindri, Ali Al Hilo and
 Shashyani in Meet the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
 tall frame rather than centred.
 
-Still needed: a headshot for **Rumeysa**, the podcast
-thumbnail, and the "Recent buys" strip, which must be actual clients.
+Still needed: a headshot for **Rumeysa** and the "Recent buys" strip, which
+must be actual clients. The podcast thumbnail is wired to the Webflow CDN.
 
 "Recent buys" is an auto-scrolling marquee. Its tiles are written out twice so
 the loop is seamless: **whatever you change in the first set, change in the
