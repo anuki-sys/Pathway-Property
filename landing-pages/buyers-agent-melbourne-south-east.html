@@ -256,8 +256,40 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .panel-green .eyebrow{color:var(--mint)}
 @media(max-width:900px){.panel-green{border-radius:36px;padding:52px 8%}}
 .area-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:52px;align-items:center}
-.map-box{background:rgba(255,255,255,.06);border:1px solid var(--on-green-45);border-radius:30px;padding:22px}
-.map-box svg{width:100%;height:auto;display:block}
+/* where we buy — interactive region map ---------------------------- */
+.map-box{background:rgba(255,255,255,.06);border:1px solid var(--on-green-45);border-radius:30px;padding:20px}
+.melb-map{display:block;width:100%;height:auto}
+.region{
+  fill:rgba(241,239,233,.14);stroke:rgba(241,239,233,.5);stroke-width:1.4;
+  cursor:pointer;transition:fill .25s ease;outline:none;
+}
+.region:hover{fill:rgba(241,239,233,.32)}
+.region:focus-visible{fill:rgba(241,239,233,.32);stroke:#FAF8F5;stroke-width:2.6}
+.region.is-on{fill:#F5F2EB;stroke:#FAF8F5;stroke-width:2}
+.coast{fill:none;stroke:rgba(241,239,233,.75);stroke-width:2;stroke-linejoin:round;pointer-events:none}
+.map-labels text{
+  font-family:var(--font);font-size:15px;font-weight:600;fill:var(--on-green-70);
+  text-anchor:middle;pointer-events:none;
+}
+.map-labels .lbl-on{fill:var(--green);font-weight:700}
+.map-hint{margin-top:14px;font-size:.8125rem;color:var(--on-green-70);text-align:center}
+
+.region-card{
+  margin-top:28px;background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
+  border-radius:30px;padding:26px 28px;
+}
+.region-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:10px}
+.region-card h3{color:var(--shell);font-size:1.375rem;font-weight:700;letter-spacing:-.02em}
+.region-tag{
+  border-radius:var(--pill);padding:5px 14px;font-size:.75rem;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;background:var(--shell);color:var(--green);
+}
+.region-tag[hidden]{display:none}
+.region-card p{font-size:.9375rem;color:var(--on-green-70);margin:0}
+.region-card .pill-grid{margin-top:16px}
+.region-card .btn{margin-top:22px}
+@media(max-width:900px){.region-card{padding:22px;border-radius:26px}.map-labels text{font-size:18px}}
+
 .pill-label{margin-top:26px;font-size:.8125rem;font-weight:600;color:var(--mint)}
 .pill-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .pill{border:1.5px solid var(--on-green-45);border-radius:var(--pill);padding:9px 19px;font-size:.9375rem;font-weight:500;color:var(--on-green)}
@@ -695,31 +727,57 @@ details .a p{font-size:.9375rem}
       <div class="area-grid">
         <div>
           <h2>Wherever you're looking in Melbourne.</h2>
-          <p style="margin-top:18px">We buy across Melbourne and its growth corridors. Tell us the suburbs on your list and we'll tell you what your budget does there, what's coming up, and where the value actually sits.</p>
-          <div class="pill-label">Suburbs we're in regularly</div>
-          <div class="pill-grid">
-            <span class="pill">Glen Waverley</span><span class="pill">Oakleigh</span><span class="pill">Brighton</span><span class="pill">Ringwood</span>
-            <span class="pill">Dandenong</span><span class="pill">Berwick</span><span class="pill">Narre Warren</span>
-            <span class="pill">Cranbourne</span><span class="pill">Pakenham</span>
-            <span class="pill pill-soft">and everywhere in between</span>
+          <p style="margin-top:18px">We buy across Melbourne and its growth corridors. Pick an area on the map, or tell us the suburbs on your list and we'll tell you what your budget does there and where the value actually sits.</p>
+
+          <div class="region-card" aria-live="polite">
+            <div class="region-head">
+              <h3 id="region-name">Melbourne South East</h3>
+              <span class="region-tag" id="region-tag">This office</span>
+            </div>
+            <p id="region-copy">Dandenong, Berwick, Narre Warren, Cranbourne, Pakenham, Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and the suburbs between them.</p>
+            <div class="pill-grid" id="region-pills">
+              <span class="pill">Dandenong</span><span class="pill">Berwick</span><span class="pill">Narre Warren</span>
+              <span class="pill">Cranbourne</span><span class="pill">Pakenham</span>
+              <span class="pill pill-soft">and everywhere in between</span>
+            </div>
+            <a class="btn btn-cream" id="region-cta" href="#book">Book a consult</a>
           </div>
-          <div style="margin-top:34px"><a class="btn btn-cream" href="#agents">Meet the agents</a></div>
         </div>
+
         <div>
           <div class="map-box">
-            <svg viewBox="0 0 420 360" role="img" aria-label="Illustrative map of greater Melbourne">
-              <defs><style>.z{stroke:rgba(255,255,255,.28);stroke-width:1.5}</style></defs>
-              <path class="z" d="M150 20 L300 40 L330 120 L230 150 L120 120 Z" fill="rgba(255,255,255,.12)"/>
-              <path class="z" d="M20 90 L120 120 L230 150 L200 240 L60 220 Z" fill="rgba(255,255,255,.12)"/>
-              <path class="z" d="M330 120 L400 170 L360 250 L250 235 L230 150 Z" fill="rgba(255,255,255,.12)"/>
-              <path class="z" d="M200 240 L250 235 L360 250 L340 340 L180 330 Z" fill="rgba(255,255,255,.12)"/>
-              <text x="215" y="200" fill="#FAF8F5" font-family="Plus Jakarta Sans" font-size="16" font-weight="600" text-anchor="middle">Greater Melbourne</text>
-              <circle cx="246" cy="288" r="4.5" fill="#9CC7BE"/><circle cx="182" cy="176" r="4.5" fill="#9CC7BE"/>
-              <circle cx="300" cy="196" r="4.5" fill="#9CC7BE"/><circle cx="212" cy="96" r="4.5" fill="#9CC7BE"/>
-              <circle cx="316" cy="300" r="4.5" fill="#9CC7BE"/><circle cx="120" cy="150" r="4.5" fill="#9CC7BE"/>
+            <svg class="melb-map" viewBox="78 50 496 552" role="group" aria-label="Map of greater Melbourne. Choose a region.">
+              <defs>
+                <clipPath id="melb-land">
+                  <path d="M95 250C92 190 115 145 150 120C185 92 220 74 255 70C300 64 345 76 380 95C430 120 472 146 505 180C538 214 556 250 552 290C546 335 524 366 500 390C478 415 468 444 452 470C434 498 416 514 392 520C368 534 350 546 330 556C300 574 272 586 250 585C215 584 195 580 180 572C160 562 142 556 150 545C160 532 180 528 200 528C228 524 250 518 270 512C296 504 316 496 330 486C344 470 352 452 352 430C352 400 350 380 348 360C344 332 338 314 330 300C322 284 312 274 300 268L240 258L180 262C168 288 162 304 160 320C154 348 152 366 150 385C138 392 118 396 100 395C94 350 92 300 95 250Z"/>
+                </clipPath>
+              </defs>
+
+              <g clip-path="url(#melb-land)">
+                <path class="region" data-region="west" d="M95 250 L150 175 L215 235 L180 262 L160 320 L150 385 L100 395 Z"/>
+                <path class="region" data-region="north-west" d="M150 175 L150 120 L255 70 L340 150 L255 210 L215 235 Z"/>
+                <path class="region" data-region="north-east" d="M340 150 L380 95 L505 180 L460 250 L360 305 L255 210 Z"/>
+                <path class="region" data-region="outer-east" d="M460 250 L552 290 L500 390 L440 410 L360 305 Z"/>
+                <path class="region" data-region="inner" d="M180 262 L215 235 L255 210 L360 305 L348 360 L330 410 Z"/>
+                <path class="region" data-region="south-east" d="M360 305 L440 410 L452 470 L392 520 L330 486 L330 410 L348 360 Z"/>
+                <path class="region" data-region="mornington" d="M392 520 L330 556 L250 585 L180 572 L150 545 L200 528 L270 512 L330 486 Z"/>
+              </g>
+
+              <!-- coastline over the top, so the silhouette reads cleanly -->
+              <path class="coast" d="M95 250C92 190 115 145 150 120C185 92 220 74 255 70C300 64 345 76 380 95C430 120 472 146 505 180C538 214 556 250 552 290C546 335 524 366 500 390C478 415 468 444 452 470C434 498 416 514 392 520C368 534 350 546 330 556C300 574 272 586 250 585C215 584 195 580 180 572C160 562 142 556 150 545C160 532 180 528 200 528C228 524 250 518 270 512C296 504 316 496 330 486C344 470 352 452 352 430C352 400 350 380 348 360C344 332 338 314 330 300C322 284 312 274 300 268L240 258L180 262C168 288 162 304 160 320C154 348 152 366 150 385C138 392 118 396 100 395C94 350 92 300 95 250Z"/>
+
+              <g class="map-labels">
+                <text x="128" y="320">West</text>
+                <text x="243" y="168">North West</text>
+                <text x="412" y="196">North East</text>
+                <text x="470" y="318">Outer East</text>
+                <text x="258" y="243">Inner</text>
+                <text class="lbl-on" x="392" y="432">South East</text>
+                <text x="258" y="552">Mornington</text>
+              </g>
             </svg>
           </div>
-          <p class="form-note">Placeholder map. To be replaced with an interactive Mapbox or Google Maps build, with pins for recent purchases.</p>
+          <p class="map-hint">Tap an area to see how we can help there.</p>
         </div>
       </div>
     </div>
@@ -1158,6 +1216,75 @@ details .a p{font-size:.9375rem}
   });
 
   sync();
+})();
+
+/* where we buy — pick a region on the map */
+(function(){
+  var svg=document.querySelector('.melb-map');
+  if(!svg)return;
+  var regions={
+    'west':{name:"Melbourne West"},
+    'north-west':{name:"Melbourne North West"},
+    'north-east':{name:"Melbourne North East"},
+    'outer-east':{name:"Melbourne Outer East"},
+    'inner':{name:"Inner Melbourne"},
+    'mornington':{name:"Mornington Peninsula"},
+    'south-east':{
+      name:"Melbourne South East",
+      tag:"This office",
+      copy:"Dandenong, Berwick, Narre Warren, Cranbourne, Pakenham, Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and the suburbs between them.",
+      pills:["Dandenong","Berwick","Narre Warren","Cranbourne","Pakenham"],
+      cta:"Book a consult"
+    }
+  };
+  var ELSEWHERE="We buy here too. Tell us the suburbs on your list and we'll come back with what your budget does there and how we can help.";
+
+  var paths=svg.querySelectorAll('.region'),
+      nameEl=document.getElementById('region-name'),
+      tagEl=document.getElementById('region-tag'),
+      copyEl=document.getElementById('region-copy'),
+      pillsEl=document.getElementById('region-pills'),
+      ctaEl=document.getElementById('region-cta');
+
+  function show(key){
+    var r=regions[key]||{name:"Melbourne"};
+    nameEl.textContent=r.name;
+    copyEl.textContent=r.copy||ELSEWHERE;
+    ctaEl.textContent=r.cta||"Tell us where you're looking";
+    if(r.tag){tagEl.textContent=r.tag;tagEl.hidden=false}else{tagEl.hidden=true}
+    pillsEl.innerHTML='';
+    (r.pills||[]).forEach(function(s){
+      var el=document.createElement('span');el.className='pill';el.textContent=s;pillsEl.appendChild(el);
+    });
+    if(r.pills){
+      var more=document.createElement('span');
+      more.className='pill pill-soft';more.textContent='and everywhere in between';
+      pillsEl.appendChild(more);
+    }
+    paths.forEach(function(pth){
+      var on=pth.getAttribute('data-region')===key;
+      pth.classList.toggle('is-on',on);
+      pth.setAttribute('aria-pressed',on?'true':'false');
+    });
+  }
+
+  paths.forEach(function(pth){
+    var key=pth.getAttribute('data-region');
+    var label=(regions[key]||{}).name||key;
+    pth.setAttribute('tabindex','0');
+    pth.setAttribute('role','button');
+    pth.setAttribute('aria-label',label);
+    pth.setAttribute('aria-pressed',key==='south-east'?'true':'false');
+    var title=document.createElementNS('http://www.w3.org/2000/svg','title');
+    title.textContent=label;
+    pth.appendChild(title);
+    pth.addEventListener('click',function(){show(key)});
+    pth.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();show(key)}
+    });
+  });
+
+  show('south-east');
 })();
 
 /* navbar — mobile menu and the "Where we buy" dropdown */
