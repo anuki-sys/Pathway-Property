@@ -208,8 +208,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .hero-lede{font-size:1.125rem;max-width:33em;margin-top:22px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .hero-media{position:relative;padding-bottom:52px;padding-left:44px}
-.hero-media .shot-main{aspect-ratio:4/4.6;border-radius:50px;box-shadow:var(--shadow-green)}
-.hero-media .shot-main img{object-position:50% 38%}
+.hero-media .shot-main{aspect-ratio:4/3.6;border-radius:50px;box-shadow:var(--shadow-green)}
+/* the photo is 3:4 portrait; this frame trims the sky and the footpath
+   and centres the faces and the sign */
+.hero-media .shot-main img{object-position:50% 46%}
 .hero-media .shot-inset{
   position:absolute;left:0;bottom:0;width:44%;aspect-ratio:1;
   border-radius:30px;background-color:#1B5E56;
@@ -218,7 +220,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   .hero-grid{grid-template-columns:1fr;gap:40px}
   .hero-media{padding-left:0;padding-bottom:0}
   .hero-media .shot-inset{display:none}
-  .hero-media .shot-main{aspect-ratio:4/4.2;border-radius:36px}
+  .hero-media .shot-main{aspect-ratio:4/3.8;border-radius:36px}
 }
 
 /* proof — auto-scrolling strip of sold photos --------------------- */
@@ -576,8 +578,7 @@ details .a p{font-size:.9375rem}
     <div class="hero-media">
       <figure class="shot shot-main">
         <div class="slot"><b>Hero photo</b>Clients outside their new home with the "purchased off-market" sign</div>
-        <!-- Drop the file at this path, or swap in the Webflow asset URL once it is uploaded. -->
-        <img onerror="this.remove()" src="assets/hero-purchased-off-market.jpg" alt="Pathway Property clients outside the home they purchased off-market">
+        <img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e68fce26234b20c297956_WhatsApp%20Image%202026-09-05%20at%207.14.07%20AM.jpeg" alt="Pathway Property clients holding a purchased off-market sign outside the home they bought">
       </figure>
       <figure class="shot shot-inset">
         <div class="slot"><b>Second photo</b>Keys handover or an inspection detail</div>

@@ -7,7 +7,7 @@ some of them missing.
 
 | File | Where it appears | Shape |
 | --- | --- | --- |
-| `hero-purchased-off-market.jpg` | Hero, beside the headline | Portrait. Framed 4:4.6, cropped to 38% from the top so faces and the sign sit centre |
+| *(hero is already live)* | Hero, beside the headline | Served from the Webflow CDN. Framed 4:3.6 with `object-position: 50% 46%`, which trims the sky and the footpath and centres the faces and the sign |
 | `recent-01.jpg` … `recent-06.jpg` | "Recent buys" scrolling strip | Portrait 4:5 |
 | `agent-tanuj.jpg`, `agent-arshad.jpg`, `agent-nirvan.jpg`, `agent-abhimaan.jpg` | Agent slider | Portrait 4:5 |
 | `team-rahul.jpg`, `team-shamindri.jpg`, `team-ali-al-hilo.jpg`, `team-rumeysa.jpg`, `team-shashyani.jpg` | Meet the team | Square |
