@@ -9,8 +9,8 @@ some of them missing.
 | --- | --- | --- |
 | *(hero is already live)* | Hero, beside the headline | Served from the Webflow CDN. Framed 4:3.6 with `object-position: 50% 46%`, which trims the sky and the footpath and centres the faces and the sign |
 | `recent-01.jpg` … `recent-06.jpg` | "Recent buys" scrolling strip | Portrait 4:5 |
-| `agent-tanuj.jpg`, `agent-arshad.jpg`, `agent-nirvan.jpg`, `agent-abhimaan.jpg` | Agent slider | Portrait 4:5 |
-| `team-rahul.jpg`, `team-shamindri.jpg`, `team-ali-al-hilo.jpg`, `team-rumeysa.jpg`, `team-shashyani.jpg` | Meet the team | Square |
+| `agent-abhimaan.jpg` | Agent slider — Tanuj, Arshad and Nirvan are already served from the Webflow CDN | Portrait 4:5 |
+| `team-rumeysa.jpg` | Meet the team — Rahul, Shamindri, Ali Al Hilo and Shashyani are already served from the Webflow CDN | Square |
 | `podcast-latest.jpg` | Podcast section | Landscape 16:9 |
 
 Two slots still point at the Webflow asset library rather than this folder —

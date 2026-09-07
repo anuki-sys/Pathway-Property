@@ -56,17 +56,17 @@ green rooflines placeholder with a label describing the shot; an `<img>` sits
 on top of it, so dropping a real photo in is a one-line change and a missing
 photo degrades to the labelled placeholder rather than a broken image.
 
-The hero slot is framed for the "purchased off-market" client photo — a
-portrait shot of two clients with the sign outside the house. The frame is
-4:4.6 with the crop pulled up (`object-position: 50% 38%`) so the faces and
-the sign sit in the middle and the sky and footpath are trimmed. Put the file
-at `landing-pages/assets/hero-purchased-off-market.jpg` or point the `src` at
-its Webflow asset URL.
+The hero carries the "purchased off-market" client photo from the Webflow
+CDN, framed 4:3.6 with `object-position: 50% 46%` so the sky and footpath are
+trimmed and the faces and the sign sit centred.
 
-Two other slots are wired to existing site assets as a starting point
-(hero inset, value section). Everything else needs real photography —
-the agent portraits, the team portraits, the podcast thumbnail and the
-"Recent buys" strip, which must be actual clients.
+Seven headshots are also served from the Webflow CDN: Tanuj, Arshad and Nirvan
+in the agent slider, and Rahul, Shamindri, Ali Al Hilo and Shashyani in Meet
+the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
+tall frame rather than centred.
+
+Still needed: headshots for **Abhimaan** and **Rumeysa**, the podcast
+thumbnail, and the "Recent buys" strip, which must be actual clients.
 
 "Recent buys" is an auto-scrolling marquee. Its tiles are written out twice so
 the loop is seamless: **whatever you change in the first set, change in the
