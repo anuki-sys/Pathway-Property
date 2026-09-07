@@ -56,8 +56,15 @@ green rooflines placeholder with a label describing the shot; an `<img>` sits
 on top of it, so dropping a real photo in is a one-line change and a missing
 photo degrades to the labelled placeholder rather than a broken image.
 
-Three slots are already wired to existing site assets as a starting point
-(hero, hero inset, value section). Everything else needs real photography —
+The hero slot is framed for the "purchased off-market" client photo — a
+portrait shot of two clients with the sign outside the house. The frame is
+4:4.6 with the crop pulled up (`object-position: 50% 38%`) so the faces and
+the sign sit in the middle and the sky and footpath are trimmed. Put the file
+at `landing-pages/assets/hero-purchased-off-market.jpg` or point the `src` at
+its Webflow asset URL.
+
+Two other slots are wired to existing site assets as a starting point
+(hero inset, value section). Everything else needs real photography —
 the agent portraits, the team portraits, the podcast thumbnail and the
 "Recent buys" strip, which must be actual clients.
 
