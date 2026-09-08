@@ -86,7 +86,7 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9 | Process intro |
 | Over 1,000 properties purchased | Client, 8 Sep | Hero lede, "Why buyers bring us in", FAQ |
-| Thousands of families | Client, 8 Sep | "Why buyers bring us in" closing line |
+| Thousands of families | Client, 8 Sep | "Why buyers bring us in" closing pull quote |
 
 **Three numbers need settling before this goes public.**
 
