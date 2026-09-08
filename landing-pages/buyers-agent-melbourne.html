@@ -314,25 +314,26 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .map-labels text.is-on{fill:var(--green);font-weight:700}
 .region.is-hot{fill:rgba(241,239,233,.42)}
 
-/* agent pins ------------------------------------------------------- */
+/* agent pins — teardrop, face in the head, tip on the region --------- */
 .pin{cursor:pointer;outline:none}
-.pin-halo{fill:transparent;transition:fill .25s ease}
+.pin-body{fill:var(--green-deep);stroke:rgba(241,239,233,.8);stroke-width:4;transition:fill .25s ease,stroke .25s ease}
 .pin-disc{fill:var(--green-deep)}
 .pin-initial{
-  font-family:var(--font);font-size:34px;font-weight:700;fill:var(--on-green-70);
+  font-family:var(--font);font-size:34px;font-weight:700;letter-spacing:.02em;fill:var(--on-green-70);
   text-anchor:middle;pointer-events:none;
 }
-.pin-ring{fill:none;stroke:rgba(241,239,233,.75);stroke-width:3;transition:stroke .25s ease,stroke-width .25s ease}
+.pin-ring{fill:none;stroke:rgba(241,239,233,.8);stroke-width:4;transition:stroke .25s ease,stroke-width .25s ease}
 .pin-tag rect{fill:#FAF8F5;stroke:#090D2B;stroke-width:1.5}
 .pin-tag text{
-  font-family:var(--font);font-size:22px;font-weight:700;fill:#090D2B;
+  font-family:var(--font);font-size:26px;font-weight:700;fill:#090D2B;
   text-anchor:middle;pointer-events:none;
 }
 .pin-tag{opacity:0;transition:opacity .2s ease}
 .pin:hover .pin-tag,.pin:focus-visible .pin-tag,.pin.is-hot .pin-tag{opacity:1}
-.pin:hover .pin-halo,.pin:focus-visible .pin-halo,.pin.is-hot .pin-halo{fill:rgba(241,239,233,.3)}
+/* the whole pin fills with cream on hover, so the face reads against it */
+.pin:hover .pin-body,.pin:focus-visible .pin-body,.pin.is-hot .pin-body{fill:#FAF8F5;stroke:#FAF8F5}
 .pin:hover .pin-ring,.pin:focus-visible .pin-ring,.pin.is-hot .pin-ring{stroke:#FAF8F5;stroke-width:5}
-@media (prefers-reduced-motion: reduce){.pin-tag,.pin-halo,.pin-ring{transition:none}}
+@media (prefers-reduced-motion: reduce){.pin-tag,.pin-body,.pin-ring{transition:none}}
 
 .region-card{
   margin-top:auto;background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
@@ -853,64 +854,64 @@ details .a p{font-size:.9375rem}
                 <text data-label="mornington" x="469" y="910">Mornington</text>
               </g>
 
-              <defs><clipPath id="pin-clip"><circle r="38"/></clipPath></defs>
+              <defs><clipPath id="pin-clip"><circle cy="-87" r="46"/></clipPath></defs>
               <!-- one pin per area specialist; hovering lights the pin and its
                    region, clicking opens that person in the slider below -->
               <g class="map-pins">
-                <g class="pin" data-agent="tanuj" data-region="south-east" transform="translate(735,645)"
+                <g class="pin" data-agent="tanuj" data-region="south-east" transform="translate(735,690)"
                    role="button" tabindex="0" aria-label="Tanuj — South East specialist. See their profile.">
                   <title>Tanuj — South East specialist</title>
-                  <circle class="pin-halo" r="46"/>
-                  <circle class="pin-disc" r="38"/>
-                  <text class="pin-initial" y="13">T</text>
-                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5adf2e61b3bd0b4024_Tanuj.png" x="-38" y="-38" width="76" height="76"
+                  <path class="pin-body" d="M0,0 C-17,-29 -52,-52 -52,-87 A52,52 0 1,1 52,-87 C52,-52 17,-29 0,0 Z"/>
+                  <circle class="pin-disc" cy="-87" r="46"/>
+                  <text class="pin-initial" y="-75">TS</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5adf2e61b3bd0b4024_Tanuj.png" x="-46" y="-133" width="92" height="92"
                          clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
-                  <circle class="pin-ring" r="38"/>
+                  <circle class="pin-ring" cy="-87" r="46"/>
                   <g class="pin-tag">
-                    <rect x="-50" y="-98" width="99" height="34" rx="17"/>
-                    <text y="-75">Tanuj</text>
+                    <rect x="-62" y="-200" width="124" height="42" rx="21"/>
+                    <text y="-172">Tanuj</text>
                   </g>
                 </g>
-                <g class="pin" data-agent="arshad" data-region="west" transform="translate(200,420)"
+                <g class="pin" data-agent="arshad" data-region="west" transform="translate(195,455)"
                    role="button" tabindex="0" aria-label="Arshad — West specialist. See their profile.">
                   <title>Arshad — West specialist</title>
-                  <circle class="pin-halo" r="46"/>
-                  <circle class="pin-disc" r="38"/>
-                  <text class="pin-initial" y="13">A</text>
-                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/699fb980ee5347e483f16076_2.png" x="-38" y="-38" width="76" height="76"
+                  <path class="pin-body" d="M0,0 C-17,-29 -52,-52 -52,-87 A52,52 0 1,1 52,-87 C52,-52 17,-29 0,0 Z"/>
+                  <circle class="pin-disc" cy="-87" r="46"/>
+                  <text class="pin-initial" y="-75">AZ</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/699fb980ee5347e483f16076_2.png" x="-46" y="-133" width="92" height="92"
                          clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
-                  <circle class="pin-ring" r="38"/>
+                  <circle class="pin-ring" cy="-87" r="46"/>
                   <g class="pin-tag">
-                    <rect x="-56" y="-98" width="112" height="34" rx="17"/>
-                    <text y="-75">Arshad</text>
+                    <rect x="-70" y="-200" width="140" height="42" rx="21"/>
+                    <text y="-172">Arshad</text>
                   </g>
                 </g>
-                <g class="pin" data-agent="nirvan" data-region="north-east" transform="translate(430,205)"
+                <g class="pin" data-agent="nirvan" data-region="north-east" transform="translate(430,270)"
                    role="button" tabindex="0" aria-label="Nirvan — North specialist. See their profile.">
                   <title>Nirvan — North specialist</title>
-                  <circle class="pin-halo" r="46"/>
-                  <circle class="pin-disc" r="38"/>
-                  <text class="pin-initial" y="13">N</text>
-                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/699fb97e39ea170f55f00f78_4.png" x="-38" y="-38" width="76" height="76"
+                  <path class="pin-body" d="M0,0 C-17,-29 -52,-52 -52,-87 A52,52 0 1,1 52,-87 C52,-52 17,-29 0,0 Z"/>
+                  <circle class="pin-disc" cy="-87" r="46"/>
+                  <text class="pin-initial" y="-75">NJ</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/699fb97e39ea170f55f00f78_4.png" x="-46" y="-133" width="92" height="92"
                          clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
-                  <circle class="pin-ring" r="38"/>
+                  <circle class="pin-ring" cy="-87" r="46"/>
                   <g class="pin-tag">
-                    <rect x="-56" y="-98" width="112" height="34" rx="17"/>
-                    <text y="-75">Nirvan</text>
+                    <rect x="-70" y="-200" width="140" height="42" rx="21"/>
+                    <text y="-172">Nirvan</text>
                   </g>
                 </g>
-                <g class="pin" data-agent="abhimaan" data-region="outer-east" transform="translate(775,385)"
+                <g class="pin" data-agent="abhimaan" data-region="outer-east" transform="translate(775,430)"
                    role="button" tabindex="0" aria-label="Abhimaan — East specialist. See their profile.">
                   <title>Abhimaan — East specialist</title>
-                  <circle class="pin-halo" r="46"/>
-                  <circle class="pin-disc" r="38"/>
-                  <text class="pin-initial" y="13">A</text>
-                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5d7058d12cadbc1485_abhi.png" x="-38" y="-38" width="76" height="76"
+                  <path class="pin-body" d="M0,0 C-17,-29 -52,-52 -52,-87 A52,52 0 1,1 52,-87 C52,-52 17,-29 0,0 Z"/>
+                  <circle class="pin-disc" cy="-87" r="46"/>
+                  <text class="pin-initial" y="-75">AB</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5d7058d12cadbc1485_abhi.png" x="-46" y="-133" width="92" height="92"
                          clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
-                  <circle class="pin-ring" r="38"/>
+                  <circle class="pin-ring" cy="-87" r="46"/>
                   <g class="pin-tag">
-                    <rect x="-69" y="-98" width="138" height="34" rx="17"/>
-                    <text y="-75">Abhimaan</text>
+                    <rect x="-86" y="-200" width="172" height="42" rx="21"/>
+                    <text y="-172">Abhimaan</text>
                   </g>
                 </g>
               </g>

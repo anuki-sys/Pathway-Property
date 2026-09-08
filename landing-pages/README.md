@@ -43,12 +43,15 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
 - **Region map:** four agent pins sit over the map — Tanuj (South East),
-  Arshad (West), Nirvan (North) and Abhimaan (East). Hovering or focusing a pin
-  lights the pin and its region and shows the name; clicking one selects that
-  person in the agent slider and scrolls to it. Pin positions are verified
-  against the boundary paths with `isPointInFill`, so moving a region's geometry
-  means re-checking its pin. The headshots come from the Webflow CDN and fall
-  back to an initial on a green disc if they fail.
+  Arshad (West), Nirvan (North) and Abhimaan (East). Each is a teardrop whose
+  **tip** is the anchor point, with the headshot in the head circle 87 units
+  above it. Hovering or focusing fills the pin cream, lights its region and
+  shows the name; clicking selects that person in the agent slider and scrolls
+  to it. Both the tip and the head centre are verified inside the right region
+  with `isPointInFill`, so moving a region's geometry or a pin means re-running
+  that check. The headshots come from the Webflow CDN and fall back to two-letter
+  initials on a green disc if they fail — two letters because Arshad and
+  Abhimaan would otherwise both show "A".
   The map itself is the nine ABS SA4 regions of greater Melbourne, traced from
   boundary paths supplied by the client (`melbournesa4map.html`) and simplified
   with Douglas-Peucker at a 1.1-unit tolerance — sub-pixel at display size, and
