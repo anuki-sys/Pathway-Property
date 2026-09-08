@@ -132,9 +132,9 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
   (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
   "calendar link to confirm" state.
 - Rumeysa's full name and role. The other four in Meet the team are confirmed:
-  Shashyani de Silva (Client Success Specialist), Rahul (Property Operations
-  Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali Al Hilo
-  (Property Analyst). Rahul still needs a surname.
+  Shashyani de Silva (Client Success Specialist), Rahul Vilvarajah (Property
+  Operations Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali
+  Al Hilo (Property Analyst).
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler.
 - Real YouTube and Spotify links on the podcast section (both are `#`).
