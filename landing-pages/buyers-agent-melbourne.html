@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Buyers Agent Melbourne South East | Home Buyers | Pathway Property</title>
-<meta name="description" content="Buyer's agents for home buyers across Melbourne's south east and east. Glen Waverley, Oakleigh, Brighton, Ringwood, Berwick, Cranbourne and Pakenham. Book a free consult with Tanuj Singh.">
+<title>Buyers Agent Melbourne | Home Buyers | Pathway Property</title>
+<meta name="description" content="Buyer's agents for home buyers right across Melbourne — north, south east, east and west. Over 1,000 properties purchased. Book a free consult with Tanuj Singh.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 /* ------------------------------------------------------------------
-   Pathway Property — Melbourne South East landing page.
+   Pathway Property — Melbourne landing page.
    Tokens, type and components mirror the live pathwayprop.com.au
    design system (Webflow site 64d063d22c0ee57d46bfca71).
 ------------------------------------------------------------------- */
@@ -258,6 +258,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   border:1.5px solid var(--green);background:var(--green-tint);
 }
 .fit-list h3{font-size:1.125rem;margin-bottom:6px}
+.fit-family{
+  margin-top:28px;padding:18px 24px;border-radius:26px;
+  background:var(--green-tint);border:1.5px solid rgba(32,110,101,.35);
+  font-size:1rem;font-weight:600;color:var(--green);
+}
 .fit-list p{font-size:.9375rem;margin:0}
 /* numbers pulled from the owner-occupier sales deck read as data, not emphasis */
 .fit-list strong,.flow-intro strong,.flow-card strong{color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
@@ -297,6 +302,27 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 .map-labels .lbl-small{font-size:19px}
 .map-labels text.is-on{fill:var(--green);font-weight:700}
+.region.is-hot{fill:rgba(241,239,233,.42)}
+
+/* agent pins ------------------------------------------------------- */
+.pin{cursor:pointer;outline:none}
+.pin-halo{fill:transparent;transition:fill .25s ease}
+.pin-disc{fill:var(--green-deep)}
+.pin-initial{
+  font-family:var(--font);font-size:34px;font-weight:700;fill:var(--on-green-70);
+  text-anchor:middle;pointer-events:none;
+}
+.pin-ring{fill:none;stroke:rgba(241,239,233,.75);stroke-width:3;transition:stroke .25s ease,stroke-width .25s ease}
+.pin-tag rect{fill:#FAF8F5;stroke:#090D2B;stroke-width:1.5}
+.pin-tag text{
+  font-family:var(--font);font-size:22px;font-weight:700;fill:#090D2B;
+  text-anchor:middle;pointer-events:none;
+}
+.pin-tag{opacity:0;transition:opacity .2s ease}
+.pin:hover .pin-tag,.pin:focus-visible .pin-tag,.pin.is-hot .pin-tag{opacity:1}
+.pin:hover .pin-halo,.pin:focus-visible .pin-halo,.pin.is-hot .pin-halo{fill:rgba(241,239,233,.3)}
+.pin:hover .pin-ring,.pin:focus-visible .pin-ring,.pin.is-hot .pin-ring{stroke:#FAF8F5;stroke-width:5}
+@media (prefers-reduced-motion: reduce){.pin-tag,.pin-halo,.pin-ring{transition:none}}
 
 .region-card{
   margin-top:auto;background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
@@ -425,10 +451,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   position:absolute;top:2px;right:0;font-size:.75rem;font-weight:700;
   letter-spacing:.14em;color:var(--ink-45);font-variant-numeric:tabular-nums;
 }
-.agent-role{
+.agent-role,.agent-area{
   display:inline-block;background:var(--green-tint);color:var(--green);border-radius:var(--pill);
   padding:5px 15px;font-size:.8125rem;font-weight:600;margin-bottom:16px;
 }
+/* the area chip is the secondary of the pair, so it reads as an outline */
+.agent-area{background:transparent;border:1.5px solid rgba(32,110,101,.35)}
 .agent-card h3{font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:6px}
 .agent-card p{font-size:.9375rem;margin-bottom:26px;max-width:38em}
 
@@ -442,11 +470,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 
 /* meet the team -------------------------------------------------- */
 .team{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}
-.member{background:var(--cream);border:var(--stroke);border-radius:30px;overflow:hidden}
-.member .shot{border:0;border-radius:0;aspect-ratio:1}
-.member-body{padding:20px}
+.member{background:var(--cream);border:var(--stroke);border-radius:30px;overflow:hidden;display:flex;flex-direction:column}
+.member .shot{border:0;border-radius:0;aspect-ratio:1;flex-shrink:0}
+/* the body fills the rest of the card and pins the chip to the bottom, so a
+   name that wraps to two lines does not drop its chip below the others */
+.member-body{padding:20px;flex:1;display:flex;flex-direction:column;align-items:flex-start}
 .member h3{font-size:1.0625rem;margin-bottom:8px;line-height:1.3}
-.member .role-chip{
+.member .role-chip{margin-top:auto;
   display:inline-block;border:1.5px solid var(--green);background:var(--green-tint);color:var(--green);
   border-radius:var(--pill);padding:3px 12px;font-size:.75rem;font-weight:600;line-height:1.45;
 }
@@ -470,11 +500,15 @@ details{background:var(--cream);border:var(--stroke);border-radius:30px;overflow
 summary{cursor:pointer;list-style:none;position:relative;padding:22px 64px 22px 28px;font-size:1.0625rem;font-weight:600;letter-spacing:-.01em;color:var(--ink)}
 summary::-webkit-details-marker{display:none}
 summary:after{
-  content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  content:"";position:absolute;right:22px;top:50%;transform:translateY(-50%);
   width:30px;height:30px;border:1.5px solid var(--green);border-radius:50%;
-  display:grid;place-items:center;font-size:1.15rem;font-weight:400;color:var(--green);line-height:1;
+  /* drawn as two bars rather than glyphs — "+" and "–" sit on different
+     baselines in this face, which is what made the marker look low */
+  background-image:linear-gradient(var(--green),var(--green)),linear-gradient(var(--green),var(--green));
+  background-repeat:no-repeat;background-position:center,center;
+  background-size:12px 1.5px,1.5px 12px;
 }
-details[open] summary:after{content:"–"}
+details[open] summary:after{background-size:12px 1.5px,0 0}
 details .a{padding:0 28px 24px;max-width:56em}
 details .a p{font-size:.9375rem}
 
@@ -496,6 +530,7 @@ details .a p{font-size:.9375rem}
   margin-top:28px;padding-top:26px;border-top:1px solid var(--on-green-45);
 }
 .tabs-label{font-size:.8125rem;font-weight:600;color:var(--mint);margin:0 0 10px}
+.booking-alt{font-size:.9375rem;color:var(--on-green-70);margin:0;max-width:30em}
 .tabs{display:flex;flex-wrap:wrap;gap:8px}
 .tab{
   border:1.5px solid var(--on-green-45);background:transparent;color:var(--on-green);
@@ -588,7 +623,8 @@ details .a p{font-size:.9375rem}
       <div class="nav-item has-menu">
         <button class="navbar-link nav-trigger" aria-expanded="false" aria-controls="dd-where">Where we buy <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="nav-dropdown" id="dd-where">
-          <a href="/melbourne-south-east" aria-current="page">Melbourne South East <span class="dd-note">You are here</span></a>
+          <a href="/melbourne" aria-current="page">Melbourne <span class="dd-note">You are here</span></a>
+          <a href="#">Melbourne South East <span class="dd-note dd-soon">Coming soon</span></a>
           <a href="#">Melbourne East <span class="dd-note dd-soon">Coming soon</span></a>
           <a href="#">Melbourne North <span class="dd-note dd-soon">Coming soon</span></a>
           <a href="#">Melbourne West <span class="dd-note dd-soon">Coming soon</span></a>
@@ -624,15 +660,15 @@ details .a p{font-size:.9375rem}
           <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
         </span>
       </div>
-      <h1>You'll do this twice in your life. <em>We see 90 homes a week.</em></h1>
-      <p class="hero-lede">That gap is what costs buyers money. Our clients close an average <strong>3.7% under</strong>, in an average of <strong>9 weeks</strong>, with a team that sees the market every single day.</p>
+      <h1>Your next home in Melbourne, <em>found with you, not sold to you.</em></h1>
+      <p class="hero-lede">We've bought over 1,000 properties for Melbourne families. We listen first, search everywhere — including the off-markets you'll never see online — and negotiate hard, so the home you fall in love with is one you can afford.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="#book">Book a consult</a>
+        <a class="btn btn-primary" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
         <a class="btn btn-secondary" href="#how">See how it works</a>
       </div>
       <dl class="hero-stats">
         <div><dt>90+</dt><dd>inspections attended every week</dd></div>
-        <div><dt>200+</dt><dd>off-market homes across Melbourne each week</dd></div>
+        <div><dt>200+</dt><dd>off-market properties across Melbourne each week</dd></div>
         <div><dt>3.7%</dt><dd>average discount negotiated for clients</dd></div>
       </dl>
     </div>
@@ -659,7 +695,6 @@ details .a p{font-size:.9375rem}
       <div>
         <div class="eyebrow">Recent buys</div>
         <h2>Real families, real front yards.</h2>
-        <p style="margin-top:12px;max-width:34em">Secured in an average of 9 weeks, at an average 3.7% under.</p>
       </div>
       <a class="btn btn-secondary" href="#book">Book a consult</a>
     </div>
@@ -728,21 +763,22 @@ details .a p{font-size:.9375rem}
       <ul class="fit-list">
         <li>
           <h3>Experience that matches the other side</h3>
-          <p>The agents you meet at inspections are professionals who negotiate every week. Our team attends <strong>90+ inspections a week</strong> and brings that same experience to your side of the table, so the conversation is an even one.</p>
+          <p>The agents you meet at inspections are professionals who negotiate every week. Our team has purchased <strong>over 1,000 properties</strong> and brings that experience to the table, so the conversation is an even one.</p>
         </li>
         <li>
-          <h3>One person coordinating every professional</h3>
-          <p>Building and pest inspectors, your finance broker, the conveyancer, the selling agent and every date in the contract — <strong>7+ professionals</strong> on a typical purchase. We keep all of them moving so you are never the one chasing.</p>
+          <h3>A partner in the biggest decision you'll make</h3>
+          <p>Choosing a home is choosing your next chapter — the street, the school run, the mornings. We're on your side of that decision, and hyper-organised behind it: building and pest inspectors, your finance broker, the conveyancer, the selling agent and every date in the contract, <strong>7+ professionals</strong> on a typical purchase, all kept moving so you are never the one chasing.</p>
         </li>
         <li>
-          <h3>Clarity on the offer and the contract</h3>
-          <p>What to offer, what the contract actually says and which conditions are worth having. We produce <strong>50 due diligence reports a day</strong> across the business, so you know exactly where you stand before you sign anything.</p>
+          <h3>Advice on all of it, not just the price</h3>
+          <p>Where to buy and why, what a street is really like to live on, what the contract actually says, which conditions are worth having and what all of it means ten years from now. We produce <strong>100 due diligence reports a day</strong> across the business, so you know exactly where you stand before you sign anything.</p>
         </li>
         <li>
-          <h3>An independent read on value</h3>
-          <p>What a home is genuinely worth, backed by what has sold around it, and the discipline to stay at that number when the room gets competitive. It is worth an average <strong>3.7% off</strong> to our clients.</p>
+          <h3>Expert negotiators backing your future</h3>
+          <p>We know what a home is genuinely worth, backed by what has sold around it, and we hold that line when the room gets competitive. It is worth an average <strong>3.7% off</strong> to our clients — money that stays in your future rather than the vendor's.</p>
         </li>
       </ul>
+      <p class="fit-family">Join the Pathway Property family — the thousands of families who have bought with us and stayed in touch long after settlement.</p>
     </div>
     <figure class="shot shot-inspection">
       <div class="slot"><b>Photo</b>A buyer and agent at an inspection, or a negotiation in progress</div>
@@ -762,23 +798,24 @@ details .a p{font-size:.9375rem}
       <div class="area-grid">
         <div class="area-left">
           <h2>Wherever you're looking in Melbourne.</h2>
-          <p>We buy across Melbourne and its growth corridors. Tell us the suburbs on your list and we'll tell you what your budget does there and where the value actually sits.</p>
+          <p>Every corner of the city has a specialist on our team. Tap a face on the map to meet the person who buys there, or tell us the suburbs on your list and we'll tell you what your budget does there and where the value actually sits.</p>
 
           <div class="region-card" aria-live="polite">
-            <h3 id="region-name">Melbourne South East</h3>
+            <h3 id="region-name">All of Melbourne</h3>
             <div class="pill-row">
-              <span class="pill">Ringwood</span>
-              <span class="pill">Glen Waverley</span>
-              <span class="pill">Brighton</span>
-              <span class="pill">Oakleigh</span>
+              <span class="pill">North</span>
+              <span class="pill">East</span>
+              <span class="pill">South East</span>
+              <span class="pill">West</span>
+              <span class="pill">Inner Melbourne</span>
               <span class="pill pill-soft">and everywhere in between</span>
             </div>
-            <a class="btn btn-cream" id="region-cta" href="#book">Book a consult</a>
+            <a class="btn btn-cream" href="#book">Book a consult</a>
           </div>
         </div>
 
         <div class="map-box">
-            <svg class="melb-map" viewBox="10 10 980 1062" role="group" aria-label="Map of the nine SA4 regions of greater Melbourne. Choose a region.">
+            <svg class="melb-map" viewBox="10 10 980 1062" role="group" aria-label="Map of greater Melbourne. Choose a region, or choose the specialist who buys there.">
               <g class="regions">
                 <path class="region" data-region="north-west" d="M403.8 286.4 L364.7 281.3 L361.1 279.3 L365.3 275.3 L365.0 272.4 L369.9 272.6 L367.6 270.1 L370.5 268.8 L367.7 267.0 L368.9 260.2 L372.1 260.9 L371.0 258.1 L373.1 258.1 L372.9 253.9 L376.1 253.0 L376.4 250.0 L372.2 250.7 L367.9 247.0 L371.7 245.5 L371.6 239.2 L369.4 238.5 L372.1 236.1 L370.2 234.9 L372.3 234.4 L372.9 231.1 L371.3 229.9 L373.8 227.8 L373.9 225.4 L371.8 223.9 L373.9 223.2 L372.6 221.1 L370.1 221.5 L369.9 218.6 L374.7 217.7 L375.5 215.3 L372.1 211.9 L375.2 210.0 L372.0 205.4 L375.5 204.6 L377.1 201.2 L380.2 185.1 L384.4 177.9 L386.0 170.9 L382.2 170.2 L383.9 158.9 L368.1 156.7 L368.7 155.1 L365.3 153.7 L363.8 148.5 L359.3 150.4 L357.0 145.5 L354.7 143.5 L353.9 144.9 L352.2 144.2 L351.1 140.4 L347.3 142.3 L346.0 139.4 L341.7 138.9 L345.7 110.1 L339.5 113.8 L326.9 109.0 L325.1 99.6 L329.2 71.3 L327.1 67.9 L321.6 67.0 L323.7 58.4 L318.2 57.0 L318.9 54.3 L313.4 52.9 L312.9 54.9 L302.5 53.6 L297.6 58.9 L297.5 55.2 L292.6 55.2 L292.6 59.6 L269.0 59.5 L267.8 57.6 L252.0 53.5 L259.6 50.3 L258.4 25.1 L245.8 24.0 L246.2 27.5 L243.7 31.9 L236.9 30.9 L234.2 25.8 L230.9 28.8 L224.3 28.4 L223.9 33.8 L221.2 33.6 L223.4 40.1 L220.0 39.6 L218.7 49.0 L209.9 52.6 L209.4 56.0 L205.1 55.4 L204.8 57.3 L218.2 60.1 L210.5 61.6 L204.0 66.9 L202.5 72.1 L196.4 76.6 L193.0 75.5 L190.3 78.0 L186.3 75.1 L182.5 85.2 L199.2 88.1 L199.2 92.0 L202.1 91.2 L201.6 93.9 L204.6 94.4 L201.7 100.6 L204.3 101.0 L203.2 108.4 L215.0 110.3 L214.3 115.1 L224.5 115.3 L224.6 118.6 L223.0 121.5 L218.1 121.5 L218.1 124.1 L212.0 130.3 L209.2 149.8 L198.5 148.2 L196.9 146.5 L196.6 148.8 L190.8 149.2 L188.2 168.0 L184.9 167.4 L184.5 169.3 L184.0 166.8 L180.7 167.6 L176.7 165.3 L176.4 168.0 L173.2 167.5 L171.9 175.7 L168.9 175.2 L164.4 188.2 L157.5 185.6 L154.5 186.1 L154.4 191.3 L149.8 194.6 L148.8 199.5 L143.9 198.6 L144.1 200.4 L140.1 201.5 L134.3 211.3 L126.9 213.3 L124.5 212.2 L123.2 207.5 L118.6 209.0 L118.2 212.3 L113.0 210.6 L107.7 230.1 L101.3 275.3 L107.8 283.5 L107.4 294.1 L103.5 300.5 L105.3 306.2 L101.5 309.1 L100.3 312.4 L116.4 317.2 L161.1 323.5 L164.1 318.5 L204.5 324.4 L202.6 330.8 L207.5 339.5 L206.9 345.3 L208.3 347.9 L223.1 350.9 L221.4 365.3 L223.8 368.2 L225.7 376.6 L221.4 385.1 L229.8 392.5 L240.2 399.6 L277.2 404.9 L285.8 404.7 L289.6 406.9 L294.1 405.6 L291.8 408.7 L295.4 410.8 L296.8 415.5 L306.3 414.4 L310.0 411.6 L312.0 414.6 L314.2 409.9 L313.4 414.8 L315.2 420.5 L317.5 419.2 L323.6 420.4 L324.0 427.7 L318.2 430.2 L317.2 431.8 L318.6 433.0 L315.7 432.9 L317.5 434.5 L312.5 435.1 L312.4 437.1 L315.4 437.1 L319.3 441.7 L318.0 441.9 L318.1 444.7 L324.4 445.6 L324.4 450.0 L326.7 452.6 L330.1 452.9 L328.3 460.4 L331.3 462.2 L334.3 461.2 L332.9 466.1 L334.8 466.6 L335.7 470.5 L340.1 471.1 L341.9 476.4 L341.1 480.4 L344.5 482.4 L343.3 490.1 L348.7 493.1 L351.5 490.1 L356.9 489.4 L354.8 485.2 L361.4 477.5 L363.9 477.4 L363.3 481.3 L366.1 482.0 L368.6 460.7 L375.7 461.3 L378.0 465.9 L393.8 468.5 L390.7 459.9 L403.2 461.8 L403.4 459.0 L424.1 461.6 L425.5 450.3 L421.4 450.4 L421.1 446.7 L422.8 445.1 L420.4 444.2 L421.6 443.4 L420.5 441.5 L422.8 439.4 L421.3 437.4 L423.8 436.0 L422.0 434.2 L421.5 429.3 L416.3 427.7 L418.4 425.3 L416.5 424.3 L418.9 418.1 L417.6 415.7 L420.9 415.4 L419.1 413.3 L420.0 411.6 L418.5 411.3 L419.6 406.6 L417.4 404.9 L417.5 401.9 L420.4 401.1 L418.9 396.5 L420.0 394.7 L415.7 389.2 L415.4 385.7 L409.0 382.5 L409.2 377.2 L405.5 373.7 L408.3 371.9 L407.4 368.7 L404.9 365.9 L405.3 364.0 L401.6 361.4 L405.2 360.9 L405.6 352.8 L407.4 348.8 L409.2 348.7 L407.8 342.0 L411.9 339.5 L413.2 335.0 L411.9 330.0 L413.3 324.6 L406.1 316.5 L406.1 312.7 L415.3 304.7 L417.7 305.1 L420.3 300.1 L417.8 297.8 L419.9 293.1 L418.8 290.1 L420.5 288.3 L403.8 286.4 Z"/>
                 <path class="region" data-region="north-east" d="M468.6 111.0 L467.4 123.7 L463.7 135.5 L455.9 139.2 L453.3 144.6 L446.0 143.6 L442.8 145.4 L441.6 143.9 L437.1 146.3 L434.4 145.7 L429.5 150.7 L429.1 153.7 L423.7 151.2 L423.3 153.6 L392.9 149.1 L392.5 151.2 L387.7 150.4 L386.0 147.0 L382.2 170.2 L386.0 170.9 L384.4 177.9 L380.2 185.1 L377.1 201.2 L375.5 204.6 L372.0 205.4 L375.2 210.0 L372.1 211.9 L375.5 215.3 L374.7 217.7 L369.9 218.6 L370.1 221.5 L372.6 221.1 L373.9 223.2 L371.8 223.9 L373.9 225.4 L373.8 227.8 L371.3 229.9 L372.9 231.1 L372.3 234.4 L370.2 234.9 L372.1 236.1 L369.4 238.5 L371.6 239.2 L371.7 245.5 L367.9 247.0 L372.2 250.7 L376.4 250.0 L376.1 252.8 L372.9 253.9 L373.1 258.1 L371.0 258.1 L372.1 260.9 L368.9 260.2 L367.7 267.0 L370.5 268.8 L367.6 270.1 L369.9 272.6 L365.2 272.3 L365.3 275.3 L362.6 276.7 L362.6 278.9 L361.0 278.6 L364.7 281.3 L420.5 288.3 L418.8 290.1 L419.9 293.1 L417.8 297.8 L420.3 300.1 L417.7 305.1 L415.3 304.7 L406.1 312.7 L406.1 316.5 L413.3 324.6 L411.9 330.0 L413.2 335.0 L411.9 339.5 L407.8 342.0 L409.2 348.7 L407.4 348.8 L405.6 352.8 L405.2 360.9 L401.6 361.4 L405.3 364.0 L404.9 365.9 L407.4 368.7 L408.3 371.9 L405.5 373.7 L409.2 377.2 L409.0 382.5 L415.4 385.7 L415.7 389.2 L420.0 394.7 L418.9 396.5 L420.4 401.1 L417.5 401.9 L417.4 404.9 L419.6 406.6 L418.5 411.3 L420.0 411.6 L419.1 413.3 L420.9 415.4 L417.6 415.7 L418.9 418.1 L416.5 424.3 L418.4 425.3 L416.3 427.7 L421.5 429.3 L422.0 434.2 L423.8 436.0 L421.4 437.4 L422.8 439.4 L420.4 444.3 L422.8 445.1 L421.1 446.7 L421.4 450.4 L425.5 450.3 L424.1 461.6 L421.6 467.0 L423.5 469.2 L422.6 472.6 L453.9 477.2 L451.7 483.5 L453.6 484.5 L454.5 488.8 L457.3 488.8 L457.3 490.3 L455.6 490.3 L455.8 495.3 L458.4 495.6 L458.1 498.8 L459.4 499.4 L461.5 496.3 L463.9 496.0 L468.3 500.1 L468.1 497.1 L468.8 498.1 L471.9 496.1 L476.1 498.8 L477.3 490.2 L478.5 489.1 L481.9 491.0 L478.7 486.1 L481.7 486.2 L483.3 482.7 L481.9 479.4 L479.5 479.9 L480.6 478.1 L484.2 478.8 L482.2 477.4 L482.7 475.9 L485.0 477.6 L485.6 473.8 L491.3 476.0 L494.9 471.9 L499.9 476.2 L504.2 476.8 L509.4 474.4 L510.2 472.1 L512.3 473.5 L510.5 470.8 L508.7 471.2 L510.4 465.2 L516.6 467.1 L519.5 463.5 L527.0 463.6 L530.4 460.2 L534.7 463.1 L536.3 460.4 L543.1 460.9 L544.0 463.7 L546.6 456.9 L554.1 458.5 L552.8 463.3 L556.3 465.9 L556.9 460.0 L558.9 457.4 L565.2 456.8 L567.3 458.6 L564.9 461.6 L559.4 462.9 L558.8 464.5 L561.2 466.2 L570.3 461.9 L576.3 463.9 L574.5 459.5 L575.7 458.4 L580.2 458.2 L583.9 461.8 L582.7 458.3 L583.9 455.6 L580.4 454.8 L579.4 449.9 L580.4 449.2 L584.0 453.5 L584.5 448.5 L587.9 449.8 L592.4 444.8 L591.6 441.5 L599.9 439.5 L601.3 438.0 L599.6 438.1 L599.6 436.3 L602.4 436.7 L602.7 440.2 L604.6 441.5 L602.7 446.2 L605.3 446.0 L606.6 444.0 L609.6 448.2 L611.5 445.3 L608.8 440.4 L611.0 436.4 L614.8 435.6 L612.8 440.6 L615.3 441.0 L614.3 442.8 L617.0 444.5 L619.2 443.7 L621.2 446.7 L627.1 445.8 L626.5 440.8 L628.1 441.5 L628.2 438.8 L633.1 439.3 L628.7 433.4 L631.2 431.1 L630.0 427.4 L635.9 425.1 L638.6 427.5 L641.4 419.7 L639.5 418.0 L638.2 411.8 L641.4 404.3 L647.7 399.1 L649.0 393.6 L652.7 389.9 L653.8 379.6 L655.5 377.1 L654.1 373.2 L655.1 370.2 L651.9 367.6 L654.2 366.4 L653.4 356.2 L660.4 312.8 L666.2 309.2 L672.9 311.4 L674.7 308.6 L677.4 309.5 L681.8 306.8 L683.3 298.7 L692.7 298.3 L692.5 302.2 L697.2 304.9 L701.3 301.6 L706.1 303.7 L704.4 313.4 L722.9 316.5 L724.2 322.6 L726.4 322.9 L726.9 320.2 L731.7 320.2 L731.7 324.5 L740.8 324.6 L740.8 327.2 L748.2 327.2 L744.3 321.2 L747.7 321.2 L758.4 327.3 L760.0 321.8 L762.2 322.0 L765.9 326.5 L767.0 332.6 L772.1 335.8 L780.1 349.6 L781.5 350.3 L787.9 344.9 L788.1 339.4 L792.0 332.7 L789.8 324.6 L780.9 314.5 L786.0 315.7 L789.0 312.7 L780.0 301.1 L781.4 296.4 L779.7 290.2 L782.8 251.1 L784.7 251.1 L785.8 246.7 L750.7 244.1 L753.1 228.6 L739.4 228.7 L735.7 247.4 L694.6 248.4 L693.6 246.8 L691.9 252.5 L675.5 251.5 L673.1 243.6 L683.3 244.1 L689.2 234.9 L681.3 234.0 L681.3 226.4 L670.6 226.4 L670.6 222.6 L639.3 222.9 L639.3 210.7 L630.8 210.8 L630.7 207.1 L618.0 208.9 L614.7 212.1 L615.2 215.0 L607.0 213.2 L604.6 211.0 L603.8 207.1 L598.4 207.2 L598.4 178.2 L593.5 177.3 L587.8 159.5 L583.5 155.7 L580.6 156.3 L581.2 153.0 L579.8 151.1 L579.0 152.2 L579.1 142.6 L574.3 142.6 L574.7 117.0 L511.8 116.7 L509.1 103.1 L511.6 103.1 L511.7 97.3 L506.5 95.6 L507.1 92.8 L469.2 93.0 L468.6 111.0 Z"/>
@@ -800,6 +837,68 @@ details .a p{font-size:.9375rem}
                 <text class="lbl-small" data-label="inner-south" x="436" y="646">Inner South</text>
                 <text data-label="south-east" x="723" y="725">South East</text>
                 <text data-label="mornington" x="469" y="910">Mornington</text>
+              </g>
+
+              <defs><clipPath id="pin-clip"><circle r="38"/></clipPath></defs>
+              <!-- one pin per area specialist; hovering lights the pin and its
+                   region, clicking opens that person in the slider below -->
+              <g class="map-pins">
+                <g class="pin" data-agent="tanuj" data-region="south-east" transform="translate(735,645)"
+                   role="button" tabindex="0" aria-label="Tanuj — South East specialist. See their profile.">
+                  <title>Tanuj — South East specialist</title>
+                  <circle class="pin-halo" r="46"/>
+                  <circle class="pin-disc" r="38"/>
+                  <text class="pin-initial" y="13">T</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5adf2e61b3bd0b4024_Tanuj.png" x="-38" y="-38" width="76" height="76"
+                         clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
+                  <circle class="pin-ring" r="38"/>
+                  <g class="pin-tag">
+                    <rect x="-50" y="-98" width="99" height="34" rx="17"/>
+                    <text y="-75">Tanuj</text>
+                  </g>
+                </g>
+                <g class="pin" data-agent="arshad" data-region="west" transform="translate(200,420)"
+                   role="button" tabindex="0" aria-label="Arshad — West specialist. See their profile.">
+                  <title>Arshad — West specialist</title>
+                  <circle class="pin-halo" r="46"/>
+                  <circle class="pin-disc" r="38"/>
+                  <text class="pin-initial" y="13">A</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/699fb980ee5347e483f16076_2.png" x="-38" y="-38" width="76" height="76"
+                         clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
+                  <circle class="pin-ring" r="38"/>
+                  <g class="pin-tag">
+                    <rect x="-56" y="-98" width="112" height="34" rx="17"/>
+                    <text y="-75">Arshad</text>
+                  </g>
+                </g>
+                <g class="pin" data-agent="nirvan" data-region="north-east" transform="translate(430,205)"
+                   role="button" tabindex="0" aria-label="Nirvan — North specialist. See their profile.">
+                  <title>Nirvan — North specialist</title>
+                  <circle class="pin-halo" r="46"/>
+                  <circle class="pin-disc" r="38"/>
+                  <text class="pin-initial" y="13">N</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/699fb97e39ea170f55f00f78_4.png" x="-38" y="-38" width="76" height="76"
+                         clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
+                  <circle class="pin-ring" r="38"/>
+                  <g class="pin-tag">
+                    <rect x="-56" y="-98" width="112" height="34" rx="17"/>
+                    <text y="-75">Nirvan</text>
+                  </g>
+                </g>
+                <g class="pin" data-agent="abhimaan" data-region="outer-east" transform="translate(775,385)"
+                   role="button" tabindex="0" aria-label="Abhimaan — East specialist. See their profile.">
+                  <title>Abhimaan — East specialist</title>
+                  <circle class="pin-halo" r="46"/>
+                  <circle class="pin-disc" r="38"/>
+                  <text class="pin-initial" y="13">A</text>
+                  <image class="pin-photo" onerror="this.remove()" href="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5d7058d12cadbc1485_abhi.png" x="-38" y="-38" width="76" height="76"
+                         clip-path="url(#pin-clip)" preserveAspectRatio="xMidYMin slice"/>
+                  <circle class="pin-ring" r="38"/>
+                  <g class="pin-tag">
+                    <rect x="-69" y="-98" width="138" height="34" rx="17"/>
+                    <text y="-75">Abhimaan</text>
+                  </g>
+                </g>
               </g>
             </svg>
         </div>
@@ -825,7 +924,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">15 minutes</span>
             </div>
             <h3>The first call</h3>
-            <p>Fifteen minutes, free. What you want, what you can spend, and whether we're the right fit. If we're not, we'll say so on the call.</p>
+            <p>Fifteen minutes, free. What you want, what you can spend, and how we can drive your dream Melbourne home at the right price. If we're not the right fit, we'll say so on the call.</p>
           </div>
         </article>
         <article class="flow-card" style="--i:1">
@@ -836,7 +935,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">Week 1</span>
             </div>
             <h3>Your brief</h3>
-            <p>Suburbs, must-haves and deal-breakers, plus an honest read on what your budget actually buys around here right now.</p>
+            <p>Suburbs, must-haves and deal-breakers, plus an honest read on what your budget actually buys right now.</p>
           </div>
         </article>
         <article class="flow-card" style="--i:2">
@@ -858,7 +957,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">As homes come up</span>
             </div>
             <h3>Inspect and assess</h3>
-            <p>We attend and report back. Building and pest, flood, zoning and planning all checked before you fall in love with something.</p>
+            <p>We attend and report back. Thorough inspections, overlays, amenities, school zones and council planning all checked before you fall in love with something.</p>
           </div>
         </article>
         <article class="flow-card" style="--i:4">
@@ -869,7 +968,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">Auction or private sale</span>
             </div>
             <h3>Value and negotiate</h3>
-            <p>An independent line on what it's worth, held firm — on price, and on settlement, conditions and deposit.</p>
+            <p>A thorough analysis of what it's worth, backed by top tier negotiation to secure it at the best price — on price, and on settlement, conditions and deposit.</p>
           </div>
         </article>
         <article class="flow-card" style="--i:5">
@@ -879,7 +978,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-kicker">Step 06</span>
               <span class="flow-when">Contract to settlement</span>
             </div>
-            <h3>Through to keys</h3>
+            <h3>One central point of contact</h3>
             <p>We coordinate everyone involved — building and pest inspectors, your finance broker, the conveyancer and the selling agent, <strong>7+ professionals</strong> on a typical purchase — and every date in the contract. One person to call, from the day you sign to the day you collect the keys.</p>
           </div>
         </article>
@@ -894,22 +993,21 @@ details .a p{font-size:.9375rem}
       <div class="eyebrow">Off-market and direct to vendor</div>
       <div class="om-grid">
         <div class="om-col">
-          <h2>The best home for you might not be for sale yet.</h2>
-          <p style="margin-top:16px">We see <strong>200+ off-market and pre-market homes across Melbourne every week</strong> — homes that never make it to a portal. Watch Tanuj walk through the ones currently in front of our south east buyers.</p>
-          <p>And if the right one still isn't there, we go and knock: letterbox drops, direct approaches to owners who haven't listed, and local networks. So what you can buy isn't limited to what happens to be listed this month.</p>
+          <h2>Get free access to 100+ Melbourne off markets every week.</h2>
+          <p style="margin-top:16px">Properties that never make it to a portal, sent to you every week. Watch Tanuj walk you through our off market system.</p>
+          <p>While this gives you access to a lot of off markets, any deals we have shortlisted for our clients won't be visible here. If you'd like to see those, consult with us.</p>
           <figure class="shot">
-            <div class="slot"><b>Video</b>Tanuj screen-recording the live off-market list, with commentary</div>
+            <div class="slot"><b>Video</b>Tanuj walking through the off market system</div>
             <span class="play"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M15 9L1 17V1z" fill="#090D2B"/></svg></span>
           </figure>
         </div>
         <div class="form-card">
           <h3>See this week's off-markets</h3>
-          <p>Tell us what you're after and we'll send through the off-market and pre-market homes in the south east that match it.</p>
+          <p>Tell us what you're after and we'll send through the off-market and pre-market properties across Melbourne that match it.</p>
           <div class="field"><label for="om-name">Name</label><input id="om-name" type="text" placeholder="Your name"></div>
           <div class="field"><label for="om-email">Email</label><input id="om-email" type="email" placeholder="you@email.com"></div>
           <div class="field"><label for="om-suburbs">Suburbs you're looking at</label><input id="om-suburbs" type="text" placeholder="Berwick, Officer…"></div>
           <a class="btn btn-cream btn-block" href="#">Send me the list</a>
-          <p class="form-note">Or skip the form — <a href="#book">book a consult</a> and we'll walk you through them.</p>
         </div>
       </div>
     </div>
@@ -920,7 +1018,7 @@ details .a p{font-size:.9375rem}
 <section class="section" id="agents">
   <div class="wrap">
     <div class="eyebrow">Who you'll be dealing with</div>
-    <h2>The people you'll be working with.</h2>
+    <h2>A team across Melbourne.</h2>
 
     <div class="agent-controls">
       <div class="agent-tabs" role="tablist" aria-label="Choose an agent">
@@ -939,15 +1037,15 @@ details .a p{font-size:.9375rem}
       <div class="track" id="track">
         <article class="agent-card" id="agent-tanuj" role="group" aria-roledescription="slide" aria-label="1 of 4: Tanuj Singh">
           <figure class="shot">
-            <div class="slot"><b>Portrait</b>Tanuj on location in the south east</div>
+            <div class="slot"><b>Portrait</b>Tanuj on location</div>
             <img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5adf2e61b3bd0b4024_Tanuj.png" alt="Tanuj Singh">
           </figure>
           <div class="agent-body">
             <div class="agent-count">01 / 04</div>
-            <span class="agent-role">Buyer's Agent</span>
+            <span class="agent-role">Buyer's Agent</span> <span class="agent-area">South East specialist</span>
             <h3>Tanuj Singh</h3>
-            <p>Grew up in Melbourne's south east and studied at Monash. Involved in over $100 million of property transactions, and the person who runs your search from the first call through to settlement.</p>
-            <a class="btn btn-primary" href="#book" data-agent="tanuj">Book with Tanuj</a>
+            <p>Grew up in Melbourne's south east and studied at Monash, so he knows the corridor street by street rather than suburb by suburb. Involved in over $100 million of property transactions, and the person who runs your search from the first call through to settlement.</p>
+            <a class="btn btn-primary" href="#book">Book a consult</a>
           </div>
         </article>
         <article class="agent-card" id="agent-arshad" role="group" aria-roledescription="slide" aria-label="2 of 4: Arshad Zacky">
@@ -957,10 +1055,10 @@ details .a p{font-size:.9375rem}
           </figure>
           <div class="agent-body">
             <div class="agent-count">02 / 04</div>
-            <span class="agent-role">Head of Client Success</span>
+            <span class="agent-role">Head of Client Success</span> <span class="agent-area">West specialist</span>
             <h3>Arshad Zacky</h3>
-            <p>Oversees how every client file is run, and the person clients call when they want a second opinion on a shortlist or an offer.</p>
-            <a class="btn btn-primary" href="#book" data-agent="arshad">Book with Arshad</a>
+            <p>Covers Melbourne's west, from the established inner suburbs out to the estates still going up, and knows which of them will still feel right in ten years. Oversees how every client file is run, and the person clients call when they want a second opinion on a shortlist or an offer.</p>
+            <a class="btn btn-primary" href="#book">Book a consult</a>
           </div>
         </article>
         <article class="agent-card" id="agent-nirvan" role="group" aria-roledescription="slide" aria-label="3 of 4: Nirvan Jamshidpey">
@@ -970,10 +1068,10 @@ details .a p{font-size:.9375rem}
           </figure>
           <div class="agent-body">
             <div class="agent-count">03 / 04</div>
-            <span class="agent-role">Head of Deal Acquisition</span>
+            <span class="agent-role">Head of Deal Acquisition</span> <span class="agent-area">North specialist</span>
             <h3>Nirvan Jamshidpey</h3>
-            <p>Legal expertise and commercial know-how behind every offer and contract that goes out the door.</p>
-            <a class="btn btn-primary" href="#book" data-agent="nirvan">Book with Nirvan</a>
+            <p>Buys across Melbourne's north, where a good buy can sit a single street away from one you would regret. Brings the legal expertise and commercial know-how behind every offer and contract that goes out the door.</p>
+            <a class="btn btn-primary" href="#book">Book a consult</a>
           </div>
         </article>
         <article class="agent-card" id="agent-abhimaan" role="group" aria-roledescription="slide" aria-label="4 of 4: Abhimaan Bhargava">
@@ -983,10 +1081,10 @@ details .a p{font-size:.9375rem}
           </figure>
           <div class="agent-body">
             <div class="agent-count">04 / 04</div>
-            <span class="agent-role">Support & Settlement</span>
+            <span class="agent-role">Support &amp; Settlement</span> <span class="agent-area">East specialist</span>
             <h3>Abhimaan Bhargava</h3>
-            <p>Keeps the paperwork, the conveyancer and the deadlines moving, so settlement day is uneventful.</p>
-            <a class="btn btn-primary" href="#book" data-agent="abhimaan">Book with Abhimaan</a>
+            <p>Looks after Melbourne's east, where school zones and a few hundred metres of boundary can change everything. Keeps the paperwork, the conveyancer and the deadlines moving, so settlement day is uneventful.</p>
+            <a class="btn btn-primary" href="#book">Book a consult</a>
           </div>
         </article>
       </div>
@@ -1031,14 +1129,14 @@ details .a p{font-size:.9375rem}
     <div class="eyebrow">Common questions</div>
     <h2>Before you call</h2>
     <div class="faq">
-      <details><summary>What does a buyer's agent do in Melbourne's south east?</summary>
-        <div class="a"><p>A buyer's agent works only for the buyer. Across Melbourne's south east and east that means searching from Brighton and Glen Waverley through to Pakenham, including off-market and pre-market homes, attending inspections on your behalf, running due diligence on building, pest, flood, zoning and planning, valuing the property independently, and negotiating or bidding for you.</p></div></details>
+      <details><summary>What does a buyer's agent do in Melbourne?</summary>
+        <div class="a"><p>A buyer's agent works only for the buyer. Across Melbourne that means searching the north, south east, east and west, including off-market and pre-market properties, attending inspections on your behalf, running due diligence on inspections, overlays, amenities, school zones and council planning, valuing the property independently, and negotiating or bidding for you.</p></div></details>
       <details><summary>Is a buyer's agent worth it for a first home buyer?</summary>
         <div class="a"><p>Yes — and arguably it matters most the first time. This is the largest purchase you have made, you are doing it for the first time, and the person on the other side of the table negotiates every week. With an experienced professional beside you, you buy at the right price and on the right terms, with every check done before you commit, and you spend your weekends looking at homes worth seeing instead of losing auctions. That is the difference between a purchase you are still happy with in five years and one you are not.</p></div></details>
       <details><summary>Which suburbs do you cover?</summary>
-        <div class="a"><p>We are in Glen Waverley, Oakleigh, Brighton, Ringwood, Berwick and Pakenham regularly, and we have purchased homes right across Melbourne. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help.</p></div></details>
+        <div class="a"><p>All of Melbourne. We have specialists across each corner of the city — Tanuj in the south east, Arshad in the west, Nirvan in the north and Abhimaan in the east — and between them the team has purchased over 1,000 properties. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help.</p></div></details>
       <details><summary>Can you find homes that aren't listed online?</summary>
-        <div class="a"><p>Yes, and it is one of the main reasons buyers come to us. We source over 200 off-market and pre-market properties through our agent network across Melbourne, so you are seeing homes that never reach a portal. When the right one still is not among them, we approach owners directly on your behalf. It does not work every time. When it does, you are the only buyer in the conversation.</p></div></details>
+        <div class="a"><p>Yes, and it is one of the main reasons buyers come to us. We source over 200 off-market and pre-market properties through our agent network across Melbourne, so you are seeing homes that never reach a portal. Deals we have shortlisted for our clients sit behind that again — those we walk you through in person.</p></div></details>
       <details><summary>Do you work with property investors?</summary>
         <div class="a"><p>Yes. As well as buying homes for people to live in, the wider Pathway Property team buys investment property for clients around the country. Tell us what you are trying to achieve and we will put you with the right person on the team.</p></div></details>
       <details><summary>How long does it take to buy a home with a buyer's agent?</summary>
@@ -1084,8 +1182,8 @@ details .a p{font-size:.9375rem}
 <section class="booking" id="book">
   <div class="wrap">
     <div class="booking-head">
-      <h2>Let's find out what your budget actually buys.</h2>
-      <p class="booking-lede">Answer five quick questions and pick the agent for your area. Fifteen minutes, free, and you'll get a straight answer on whether we can help — either way.</p>
+      <h2>Your dream home awaits you, and we have the keys.</h2>
+      <p class="booking-lede">Answer five quick questions and we'll come back to you. Fifteen minutes, free, and you'll get a straight answer on how we can help.</p>
     </div>
 
     <div class="booking-card">
@@ -1121,20 +1219,15 @@ details .a p{font-size:.9375rem}
 
       <div class="booking-foot">
         <div>
-          <div class="tabs-label">Choose whose calendar to book</div>
-          <div class="tabs" role="tablist" aria-label="Choose an agent">
-            <button class="tab" role="tab" id="tab-tanuj" aria-controls="panel-cal" aria-selected="true" data-name="Tanuj Singh" data-area="Buyer's Agent" data-cal="https://calendar.app.google/uVUJEXzLsU1i73S97">Tanuj</button>
-            <button class="tab" role="tab" id="tab-arshad" aria-controls="panel-cal" aria-selected="false" data-name="Arshad Zacky" data-area="Pathway Property" data-cal="">Arshad</button>
-            <button class="tab" role="tab" id="tab-nirvan" aria-controls="panel-cal" aria-selected="false" data-name="Nirvan Jamshidpey" data-area="Pathway Property" data-cal="">Nirvan</button>
-            <button class="tab" role="tab" id="tab-abhimaan" aria-controls="panel-cal" aria-selected="false" data-name="Abhimaan Bhargava" data-area="Pathway Property" data-cal="">Abhimaan</button>
-          </div>
+          <div class="tabs-label">Or book straight in</div>
+          <p class="booking-alt">Skip the form and take a fifteen minute slot in Tanuj's calendar.</p>
         </div>
-        <div class="tab-panel" id="panel-cal" role="tabpanel" aria-labelledby="tab-tanuj">
+        <div class="tab-panel">
           <div>
-            <div class="cal-name" id="cal-name">Tanuj Singh</div>
-            <div class="cal-note" id="cal-note">Buyer's Agent · 15-minute consult</div>
+            <div class="cal-name">Tanuj Singh</div>
+            <div class="cal-note">Buyer's Agent · 15-minute consult</div>
           </div>
-          <a class="btn btn-cream" id="cal-link" href="https://calendar.app.google/uVUJEXzLsU1i73S97">Book with Tanuj</a>
+          <a class="btn btn-cream" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book with Tanuj</a>
         </div>
       </div>
     </div>
@@ -1142,7 +1235,7 @@ details .a p{font-size:.9375rem}
     <!-- newsletter -->
     <div class="newsletter">
       <div>
-        <h3>South east market notes, once a month.</h3>
+        <h3>Melbourne market notes, once a month.</h3>
         <p>What sold, what it went for, and what's coming up off-market in your suburbs. No spam, unsubscribe any time.</p>
       </div>
       <div>
@@ -1157,7 +1250,7 @@ details .a p{font-size:.9375rem}
     <div class="foot-contact">
       <div><div class="k">Phone</div><a class="v" href="tel:0421657559">0421 657 559</a></div>
       <div><div class="k">Email</div><a class="v" href="mailto:tanuj@pathwayprop.com.au">tanuj@pathwayprop.com.au</a></div>
-      <div><div class="k">Where we buy</div><span class="v">South east and east</span></div>
+      <div><div class="k">Where we buy</div><span class="v">All of Melbourne</span></div>
     </div>
 
     <div class="foot-in">
@@ -1165,14 +1258,14 @@ details .a p{font-size:.9375rem}
         <a href="/policies/terms-conditions">Terms &amp; Conditions</a>
         <a href="/policies/privacy-policy">Privacy Policy</a>
       </div>
-      <div>Pathway Property · Melbourne South East · pathwayprop.com.au</div>
+      <div>Pathway Property · Melbourne · pathwayprop.com.au</div>
     </div>
   </div>
 </section>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type": "Question", "name": "What does a buyer's agent do in Melbourne's south east?", "acceptedAnswer": {"@type": "Answer", "text": "A buyer's agent works only for the buyer. Across Melbourne's south east and east that means searching from Brighton and Glen Waverley through to Pakenham, including off-market and pre-market homes, attending inspections on your behalf, running due diligence on building, pest, flood, zoning and planning, valuing the property independently, and negotiating or bidding for you."}},
+{"@type": "Question", "name": "What does a buyer's agent do in Melbourne?", "acceptedAnswer": {"@type": "Answer", "text": "A buyer's agent works only for the buyer. Across Melbourne that means searching the north, south east, east and west, including off-market and pre-market properties, attending inspections on your behalf, running due diligence on inspections, overlays, amenities, school zones and council planning, valuing the property independently, and negotiating or bidding for you."}},
 {"@type": "Question", "name": "Is a buyer's agent worth it for a first home buyer?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — and arguably it matters most the first time. This is the largest purchase you have made, you are doing it for the first time, and the person on the other side of the table negotiates every week. With an experienced professional beside you, you buy at the right price and on the right terms, with every check done before you commit, and you spend your weekends looking at homes worth seeing instead of losing auctions. That is the difference between a purchase you are still happy with in five years and one you are not."}},
 {"@type": "Question", "name": "Which suburbs do you cover?", "acceptedAnswer": {"@type": "Answer", "text": "We are in Glen Waverley, Oakleigh, Brighton, Ringwood, Berwick and Pakenham regularly, and we have purchased homes right across Melbourne. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help."}},
 {"@type": "Question", "name": "Can you find homes that aren't listed online?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it is one of the main reasons buyers come to us. We source over 200 off-market and pre-market properties through our agent network across Melbourne, so you are seeing homes that never reach a portal. When the right one still is not among them, we approach owners directly on your behalf. It does not work every time. When it does, you are the only buyer in the conversation."}},
@@ -1180,7 +1273,7 @@ details .a p{font-size:.9375rem}
 ]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Pathway Property Melbourne South East","description":"Buyer's agents for home buyers in Melbourne's south east.","url":"https://www.pathwayprop.com.au/melbourne-south-east","telephone":"+61421657559","email":"tanuj@pathwayprop.com.au","areaServed":["Glen Waverley","Oakleigh","Brighton","Ringwood","Dandenong","Berwick","Narre Warren","Cranbourne","Pakenham","Officer","Clyde","Hallam","Hampton Park","Beaconsfield","Lynbrook"],"parentOrganization":{"@type":"Organization","name":"Pathway Property","url":"https://www.pathwayprop.com.au"}}
+{"@context":"https://schema.org","@type":"RealEstateAgent","name":"Pathway Property Melbourne","description":"Buyer's agents for home buyers across Melbourne.","url":"https://www.pathwayprop.com.au/melbourne","telephone":"+61421657559","email":"tanuj@pathwayprop.com.au","areaServed":["Melbourne","Melbourne North","Melbourne North East","Melbourne North West","Melbourne West","Melbourne Inner","Melbourne Inner East","Melbourne Inner South","Melbourne Outer East","Melbourne South East","Mornington Peninsula"],"parentOrganization":{"@type":"Organization","name":"Pathway Property","url":"https://www.pathwayprop.com.au"}}
 </script>
 
 <script>
@@ -1231,18 +1324,10 @@ details .a p{font-size:.9375rem}
 
   window.addEventListener('resize',function(){go(i,false)});
 
-  /* "Book with X" jumps to the booking form and selects that agent's tab */
-  document.querySelectorAll('[data-agent]').forEach(function(a){
-    a.addEventListener('click',function(){
-      var b=document.getElementById('tab-'+a.getAttribute('data-agent'));
-      if(b)b.click();
-    });
-  });
-
   sync();
 })();
 
-/* where we buy — pick a region on the map */
+/* where we buy — pick a region, or pick the specialist who buys there */
 (function(){
   var svg=document.querySelector('.melb-map');
   if(!svg)return;
@@ -1255,23 +1340,24 @@ details .a p{font-size:.9375rem}
     'inner-east':{name:"Melbourne Inner East"},
     'inner-south':{name:"Melbourne Inner South"},
     'mornington':{name:"Mornington Peninsula"},
-    'south-east':{name:"Melbourne South East",cta:"Book a consult"}
+    'south-east':{name:"Melbourne South East"}
   };
 
   var paths=svg.querySelectorAll('.region'),
-      nameEl=document.getElementById('region-name'),
-      ctaEl=document.getElementById('region-cta');
+      labels=svg.querySelectorAll('.map-labels text'),
+      pins=svg.querySelectorAll('.pin'),
+      nameEl=document.getElementById('region-name');
 
+  /* nothing is selected on load — this is the Melbourne page, so no one
+     region is the focus */
   function show(key){
-    var r=regions[key]||{name:"Melbourne"};
-    nameEl.textContent=r.name;
-    ctaEl.textContent=r.cta||"Tell us where you're looking";
+    nameEl.textContent=(regions[key]||{}).name||"All of Melbourne";
     paths.forEach(function(pth){
       var on=pth.getAttribute('data-region')===key;
       pth.classList.toggle('is-on',on);
       pth.setAttribute('aria-pressed',on?'true':'false');
     });
-    svg.querySelectorAll('.map-labels text').forEach(function(el){
+    labels.forEach(function(el){
       el.classList.toggle('is-on',el.getAttribute('data-label')===key);
     });
   }
@@ -1282,7 +1368,7 @@ details .a p{font-size:.9375rem}
     pth.setAttribute('tabindex','0');
     pth.setAttribute('role','button');
     pth.setAttribute('aria-label',label);
-    pth.setAttribute('aria-pressed',key==='south-east'?'true':'false');
+    pth.setAttribute('aria-pressed','false');
     var title=document.createElementNS('http://www.w3.org/2000/svg','title');
     title.textContent=label;
     pth.appendChild(title);
@@ -1292,7 +1378,33 @@ details .a p{font-size:.9375rem}
     });
   });
 
-  show('south-east');
+  /* a pin lights its own region on hover, and opens that agent on click */
+  pins.forEach(function(pin){
+    var agent=pin.getAttribute('data-agent'),
+        region=svg.querySelector('.region[data-region="'+pin.getAttribute('data-region')+'"]');
+
+    function hot(on){
+      pin.classList.toggle('is-hot',on);
+      if(region)region.classList.toggle('is-hot',on);
+    }
+    pin.addEventListener('mouseenter',function(){hot(true)});
+    pin.addEventListener('mouseleave',function(){hot(false)});
+    pin.addEventListener('focus',function(){hot(true)});
+    pin.addEventListener('blur',function(){hot(false)});
+
+    function open(){
+      var tab=document.querySelector('.agent-tab[aria-controls="agent-'+agent+'"]');
+      if(tab)tab.click();
+      var section=document.getElementById('agents');
+      if(section)section.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    pin.addEventListener('click',open);
+    pin.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}
+    });
+  });
+
+  show(null);
 })();
 
 /* navbar — mobile menu and the "Where we buy" dropdown */
@@ -1347,37 +1459,7 @@ details .a p{font-size:.9375rem}
   Array.prototype.forEach.call(stack.children,function(c){io.observe(c)});
 })();
 
-/* booking — calendar tabs */
-(function(){
-  var tabs=document.querySelectorAll('.tab'),
-      name=document.getElementById('cal-name'),
-      note=document.getElementById('cal-note'),
-      link=document.getElementById('cal-link');
-
-  tabs.forEach(function(tab){
-    tab.addEventListener('click',function(){
-      tabs.forEach(function(t){t.setAttribute('aria-selected','false')});
-      tab.setAttribute('aria-selected','true');
-      document.getElementById('panel-cal').setAttribute('aria-labelledby',tab.id);
-
-      var cal=tab.getAttribute('data-cal');
-      name.textContent=tab.getAttribute('data-name');
-      note.textContent=tab.getAttribute('data-area')+' · 15-minute consult';
-      link.textContent='Book with '+tab.textContent.trim();
-
-      if(cal){
-        link.setAttribute('href',cal);
-        link.classList.remove('btn-on-green');
-        link.classList.add('btn-cream');
-      }else{
-        link.removeAttribute('href');
-        link.textContent='Calendar link to confirm';
-        link.classList.remove('btn-cream');
-        link.classList.add('btn-on-green');
-      }
-    });
-  });
-})();
+/* the booking section books one calendar, so there are no tabs to drive */
 </script>
 </body>
 </html>

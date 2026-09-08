@@ -42,18 +42,25 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
-- **Region map:** the nine ABS SA4 regions of greater Melbourne, traced from
+- **Region map:** four agent pins sit over the map — Tanuj (South East),
+  Arshad (West), Nirvan (North) and Abhimaan (East). Hovering or focusing a pin
+  lights the pin and its region and shows the name; clicking one selects that
+  person in the agent slider and scrolls to it. Pin positions are verified
+  against the boundary paths with `isPointInFill`, so moving a region's geometry
+  means re-checking its pin. The headshots come from the Webflow CDN and fall
+  back to an initial on a green disc if they fail.
+  The map itself is the nine ABS SA4 regions of greater Melbourne, traced from
   boundary paths supplied by the client (`melbournesa4map.html`) and simplified
   with Douglas-Peucker at a 1.1-unit tolerance — sub-pixel at display size, and
   it halves the path data from 43KB to 23KB. Clicking or keyboard-selecting a
-  region updates the name and the call to action on the card beside it. South
-  East is selected on load.
+  region updates the name on the card beside it. **No region is selected on
+  load** — this is the Melbourne page, so no one corner of the city is the
+  focus.
   The section is a two-column grid set to `stretch`: the region card carries
   `margin-top:auto` so its bottom edge lands on the map box's, rather than the
   two columns floating centred with dead space above and below. The card holds
-  the region name, a fixed row of location tags (Ringwood, Glen Waverley,
-  Brighton, Oakleigh, and everywhere in between) and the CTA — the tags are
-  deliberately spread across Melbourne rather than tied to the selected region.
+  the region name, a fixed row of Melbourne areas (North, East, South East,
+  West, Inner Melbourne, and everywhere in between) and the CTA.
   **Check the licence on that boundary data before launch** — if it derives
   from ABS Statistical Area boundaries it is CC BY 4.0 and needs attribution.
 - **Motifs:** a "Rated 5 Stars on Google" row above the headline and soft
@@ -65,23 +72,29 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 
 ## The numbers on the page
 
-Every figure comes from the **Owner Occ Sales Deck** and nowhere else. Do not
-invent, round up, or extrapolate from them.
-
-| Figure | Deck slide | Used on the page |
+| Figure | Source | Used on the page |
 | --- | --- | --- |
-| 90+ inspections attended each week | 1/9 Local market intelligence | Hero headline + stat, "Why buyers bring us in" |
-| 200+ off-markets across Melbourne each week | 2/9 Sourcing | Hero stat, off-market panel |
-| 50 due diligence reports produced daily | 3/9 DD & pricing | "Why buyers bring us in" |
-| 3.7% average discount negotiated | 4/9 Negotiation | Hero lede + stat, "Why buyers bring us in", Recent buys |
-| 7+ professionals coordinated to settlement | 5/9 Settlement & process | "Why buyers bring us in", process step 6 |
-| 120hrs+ saved on a typical purchase | 6/9 Save time | Process intro |
-| 9 weeks average time to secure | 7/9 Speed to result | Hero lede, process intro, Recent buys |
+| 90+ inspections attended each week | Deck 1/9 | Hero stat |
+| 200+ off-market properties across Melbourne each week | Deck 2/9 | Hero stat |
+| 100+ Melbourne off markets every week | Client, 8 Sep | Off-market section heading |
+| 100 due diligence reports a day | Client, 8 Sep (deck says 50) | "Why buyers bring us in" |
+| 3.7% average discount negotiated | Deck 4/9 | Hero stat, "Why buyers bring us in" |
+| 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in", process step 6 |
+| 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
+| 9 weeks average time to secure | Deck 7/9 | Process intro |
+| Over 1,000 properties purchased | Client, 8 Sep | Hero lede, "Why buyers bring us in", FAQ |
+| Thousands of families | Client, 8 Sep | "Why buyers bring us in" closing line |
 
-**The deck contradicts itself on one figure.** Slide 7/9's heading says many
-clients secure "in just 4 to 5" weeks while its own bullet says "3 to 4 weeks".
-Neither is on the page — only the 9-week average is. Settle which is right
-before anyone uses the faster number in marketing.
+**Three numbers need settling before this goes public.**
+
+1. **Off-markets: 200+ or 100+?** The hero stat says 200+ a week (deck slide
+   2/9); the off-market section heading now says 100+ a week (8 Sep changes).
+   Both are on the page and they contradict each other in the reader's eye.
+2. **Due diligence reports: 50 or 100 a day?** The deck says 50, the 8 Sep
+   changes say 100. The page now says 100.
+3. **Speed.** Deck slide 7/9's heading says many clients secure "in just 4 to
+   5" weeks while its own bullet says "3 to 4 weeks". Neither is on the page —
+   only the 9-week average is.
 
 Each figure is an average or a business-wide throughput number, not a promise
 to an individual buyer. If this page is going to make these claims publicly,
@@ -140,9 +153,13 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
 
 | File | Intended path | Status |
 | --- | --- | --- |
-| `buyers-agent-melbourne-south-east.html` | TBC (e.g. `/melbourne-south-east`) | Draft |
+| `buyers-agent-melbourne.html` | TBC (e.g. `/melbourne`) | Draft |
 
-### Open items on the south east page
+This started as a Melbourne South East page and was widened to cover all of
+Melbourne on 8 Sep. A separate South East page is still to be built; when it is,
+it inherits this structure and narrows the copy, the map and the team back down.
+
+### Open items on the Melbourne page
 
 - Photography and video testimonials for all image slots.
 - Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
