@@ -75,7 +75,7 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | Figure | Source | Used on the page |
 | --- | --- | --- |
 | 90+ inspections attended each week | Deck 1/9 | Hero stat |
-| 200+ off-market properties across Melbourne each week | Deck 2/9 | Hero stat |
+| 200+ off-market homes across Melbourne each week | Deck 2/9 | Hero stat |
 | 100+ Melbourne off markets every week | Client, 8 Sep | Off-market section heading |
 | 100 due diligence reports a day | Client, 8 Sep (deck says 50) | "Why buyers bring us in" |
 | 3.7% average discount negotiated | Deck 4/9 | Hero stat, "Why buyers bring us in" |
