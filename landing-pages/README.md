@@ -103,6 +103,16 @@ and Abhimaan in the agent slider, and Rahul, Shamindri, Ali Al Hilo and
 Shashyani in Meet the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
 tall frame rather than centred.
 
+The "Why buyers bring us in" photo — a couple going through paperwork with an
+agent — is the one image **inlined as a data URI** rather than pulled from the
+CDN, so the page still shows it when it is opened as a single file or in a
+preview that blocks remote images. `assets/inspection-couple.jpg` is the same
+picture: upload it to the Webflow asset library and replace the data URI with
+the CDN URL when this moves into Webflow. It is a stock photo (Unsplash, Vitaly
+Gariev) and reads as one — swap it for a real Pathway inspection when there is
+one. The source is 16:9 in a square frame, so the crop sits at
+`object-position: 57% 50%` to keep all three people and the clipboard in shot.
+
 Still needed: a headshot for **Rumeysa** and the "Recent buys" strip, which
 must be actual clients. The podcast thumbnail is wired to the Webflow CDN.
 
