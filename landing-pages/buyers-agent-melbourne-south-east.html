@@ -283,23 +283,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   margin-top:auto;background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
   border-radius:30px;padding:26px 28px;
 }
-.region-card h3{color:var(--shell);font-size:1.375rem;font-weight:700;letter-spacing:-.02em;margin:0 0 10px}
-.region-card p{font-size:.9375rem;color:var(--on-green-70);margin:0}
-.region-card .btn{margin-top:22px}
+.region-card h3{color:var(--shell);font-size:1.375rem;font-weight:700;letter-spacing:-.02em;margin:0 0 18px}
+.region-card .btn{margin-top:24px}
 @media(max-width:900px){.region-card{margin-top:0;padding:22px;border-radius:26px}}
 
 .pill-label{margin-top:26px;font-size:.8125rem;font-weight:600;color:var(--mint)}
 .pill-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .pill{border:1.5px solid var(--on-green-45);border-radius:var(--pill);padding:9px 19px;font-size:.9375rem;font-weight:500;color:var(--on-green)}
 .pill-soft{border-color:transparent;background:rgba(241,239,233,.12)}
-.pill-row{
-  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;
-  margin-top:40px;padding-top:34px;border-top:1px solid var(--on-green-45);
-}
+.pill-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.pill-row .pill{padding:8px 17px;font-size:.875rem}
 @media(max-width:900px){
   .area-grid{grid-template-columns:1fr;gap:34px}
   .area-left>p{margin-bottom:28px;max-width:none}
-  .pill-row{margin-top:32px;padding-top:28px;justify-content:flex-start}
 }
 
 /* how it works — sticky stacking cards (as the About page values) -- */
@@ -737,7 +733,13 @@ details .a p{font-size:.9375rem}
 
           <div class="region-card" aria-live="polite">
             <h3 id="region-name">Melbourne South East</h3>
-            <p id="region-copy">Dandenong, Berwick, Narre Warren, Cranbourne, Pakenham, Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and the suburbs between them.</p>
+            <div class="pill-row">
+              <span class="pill">Ringwood</span>
+              <span class="pill">Glen Waverley</span>
+              <span class="pill">Brighton</span>
+              <span class="pill">Oakleigh</span>
+              <span class="pill pill-soft">and everywhere in between</span>
+            </div>
             <a class="btn btn-cream" id="region-cta" href="#book">Book a consult</a>
           </div>
         </div>
@@ -768,14 +770,6 @@ details .a p{font-size:.9375rem}
               </g>
             </svg>
         </div>
-      </div>
-
-      <div class="pill-row">
-        <span class="pill">Ringwood</span>
-        <span class="pill">Glen Waverley</span>
-        <span class="pill">Brighton</span>
-        <span class="pill">Oakleigh</span>
-        <span class="pill pill-soft">and everywhere in between</span>
       </div>
     </div>
   </div>
@@ -1228,23 +1222,16 @@ details .a p{font-size:.9375rem}
     'inner-east':{name:"Melbourne Inner East"},
     'inner-south':{name:"Melbourne Inner South"},
     'mornington':{name:"Mornington Peninsula"},
-    'south-east':{
-      name:"Melbourne South East",
-      copy:"Dandenong, Berwick, Narre Warren, Cranbourne, Pakenham, Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and the suburbs between them.",
-      cta:"Book a consult"
-    }
+    'south-east':{name:"Melbourne South East",cta:"Book a consult"}
   };
-  var ELSEWHERE="We buy here too. Tell us the suburbs on your list and we'll come back with what your budget does there and how we can help.";
 
   var paths=svg.querySelectorAll('.region'),
       nameEl=document.getElementById('region-name'),
-      copyEl=document.getElementById('region-copy'),
       ctaEl=document.getElementById('region-cta');
 
   function show(key){
     var r=regions[key]||{name:"Melbourne"};
     nameEl.textContent=r.name;
-    copyEl.textContent=r.copy||ELSEWHERE;
     ctaEl.textContent=r.cta||"Tell us where you're looking";
     paths.forEach(function(pth){
       var on=pth.getAttribute('data-region')===key;
