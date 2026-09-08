@@ -307,9 +307,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 /* agent pins — teardrop, face in the head, tip on the region --------- */
 .pin{cursor:pointer;outline:none}
 .pin-body{fill:var(--green-deep);stroke:rgba(241,239,233,.8);stroke-width:4;transition:fill .25s ease,stroke .25s ease}
-.pin-disc{fill:var(--green-deep)}
+.pin-disc{fill:var(--cream)}
 .pin-initial{
-  font-family:var(--font);font-size:34px;font-weight:700;letter-spacing:.02em;fill:var(--on-green-70);
+  font-family:var(--font);font-size:34px;font-weight:700;letter-spacing:.02em;fill:var(--green);
   text-anchor:middle;pointer-events:none;
 }
 .pin-ring{fill:none;stroke:rgba(241,239,233,.8);stroke-width:4;transition:stroke .25s ease,stroke-width .25s ease}
@@ -1377,6 +1377,31 @@ details .a p{font-size:.9375rem}
     pth.addEventListener('keydown',function(e){
       if(e.key==='Enter'||e.key===' '){e.preventDefault();show(key)}
     });
+  });
+
+  /* Frame every pin photo the way the slider frames its portraits: cover the
+     circle with the focal point 28% down. preserveAspectRatio only offers
+     0/50/100%, so measure the source and set the box explicitly. Sources here
+     are different shapes, which is why some faces sat low. */
+  pins.forEach(function(pin){
+    var img=pin.querySelector('.pin-photo');
+    if(!img)return;
+    var href=img.getAttribute('href');
+    if(!href)return;
+    var probe=new Image();
+    probe.onload=function(){
+      var w=probe.naturalWidth, h=probe.naturalHeight;
+      if(!w||!h)return;
+      var D=92, TOP=-133, FOCUS=0.28,
+          scale=Math.max(D/w,D/h),
+          dw=w*scale, dh=h*scale;
+      img.setAttribute('preserveAspectRatio','none');
+      img.setAttribute('width',dw);
+      img.setAttribute('height',dh);
+      img.setAttribute('x',-dw/2);
+      img.setAttribute('y',TOP-(dh-D)*FOCUS);
+    };
+    probe.src=href;
   });
 
   /* a pin lights its own region on hover, and opens that agent on click */

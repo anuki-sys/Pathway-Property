@@ -50,8 +50,14 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
   to it. Both the tip and the head centre are verified inside the right region
   with `isPointInFill`, so moving a region's geometry or a pin means re-running
   that check. The headshots come from the Webflow CDN and fall back to two-letter
-  initials on a green disc if they fail — two letters because Arshad and
-  Abhimaan would otherwise both show "A".
+  initials if they fail — two letters because Arshad and Abhimaan would
+  otherwise both show "A". They sit on a **cream** disc, so a cut-out PNG or a
+  dark portrait still reads.
+  Each photo is framed at runtime rather than by `preserveAspectRatio`, which
+  only offers 0/50/100%: the script measures the source and sets the box so the
+  image covers the circle with the focal point 28% down, matching the agent
+  slider. The four sources are different shapes, which is why some faces sat
+  lower than others before this.
   The map itself is the nine ABS SA4 regions of greater Melbourne, traced from
   boundary paths supplied by the client (`melbournesa4map.html`) and simplified
   with Douglas-Peucker at a 1.1-unit tolerance — sub-pixel at display size, and
