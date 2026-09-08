@@ -137,14 +137,14 @@ blocks remote images:
 | Slot | Inlined file | Note |
 | --- | --- | --- |
 | Hero inset (square, beside the main hero photo) | `assets/keys-handover.jpg` | Keys in an open doorway; the keyring's green happens to match the brand |
-| "Why buyers bring us in" | `assets/inspection-couple.jpg` | Couple going through paperwork with an agent; 16:9 in a square frame, so the crop sits at `object-position: 57% 50%` to keep all three people and the clipboard in shot |
+| "Why buyers bring us in" | `assets/approaching-home.jpg` | A buyer walking up to a front door. The frame has **no aspect ratio**: the grid is `align-items: stretch`, so it takes whatever height the list beside it ends up being and the two columns always end level. Below 900px the columns stack and it falls back to 4:5. |
 
 Both are in `assets/` at exactly the bytes that are inlined. When this moves
 into Webflow, upload them to the site asset library and replace each data URI
 with its CDN URL — data URIs are a preview convenience, not how the live page
 should ship.
 
-Both are Unsplash stock (Vitaly Gariev; Jakub Żerdzicki) and read as stock.
+Both are Unsplash stock (João Emanuel; Jakub Żerdzicki) and read as stock.
 Swap them for real Pathway photography when there is some.
 
 Still needed: a headshot for **Rumeysa** and the "Recent buys" strip, which
