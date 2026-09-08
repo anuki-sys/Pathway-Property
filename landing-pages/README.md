@@ -42,10 +42,14 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
-- **Region map:** hand-drawn SVG of greater Melbourne, split into seven
-  regions that share vertices so they tile without seams. Clicking or
-  keyboard-selecting a region updates the card beside it. South East is
-  selected on load and is the only region with a suburb list.
+- **Region map:** the nine ABS SA4 regions of greater Melbourne, traced from
+  boundary paths supplied by the client (`melbournesa4map.html`) and simplified
+  with Douglas-Peucker at a 1.1-unit tolerance — sub-pixel at display size, and
+  it halves the path data from 43KB to 23KB. Clicking or keyboard-selecting a
+  region updates the card beside it. South East is selected on load and is the
+  only region with a suburb list.
+  **Check the licence on that boundary data before launch** — if it derives
+  from ABS Statistical Area boundaries it is CC BY 4.0 and needs attribution.
 - **Motifs:** a "Rated 5 Stars on Google" row above the headline and soft
   white clouds drifting behind the hero, in the spirit of the main site's
   illustrations. The clouds hide below 1080px, where the hero becomes a
