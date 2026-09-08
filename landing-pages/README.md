@@ -82,6 +82,9 @@ tall frame rather than centred.
 Still needed: a headshot for **Rumeysa** and the "Recent buys" strip, which
 must be actual clients. The podcast thumbnail is wired to the Webflow CDN.
 
+Role chips are solid once the role is confirmed and dashed while it is still a
+placeholder, so an unconfirmed card is obvious at a glance.
+
 "Recent buys" is an auto-scrolling marquee. Its tiles are written out twice so
 the loop is seamless: **whatever you change in the first set, change in the
 second**. Six tiles is the target; three works too. It pauses on hover and on
@@ -104,7 +107,11 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
 - Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
   (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
   "calendar link to confirm" state.
-- Individual roles for Rahul, Shamindri, Ali Al Hilo, Rumeysa and Shashyani.
+- Rumeysa's full name and role. The other four in Meet the team are confirmed:
+  Shashyani de Silva (Client Success Specialist), Ragulan Vilvarajah (Property
+  Operations Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali
+  Al Hilo (Property Analyst). Ragulan's headshot is the file named `rahul.png`
+  on the Webflow CDN — confirm that card is the right person.
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler.
 - Real YouTube and Spotify links on the podcast section (both are `#`).

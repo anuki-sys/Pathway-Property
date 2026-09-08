@@ -426,11 +426,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .member{background:var(--cream);border:var(--stroke);border-radius:30px;overflow:hidden}
 .member .shot{border:0;border-radius:0;aspect-ratio:1}
 .member-body{padding:20px}
-.member h3{font-size:1.0625rem;margin-bottom:8px}
+.member h3{font-size:1.0625rem;margin-bottom:8px;line-height:1.3}
 .member .role-chip{
-  display:inline-block;border:1.5px dashed var(--green);color:var(--green);
-  border-radius:var(--pill);padding:3px 12px;font-size:.75rem;font-weight:600;
+  display:inline-block;border:1.5px solid var(--green);background:var(--green-tint);color:var(--green);
+  border-radius:var(--pill);padding:3px 12px;font-size:.75rem;font-weight:600;line-height:1.45;
 }
+/* dashed = still a placeholder, so an unconfirmed role reads as one */
+.member .role-chip.tbc{border-style:dashed;background:transparent}
 @media(max-width:1000px){.team{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.team{grid-template-columns:1fr 1fr}}
 
@@ -966,27 +968,27 @@ details .a p{font-size:.9375rem}
   <div class="wrap">
     <div class="eyebrow">Meet the team</div>
     <h2>The people behind every purchase.</h2>
-    <p class="lead" style="margin-top:16px">Contract specialists, settlement specialists and property analysts — so nothing on your file sits waiting on one person's inbox.</p>
+    <p class="lead" style="margin-top:16px">Client success, property operations, settlement and analysis — so nothing on your file sits waiting on one person's inbox.</p>
     <div class="team">
       <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Rahul</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a2a3101e6e4dfc1fa_rahul.png" alt="Rahul"></figure>
-        <div class="member-body"><h3>Rahul</h3><span class="role-chip">Role to confirm</span></div>
+        <figure class="shot"><div class="slot"><b>Photo</b>Shashyani de Silva</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5e0b792bbbf4a481b3_shashyani.png" alt="Shashyani de Silva"></figure>
+        <div class="member-body"><h3>Shashyani de Silva</h3><span class="role-chip">Client Success Specialist</span></div>
       </div>
       <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Shamindri</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a4cabd3a3efe2aaf7_Shamindri.png" alt="Shamindri"></figure>
-        <div class="member-body"><h3>Shamindri</h3><span class="role-chip">Role to confirm</span></div>
+        <figure class="shot"><div class="slot"><b>Photo</b>Ragulan Vilvarajah</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a2a3101e6e4dfc1fa_rahul.png" alt="Ragulan Vilvarajah"></figure>
+        <div class="member-body"><h3>Ragulan Vilvarajah</h3><span class="role-chip">Property Operations Specialist</span></div>
+      </div>
+      <div class="member">
+        <figure class="shot"><div class="slot"><b>Photo</b>Shamindri Jayawarna</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a4cabd3a3efe2aaf7_Shamindri.png" alt="Shamindri Jayawarna"></figure>
+        <div class="member-body"><h3>Shamindri Jayawarna</h3><span class="role-chip">Settlement Specialist</span></div>
       </div>
       <div class="member">
         <figure class="shot"><div class="slot"><b>Photo</b>Ali Al Hilo</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5bdb1d7f8685a422fd_Ali.png" alt="Ali Al Hilo"></figure>
-        <div class="member-body"><h3>Ali Al Hilo</h3><span class="role-chip">Role to confirm</span></div>
+        <div class="member-body"><h3>Ali Al Hilo</h3><span class="role-chip">Property Analyst</span></div>
       </div>
       <div class="member">
         <figure class="shot"><div class="slot"><b>Photo</b>Rumeysa</div><img onerror="this.remove()" src="assets/team-rumeysa.jpg" alt=""></figure>
-        <div class="member-body"><h3>Rumeysa</h3><span class="role-chip">Role to confirm</span></div>
-      </div>
-      <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Shashyani</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5e0b792bbbf4a481b3_shashyani.png" alt="Shashyani"></figure>
-        <div class="member-body"><h3>Shashyani</h3><span class="role-chip">Role to confirm</span></div>
+        <div class="member-body"><h3>Rumeysa</h3><span class="role-chip tbc">Full name and role to confirm</span></div>
       </div>
     </div>
   </div>
