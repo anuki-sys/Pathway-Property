@@ -48,6 +48,10 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
   it halves the path data from 43KB to 23KB. Clicking or keyboard-selecting a
   region updates the card beside it. South East is selected on load and is the
   only region with a suburb list.
+  The section is a two-column grid set to `stretch`: the region card carries
+  `margin-top:auto` so its bottom edge lands on the map box's, rather than the
+  two columns floating centred with dead space above and below. The location
+  pills are a static horizontal row under both columns, separated by a hairline.
   **Check the licence on that boundary data before launch** — if it derives
   from ABS Statistical Area boundaries it is CC BY 4.0 and needs attribution.
 - **Motifs:** a "Rated 5 Stars on Google" row above the headline and soft

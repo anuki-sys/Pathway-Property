@@ -255,9 +255,15 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .panel-green p{color:var(--on-green-70)}
 .panel-green .eyebrow{color:var(--mint)}
 @media(max-width:900px){.panel-green{border-radius:36px;padding:52px 8%}}
-.area-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:52px;align-items:center}
+.area-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch}
 /* where we buy — interactive region map ---------------------------- */
-.map-box{background:rgba(255,255,255,.06);border:1px solid var(--on-green-45);border-radius:30px;padding:20px}
+.area-left{display:flex;flex-direction:column}
+.area-left h2{margin:0}
+.area-left>p{margin:16px 0 36px;max-width:44ch}
+.map-box{
+  background:rgba(255,255,255,.06);border:1px solid var(--on-green-45);
+  border-radius:30px;padding:18px;display:flex;align-items:center;justify-content:center;
+}
 .melb-map{display:block;width:100%;height:auto}
 .region{
   fill:rgba(241,239,233,.14);stroke:rgba(241,239,233,.55);stroke-width:2.4;
@@ -272,29 +278,29 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 .map-labels .lbl-small{font-size:19px}
 .map-labels text.is-on{fill:var(--green);font-weight:700}
-.map-hint{margin-top:14px;font-size:.8125rem;color:var(--on-green-70);text-align:center}
 
 .region-card{
-  margin-top:28px;background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
+  margin-top:auto;background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);
   border-radius:30px;padding:26px 28px;
 }
-.region-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:10px}
-.region-card h3{color:var(--shell);font-size:1.375rem;font-weight:700;letter-spacing:-.02em}
-.region-tag{
-  border-radius:var(--pill);padding:5px 14px;font-size:.75rem;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;background:var(--shell);color:var(--green);
-}
-.region-tag[hidden]{display:none}
+.region-card h3{color:var(--shell);font-size:1.375rem;font-weight:700;letter-spacing:-.02em;margin:0 0 10px}
 .region-card p{font-size:.9375rem;color:var(--on-green-70);margin:0}
-.region-card .pill-grid{margin-top:16px}
 .region-card .btn{margin-top:22px}
-@media(max-width:900px){.region-card{padding:22px;border-radius:26px}}
+@media(max-width:900px){.region-card{margin-top:0;padding:22px;border-radius:26px}}
 
 .pill-label{margin-top:26px;font-size:.8125rem;font-weight:600;color:var(--mint)}
 .pill-grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
 .pill{border:1.5px solid var(--on-green-45);border-radius:var(--pill);padding:9px 19px;font-size:.9375rem;font-weight:500;color:var(--on-green)}
 .pill-soft{border-color:transparent;background:rgba(241,239,233,.12)}
-@media(max-width:900px){.area-grid{grid-template-columns:1fr;gap:34px}}
+.pill-row{
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;
+  margin-top:40px;padding-top:34px;border-top:1px solid var(--on-green-45);
+}
+@media(max-width:900px){
+  .area-grid{grid-template-columns:1fr;gap:34px}
+  .area-left>p{margin-bottom:28px;max-width:none}
+  .pill-row{margin-top:32px;padding-top:28px;justify-content:flex-start}
+}
 
 /* how it works — sticky stacking cards (as the About page values) -- */
 .flow-layout{display:grid;grid-template-columns:.82fr 1.18fr;gap:64px;align-items:start}
@@ -725,27 +731,18 @@ details .a p{font-size:.9375rem}
     <div class="panel-green">
       <div class="eyebrow">Where we buy</div>
       <div class="area-grid">
-        <div>
+        <div class="area-left">
           <h2>Wherever you're looking in Melbourne.</h2>
-          <p style="margin-top:18px">We buy across Melbourne and its growth corridors. Pick an area on the map, or tell us the suburbs on your list and we'll tell you what your budget does there and where the value actually sits.</p>
+          <p>We buy across Melbourne and its growth corridors. Tell us the suburbs on your list and we'll tell you what your budget does there and where the value actually sits.</p>
 
           <div class="region-card" aria-live="polite">
-            <div class="region-head">
-              <h3 id="region-name">Melbourne South East</h3>
-              <span class="region-tag" id="region-tag">This office</span>
-            </div>
+            <h3 id="region-name">Melbourne South East</h3>
             <p id="region-copy">Dandenong, Berwick, Narre Warren, Cranbourne, Pakenham, Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and the suburbs between them.</p>
-            <div class="pill-grid" id="region-pills">
-              <span class="pill">Dandenong</span><span class="pill">Berwick</span><span class="pill">Narre Warren</span>
-              <span class="pill">Cranbourne</span><span class="pill">Pakenham</span>
-              <span class="pill pill-soft">and everywhere in between</span>
-            </div>
             <a class="btn btn-cream" id="region-cta" href="#book">Book a consult</a>
           </div>
         </div>
 
-        <div>
-          <div class="map-box">
+        <div class="map-box">
             <svg class="melb-map" viewBox="10 10 980 1062" role="group" aria-label="Map of the nine SA4 regions of greater Melbourne. Choose a region.">
               <g class="regions">
                 <path class="region" data-region="north-west" d="M403.8 286.4 L364.7 281.3 L361.1 279.3 L365.3 275.3 L365.0 272.4 L369.9 272.6 L367.6 270.1 L370.5 268.8 L367.7 267.0 L368.9 260.2 L372.1 260.9 L371.0 258.1 L373.1 258.1 L372.9 253.9 L376.1 253.0 L376.4 250.0 L372.2 250.7 L367.9 247.0 L371.7 245.5 L371.6 239.2 L369.4 238.5 L372.1 236.1 L370.2 234.9 L372.3 234.4 L372.9 231.1 L371.3 229.9 L373.8 227.8 L373.9 225.4 L371.8 223.9 L373.9 223.2 L372.6 221.1 L370.1 221.5 L369.9 218.6 L374.7 217.7 L375.5 215.3 L372.1 211.9 L375.2 210.0 L372.0 205.4 L375.5 204.6 L377.1 201.2 L380.2 185.1 L384.4 177.9 L386.0 170.9 L382.2 170.2 L383.9 158.9 L368.1 156.7 L368.7 155.1 L365.3 153.7 L363.8 148.5 L359.3 150.4 L357.0 145.5 L354.7 143.5 L353.9 144.9 L352.2 144.2 L351.1 140.4 L347.3 142.3 L346.0 139.4 L341.7 138.9 L345.7 110.1 L339.5 113.8 L326.9 109.0 L325.1 99.6 L329.2 71.3 L327.1 67.9 L321.6 67.0 L323.7 58.4 L318.2 57.0 L318.9 54.3 L313.4 52.9 L312.9 54.9 L302.5 53.6 L297.6 58.9 L297.5 55.2 L292.6 55.2 L292.6 59.6 L269.0 59.5 L267.8 57.6 L252.0 53.5 L259.6 50.3 L258.4 25.1 L245.8 24.0 L246.2 27.5 L243.7 31.9 L236.9 30.9 L234.2 25.8 L230.9 28.8 L224.3 28.4 L223.9 33.8 L221.2 33.6 L223.4 40.1 L220.0 39.6 L218.7 49.0 L209.9 52.6 L209.4 56.0 L205.1 55.4 L204.8 57.3 L218.2 60.1 L210.5 61.6 L204.0 66.9 L202.5 72.1 L196.4 76.6 L193.0 75.5 L190.3 78.0 L186.3 75.1 L182.5 85.2 L199.2 88.1 L199.2 92.0 L202.1 91.2 L201.6 93.9 L204.6 94.4 L201.7 100.6 L204.3 101.0 L203.2 108.4 L215.0 110.3 L214.3 115.1 L224.5 115.3 L224.6 118.6 L223.0 121.5 L218.1 121.5 L218.1 124.1 L212.0 130.3 L209.2 149.8 L198.5 148.2 L196.9 146.5 L196.6 148.8 L190.8 149.2 L188.2 168.0 L184.9 167.4 L184.5 169.3 L184.0 166.8 L180.7 167.6 L176.7 165.3 L176.4 168.0 L173.2 167.5 L171.9 175.7 L168.9 175.2 L164.4 188.2 L157.5 185.6 L154.5 186.1 L154.4 191.3 L149.8 194.6 L148.8 199.5 L143.9 198.6 L144.1 200.4 L140.1 201.5 L134.3 211.3 L126.9 213.3 L124.5 212.2 L123.2 207.5 L118.6 209.0 L118.2 212.3 L113.0 210.6 L107.7 230.1 L101.3 275.3 L107.8 283.5 L107.4 294.1 L103.5 300.5 L105.3 306.2 L101.5 309.1 L100.3 312.4 L116.4 317.2 L161.1 323.5 L164.1 318.5 L204.5 324.4 L202.6 330.8 L207.5 339.5 L206.9 345.3 L208.3 347.9 L223.1 350.9 L221.4 365.3 L223.8 368.2 L225.7 376.6 L221.4 385.1 L229.8 392.5 L240.2 399.6 L277.2 404.9 L285.8 404.7 L289.6 406.9 L294.1 405.6 L291.8 408.7 L295.4 410.8 L296.8 415.5 L306.3 414.4 L310.0 411.6 L312.0 414.6 L314.2 409.9 L313.4 414.8 L315.2 420.5 L317.5 419.2 L323.6 420.4 L324.0 427.7 L318.2 430.2 L317.2 431.8 L318.6 433.0 L315.7 432.9 L317.5 434.5 L312.5 435.1 L312.4 437.1 L315.4 437.1 L319.3 441.7 L318.0 441.9 L318.1 444.7 L324.4 445.6 L324.4 450.0 L326.7 452.6 L330.1 452.9 L328.3 460.4 L331.3 462.2 L334.3 461.2 L332.9 466.1 L334.8 466.6 L335.7 470.5 L340.1 471.1 L341.9 476.4 L341.1 480.4 L344.5 482.4 L343.3 490.1 L348.7 493.1 L351.5 490.1 L356.9 489.4 L354.8 485.2 L361.4 477.5 L363.9 477.4 L363.3 481.3 L366.1 482.0 L368.6 460.7 L375.7 461.3 L378.0 465.9 L393.8 468.5 L390.7 459.9 L403.2 461.8 L403.4 459.0 L424.1 461.6 L425.5 450.3 L421.4 450.4 L421.1 446.7 L422.8 445.1 L420.4 444.2 L421.6 443.4 L420.5 441.5 L422.8 439.4 L421.3 437.4 L423.8 436.0 L422.0 434.2 L421.5 429.3 L416.3 427.7 L418.4 425.3 L416.5 424.3 L418.9 418.1 L417.6 415.7 L420.9 415.4 L419.1 413.3 L420.0 411.6 L418.5 411.3 L419.6 406.6 L417.4 404.9 L417.5 401.9 L420.4 401.1 L418.9 396.5 L420.0 394.7 L415.7 389.2 L415.4 385.7 L409.0 382.5 L409.2 377.2 L405.5 373.7 L408.3 371.9 L407.4 368.7 L404.9 365.9 L405.3 364.0 L401.6 361.4 L405.2 360.9 L405.6 352.8 L407.4 348.8 L409.2 348.7 L407.8 342.0 L411.9 339.5 L413.2 335.0 L411.9 330.0 L413.3 324.6 L406.1 316.5 L406.1 312.7 L415.3 304.7 L417.7 305.1 L420.3 300.1 L417.8 297.8 L419.9 293.1 L418.8 290.1 L420.5 288.3 L403.8 286.4 Z"/>
@@ -770,9 +767,15 @@ details .a p{font-size:.9375rem}
                 <text data-label="mornington" x="469" y="910">Mornington</text>
               </g>
             </svg>
-          </div>
-          <p class="map-hint">Tap an area to see how we can help there.</p>
         </div>
+      </div>
+
+      <div class="pill-row">
+        <span class="pill">Ringwood</span>
+        <span class="pill">Glen Waverley</span>
+        <span class="pill">Brighton</span>
+        <span class="pill">Oakleigh</span>
+        <span class="pill pill-soft">and everywhere in between</span>
       </div>
     </div>
   </div>
@@ -1227,9 +1230,7 @@ details .a p{font-size:.9375rem}
     'mornington':{name:"Mornington Peninsula"},
     'south-east':{
       name:"Melbourne South East",
-      tag:"This office",
       copy:"Dandenong, Berwick, Narre Warren, Cranbourne, Pakenham, Officer, Clyde, Hallam, Hampton Park, Beaconsfield, Lynbrook and the suburbs between them.",
-      pills:["Dandenong","Berwick","Narre Warren","Cranbourne","Pakenham"],
       cta:"Book a consult"
     }
   };
@@ -1237,9 +1238,7 @@ details .a p{font-size:.9375rem}
 
   var paths=svg.querySelectorAll('.region'),
       nameEl=document.getElementById('region-name'),
-      tagEl=document.getElementById('region-tag'),
       copyEl=document.getElementById('region-copy'),
-      pillsEl=document.getElementById('region-pills'),
       ctaEl=document.getElementById('region-cta');
 
   function show(key){
@@ -1247,16 +1246,6 @@ details .a p{font-size:.9375rem}
     nameEl.textContent=r.name;
     copyEl.textContent=r.copy||ELSEWHERE;
     ctaEl.textContent=r.cta||"Tell us where you're looking";
-    if(r.tag){tagEl.textContent=r.tag;tagEl.hidden=false}else{tagEl.hidden=true}
-    pillsEl.innerHTML='';
-    (r.pills||[]).forEach(function(s){
-      var el=document.createElement('span');el.className='pill';el.textContent=s;pillsEl.appendChild(el);
-    });
-    if(r.pills){
-      var more=document.createElement('span');
-      more.className='pill pill-soft';more.textContent='and everywhere in between';
-      pillsEl.appendChild(more);
-    }
     paths.forEach(function(pth){
       var on=pth.getAttribute('data-region')===key;
       pth.classList.toggle('is-on',on);
