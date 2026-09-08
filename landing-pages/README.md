@@ -103,6 +103,17 @@ Each figure is an average or a business-wide throughput number, not a promise
 to an individual buyer. If this page is going to make these claims publicly,
 they need to be substantiable — keep the underlying records.
 
+## House style
+
+**No em dashes anywhere in reader-facing copy.** Use a comma, a full stop or a
+colon instead. This applies to body copy, headings, meta description, form
+placeholders, `aria-label`s and the JSON-LD blocks, which mirror the FAQ answers
+and are easy to miss. Code comments are exempt.
+
+The tone is warm and supportive without giving up the specifics: the reader is
+often the decision maker in a household, not a spreadsheet. Lead with what the
+choice means to them, then let a number back it up.
+
 ## Imagery
 
 Every photo and video slot is a `<figure class="shot">`. The figure paints a
