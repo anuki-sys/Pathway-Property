@@ -63,6 +63,30 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
   along the hero's bottom edge was tried and removed — with the photo
   composition already in the hero, it made the header too busy.
 
+## The numbers on the page
+
+Every figure comes from the **Owner Occ Sales Deck** and nowhere else. Do not
+invent, round up, or extrapolate from them.
+
+| Figure | Deck slide | Used on the page |
+| --- | --- | --- |
+| 90+ inspections attended each week | 1/9 Local market intelligence | Hero headline + stat, "Why buyers bring us in" |
+| 200+ off-markets across Melbourne each week | 2/9 Sourcing | Hero stat, off-market panel |
+| 50 due diligence reports produced daily | 3/9 DD & pricing | "Why buyers bring us in" |
+| 3.7% average discount negotiated | 4/9 Negotiation | Hero lede + stat, "Why buyers bring us in", Recent buys |
+| 7+ professionals coordinated to settlement | 5/9 Settlement & process | "Why buyers bring us in", process step 6 |
+| 120hrs+ saved on a typical purchase | 6/9 Save time | Process intro |
+| 9 weeks average time to secure | 7/9 Speed to result | Hero lede, process intro, Recent buys |
+
+**The deck contradicts itself on one figure.** Slide 7/9's heading says many
+clients secure "in just 4 to 5" weeks while its own bullet says "3 to 4 weeks".
+Neither is on the page — only the 9-week average is. Settle which is right
+before anyone uses the faster number in marketing.
+
+Each figure is an average or a business-wide throughput number, not a promise
+to an individual buyer. If this page is going to make these claims publicly,
+they need to be substantiable — keep the underlying records.
+
 ## Imagery
 
 Every photo and video slot is a `<figure class="shot">`. The figure paints a
@@ -108,10 +132,9 @@ plus `Gal 1–5.webp` and `Hero 1–4.webp`.
   (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
   "calendar link to confirm" state.
 - Rumeysa's full name and role. The other four in Meet the team are confirmed:
-  Shashyani de Silva (Client Success Specialist), Ragulan Vilvarajah (Property
-  Operations Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali
-  Al Hilo (Property Analyst). Ragulan's headshot is the file named `rahul.png`
-  on the Webflow CDN — confirm that card is the right person.
+  Shashyani de Silva (Client Success Specialist), Rahul (Property Operations
+  Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali Al Hilo
+  (Property Analyst). Rahul still needs a surname.
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler.
 - Real YouTube and Spotify links on the podcast section (both are `#`).

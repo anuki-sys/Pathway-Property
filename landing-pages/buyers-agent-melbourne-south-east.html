@@ -207,6 +207,19 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .hero h1 em{font-style:normal;color:var(--green);display:block}
 .hero-lede{font-size:1.125rem;max-width:33em;margin-top:22px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero-lede strong{color:var(--ink);font-weight:700}
+/* the three headline numbers, sourced from the owner-occupier deck */
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:14px 40px;margin:36px 0 0;
+  padding-top:26px;border-top:1px solid var(--hair);
+}
+.hero-stats>div{flex:1 1 150px;max-width:220px}
+.hero-stats dt{
+  font-size:1.875rem;font-weight:700;letter-spacing:-.03em;line-height:1;
+  color:var(--green);font-variant-numeric:tabular-nums;
+}
+.hero-stats dd{margin:6px 0 0;font-size:.8125rem;line-height:1.45;color:var(--ink-60)}
+@media(max-width:940px){.hero-stats{gap:20px 30px}.hero-stats dt{font-size:1.625rem}}
 .hero-media{position:relative;padding-bottom:52px;padding-left:44px}
 .hero-media .shot-main{aspect-ratio:4/3.6;border-radius:50px;box-shadow:var(--shadow-green)}
 /* the photo is 3:4 portrait; this frame trims the sky and the footpath
@@ -246,6 +259,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 .fit-list h3{font-size:1.125rem;margin-bottom:6px}
 .fit-list p{font-size:.9375rem;margin:0}
+/* numbers pulled from the owner-occupier sales deck read as data, not emphasis */
+.fit-list strong,.flow-intro strong,.flow-card strong{color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
+.om-col strong{color:var(--shell);font-weight:700;font-variant-numeric:tabular-nums}
 .fit-grid .shot{aspect-ratio:1;border-radius:50px}
 @media(max-width:900px){.fit-grid{grid-template-columns:1fr;gap:36px}}
 
@@ -605,12 +621,17 @@ details .a p{font-size:.9375rem}
           <svg width="16" height="16" viewBox="0 0 20 19" aria-hidden="true"><path d="M10 0l2.9 6.1 6.6.9-4.8 4.7 1.2 6.7L10 15.2 4.1 18.4l1.2-6.7L.5 7l6.6-.9z"/></svg>
         </span>
       </div>
-      <h1>Every agent at that inspection works for the seller. <em>We work for you.</em></h1>
-      <p class="hero-lede">You'll buy a home a handful of times in your life. The people across the table do it every week.</p>
+      <h1>You'll do this twice in your life. <em>We see 90 homes a week.</em></h1>
+      <p class="hero-lede">That gap is what costs buyers money. Our clients close an average <strong>3.7% under</strong>, in an average of <strong>9 weeks</strong>, with a team that sees the market every single day.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#book">Book a consult</a>
         <a class="btn btn-secondary" href="#how">See how it works</a>
       </div>
+      <dl class="hero-stats">
+        <div><dt>90+</dt><dd>inspections attended every week</dd></div>
+        <div><dt>200+</dt><dd>off-market homes across Melbourne each week</dd></div>
+        <div><dt>3.7%</dt><dd>average discount negotiated for clients</dd></div>
+      </dl>
     </div>
     <div class="hero-media">
       <figure class="shot shot-main">
@@ -632,6 +653,7 @@ details .a p{font-size:.9375rem}
       <div>
         <div class="eyebrow">Recent buys</div>
         <h2>Real families, real front yards.</h2>
+        <p style="margin-top:12px;max-width:34em">Secured in an average of 9 weeks, at an average 3.7% under.</p>
       </div>
       <a class="btn btn-secondary" href="#book">Book a consult</a>
     </div>
@@ -700,19 +722,19 @@ details .a p{font-size:.9375rem}
       <ul class="fit-list">
         <li>
           <h3>Experience that matches the other side</h3>
-          <p>The agents you meet at inspections are professionals who negotiate every week. We bring that same experience to your side of the table, so the conversation is an even one.</p>
+          <p>The agents you meet at inspections are professionals who negotiate every week. Our team attends <strong>90+ inspections a week</strong> and brings that same experience to your side of the table, so the conversation is an even one.</p>
         </li>
         <li>
           <h3>One person coordinating every professional</h3>
-          <p>Building and pest inspectors, your finance broker, the conveyancer, the selling agent and every date in the contract. We keep all of them moving so you are never the one chasing.</p>
+          <p>Building and pest inspectors, your finance broker, the conveyancer, the selling agent and every date in the contract — <strong>7+ professionals</strong> on a typical purchase. We keep all of them moving so you are never the one chasing.</p>
         </li>
         <li>
           <h3>Clarity on the offer and the contract</h3>
-          <p>What to offer, what the contract actually says and which conditions are worth having. You will know exactly where you stand before you sign anything.</p>
+          <p>What to offer, what the contract actually says and which conditions are worth having. We produce <strong>50 due diligence reports a day</strong> across the business, so you know exactly where you stand before you sign anything.</p>
         </li>
         <li>
           <h3>An independent read on value</h3>
-          <p>What a home is genuinely worth, backed by what has sold around it, and the discipline to stay at that number when the room gets competitive.</p>
+          <p>What a home is genuinely worth, backed by what has sold around it, and the discipline to stay at that number when the room gets competitive. It is worth an average <strong>3.7% off</strong> to our clients.</p>
         </li>
       </ul>
     </div>
@@ -783,7 +805,7 @@ details .a p{font-size:.9375rem}
     <div class="flow-intro">
       <div class="eyebrow">How it works</div>
       <h2>Six steps, from first call to keys in your hand.</h2>
-      <p>The same process on every purchase, so you always know what is happening now and what happens next.</p>
+      <p>The same process on every purchase, so you always know what is happening now and what happens next. It runs <strong>9 weeks</strong> on average, and takes roughly <strong>120 hours</strong> of searching, calling and inspecting off your plate.</p>
     </div>
     <div class="flow-stack" id="flow-stack">
         <article class="flow-card" style="--i:0">
@@ -849,7 +871,7 @@ details .a p{font-size:.9375rem}
               <span class="flow-when">Contract to settlement</span>
             </div>
             <h3>Through to keys</h3>
-            <p>We coordinate everyone involved — building and pest inspectors, your finance broker, the conveyancer and the selling agent — and every date in the contract. One person to call, from the day you sign to the day you collect the keys.</p>
+            <p>We coordinate everyone involved — building and pest inspectors, your finance broker, the conveyancer and the selling agent, <strong>7+ professionals</strong> on a typical purchase — and every date in the contract. One person to call, from the day you sign to the day you collect the keys.</p>
           </div>
         </article>
     </div>
@@ -864,8 +886,8 @@ details .a p{font-size:.9375rem}
       <div class="om-grid">
         <div class="om-col">
           <h2>The best home for you might not be for sale yet.</h2>
-          <p style="margin-top:16px">Watch Tanuj walk through the off-markets and pre-markets currently in front of our south east buyers — the homes that never make it to a portal.</p>
-          <p>And if the right one still isn't there, we go and knock. We approach owners directly on your behalf, so what you can buy isn't limited to what happens to be listed this month.</p>
+          <p style="margin-top:16px">We see <strong>200+ off-market and pre-market homes across Melbourne every week</strong> — homes that never make it to a portal. Watch Tanuj walk through the ones currently in front of our south east buyers.</p>
+          <p>And if the right one still isn't there, we go and knock: letterbox drops, direct approaches to owners who haven't listed, and local networks. So what you can buy isn't limited to what happens to be listed this month.</p>
           <figure class="shot">
             <div class="slot"><b>Video</b>Tanuj screen-recording the live off-market list, with commentary</div>
             <span class="play"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M15 9L1 17V1z" fill="#090D2B"/></svg></span>
@@ -975,8 +997,8 @@ details .a p{font-size:.9375rem}
         <div class="member-body"><h3>Shashyani de Silva</h3><span class="role-chip">Client Success Specialist</span></div>
       </div>
       <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Ragulan Vilvarajah</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a2a3101e6e4dfc1fa_rahul.png" alt="Ragulan Vilvarajah"></figure>
-        <div class="member-body"><h3>Ragulan Vilvarajah</h3><span class="role-chip">Property Operations Specialist</span></div>
+        <figure class="shot"><div class="slot"><b>Photo</b>Rahul</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a2a3101e6e4dfc1fa_rahul.png" alt="Rahul"></figure>
+        <div class="member-body"><h3>Rahul</h3><span class="role-chip">Property Operations Specialist</span></div>
       </div>
       <div class="member">
         <figure class="shot"><div class="slot"><b>Photo</b>Shamindri Jayawarna</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a4cabd3a3efe2aaf7_Shamindri.png" alt="Shamindri Jayawarna"></figure>
