@@ -82,7 +82,7 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 100+ Melbourne off markets every week | Client, 8 Sep | Off-market section heading |
 | 100 due diligence reports a day | Client, 8 Sep (deck says 50) | "Why buyers bring us in" |
 | 3.7% average discount negotiated | Deck 4/9 | Hero stat, "Why buyers bring us in" |
-| 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in", process step 6 |
+| 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9 | Process intro |
 | Over 1,000 properties purchased | Client, 8 Sep | Hero lede, "Why buyers bring us in", FAQ |
