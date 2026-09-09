@@ -12,6 +12,7 @@ The shared CSS is inlined into every output page so any single file can be
 opened, emailed or previewed on its own with no broken references.
 """
 
+import base64
 import json
 import pathlib
 import re
@@ -26,6 +27,24 @@ META_RE = re.compile(r"<!--meta\s*(\{.*?\})\s*-->", re.DOTALL)
 
 def read(path):
     return (ROOT / path).read_text(encoding="utf-8")
+
+
+def svg_asset(name):
+    """Inline an SVG asset, stripped of its XML declaration."""
+    svg = read(f"assets/{name}")
+    return re.sub(r"<\?xml[^>]*\?>\s*", "", svg).strip()
+
+
+def data_uri(name, mime):
+    raw = (ROOT / "assets" / name).read_bytes()
+    return f"data:{mime};base64,{base64.b64encode(raw).decode('ascii')}"
+
+
+def favicon():
+    """The logo mark, cream on forest, as an inline data URI."""
+    mark = svg_asset("sira-logo-mark-dark.svg")
+    mark = mark.replace("<svg ", '<svg style="background:#154D47" ', 1)
+    return "data:image/svg+xml;base64," + base64.b64encode(mark.encode()).decode("ascii")
 
 
 def schema_block(name):
@@ -47,6 +66,15 @@ def main():
     nav = read("src/partials/nav.html")
     footer = read("src/partials/footer.html")
     draftbar = read("src/partials/draftbar.html")
+
+    assets = {
+        "{{LOGO_LOCKUP_LIGHT}}": svg_asset("sira-logo-lockup-light.svg"),
+        "{{LOGO_LOCKUP_DARK}}": svg_asset("sira-logo-lockup-dark.svg"),
+        "{{WAVE_SRC}}": f"url({data_uri('sira-wavy-texture.webp', 'image/webp')})",
+        "{{FAVICON}}": favicon(),
+    }
+    nav = nav.replace("{{LOGO_LOCKUP_LIGHT}}", assets["{{LOGO_LOCKUP_LIGHT}}"])
+    footer = footer.replace("{{LOGO_LOCKUP_DARK}}", assets["{{LOGO_LOCKUP_DARK}}"])
 
     if DIST.exists():
         shutil.rmtree(DIST)
@@ -72,7 +100,7 @@ def main():
             ("{{NAV}}", nav),
             ("{{FOOTER}}", footer),
             ("{{BODY}}", body),
-        ):
+        ) + tuple(assets.items()):
             html = html.replace(token, value)
 
         out = DIST / meta["path"]

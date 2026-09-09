@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Self-host Fraunces and Inter for the review build.
+Self-host Plus Jakarta Sans for the review build.
 
 The sandboxed browser cannot reach fonts.googleapis.com, and a review build
 that is emailed around should not depend on a CDN either. This fetches the
 latin subset of each variable font and writes css/fonts.css with the font
 bytes inlined as data URIs, so every built page is self-contained.
 
-In Webflow both are native Google fonts and are enabled in site settings,
+In Webflow it is a native Google font and is already enabled on the site,
 so none of this ships to production.
 """
 
@@ -20,9 +20,11 @@ ROOT = pathlib.Path(__file__).parent.parent
 UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120 Safari/537.36")
 
+# Plus Jakarta Sans is the typeface in the logo artwork and the only family on
+# the current site. ExtraLight through Bold, because the logo lockup itself
+# pairs SemiBold "sira" with ExtraLight "finance" and the site reuses that.
 FAMILIES = [
-    ("Fraunces", "Fraunces:opsz,wght@9..144,400..600"),
-    ("Inter", "Inter:wght@400..600"),
+    ("Plus Jakarta Sans", "Plus+Jakarta+Sans:wght@200..800"),
 ]
 
 FACE_RE = re.compile(r"/\*\s*(\S+)\s*\*/\s*(@font-face\s*\{.*?\})", re.DOTALL)
