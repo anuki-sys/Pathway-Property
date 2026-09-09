@@ -1,0 +1,58 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "@id": "https://www.sirafinance.com.au/#organisation",
+    "name": "Sira Finance",
+    "description": "Australian Islamic finance brokerage. Shariah-compliant home, investment, commercial, development and asset finance.",
+    "url": "https://www.sirafinance.com.au/",
+    "areaServed": "NEEDS_INPUT_service_area",
+    "telephone": "NEEDS_INPUT_phone",
+    "email": "info@sirafinance.com.au",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "NEEDS_INPUT_street",
+      "addressLocality": "NEEDS_INPUT_suburb",
+      "addressRegion": "NEEDS_INPUT_state",
+      "postalCode": "NEEDS_INPUT_postcode",
+      "addressCountry": "AU"
+    },
+    "openingHoursSpecification": "NEEDS_INPUT_opening_hours",
+    "currenciesAccepted": "AUD",
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "Purple Circle Financial Services Pty Ltd",
+      "identifier": "Australian Credit Licence 486112"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Islamic finance actually available in Australia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The first Shariah-compliant provider in Australia has been operating since 1989, and the number of providers grew significantly from around 2019 onward. There are now several funders and mortgage managers offering Islamic home finance nationally, which is exactly why comparing them properly matters."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Islamic home finance different from a conventional home loan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A conventional arrangement charges interest on money lent to you. Islamic finance avoids interest entirely and uses ownership-based structures instead. The most common in Australia is Ijarah, which is a lease-to-own arrangement where the funder holds ownership and you make payments that build toward full ownership."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you only work with Muslim clients?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Anyone can use Shariah-compliant finance. It is worth knowing that it can work out more expensive than a conventional arrangement in some circumstances, so it is a decision worth making with full information."
+        }
+      }
+    ]
+  }
+]

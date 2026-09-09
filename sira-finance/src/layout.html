@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESCRIPTION}}">
+<meta name="robots" content="noindex, nofollow">
+<style>
+{{FONTS}}
+{{CSS}}
+</style>
+{{SCHEMA}}
+</head>
+<body>
+{{DRAFTBAR}}
+{{NAV}}
+<main id="main">
+{{BODY}}
+</main>
+{{FOOTER}}
+<script>
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.querySelector('.nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  // Scroll-triggered fade up, 20px, under 300ms.
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    for (var i = 0; i < items.length; i++) items[i].classList.add('is-in');
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+    for (var j = 0; j < items.length; j++) io.observe(items[j]);
+  }
+
+  // Lite YouTube embed. Poster first, iframe only on click.
+  document.querySelectorAll('.lite-video[data-video]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var id = el.getAttribute('data-video');
+      if (!id) return;
+      el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+        '?autoplay=1" title="Sira Finance property breakdown" allow="accelerometer; autoplay; ' +
+        'clipboard-write; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+    });
+  });
+})();
+</script>
+</body>
+</html>
