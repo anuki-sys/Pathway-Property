@@ -22,18 +22,228 @@
 {{BODY}}
 </main>
 {{FOOTER}}
+
+<div class="callbar" role="complementary" aria-label="Get in touch">
+  <span class="callbar__text">Not sure where you stand?</span>
+  <a class="btn btn--light btn--sm" href="/apply/">Book a call</a>
+</div>
 <script>
 (function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mobileNav = window.matchMedia('(max-width: 991px)');
+
+  // ---------------------------------------------------------------- navigation
   var toggle = document.querySelector('.nav-toggle');
   var nav = document.querySelector('.nav');
+  var navItems = [].slice.call(document.querySelectorAll('.nav__item.has-menu'));
+
+  function closeMenus(except) {
+    navItems.forEach(function (item) {
+      if (item === except) return;
+      item.classList.remove('is-open');
+      var btn = item.querySelector('.nav__link');
+      var panel = item.querySelector('.nav__menu');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (panel && mobileNav.matches) panel.style.height = '0px';
+      if (panel && !mobileNav.matches) panel.hidden = true;
+    });
+  }
+
+  function openMenu(item) {
+    closeMenus(item);
+    item.classList.add('is-open');
+    var btn = item.querySelector('.nav__link');
+    var panel = item.querySelector('.nav__menu');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
+    if (!panel) return;
+    panel.hidden = false;
+    if (mobileNav.matches) {
+      panel.style.height = panel.firstElementChild.offsetHeight + 'px';
+    }
+  }
+
+  function closeMenu(item) {
+    item.classList.remove('is-open');
+    var btn = item.querySelector('.nav__link');
+    var panel = item.querySelector('.nav__menu');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+    if (!panel) return;
+    if (mobileNav.matches) { panel.style.height = '0px'; }
+    else { panel.hidden = true; }
+  }
+
+  navItems.forEach(function (item) {
+    var btn = item.querySelector('.nav__link');
+    var panel = item.querySelector('.nav__menu');
+    if (!btn || !panel) return;
+    panel.hidden = !mobileNav.matches;
+    if (mobileNav.matches) panel.style.height = '0px';
+
+    btn.addEventListener('click', function () {
+      item.classList.contains('is-open') ? closeMenu(item) : openMenu(item);
+    });
+
+    // Pointer opens the panel on a desktop, with a short close delay so the
+    // cursor can cross the gap between the label and the panel.
+    var timer;
+    item.addEventListener('pointerenter', function () {
+      if (mobileNav.matches) return;
+      clearTimeout(timer);
+      openMenu(item);
+    });
+    item.addEventListener('pointerleave', function () {
+      if (mobileNav.matches) return;
+      timer = setTimeout(function () { closeMenu(item); }, 160);
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenus(null);
+  });
+  document.addEventListener('click', function (e) {
+    if (nav && !nav.contains(e.target) && (!toggle || !toggle.contains(e.target))) closeMenus(null);
+  });
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
       var open = nav.classList.toggle('is-open');
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (!open) closeMenus(null);
     });
   }
 
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // ---------------------------------------------------- scenario picker (tabs)
+  document.querySelectorAll('[data-picker]').forEach(function (picker) {
+    var tabs = [].slice.call(picker.querySelectorAll('[role="tab"]'));
+    var panel = picker.querySelector('.picker__panel');
+    if (!tabs.length || !panel) return;
+
+    function render(tab) {
+      var fill = function () {
+        panel.querySelector('[data-field="label"]').textContent = tab.dataset.label || '';
+        panel.querySelector('[data-field="title"]').textContent = tab.dataset.title || '';
+        panel.querySelector('[data-field="body"]').textContent = tab.dataset.body || '';
+        var primary = panel.querySelector('[data-field="primary"]');
+        primary.setAttribute('href', tab.dataset.href || '#');
+        primary.textContent = tab.dataset.cta || 'Read more';
+        [1, 2].forEach(function (n) {
+          var link = panel.querySelector('[data-field="guide' + n + '"]');
+          if (!link) return;
+          link.setAttribute('href', tab.dataset['guide' + n + 'Href'] || '#');
+          link.textContent = tab.dataset['guide' + n + 'Label'] || '';
+        });
+      };
+      if (reduced) { fill(); return; }
+      panel.classList.add('is-swapping');
+      setTimeout(function () { fill(); panel.classList.remove('is-swapping'); }, 180);
+    }
+
+    function select(tab, focus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.setAttribute('tabindex', on ? '0' : '-1');
+      });
+      if (focus) tab.focus();
+      tabs.forEach(function (t) {
+        var go = t.querySelector('.tile__go');
+        if (go) go.firstChild.textContent = (t === tab ? 'Selected ' : 'Select ');
+      });
+      render(tab);
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab); });
+      tab.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = tabs[(i + 1) % tabs.length];
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        if (e.key === 'Home') next = tabs[0];
+        if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (!next) return;
+        e.preventDefault();
+        select(next, true);
+      });
+    });
+
+    select(tabs[0]);
+  });
+
+  // ------------------------------------------------------- comparison switch
+  document.querySelectorAll('[data-compare]').forEach(function (block) {
+    var buttons = [].slice.call(block.querySelectorAll('.switch button'));
+    var rows = block.querySelector('.compare__rows');
+    if (!buttons.length || !rows) return;
+
+    var sets = {};
+    block.querySelectorAll('template[data-set]').forEach(function (tpl) {
+      sets[tpl.dataset.set] = tpl.innerHTML;
+    });
+
+    function show(key) {
+      var swap = function () { rows.innerHTML = sets[key] || ''; };
+      if (reduced) { swap(); return; }
+      rows.classList.add('is-swapping');
+      setTimeout(function () { swap(); rows.classList.remove('is-swapping'); }, 160);
+    }
+
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.setAttribute('aria-selected', b === btn ? 'true' : 'false'); });
+        show(btn.dataset.set);
+      });
+    });
+
+    show(buttons[0].dataset.set);
+    buttons[0].setAttribute('aria-selected', 'true');
+  });
+
+  // ------------------------------------------------------------- process rail
+  var steps = document.querySelector('.steps');
+  var rail = document.querySelector('.steps-rail__fill');
+  if (steps && rail && !reduced) {
+    var stepEls = [].slice.call(steps.querySelectorAll('.step'));
+    var railTick = false;
+    var drawRail = function () {
+      var box = steps.getBoundingClientRect();
+      var start = window.innerHeight * 0.85;
+      var span = box.height + start - window.innerHeight * 0.25;
+      var progress = Math.max(0, Math.min(1, (start - box.top) / span));
+      rail.style.width = (progress * 100) + '%';
+      steps.classList.add('is-lit');
+      stepEls.forEach(function (el, i) {
+        el.classList.toggle('is-passed', progress >= (i + 0.35) / stepEls.length);
+      });
+      railTick = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (railTick) return;
+      railTick = true;
+      window.requestAnimationFrame(drawRail);
+    }, { passive: true });
+    drawRail();
+  }
+
+  // ------------------------------------------------------------- sticky callbar
+  var callbar = document.querySelector('.callbar');
+  if (callbar) {
+    var hero = document.querySelector('.hero');
+    var barTick = false;
+    var placeBar = function () {
+      var past = hero ? hero.getBoundingClientRect().bottom < 0 : window.scrollY > 600;
+      var atEnd = window.scrollY + window.innerHeight > document.documentElement.scrollHeight - 240;
+      callbar.classList.toggle('is-up', past && !atEnd);
+      barTick = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (barTick) return;
+      barTick = true;
+      window.requestAnimationFrame(placeBar);
+    }, { passive: true });
+    placeBar();
+  }
+
   var canObserve = 'IntersectionObserver' in window;
 
   // Reveals. A single element fades up; a .stagger group sends its children in

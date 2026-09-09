@@ -69,47 +69,128 @@
       <p>Pick the one that sounds like you. We will show you what the path actually looks like from here.</p>
     </div>
 
-    <div class="matrix matrix--4 stagger">
-      <a class="tile" href="/islamic-finance/home-finance/first-home-buyers/">
-        <span class="tile__label">Buying my first home</span>
-        <span class="tile__line">Deposit, costs and what is realistic on your income.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/home-finance/">
-        <span class="tile__label">Buying my next home</span>
-        <span class="tile__line">Upgrading, downsizing, or moving states.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/investment-property/">
-        <span class="tile__label">Buying an investment property</span>
-        <span class="tile__line">Structure it properly the first time.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/refinancing/">
-        <span class="tile__label">Refinancing</span>
-        <span class="tile__line">Conventional to Islamic, or Islamic to Islamic.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/commercial-property/">
-        <span class="tile__label">Buying commercial property</span>
-        <span class="tile__line">Warehouses, offices, retail.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/development-finance/">
-        <span class="tile__label">Funding a development</span>
-        <span class="tile__line">Duplexes, townhouses, small projects.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/asset-finance/">
-        <span class="tile__label">Financing a vehicle or equipment</span>
-        <span class="tile__line">Personal or business.</span>
-        <span class="tile__go">Start here <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
-      <a class="tile" href="/islamic-finance/">
-        <span class="tile__label">Not sure yet</span>
-        <span class="tile__line">See everything we finance in one place.</span>
-        <span class="tile__go">All service lines <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
-      </a>
+    <div class="picker" data-picker>
+      <div class="matrix matrix--4 matrix--attached picker__tabs reveal" role="tablist" aria-label="Choose where you are up to">
+        <button class="tile" role="tab" id="scenario-0" aria-controls="scenario-panel"
+                aria-selected="true" tabindex="0"
+                data-label="First home buyers"
+                data-title="Buying my first home"
+                data-body="Deposit, costs and what is realistic on your income. Buying the place you will live in, without interest. Owner-occupier, first home, or your next one."
+                data-href="/islamic-finance/home-finance/first-home-buyers/"
+                data-cta="First home buyers"
+                data-guide1-label="Deposit and upfront costs" data-guide1-href="/resources/guides/deposit-and-upfront-costs/"
+                data-guide2-label="LMI explained" data-guide2-href="/resources/guides/lmi-explained/">
+          <span class="tile__label">Buying my first home</span>
+          <span class="tile__line">Deposit, costs and what is realistic on your income.</span>
+          <span class="tile__go">Selected <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+        <button class="tile" role="tab" id="scenario-1" aria-controls="scenario-panel"
+                aria-selected="false" tabindex="-1"
+                data-label="Home finance"
+                data-title="Buying my next home"
+                data-body="Upgrading, downsizing, or moving states. Buying the place you will live in, without interest. Owner-occupier, first home, or your next one."
+                data-href="/islamic-finance/home-finance/"
+                data-cta="Home finance"
+                data-guide1-label="How Islamic finance works" data-guide1-href="/resources/guides/how-islamic-finance-works/"
+                data-guide2-label="Profit rate or interest rate" data-guide2-href="/resources/guides/profit-rate-vs-interest-rate/">
+          <span class="tile__label">Buying my next home</span>
+          <span class="tile__line">Upgrading, downsizing, or moving states.</span>
+          <span class="tile__go">Select <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+        <button class="tile" role="tab" id="scenario-2" aria-controls="scenario-panel"
+                aria-selected="false" tabindex="-1"
+                data-label="Investment property"
+                data-title="Buying an investment property"
+                data-body="Structure it properly the first time. Build a portfolio without compromising on how it is funded. Structure matters more than most people expect."
+                data-href="/islamic-finance/investment-property/"
+                data-cta="Investment property"
+                data-guide1-label="How Islamic finance works" data-guide1-href="/resources/guides/how-islamic-finance-works/"
+                data-guide2-label="Profit rate or interest rate" data-guide2-href="/resources/guides/profit-rate-vs-interest-rate/">
+          <span class="tile__label">Buying an investment property</span>
+          <span class="tile__line">Structure it properly the first time.</span>
+          <span class="tile__go">Select <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+        <button class="tile" role="tab" id="scenario-3" aria-controls="scenario-panel"
+                aria-selected="false" tabindex="-1"
+                data-label="Refinancing"
+                data-title="Refinancing"
+                data-body="Conventional to Islamic, or Islamic to Islamic. Move off a conventional facility, or switch between Islamic funders. We map the real cost before you commit."
+                data-href="/islamic-finance/refinancing/"
+                data-cta="Refinancing"
+                data-guide1-label="Profit rate or interest rate" data-guide1-href="/resources/guides/profit-rate-vs-interest-rate/"
+                data-guide2-label="How Islamic finance works" data-guide2-href="/resources/guides/how-islamic-finance-works/">
+          <span class="tile__label">Refinancing</span>
+          <span class="tile__line">Conventional to Islamic, or Islamic to Islamic.</span>
+          <span class="tile__go">Select <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+        <button class="tile" role="tab" id="scenario-4" aria-controls="scenario-panel"
+                aria-selected="false" tabindex="-1"
+                data-label="Commercial property"
+                data-title="Buying commercial property"
+                data-body="Warehouses, offices, retail. Warehouses, offices, retail and mixed use, under personal, company or trust structures."
+                data-href="/islamic-finance/commercial-property/"
+                data-cta="Commercial property"
+                data-guide1-label="How Islamic finance works" data-guide1-href="/resources/guides/how-islamic-finance-works/"
+                data-guide2-label="Ijarah explained" data-guide2-href="/resources/guides/ijarah/">
+          <span class="tile__label">Buying commercial property</span>
+          <span class="tile__line">Warehouses, offices, retail.</span>
+          <span class="tile__go">Select <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+        <button class="tile" role="tab" id="scenario-5" aria-controls="scenario-panel"
+                aria-selected="false" tabindex="-1"
+                data-label="Development finance"
+                data-title="Funding a development"
+                data-body="Duplexes, townhouses, small projects. Staged funding for duplexes, townhouses and small residential projects."
+                data-href="/islamic-finance/development-finance/"
+                data-cta="Development finance"
+                data-guide1-label="How Islamic finance works" data-guide1-href="/resources/guides/how-islamic-finance-works/"
+                data-guide2-label="Ijarah explained" data-guide2-href="/resources/guides/ijarah/">
+          <span class="tile__label">Funding a development</span>
+          <span class="tile__line">Duplexes, townhouses, small projects.</span>
+          <span class="tile__go">Select <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+        <button class="tile" role="tab" id="scenario-6" aria-controls="scenario-panel"
+                aria-selected="false" tabindex="-1"
+                data-label="Asset and equipment finance"
+                data-title="Financing a vehicle or equipment"
+                data-body="Personal or business. Vehicles, machinery and business equipment, in your personal or business name."
+                data-href="/islamic-finance/asset-finance/"
+                data-cta="Asset and equipment finance"
+                data-guide1-label="How Islamic finance works" data-guide1-href="/resources/guides/how-islamic-finance-works/"
+                data-guide2-label="Ijarah explained" data-guide2-href="/resources/guides/ijarah/">
+          <span class="tile__label">Financing a vehicle or equipment</span>
+          <span class="tile__line">Personal or business.</span>
+          <span class="tile__go">Select <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M9 1l4 4-4 4M13 5H0" stroke="currentColor" stroke-width="1.4"/></svg></span>
+        </button>
+      </div>
+
+      <div class="picker__panel" id="scenario-panel" role="tabpanel" aria-live="polite">
+        <div>
+          <p class="picker__label" data-field="label"></p>
+          <h3 data-field="title"></h3>
+          <p data-field="body"></p>
+          <div class="picker__links">
+            <a class="btn btn--primary btn--sm" data-field="primary" href="#"></a>
+            <a class="btn btn--secondary btn--sm" href="/apply/">Book a strategy call</a>
+          </div>
+        </div>
+        <div>
+          <p class="picker__label">Worth reading first</p>
+          <dl class="picker__facts">
+            <div class="picker__fact">
+              <dd><a class="link-arrow" data-field="guide1" href="#"></a></dd>
+            </div>
+            <div class="picker__fact">
+              <dd><a class="link-arrow" data-field="guide2" href="#"></a></dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+    <div class="needs-input reveal" style="margin-top:26px">
+      <span class="needs-input__tag">Needs input</span>
+      <p>Each panel currently pairs the approved tile line with the approved service paragraph. A short paragraph written for the scenario itself would read better, particularly for the two home finance ones, which share a service description.</p>
     </div>
   </div>
 </section>
@@ -172,25 +253,44 @@
   </div>
 </section>
 
-<!-- ===== Section 5 - Why a broker. Forest. ===== -->
-<section class="section surface-forest">
+<!-- ===== Section 5 - Why a broker. Forest. The switch is the point: flipping
+     it is what makes the difference land. Both columns restate the approved
+     copy in section 5 of 01-home.md, nothing new is claimed. ===== -->
+<section class="section surface-forest" data-compare>
   <div class="container">
-    <div class="split">
+    <div class="split" style="align-items:start">
       <div class="reveal">
         <h2>There is a difference between a broker and <span class="light">a mortgage manager</span></h2>
-        <div class="stack-buttons" style="margin-top:34px">
-          <a class="btn btn--light" href="/how-we-work/broker-vs-mortgage-manager/">See the comparison</a>
+        <p style="margin-top:22px;color:var(--cream-dim)">
+          Most people in the Islamic finance space go straight to a mortgage manager. Flip the switch and see
+          what actually changes.
+        </p>
+        <div class="stack-buttons" style="margin-top:30px">
+          <a class="btn btn--light" href="/how-we-work/broker-vs-mortgage-manager/">The full comparison</a>
         </div>
       </div>
-      <div class="reveal" style="color:var(--cream-dim)">
-        <figure class="media media--wide media--zoom" style="margin-bottom:30px">
-          <img src="assets/placeholders/sira-placeholder-support-wide.webp"
-               alt="Sira Finance broker and clients reviewing finance options together at a table">
-          <span class="media__note"><b>Photo</b> Two or three people at a table, documents and a laptop, someone explaining. Reads as support, not a sales meeting. 4:3.</span>
-        </figure>
-        <p>Most people in the Islamic finance space go straight to a mortgage manager. That is one provider, one set of products, and no obligation to show you anything else.</p>
-        <p>We work differently. As a broker we hold a legal obligation called Best Interest Duty, which means we compare across at least three funders before we recommend anything. And because we are not tied to one provider, the recommendation follows your situation rather than our panel.</p>
-        <p>The other difference is what happens after settlement. A mortgage manager processes your application and manages the account. We keep reviewing your position, because rates drift upward the longer you sit still.</p>
+
+      <div class="reveal">
+        <div class="switch" role="tablist" aria-label="Compare a mortgage manager with a broker">
+          <button type="button" role="tab" id="compare-manager" aria-controls="compare-rows" data-set="manager" aria-selected="true">A mortgage manager</button>
+          <button type="button" role="tab" id="compare-broker" aria-controls="compare-rows" data-set="broker" aria-selected="false">Sira, a broker</button>
+        </div>
+
+        <dl class="compare__rows" id="compare-rows" role="tabpanel" aria-labelledby="compare-manager" aria-live="polite"></dl>
+
+        <template data-set="manager">
+          <div class="compare__row"><dt>Who you are dealing with</dt><dd>One provider, selling its own products from its own funding line.</dd></div>
+          <div class="compare__row"><dt>What you get shown</dt><dd>One set of products, with no obligation to show you anything else.</dd></div>
+          <div class="compare__row"><dt>The obligation</dt><dd>Transactional. No duty to compare.</dd></div>
+          <div class="compare__row"><dt>After settlement</dt><dd>Processes your application and manages the account.</dd></div>
+        </template>
+
+        <template data-set="broker">
+          <div class="compare__row"><dt>Who you are dealing with</dt><dd>A broker with a panel of Shariah-compliant funders behind them.</dd></div>
+          <div class="compare__row"><dt>What you get shown</dt><dd>At least three funders compared before anything is recommended.</dd></div>
+          <div class="compare__row"><dt>The obligation</dt><dd>Best Interest Duty, so the recommendation follows your situation rather than our panel.</dd></div>
+          <div class="compare__row"><dt>After settlement</dt><dd>We keep reviewing your position, because rates drift upward the longer you sit still.</dd></div>
+        </template>
       </div>
     </div>
   </div>
@@ -203,6 +303,7 @@
       <h2>How we work</h2>
     </div>
 
+    <div class="steps-rail reveal"><span class="steps-rail__fill"></span></div>
     <div class="steps stagger">
       <div class="step">
         <div class="step__num">01</div>
@@ -428,7 +529,7 @@
       <p>We hold commercial relationships with most of the Islamic funders and mortgage managers operating in Australia, which means the recommendation is not limited to whoever we happen to be tied to.</p>
     </div>
 
-    <div class="matrix matrix--5 stagger">
+    <div class="matrix matrix--5 reveal">
       <div class="funder">Funder logo</div>
       <div class="funder">Funder logo</div>
       <div class="funder">Funder logo</div>

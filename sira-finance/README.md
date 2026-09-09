@@ -23,6 +23,7 @@ Nothing here touches the live Webflow site. The Sira Webflow site
 ```
 python3 build.py               # src/ -> dist/
 python3 tools/check_copy.py    # brand and compliance copy rules
+node tools/verify.js           # interactions, reduced motion, no-js, mobile
 node tools/screenshot.js dist/index.html /tmp/home
 ```
 
@@ -158,14 +159,43 @@ visible where the photograph goes rather than only in this file.
 
 ## Interaction and motion
 
-The aim is warmth, not cleverness. Everything here is either something
-settling into place or something responding to a hover. Nothing announces
-itself as an effect.
+Two layers. Things you operate, and things that settle.
+
+### Things you operate
+
+- **Dropdown navigation.** Every service line, guide and sub-page is reachable
+  from the header, which matters for a 24 page site. Opens on hover at desktop
+  with a 160ms close delay so the cursor can cross the gap; opens on click at
+  tablet and below, where the panels push the list down rather than floating
+  over it. Escape closes, an outside click closes, and each control carries
+  `aria-expanded`.
+- **Scenario picker.** "Where are you up to?" is now the page's main
+  interaction rather than seven links. The tiles are a proper tablist:
+  selecting one swaps the panel underneath with that scenario's service
+  description, its service page link, and two guides worth reading first.
+  Arrow keys, Home and End all move between them. The guides are what satisfy
+  the internal-linking requirement, and they change per scenario.
+- **Comparison switch.** Flipping between "a mortgage manager" and "Sira, a
+  broker" is the point: the difference is the brand's core claim, and making
+  someone flip it lands better than two paragraphs. Both sides restate the
+  approved copy in section 5 of `01-home.md`; nothing new is claimed.
+- **Testimonial slider.** Arrows, dots, arrow keys, drag and swipe. The dots
+  are generated from the number of reachable positions and rebuilt on resize,
+  so there is never a dot that cannot be scrolled to.
+- **FAQ accordion**, opening on a measured height rather than snapping.
+- **Sticky call bar** on a phone, once the hero has gone by and until the
+  closing band comes into view.
+
+### Things that settle
+
+The aim is warmth, not cleverness. Nothing here announces itself as an effect.
 
 - **Sequenced reveals.** A single element fades up 20px. A group sends its
   children in sequence, 70ms apart, capped at 420ms total so a long row never
   crawls. Groups are marked `.stagger` and the delay is set by the observer,
-  so it holds however many children a section ends up with.
+  so it holds however many children a section ends up with. A `.matrix` is
+  never staggered: its cells sit on a line-coloured ground, so fading them in
+  one at a time shows that ground through the gaps.
 - **Photographs settle.** Each one eases out of a 7 per cent scale over 1.1s as
   it arrives, rather than switching on flat.
 - **The silk drifts.** A 54 second loop on the hero and closing band, slow
@@ -181,6 +211,8 @@ itself as an effect.
   are generated from the number of reachable positions and rebuilt on resize,
   so there is never a dot that cannot be scrolled to. Three visible at desktop,
   two at tablet, one on a phone.
+- **Process rail** fills as the four steps are scrolled through, so they read
+  as one run rather than four separate blocks.
 - **Header condenses** from 84px to 68px once the page has moved past 24px.
 
 Two things hold it together:
@@ -195,6 +227,9 @@ off.
 
 No animated counters, per the brief: two competitors have counters that render
 as zero, which reads as fabrication.
+
+`node tools/verify.js` exercises all of it, including the three states that are
+easiest to break: reduced motion, JavaScript off, and a 390px viewport.
 
 ## Components built so far
 
