@@ -37,7 +37,8 @@
 
   --font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  --radius-panel: 14px;
+  --radius-panel: 18px;
+  --radius-media: 24px;
   --radius-pill: 999px;
   --container: 1180px;
   --gutter: clamp(20px, 5vw, 44px);
@@ -58,7 +59,7 @@ body {
   color: var(--ink);
   font-family: var(--font);
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.68;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -106,9 +107,11 @@ li { margin-bottom: 0.35em; }
 .section--flush-top { padding-top: 0; }
 
 .surface-cream { background: var(--cream); color: var(--ink); }
+.surface-sand { background: var(--sand); color: var(--ink); }
 .surface-forest { background: var(--forest); color: var(--cream); }
 .surface-deep { background: var(--deep); color: var(--cream); }
 
+.surface-sand .quote, .surface-sand .guide { background: var(--paper); }
 .surface-forest h1, .surface-forest h2, .surface-forest h3, .surface-forest h4,
 .surface-deep h1, .surface-deep h2, .surface-deep h3, .surface-deep h4 { color: var(--cream); }
 
@@ -134,15 +137,6 @@ li { margin-bottom: 0.35em; }
 .section-head p { margin-top: 16px; font-size: 18px; color: var(--ink-soft); }
 .surface-forest .section-head p, .surface-deep .section-head p { color: var(--cream-dim); }
 
-/* Eyebrow. Sentence case, never caps. */
-.eyebrow {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13.5px; font-weight: 500; letter-spacing: 0.01em;
-  color: var(--pine); margin: 0 0 18px;
-}
-.eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; opacity: 0.6; flex: none; }
-.surface-forest .eyebrow, .surface-deep .eyebrow { color: var(--cream-dim); }
-
 .lede { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.55; font-weight: 400; }
 
 .measure { max-width: 62ch; }
@@ -153,6 +147,41 @@ li { margin-bottom: 0.35em; }
 
 .rule { height: 1px; background: var(--line); border: 0; margin: 0; }
 .surface-forest .rule, .surface-deep .rule { background: var(--line-dark); }
+
+/* --------------------------------------------------------------------------
+   Media. Every photograph on the site sits in one of these, so the crop, the
+   corner radius and the hover behaviour are decided once.
+   -------------------------------------------------------------------------- */
+
+.media {
+  position: relative; margin: 0; overflow: hidden;
+  border-radius: var(--radius-media);
+  background: var(--deep);
+}
+.media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.media--portrait { aspect-ratio: 3 / 4; }
+.media--wide { aspect-ratio: 4 / 3; }
+.media--banner { aspect-ratio: 21 / 9; }
+.media--person { aspect-ratio: 4 / 5; }
+
+a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
+
+/* Marks a slot as awaiting real photography. Review build only. */
+.media__note {
+  position: absolute; left: 14px; bottom: 14px; right: 14px;
+  display: flex; gap: 9px; align-items: baseline;
+  font-size: 11.5px; line-height: 1.45;
+  color: var(--cream); background: rgba(10, 28, 26, 0.5);
+  backdrop-filter: blur(6px);
+  border-radius: 10px; padding: 7px 10px;
+}
+.media__note b { flex: none; font-weight: 600; color: var(--cream); }
+
+.figure-caption { margin-top: 12px; font-size: 14.5px; color: var(--ink-soft); }
+.surface-forest .figure-caption, .surface-deep .figure-caption { color: var(--cream-dim); }
 
 /* --------------------------------------------------------------------------
    Buttons. Pill geometry, matching the current site. No shadows.
@@ -190,6 +219,56 @@ li { margin-bottom: 0.35em; }
 .link-arrow svg { flex: none; }
 .link-arrow:hover { gap: 14px; }
 .surface-forest .link-arrow, .surface-deep .link-arrow { color: var(--cream); }
+
+/* --------------------------------------------------------------------------
+   Hero
+   -------------------------------------------------------------------------- */
+
+.hero__grid {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: clamp(36px, 5vw, 76px); align-items: center;
+}
+.hero h1 { font-size: clamp(36px, 4.5vw, 62px); }
+.hero__media { box-shadow: 0 40px 80px -50px rgba(3, 20, 18, 0.7); }
+
+/* --------------------------------------------------------------------------
+   Component: people strip
+   -------------------------------------------------------------------------- */
+
+.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); }
+.person { display: block; text-decoration: none; color: inherit; }
+.person__name { margin-top: 18px; font-size: 19px; font-weight: 600; letter-spacing: -0.02em; }
+.person__role { margin-top: 3px; font-size: 15px; color: var(--ink-soft); }
+
+/* --------------------------------------------------------------------------
+   Component: slider. Used by the testimonials.
+   -------------------------------------------------------------------------- */
+
+.slider { position: relative; }
+.slider__viewport { overflow: hidden; }
+.slider__track {
+  display: flex; gap: 16px;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slider__slide { flex: 0 0 calc((100% - 32px) / 3); }
+
+.slider__controls { display: flex; align-items: center; gap: 14px; margin-top: 30px; }
+.slider__btn {
+  width: 46px; height: 46px; flex: none;
+  display: grid; place-items: center;
+  border: 1px solid var(--line-strong); border-radius: var(--radius-pill);
+  background: transparent; color: var(--ink); cursor: pointer;
+  transition: background-color 200ms ease, border-color 200ms ease, opacity 200ms ease;
+}
+.slider__btn:hover:not(:disabled) { background: var(--forest); border-color: var(--forest); color: var(--cream); }
+.slider__btn:disabled { opacity: 0.3; cursor: default; }
+.slider__dots { display: flex; gap: 7px; margin-left: 4px; }
+.slider__dot {
+  width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%;
+  background: var(--line-strong); cursor: pointer;
+  transition: background-color 200ms ease, width 200ms ease;
+}
+.slider__dot[aria-current="true"] { background: var(--forest); width: 22px; border-radius: var(--radius-pill); }
 
 /* --------------------------------------------------------------------------
    Matrix. A bordered grid built from a 1px gap over a line-coloured ground,
@@ -408,7 +487,13 @@ li { margin-bottom: 0.35em; }
   backdrop-filter: saturate(150%) blur(12px);
   border-bottom: 1px solid var(--line);
 }
-.site-header__inner { display: flex; align-items: center; gap: 28px; min-height: 78px; }
+.site-header.is-scrolled { background: rgba(245, 241, 235, 0.96); border-bottom-color: var(--line-strong); }
+.site-header__inner {
+  display: flex; align-items: center; gap: 28px;
+  min-height: 84px;
+  transition: min-height 260ms ease;
+}
+.site-header.is-scrolled .site-header__inner { min-height: 68px; }
 
 .brand { display: block; flex: none; text-decoration: none; }
 .brand svg, .brand img { height: 42px; width: auto; }
@@ -512,6 +597,9 @@ li { margin-bottom: 0.35em; }
 
 @media screen and (max-width: 991px) {
   .split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .hero__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .hero__media { aspect-ratio: 16 / 10; }
+  .slider__slide { flex: 0 0 calc((100% - 16px) / 2); }
   .matrix--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .matrix--5 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -545,6 +633,9 @@ li { margin-bottom: 0.35em; }
   .trust__item:nth-child(odd) { padding-left: 0; }
   .quotes { grid-template-columns: minmax(0, 1fr); }
   .matrix--5 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .slider__slide { flex: 0 0 100%; }
+  .people { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .media--person { aspect-ratio: 3 / 2; }
   .footer__bottom { flex-direction: column; }
 }
 
@@ -558,6 +649,7 @@ li { margin-bottom: 0.35em; }
   .steps { grid-template-columns: minmax(0, 1fr); }
   .footer__top { grid-template-columns: minmax(0, 1fr); }
   .trust { grid-template-columns: minmax(0, 1fr); }
+  .hero__media { aspect-ratio: 4 / 3; }
   .trust__item { padding: 20px 0; }
   .trust__item:nth-child(2) { border-top: 1px solid var(--line-dark); padding-top: 20px; }
   .btn { width: 100%; }

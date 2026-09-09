@@ -36,8 +36,33 @@ def svg_asset(name):
 
 
 def data_uri(name, mime):
-    raw = (ROOT / "assets" / name).read_bytes()
-    return f"data:{mime};base64,{base64.b64encode(raw).decode('ascii')}"
+    return data_uri_path(ROOT / "assets" / name, mime)
+
+
+MIME = {".webp": "image/webp", ".png": "image/png", ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg", ".svg": "image/svg+xml"}
+
+
+def inline_images(html):
+    """
+    Rewrite src="assets/..." to a data URI so every built page stays a single
+    self-contained file. In Webflow these become real hosted assets instead.
+    """
+    def repl(match):
+        rel = match.group(1)
+        path = ROOT / rel
+        if not path.exists():
+            raise SystemExit(f"missing image referenced in markup: {rel}")
+        mime = MIME.get(path.suffix.lower())
+        if not mime:
+            raise SystemExit(f"unsupported image type: {rel}")
+        return 'src="%s"' % data_uri_path(path, mime)
+
+    return re.sub(r'src="(assets/[^"]+)"', repl, html)
+
+
+def data_uri_path(path, mime):
+    return f"data:{mime};base64,{base64.b64encode(path.read_bytes()).decode('ascii')}"
 
 
 def favicon():
@@ -102,6 +127,8 @@ def main():
             ("{{BODY}}", body),
         ) + tuple(assets.items()):
             html = html.replace(token, value)
+
+        html = inline_images(html)
 
         out = DIST / meta["path"]
         out.parent.mkdir(parents=True, exist_ok=True)
