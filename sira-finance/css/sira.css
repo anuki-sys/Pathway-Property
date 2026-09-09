@@ -20,10 +20,11 @@
   --forest: #154D47;    /* primary brand green, dominant in the artwork */
   --pine: #2A6F66;      /* lighter green, hover and accents */
 
-  /* Creams, sampled from the logo art */
-  --cream: #F5F1EB;     /* page background, and text on green */
-  --paper: #FBF9F5;     /* raised surfaces, one step lighter than the page */
-  --sand: #E8E2D6;      /* alternate rows, quiet fills */
+  /* Ground and the warm surfaces that step up from it */
+  --page: #FFFFFF;      /* page background */
+  --paper: #FAF8F4;     /* cards and quiet bands, one warm step off white */
+  --sand: #F0EBE1;      /* warm accent band */
+  --cream: #F5F1EB;     /* the logo cream. Text and marks on green only */
 
   /* Text */
   --ink: #0A1C1A;       /* headings and body on light */
@@ -31,8 +32,8 @@
   --cream-dim: rgba(245, 241, 235, 0.74);  /* secondary text on green */
 
   /* Hairlines. The whole system leans on these instead of shadows. */
-  --line: rgba(10, 28, 26, 0.11);
-  --line-strong: rgba(10, 28, 26, 0.20);
+  --line: rgba(10, 28, 26, 0.13);
+  --line-strong: rgba(10, 28, 26, 0.22);
   --line-dark: rgba(245, 241, 235, 0.16);
 
   --font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -55,7 +56,7 @@ html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--cream);
+  background: var(--page);
   color: var(--ink);
   font-family: var(--font);
   font-size: 17px;
@@ -106,12 +107,14 @@ li { margin-bottom: 0.35em; }
 .section--tight { padding-top: clamp(44px, 4.5vw, 68px); padding-bottom: clamp(44px, 4.5vw, 68px); }
 .section--flush-top { padding-top: 0; }
 
-.surface-cream { background: var(--cream); color: var(--ink); }
+.surface-white { background: var(--page); color: var(--ink); }
+.surface-paper { background: var(--paper); color: var(--ink); }
 .surface-sand { background: var(--sand); color: var(--ink); }
 .surface-forest { background: var(--forest); color: var(--cream); }
 .surface-deep { background: var(--deep); color: var(--cream); }
 
-.surface-sand .quote, .surface-sand .guide { background: var(--paper); }
+.surface-paper .quote, .surface-paper .guide,
+.surface-sand .quote, .surface-sand .guide { background: var(--page); }
 .surface-forest h1, .surface-forest h2, .surface-forest h3, .surface-forest h4,
 .surface-deep h1, .surface-deep h2, .surface-deep h3, .surface-deep h4 { color: var(--cream); }
 
@@ -172,6 +175,7 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
 /* Marks a slot as awaiting real photography. Review build only. */
 .media__note {
   position: absolute; left: 14px; bottom: 14px; right: 14px;
+  max-width: 400px;
   display: flex; gap: 9px; align-items: baseline;
   font-size: 11.5px; line-height: 1.45;
   color: var(--cream); background: rgba(10, 28, 26, 0.5);
@@ -287,7 +291,7 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
 .matrix--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .matrix--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 
-.matrix > * { background: var(--paper); }
+.matrix > * { background: var(--page); }
 
 /* --------------------------------------------------------------------------
    Component: scenario tile
@@ -299,7 +303,7 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
   text-decoration: none; color: inherit;
   transition: background-color 200ms ease;
 }
-.tile:hover { background: var(--sand); }
+.tile:hover { background: var(--paper); }
 .tile__label { font-size: 17.5px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.28; }
 .tile__line { font-size: 15px; color: var(--ink-soft); line-height: 1.5; }
 .tile__go {
@@ -371,13 +375,13 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
 
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-panel); }
 
-.table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; background: var(--paper); }
+.table { width: 100%; border-collapse: collapse; font-size: 16px; min-width: 560px; background: var(--page); }
 .table thead th {
   background: var(--deep); color: var(--cream);
   font-weight: 500; text-align: left; padding: 16px 20px; letter-spacing: -0.01em;
 }
 .table tbody td { padding: 16px 20px; border-top: 1px solid var(--line); vertical-align: top; }
-.table tbody tr:nth-child(even) { background: var(--sand); }
+.table tbody tr:nth-child(even) { background: var(--paper); }
 
 .cost-table { width: 100%; border-collapse: collapse; font-size: 16.5px; }
 .cost-table td { padding: 15px 0; border-bottom: 1px solid var(--line); }
@@ -443,7 +447,7 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
   text-decoration: none; color: inherit;
   transition: background-color 200ms ease, border-color 200ms ease;
 }
-.guide:hover { background: var(--sand); border-color: var(--line-strong); }
+.guide:hover { background: var(--paper); border-color: var(--line-strong); }
 .guide__read { font-size: 14px; color: var(--ink-soft); }
 .guide p { font-size: 15.5px; color: var(--ink-soft); }
 
@@ -483,11 +487,11 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
 
 .site-header {
   position: sticky; top: 0; z-index: 50;
-  background: rgba(245, 241, 235, 0.88);
+  background: rgba(255, 255, 255, 0.86);
   backdrop-filter: saturate(150%) blur(12px);
   border-bottom: 1px solid var(--line);
 }
-.site-header.is-scrolled { background: rgba(245, 241, 235, 0.96); border-bottom-color: var(--line-strong); }
+.site-header.is-scrolled { background: rgba(255, 255, 255, 0.94); border-bottom-color: var(--line-strong); }
 .site-header__inner {
   display: flex; align-items: center; gap: 28px;
   min-height: 84px;
@@ -580,15 +584,89 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
 .surface-forest .needs-input__tag, .surface-deep .needs-input__tag { background: var(--cream); color: var(--deep); }
 
 /* --------------------------------------------------------------------------
-   Motion. Scroll-triggered fade up 20px, under 300ms. Nothing heavier.
+   Motion
+   --------------------------------------------------------------------------
+   The brief asks for a fade up of 20px under 300ms. That still governs how a
+   single element behaves. What has been added is sequence and settle: groups
+   arrive one after another rather than all at once, and photographs ease out
+   of a slight scale so they feel like they are settling rather than switching
+   on. Every one of them is off under prefers-reduced-motion.
    -------------------------------------------------------------------------- */
 
-.reveal { opacity: 0; transform: translateY(20px); }
-.reveal.is-in { opacity: 1; transform: none; transition: opacity 280ms ease-out, transform 280ms ease-out; }
+.js .reveal { opacity: 0; transform: translateY(20px); }
+.reveal.is-in {
+  opacity: 1; transform: none;
+  transition: opacity 460ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 460ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Children of a staggered group arrive in sequence. The delay is set inline
+   by the observer so the step is the same regardless of how many there are. */
+.js .stagger > * { opacity: 0; transform: translateY(18px); }
+.stagger.is-in > * {
+  opacity: 1; transform: none;
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1),
+              transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Photographs settle out of a slight scale rather than appearing flat. */
+.media img { will-change: transform; }
+.media.is-armed img { transform: scale(1.07); opacity: 0; }
+.media.is-in img {
+  transform: none; opacity: 1;
+  transition: transform 1100ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 700ms ease-out;
+}
+
+/* The silk drifts, very slowly. It is the one thing on the page that moves on
+   its own, and at this speed it reads as material rather than as animation. */
+@keyframes sira-drift {
+  0%   { transform: scale(1.14) translate3d(0, 0, 0); }
+  50%  { transform: scale(1.14) translate3d(-2.2%, -1.6%, 0); }
+  100% { transform: scale(1.14) translate3d(0, 0, 0); }
+}
+.has-wave::before { animation: sira-drift 54s ease-in-out infinite; }
+
+/* Hero photograph lifts a little against the scroll. Set by script, capped. */
+.hero__media img { will-change: transform; }
+
+/* FAQ answers open and close on a measured height rather than snapping. */
+.faq__answer { overflow: hidden; }
+.faq__item.is-animating > .faq__answer {
+  transition: height 380ms cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 300ms ease;
+}
+
+/* Hover: a hairline draws across a service row, and arrows lead. */
+.service { position: relative; }
+.service::after {
+  content: ""; position: absolute; left: 0; top: -1px; height: 1px; width: 0;
+  background: var(--forest);
+  transition: width 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.service:hover::after { width: 100%; }
+
+.tile { position: relative; }
+.tile::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: var(--forest); transform: scaleX(0); transform-origin: left;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.tile:hover::after { transform: scaleX(1); }
+
+.btn svg, .link-arrow svg { transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1); }
+.btn:hover svg { transform: translateX(3px); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal, .reveal.is-in { opacity: 1; transform: none; transition: none; }
+  .reveal, .reveal.is-in,
+  .js .reveal, .js .stagger > *,
+  .stagger > *, .stagger.is-in > * { opacity: 1; transform: none; transition: none; }
+  .media.is-armed img, .media.is-in img { opacity: 1; transform: none; transition: none; }
+  .has-wave::before { animation: none; }
+  .faq__item.is-animating > .faq__answer { transition: none; }
+  .service::after, .tile::after { transition: none; }
+  .media img, a:hover > .media img, .media--zoom:hover img { transition: none; transform: none; }
 }
 
 /* ==========================================================================
@@ -612,7 +690,7 @@ a:hover > .media img, .media--zoom:hover img { transform: scale(1.04); }
     display: none; position: absolute; left: 0; right: 0; top: 100%;
     flex-direction: column; align-items: stretch; gap: 2px;
     padding: 14px var(--gutter) 22px;
-    background: var(--cream); border-bottom: 1px solid var(--line);
+    background: var(--page); border-bottom: 1px solid var(--line);
   }
   .nav.is-open { display: flex; }
   .nav a { padding: 13px 14px; font-size: 17px; border-radius: 10px; }

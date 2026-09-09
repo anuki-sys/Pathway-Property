@@ -7,6 +7,7 @@
 <meta name="description" content="{{DESCRIPTION}}">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" href="{{FAVICON}}">
+<script>document.documentElement.classList.add("js");</script>
 <style>
 :root { --wave-src: {{WAVE_SRC}}; }
 {{FONTS}}
@@ -32,22 +33,104 @@
     });
   }
 
-  // Scroll-triggered fade up, 20px, under 300ms.
-  var items = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window) ||
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    for (var i = 0; i < items.length; i++) items[i].classList.add('is-in');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canObserve = 'IntersectionObserver' in window;
+
+  // Reveals. A single element fades up; a .stagger group sends its children in
+  // sequence; a photograph settles out of a slight scale.
+  var revealables = document.querySelectorAll('.reveal, .stagger, .media');
+
+  function show(el) {
+    el.classList.add('is-in');
+    if (el.classList.contains('stagger')) {
+      var kids = el.children;
+      for (var i = 0; i < kids.length; i++) {
+        kids[i].style.transitionDelay = Math.min(i * 70, 420) + 'ms';
+      }
+    }
+  }
+
+  if (reduced || !canObserve) {
+    for (var r = 0; r < revealables.length; r++) revealables[r].classList.add('is-in');
   } else {
+    // Arm the media only once the script is running, so a slow connection
+    // never leaves a photograph hidden behind a class that never lifts.
+    document.querySelectorAll('.media').forEach(function (m) { m.classList.add('is-armed'); });
+
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-in');
-          io.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+        show(entry.target);
+        io.unobserve(entry.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    for (var j = 0; j < items.length; j++) io.observe(items[j]);
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+
+    for (var j = 0; j < revealables.length; j++) io.observe(revealables[j]);
   }
+
+  // The hero photograph lifts a little against the scroll. Capped hard, and
+  // driven off rAF so it never fights the scroll thread.
+  var heroImg = document.querySelector('.hero__media img');
+  if (heroImg && !reduced) {
+    var ticking = false;
+    var applyParallax = function () {
+      var shift = Math.max(-26, Math.min(0, -window.scrollY * 0.045));
+      heroImg.style.transform = 'translate3d(0,' + shift + 'px,0)';
+      ticking = false;
+    };
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(applyParallax);
+    }, { passive: true });
+  }
+
+  // FAQ answers open and close on a measured height instead of snapping.
+  document.querySelectorAll('.faq__item').forEach(function (item) {
+    var summary = item.querySelector('summary');
+    var answer = item.querySelector('.faq__answer');
+    if (!summary || !answer || reduced) return;
+
+    function settle() {
+      item.classList.remove('is-animating');
+      answer.style.height = '';
+      answer.style.opacity = '';
+    }
+
+    summary.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (item.classList.contains('is-animating')) return;
+      item.classList.add('is-animating');
+
+      if (item.open) {
+        answer.style.height = answer.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          answer.style.height = '0px';
+          answer.style.opacity = '0';
+        });
+        answer.addEventListener('transitionend', function done(ev) {
+          if (ev.propertyName !== 'height') return;
+          answer.removeEventListener('transitionend', done);
+          item.open = false;
+          settle();
+        });
+      } else {
+        item.open = true;
+        var target = answer.scrollHeight;
+        answer.style.height = '0px';
+        answer.style.opacity = '0';
+        requestAnimationFrame(function () {
+          answer.style.height = target + 'px';
+          answer.style.opacity = '1';
+        });
+        answer.addEventListener('transitionend', function done(ev) {
+          if (ev.propertyName !== 'height') return;
+          answer.removeEventListener('transitionend', done);
+          settle();
+        });
+      }
+    });
+  });
 
   // Header condenses once the page has moved.
   var header = document.querySelector('.site-header');

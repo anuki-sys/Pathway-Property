@@ -69,6 +69,11 @@ Page folders for the nested URLs (`/islamic-finance/...`) need the Webflow
 Designer app open. The headless API can create pages and elements but not
 folders.
 
+`css/sira.css` goes into Webflow's site-wide custom code as one `<style>`
+block, and the section markup goes through the WHTML builder. That split
+matters: the builder rejects `@keyframes`, but site-wide custom code does not,
+and the drifting silk needs one.
+
 ## Typography and colour
 
 Both were taken from the brand rather than from `00-BUILD-INSTRUCTIONS.md`,
@@ -151,20 +156,42 @@ be, so the page balance holds when they land.
 Each note also renders on the page itself, over its slot, so the brief is
 visible where the photograph goes rather than only in this file.
 
-## Interactive elements
+## Interaction and motion
 
-Deliberately restrained, and all of it works without JavaScript falling over.
+The aim is warmth, not cleverness. Everything here is either something
+settling into place or something responding to a hover. Nothing announces
+itself as an effect.
 
-- **Testimonial slider.** Arrows, dots, arrow keys and drag or swipe. The dots
+- **Sequenced reveals.** A single element fades up 20px. A group sends its
+  children in sequence, 70ms apart, capped at 420ms total so a long row never
+  crawls. Groups are marked `.stagger` and the delay is set by the observer,
+  so it holds however many children a section ends up with.
+- **Photographs settle.** Each one eases out of a 7 per cent scale over 1.1s as
+  it arrives, rather than switching on flat.
+- **The silk drifts.** A 54 second loop on the hero and closing band, slow
+  enough to read as material rather than as animation. It is the only thing on
+  the page that moves on its own.
+- **Hero photograph lifts** against the scroll, capped at 26px, driven off
+  `requestAnimationFrame` so it never fights the scroll thread.
+- **FAQ answers open on a measured height** instead of snapping, which is what
+  a bare `details` element does.
+- **Hairlines draw** across a service row on hover, and under a scenario tile.
+  Arrows lead by 3px on buttons.
+- **Testimonial slider.** Arrows, dots, arrow keys, drag and swipe. The dots
   are generated from the number of reachable positions and rebuilt on resize,
   so there is never a dot that cannot be scrolled to. Three visible at desktop,
   two at tablet, one on a phone.
-- **FAQ accordion**, native `details` and `summary`, so it works before any
-  script runs and stays accessible.
 - **Header condenses** from 84px to 68px once the page has moved past 24px.
-- **Image hover**, a 4 per cent scale over 600ms inside a fixed frame.
-- **Scroll reveal**, a 20px fade up under 300ms, disabled outright under
-  `prefers-reduced-motion`.
+
+Two things hold it together:
+
+**Nothing depends on JavaScript to be readable.** The hidden-until-revealed
+state is scoped behind a `js` class set in the head, so with scripting off
+every element renders normally and the FAQ falls back to the native toggle.
+
+**`prefers-reduced-motion` turns all of it off**, including the drift, the
+parallax, the photograph settle and the hover transitions. Not reduced,
+off.
 
 No animated counters, per the brief: two competitors have counters that render
 as zero, which reads as fabrication.
