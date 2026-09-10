@@ -16,29 +16,44 @@
   Pathway Property Melbourne South East
   Send: Wednesday 16 September 2026, 07:00 AEST
 
+  WHO THIS IS FOR
+  People buying a home to live in, corridor-weighted Dandenong to
+  Pakenham. Written to be read by whoever is actually carrying the
+  decision, which in a home purchase is usually a woman.
+
+  HOW IT SHOULD SOUND
+  Warm, calm, on their side. We name what buying actually feels like -
+  the Saturday grind, the fear of overpaying, the pressure of the
+  auction floor - and then we give something useful about it. Never
+  technical for its own sake. Never breathless. Never talking down.
+  A number only ever appears with the sentence that says what it
+  means for the reader.
+
   SUBJECT LINES - pick ONE, delete the rest:
-    1. One in two Melbourne auctions now passes in
-    2. 55%. That&#8217;s the number that matters this week.
-    3. The RBA meets in 13 days. Read this before you bid.
-  PREHEADER: What&#8217;s on before school holidays, and the cooling off
-  trap that catches auction buyers.
+    1. You have more time than you think
+    2. The one thing to know before your first auction
+    3. Three homes we would walk through this weekend
+  PREHEADER: Plus what your budget really buys in Officer, and the
+  thing nobody tells you about bidding.
 
   -------------------------------------------------------------------
   DESIGN
-  Cream cards floating on the deep green ground, matching the Pathway
-  Instagram grid. Every section opens on the Ecru diamond and a
-  lowercase heading with a full stop. Every number is a pill or a
-  display numeral, never buried in a sentence.
+  Cream and Blanched Almond cards floating on the deep green ground,
+  matching the Pathway Instagram grid. The personal note sits on the
+  warm card; everything factual sits on cream. Headings are lowercase
+  with a full stop behind the Elm diamond.
 
   PALETTE     Elm #206e65 / Cyprus #0f3e3a / Black green #010a09
               Alabaster #f5f2eb / Blanched Almond #feeacd / Ecru #c5b085
-  TYPE        Plus Jakarta Sans throughout, one family, brand logo font.
+  TYPE        Plus Jakarta Sans throughout, the brand logo font.
   RULES       Hyphens only, no em or en dashes. 600px, single column.
               One CTA in The Close. grep '{{SLOT:' must return 0.
+              #c1531b is the unfilled-slot marker and must never be
+              used as a design colour.
 
   IMAGES
   {{SLOT:ASSET_BASE}} is your CDN folder holding the static brand files
-  (logo, backgrounds, mark). Set it once, no trailing slash. Weekly
+  (logos, backgrounds, mark). Set it once, no trailing slash. Weekly
   photos have their own slots. Every image must be hosted - data URIs
   are stripped by Gmail and Outlook.
   ===================================================================
@@ -68,13 +83,14 @@
     .gut   { padding-left:14px !important; padding-right:14px !important; }
     .cardp { padding:26px 22px !important; }
     .stack { display:block !important; width:100% !important; max-width:100% !important; }
-    .gap   { padding-top:12px !important; padding-left:0 !important; }
+    .gap   { padding-top:14px !important; padding-left:0 !important; }
     .mh-l  { font-size:23px !important; line-height:28px !important; }
     .mh-b  { font-size:37px !important; line-height:43px !important; letter-spacing:-1.4px !important; }
-    .h2    { font-size:22px !important; line-height:29px !important; }
-    .big   { font-size:64px !important; line-height:64px !important; }
-    .mid   { font-size:30px !important; line-height:34px !important; }
-    .thumb { padding:0 0 12px 0 !important; }
+    .h2    { font-size:22px !important; line-height:30px !important; }
+    .big   { font-size:60px !important; line-height:60px !important; }
+    .mid   { font-size:28px !important; line-height:32px !important; }
+    .lst-i { width:100% !important; max-width:100% !important; padding:0 0 14px 0 !important; }
+    .lst-i img { width:100% !important; max-width:100% !important; }
     .btn a { display:block !important; }
   }
 </style>
@@ -84,7 +100,7 @@
 
 <!-- preheader -->
 <div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; color:#0f3e3a;">
-  What&#8217;s on before school holidays, and the cooling off trap that catches auction buyers.
+  Plus what your budget really buys in Officer, and the thing nobody tells you about bidding.
   &#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;
 </div>
 
@@ -95,8 +111,6 @@
 <table role="presentation" class="wrap" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px; max-width:600px; margin:0 auto;">
 
   <!-- ============ logo band ============ -->
-  <!-- Alabaster ground, Cyprus logo. Kept as its own section so the mark has
-       air and the green masthead below reads as the publication plate. -->
   <tr>
     <td align="center" bgcolor="#f5f2eb" class="gut" style="background-color:#f5f2eb; padding:30px 32px 28px 32px;">
       <img src="{{SLOT:ASSET_BASE}}/logo-cyprus.png" width="186" alt="Pathway Property" style="display:block; width:186px; max-width:58%; height:auto; margin:0 auto;" />
@@ -115,8 +129,7 @@
         <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
           <tr>
             <td align="center" class="gut" style="padding:44px 32px 42px 32px;">
-              <!-- masthead lockup: light over bold, one family, weight doing the work -->
-              <div class="mh-l" style="padding-top:0; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:29px; line-height:34px; font-weight:300; letter-spacing:0.4px; color:#f5f2eb;">
+              <div class="mh-l" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:29px; line-height:34px; font-weight:300; letter-spacing:0.4px; color:#f5f2eb;">
                 The Melbourne
               </div>
               <div class="mh-b" style="padding-top:1px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:47px; line-height:54px; font-weight:800; letter-spacing:-2px; color:#f5f2eb;">
@@ -126,7 +139,7 @@
                 <tr>
                   <td width="26" style="width:26px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="18"><tr><td height="1" width="18" style="width:18px; height:1px; line-height:1px; font-size:0; background-color:#c5b085;">&nbsp;</td></tr></table></td>
                   <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:2.6px; text-transform:uppercase; color:#c5b085; white-space:nowrap;">
-                    Issue 01 &nbsp;&#183;&nbsp; 16 September 2026 &nbsp;&#183;&nbsp; 2 min
+                    Issue 01 &nbsp;&#183;&nbsp; 16 September 2026 &nbsp;&#183;&nbsp; 4 min
                   </td>
                   <td width="26" align="right" style="width:26px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="18" align="right"><tr><td height="1" width="18" style="width:18px; height:1px; line-height:1px; font-size:0; background-color:#c5b085;">&nbsp;</td></tr></table></td>
                 </tr>
@@ -146,37 +159,38 @@
     </td>
   </tr>
 
-  <!-- ============ 01 the read ============ -->
+  <!-- ============ 01 a note from Tanuj ============ -->
+  <!-- The warm card. This is the only section on Blanched Almond, because it
+       is the only section that is a person talking rather than information.
+       Written by Tanuj from his own voice note and nobody else. 60 to 100
+       words. Something he counted or watched, the suburb named but never a
+       street address, and one line on what it means for someone buying.
+       If it is invented it destroys the only thing it exists to build. -->
   <tr>
     <td class="gut" style="padding:22px 24px 0 24px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#feeacd; border-radius:12px;">
         <tr>
           <td class="cardp" style="padding:30px 28px;">
 
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">The read.</td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">A note from Tanuj.</td>
               </tr>
             </table>
 
-            <div style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:29px; font-weight:400; color:#010a09;">
+            <div style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:30px; font-weight:400; color:#010a09;">
               <span class="slot">{{SLOT:TANUJ_OBSERVATION}}</span>
             </div>
-            <!-- 60 to 100 words, written by Tanuj from his own voice note and
-                 nobody else. A number he counted or a behaviour he watched, the
-                 suburb named but never a street address, one line on what it
-                 means for a buyer. This is the only section that proves he was
-                 at inspections this week. -->
 
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:22px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:24px;">
               <tr>
-                <td width="56" style="width:56px;">
-                  <img src="{{SLOT:TANUJ_PHOTO}}" width="44" height="44" alt="Tanuj Singh" style="display:block; width:44px; height:44px; border-radius:22px;" />
+                <td width="58" style="width:58px;">
+                  <img src="{{SLOT:TANUJ_PHOTO}}" width="46" height="46" alt="Tanuj Singh" style="display:block; width:46px; height:46px; border-radius:23px;" />
                 </td>
                 <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; line-height:21px; font-weight:700; color:#0f3e3a;">
                   Tanuj Singh<br />
-                  <span style="font-size:13px; font-weight:500; color:#206e65;">Pathway Property Melbourne South East</span>
+                  <span style="font-size:13px; font-weight:500; color:#206e65;">Out on the floor every Saturday</span>
                 </td>
               </tr>
             </table>
@@ -187,7 +201,10 @@
     </td>
   </tr>
 
-  <!-- ============ 02 the numbers ============ -->
+  <!-- ============ 02 what this means for you ============ -->
+  <!-- The market section. Every number arrives with the sentence that says
+       what it means for the reader. No jargon, no basis points, nothing that
+       needs a finance background to follow. -->
   <tr>
     <td class="gut" style="padding:16px 24px 0 24px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
@@ -197,47 +214,40 @@
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">The numbers.</td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">What this means for you.</td>
               </tr>
             </table>
 
-            <!-- hero numeral -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px;">
-              <tr>
-                <td style="vertical-align:bottom;">
-                  <div class="big" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:72px; line-height:70px; font-weight:800; letter-spacing:-4px; color:#0f3e3a; font-variant-numeric:tabular-nums;">55%</div>
-                </td>
-                <td align="right" style="vertical-align:bottom;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
-                    <tr><td bgcolor="#206e65" style="background-color:#206e65; border-radius:100px; padding:7px 14px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#feeacd; white-space:nowrap;">&#9660;&nbsp; 16 pts</td></tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-            <div style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; line-height:24px; font-weight:500; color:#206e65;">
-              of Melbourne auctions cleared in the week to 5 September.<br />
-              <span style="color:#6b7a77;">Same week last year: 71%.</span>
+            <div style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:30px; color:#010a09;">
+              About half the homes that went to auction in Melbourne last weekend didn&#8217;t sell on the day. A year ago, closer to three in four did.
             </div>
 
-            <!-- pill row -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #ddd6c6;">
+            <!-- the gentle stat pair -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; border-top:1px solid #e2dbca; border-bottom:1px solid #e2dbca;">
               <tr>
-                <td class="stack" width="50%" style="width:50%; padding:18px 10px 0 0; vertical-align:top;">
-                  <div class="mid" style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:31px; line-height:34px; font-weight:800; letter-spacing:-1.2px; color:#0f3e3a; font-variant-numeric:tabular-nums;">4.35%</div>
-                  <div style="padding-top:6px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Cash rate, held</div>
+                <td class="stack" width="50%" style="width:50%; padding:20px 10px 20px 0; vertical-align:top;">
+                  <div class="big" style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:52px; line-height:52px; font-weight:800; letter-spacing:-2.6px; color:#0f3e3a;">55%</div>
+                  <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:21px; font-weight:500; color:#206e65;">sold under the hammer<br />last weekend</div>
                 </td>
-                <td class="stack gap" width="50%" style="width:50%; padding:18px 0 0 10px; vertical-align:top;">
-                  <div class="mid" style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:31px; line-height:34px; font-weight:800; letter-spacing:-1.2px; color:#0f3e3a; font-variant-numeric:tabular-nums;">13 days</div>
-                  <div style="padding-top:6px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Until the RBA decides</div>
+                <td class="stack gap" width="50%" style="width:50%; padding:20px 0 20px 10px; vertical-align:top;">
+                  <div class="mid" style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:52px; line-height:52px; font-weight:300; letter-spacing:-2.6px; color:#206e65;">71%</div>
+                  <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:21px; font-weight:500; color:#6b7a77;">the same weekend<br />a year ago</div>
                 </td>
               </tr>
             </table>
 
-            <!-- the one takeaway -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; background-color:#feeacd; border-radius:8px;">
+            <div style="padding-top:22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:30px; color:#010a09;">
+              If open homes have felt like you are always the one being hurried, that is what has changed. A home that passes in is not a failure. It is a conversation.
+            </div>
+
+            <!-- the one action -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; background-color:#0f3e3a; border-radius:8px;">
               <tr>
-                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; font-weight:500; color:#010a09;">
-                  <strong style="font-weight:700; color:#0f3e3a;">What it means.</strong> One in two homes passes in. If you are still standing after the hammer, you are negotiating, and that is leverage the underbidders never get. Before you bid, ask your broker what your number becomes at 4.6%.
+                <td class="cardp" style="padding:22px 24px;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#c5b085;">One thing worth doing this week</div>
+                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:29px; font-weight:500; color:#feeacd;">
+                    The Reserve Bank meets on 29 September and rates could move. Ask your broker what your budget becomes if they do. Knowing the number takes the fear out of the room.
+                  </div>
                 </td>
               </tr>
             </table>
@@ -248,103 +258,113 @@
     </td>
   </tr>
 
-  <!-- ============ 03 the weird one ============ -->
+  <!-- ============ 03 featured homes ============ -->
+  <!-- NEW SECTION. Three listings we would actually walk through. The
+       standing line under the heading matters: we are buyer-side, these are
+       not our listings, and saying so is the whole reason this section earns
+       trust rather than reading as an ad.
+       Each note is one honest line. If a home has a compromise, name it.
+       Never write a note that a selling agent could have written. -->
   <tr>
     <td class="gut" style="padding:16px 24px 0 24px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding:0; font-size:0; line-height:0;">
-            <img src="{{SLOT:CRAZY_LISTING_IMAGE}}" width="552" alt="{{SLOT:CRAZY_LISTING_IMAGE_ALT}}" style="display:block; width:100%; max-width:552px; height:auto; border-radius:12px 12px 0 0;" />
-          </td>
-        </tr>
-        <tr>
-          <td class="cardp" style="padding:26px 28px 30px 28px;">
+          <td class="cardp" style="padding:30px 28px;">
+
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">The weird one.</td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">Three we&#8217;d walk through.</td>
               </tr>
             </table>
-            <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
-              <span class="slot">{{SLOT:CRAZY_LISTING}}</span>
+            <div style="padding-top:12px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#5f6f6c;">
+              We don&#8217;t sell homes, so we have nothing to gain from any of these. They are just the three we&#8217;d spend a Saturday on, compromises and all.
             </div>
-            <!-- One or two sentences. This is the most forwarded item in the
-                 email, so it always gets the picture and never a bullet. -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:18px;">
+
+            <!-- listing 1 -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #e2dbca;">
               <tr>
-                <td bgcolor="#0f3e3a" style="background-color:#0f3e3a; border-radius:100px; padding:8px 16px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.3px; color:#feeacd;">
-                  Result of the week &nbsp;&#183;&nbsp; <span class="slot">{{SLOT:RESULT_OF_THE_WEEK}}</span>
+                <td class="lst-i stack" width="190" style="width:190px; vertical-align:top; padding:20px 18px 20px 0;">
+                  <a href="{{SLOT:LISTING_1_URL}}" target="_blank"><img src="{{SLOT:LISTING_1_IMAGE}}" width="172" alt="{{SLOT:LISTING_1_SUBURB}}" style="display:block; width:172px; max-width:172px; height:auto; border-radius:8px;" /></a>
+                </td>
+                <td class="stack" style="vertical-align:top; padding:20px 0;">
+                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:18px; line-height:25px; font-weight:700; color:#0f3e3a;">
+                    <span class="slot">{{SLOT:LISTING_1_SUBURB}}</span>
+                  </div>
+                  <div style="padding-top:4px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#206e65;">
+                    <span class="slot">{{SLOT:LISTING_1_PRICE}}</span>
+                  </div>
+                  <div style="padding-top:4px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:20px; font-weight:500; letter-spacing:0.4px; color:#8a9491;">
+                    <span class="slot">{{SLOT:LISTING_1_SPECS}}</span>
+                  </div>
+                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
+                    <span class="slot">{{SLOT:LISTING_1_NOTE}}</span>
+                  </div>
                 </td>
               </tr>
             </table>
-            <!-- Keep the result to a fragment: "Sold $1.14m, 140k over reserve" -->
+
+            <!-- listing 2 -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid #e2dbca;">
+              <tr>
+                <td class="lst-i stack" width="190" style="width:190px; vertical-align:top; padding:20px 18px 20px 0;">
+                  <a href="{{SLOT:LISTING_2_URL}}" target="_blank"><img src="{{SLOT:LISTING_2_IMAGE}}" width="172" alt="{{SLOT:LISTING_2_SUBURB}}" style="display:block; width:172px; max-width:172px; height:auto; border-radius:8px;" /></a>
+                </td>
+                <td class="stack" style="vertical-align:top; padding:20px 0;">
+                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:18px; line-height:25px; font-weight:700; color:#0f3e3a;">
+                    <span class="slot">{{SLOT:LISTING_2_SUBURB}}</span>
+                  </div>
+                  <div style="padding-top:4px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#206e65;">
+                    <span class="slot">{{SLOT:LISTING_2_PRICE}}</span>
+                  </div>
+                  <div style="padding-top:4px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:20px; font-weight:500; letter-spacing:0.4px; color:#8a9491;">
+                    <span class="slot">{{SLOT:LISTING_2_SPECS}}</span>
+                  </div>
+                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
+                    <span class="slot">{{SLOT:LISTING_2_NOTE}}</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- listing 3 -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-top:1px solid #e2dbca; border-bottom:1px solid #e2dbca;">
+              <tr>
+                <td class="lst-i stack" width="190" style="width:190px; vertical-align:top; padding:20px 18px 20px 0;">
+                  <a href="{{SLOT:LISTING_3_URL}}" target="_blank"><img src="{{SLOT:LISTING_3_IMAGE}}" width="172" alt="{{SLOT:LISTING_3_SUBURB}}" style="display:block; width:172px; max-width:172px; height:auto; border-radius:8px;" /></a>
+                </td>
+                <td class="stack" style="vertical-align:top; padding:20px 0;">
+                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:18px; line-height:25px; font-weight:700; color:#0f3e3a;">
+                    <span class="slot">{{SLOT:LISTING_3_SUBURB}}</span>
+                  </div>
+                  <div style="padding-top:4px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#206e65;">
+                    <span class="slot">{{SLOT:LISTING_3_PRICE}}</span>
+                  </div>
+                  <div style="padding-top:4px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:20px; font-weight:500; letter-spacing:0.4px; color:#8a9491;">
+                    <span class="slot">{{SLOT:LISTING_3_SPECS}}</span>
+                  </div>
+                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
+                    <span class="slot">{{SLOT:LISTING_3_NOTE}}</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <div style="padding-top:18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:21px; color:#8a9491;">
+              Price guides are the agents&#8217;, not ours. Tap any photo for the listing.
+            </div>
+
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- ============ 04 on the pod ============ -->
-  <tr>
-    <td class="gut" style="padding:16px 24px 0 24px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#010a09; border-radius:12px;">
-        <tr>
-          <td style="padding:0; font-size:0; line-height:0;">
-            <img src="{{SLOT:EPISODE_IMAGE}}" width="552" alt="{{SLOT:EPISODE_IMAGE_ALT}}" style="display:block; width:100%; max-width:552px; height:auto; border-radius:12px 12px 0 0;" />
-          </td>
-        </tr>
-        <tr>
-          <td class="cardp" style="padding:28px;">
-
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-ecru.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">On the pod</td>
-              </tr>
-            </table>
-
-            <div class="h2" style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:31px; font-weight:700; letter-spacing:-0.4px; color:#f5f2eb;">
-              <span class="slot">{{SLOT:EPISODE_TITLE}}</span>
-            </div>
-            <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; font-weight:500; color:#c5b085;">
-              with <span class="slot">{{SLOT:GUEST_NAME}}</span>, <span class="slot">{{SLOT:GUEST_ONE_LINER}}</span>
-            </div>
-
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px;">
-              <tr>
-                <td width="3" style="width:3px; background-color:#206e65; font-size:0; line-height:0;">&nbsp;</td>
-                <td style="padding-left:18px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:28px; font-weight:600; color:#feeacd;">
-                  <span class="slot">{{SLOT:THE_HOOK}}</span>
-                  <span style="display:block; padding-top:6px; font-size:14px; font-weight:500; color:#c5b085;">Answer at <span class="slot">{{SLOT:TIMESTAMP}}</span>.</span>
-                </td>
-              </tr>
-            </table>
-            <!-- THE_HOOK is one line, phrased as the question we put to the
-                 guest. It replaces the old three bullets on purpose. -->
-
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn" style="margin-top:26px;">
-              <tr>
-                <td align="center" bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px;">
-                  <a href="{{SLOT:EPISODE_URL}}" target="_blank" style="display:inline-block; padding:15px 34px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:700; letter-spacing:0.6px; color:#0f3e3a; text-decoration:none; border-radius:100px;">
-                    &#9654;&nbsp;&nbsp;Listen now
-                  </a>
-                </td>
-              </tr>
-            </table>
-
-            <div style="padding-top:20px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:21px; color:#6b7a77;">
-              Also this week, the investment read on <span class="slot">{{SLOT:SEGMENT_4_SUBURB}}</span>.
-            </div>
-            <!-- The single line of investment content in the whole email. Never
-                 expand it. That is what keeps the owner-occupier line clean. -->
-
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-
-  <!-- ============ 05 suburb in focus ============ -->
+  <!-- ============ 04 suburb in focus ============ -->
+  <!-- Reframed around living there rather than data about it. The spec strip
+       and the sold lines are the value; the three calls at the bottom are the
+       opinion. Lift THE TAKE verbatim from the run sheet's "one line to land"
+       and strip every ON AIR and SPEAKER NOTES block first. -->
   <tr>
     <td class="gut" style="padding:16px 24px 0 24px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
@@ -359,81 +379,94 @@
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">Suburb in focus</td>
+                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">What it&#8217;s like to live in</td>
               </tr>
             </table>
-            <div class="h2" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:26px; line-height:32px; font-weight:800; letter-spacing:-0.6px; color:#0f3e3a;">
+            <div class="h2" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:27px; line-height:33px; font-weight:800; letter-spacing:-0.6px; color:#0f3e3a;">
               <span class="slot">{{SLOT:SUBURB_NAME}}</span>
             </div>
 
-            <!-- spec strip -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px; border-top:1px solid #ddd6c6;">
+            <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:30px; color:#010a09;">
+              <span class="slot">{{SLOT:SUBURB_SATURDAY}}</span>
+            </div>
+            <!-- SUBURB_SATURDAY: two or three sentences on what an ordinary
+                 Saturday there actually feels like. The market, the park, the
+                 walk to school, the queue at the bakery. This is the sentence
+                 that makes someone picture their family in it. -->
+
+            <!-- the practical strip -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #e2dbca;">
               <tr>
-                <td style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">House median</td>
-                <td align="right" style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a; font-variant-numeric:tabular-nums;"><span class="slot">{{SLOT:SUBURB_MEDIAN}}</span></td>
+                <td style="padding:13px 0; border-bottom:1px solid #e2dbca; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Typical house price</td>
+                <td align="right" style="padding:13px 0; border-bottom:1px solid #e2dbca; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a;"><span class="slot">{{SLOT:SUBURB_MEDIAN}}</span></td>
               </tr>
               <tr>
-                <td style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">To the CBD</td>
-                <td align="right" style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a; font-variant-numeric:tabular-nums;"><span class="slot">{{SLOT:SUBURB_COMMUTE}}</span></td>
+                <td style="padding:13px 0; border-bottom:1px solid #e2dbca; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Train to the city</td>
+                <td align="right" style="padding:13px 0; border-bottom:1px solid #e2dbca; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a;"><span class="slot">{{SLOT:SUBURB_COMMUTE}}</span></td>
               </tr>
               <tr>
-                <td style="padding:13px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Zoned secondary</td>
+                <td style="padding:13px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Local secondary school</td>
                 <td align="right" style="padding:13px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a;"><span class="slot">{{SLOT:SUBURB_SCHOOL}}</span></td>
               </tr>
             </table>
 
             <!-- what your budget buys -->
-            <div style="padding-top:24px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">What your budget buys</div>
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:12px;">
+            <div style="padding-top:26px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">What your budget really buys</div>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:14px;">
               <tr>
-                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 10px 0;">
+                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 12px 0;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#0f3e3a" style="background-color:#0f3e3a; border-radius:100px; padding:6px 13px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#feeacd; white-space:nowrap;"><span class="slot">{{SLOT:BUDGET_1}}</span></td></tr></table>
                 </td>
-                <td style="padding:4px 0 10px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_1_BUYS}}</span></td>
+                <td style="padding:4px 0 12px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_1_BUYS}}</span></td>
               </tr>
               <tr>
-                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 10px 0;">
+                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 12px 0;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#206e65" style="background-color:#206e65; border-radius:100px; padding:6px 13px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#feeacd; white-space:nowrap;"><span class="slot">{{SLOT:BUDGET_2}}</span></td></tr></table>
                 </td>
-                <td style="padding:4px 0 10px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_2_BUYS}}</span></td>
+                <td style="padding:4px 0 12px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_2_BUYS}}</span></td>
               </tr>
               <tr>
                 <td width="106" style="width:106px; vertical-align:top; padding:0 12px 0 0;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px; padding:6px 13px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#0f3e3a; white-space:nowrap;"><span class="slot">{{SLOT:BUDGET_3}}</span></td></tr></table>
                 </td>
-                <td style="padding:4px 0 0 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_3_BUYS}}</span></td>
+                <td style="padding:4px 0 0 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_3_BUYS}}</span></td>
               </tr>
             </table>
 
-            <!-- three short calls -->
+            <!-- what actually sold, so the guides above can be sanity-checked -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:26px; background-color:#eee9dc; border-radius:8px;">
+              <tr>
+                <td style="padding:18px 20px;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:1.8px; text-transform:uppercase; color:#206e65;">What actually sold there</div>
+                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:26px; color:#010a09;">
+                    <span class="slot">{{SLOT:SOLD_1}}</span><br />
+                    <span class="slot">{{SLOT:SOLD_2}}</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- the opinion -->
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px;">
               <tr>
-                <td style="padding-bottom:11px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
-                  <strong style="color:#206e65;">Best pocket.</strong> <span class="slot">{{SLOT:BEST_POCKET}}</span>
+                <td style="padding-bottom:12px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:26px; color:#010a09;">
+                  <strong style="color:#206e65;">Where we&#8217;d look first.</strong> <span class="slot">{{SLOT:LOOK_FIRST}}</span>
                 </td>
               </tr>
               <tr>
-                <td style="padding-bottom:11px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
-                  <strong style="color:#206e65;">Be careful.</strong> <span class="slot">{{SLOT:BE_CAREFUL}}</span>
-                </td>
-              </tr>
-              <tr>
-                <td style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
-                  <strong style="color:#206e65;">Buy here if.</strong> <span class="slot">{{SLOT:BUY_HERE_IF}}</span>
+                <td style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:26px; color:#010a09;">
+                  <strong style="color:#206e65;">What to watch for.</strong> <span class="slot">{{SLOT:WATCH_FOR}}</span>
                 </td>
               </tr>
             </table>
 
-            <!-- the take -->
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; background-color:#feeacd; border-radius:8px;">
               <tr>
-                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:28px; font-weight:700; letter-spacing:-0.2px; color:#010a09;">
+                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:29px; font-weight:700; letter-spacing:-0.2px; color:#010a09;">
                   <span class="slot">{{SLOT:SUBURB_THE_TAKE}}</span>
                 </td>
               </tr>
             </table>
-            <!-- Lift THE TAKE verbatim from the run sheet&#8217;s "one line to land".
-                 Strip every ON AIR, SPEAKER NOTES and "Toss to next" line. -->
 
           </td>
         </tr>
@@ -441,7 +474,17 @@
     </td>
   </tr>
 
-  <!-- ============ 06 good to know ============ -->
+  <!-- ============ 05 before you raise your hand ============ -->
+  <!-- LEGAL GATE. Sale of Land Act 1962 (Vic) s31, per the LIV and REIV
+       prescribed contract notice. Nirvan signs off before send.
+       The notice says the period runs from "the day that you sign the
+       contract" - this build uses that wording, not the secondary sources
+       that tie it to receipt of the section 32. Settle the framing once,
+       because it recurs.
+       Exclusions kept out of the send copy for length and tone: industrial or
+       commercial use, farmland over 20 hectares, a prior contract on
+       substantially the same terms, and buyers who are agents or companies.
+       Restore if legal wants them stated. -->
   <tr>
     <td class="gut" style="padding:16px 24px 0 24px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
@@ -451,62 +494,44 @@
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">Good to know</td>
+                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">Worth knowing</td>
               </tr>
             </table>
-            <div class="h2" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:24px; line-height:31px; font-weight:800; letter-spacing:-0.5px; color:#0f3e3a;">
-              Cooling off does not exist at auction.
+            <div class="h2" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:25px; line-height:33px; font-weight:800; letter-spacing:-0.5px; color:#0f3e3a;">
+              Before you raise your hand.
             </div>
 
-            <!-- three numerals -->
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #ddd6c6; border-bottom:1px solid #ddd6c6;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #e2dbca; border-bottom:1px solid #e2dbca;">
               <tr>
                 <td width="33%" align="center" style="width:33%; padding:20px 4px;">
-                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:26px; line-height:28px; font-weight:800; letter-spacing:-1px; color:#0f3e3a;">3 days</div>
-                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:#206e65; line-height:15px;">Private sale</div>
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:25px; line-height:28px; font-weight:800; letter-spacing:-0.9px; color:#0f3e3a;">3 days</div>
+                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#206e65; line-height:15px;">To change your mind<br />at a private sale</div>
                 </td>
-                <td width="33%" align="center" style="width:33%; padding:20px 4px; border-left:1px solid #ddd6c6; border-right:1px solid #ddd6c6;">
-                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:26px; line-height:28px; font-weight:800; letter-spacing:-1px; color:#c1531b;">None</div>
-                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:#206e65; line-height:15px;">At auction</div>
+                <td width="33%" align="center" style="width:33%; padding:20px 4px; border-left:1px solid #e2dbca; border-right:1px solid #e2dbca;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:25px; line-height:28px; font-weight:800; letter-spacing:-0.9px; color:#0f3e3a;">$1,600</div>
+                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#206e65; line-height:15px;">What walking away<br />costs on $800,000</div>
                 </td>
                 <td width="34%" align="center" style="width:34%; padding:20px 4px;">
-                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:26px; line-height:28px; font-weight:800; letter-spacing:-1px; color:#0f3e3a;">0.2%</div>
-                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:#206e65; line-height:15px;">Or $100 to walk</div>
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:25px; line-height:28px; font-weight:800; letter-spacing:-0.9px; color:#0f3e3a;">None</div>
+                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#206e65; line-height:15px;">At auction. Not a<br />single day</div>
                 </td>
               </tr>
             </table>
 
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px;">
+            <div style="padding-top:22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:29px; color:#010a09;">
+              At a private sale you get three clear business days from the day you sign to change your mind. In writing, for a small part of the deposit. It is a real safety net.
+            </div>
+            <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:29px; color:#010a09;">
+              At auction there is no net at all. Not on the day, not for three days either side. The moment your hand goes up, the home is yours.
+            </div>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; background-color:#0f3e3a; border-radius:8px;">
               <tr>
-                <td style="padding-bottom:12px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
-                  On a private sale you get <strong style="color:#0f3e3a;">3 clear business days</strong> from the day you sign to walk away in writing, and it costs you 0.2% of the price or $100, whichever is greater. On an $800,000 home, $1,600.
-                </td>
-              </tr>
-              <tr>
-                <td style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
-                  Buy at auction, on auction day, or within three days either side of one, and there is <strong style="color:#0f3e3a;">no cooling off at all</strong>. The bid is final.
+                <td class="cardp" style="padding:22px 24px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:29px; font-weight:500; color:#feeacd;">
+                  So do the worrying first. Contract read, finance confirmed, a second walk through on a quiet weekday. Then put your hand up and enjoy the morning.
                 </td>
               </tr>
             </table>
-
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px; background-color:#0f3e3a; border-radius:8px;">
-              <tr>
-                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; font-weight:600; color:#feeacd;">
-                  So every check you were going to do afterwards has to happen before you raise your hand. Contract reviewed, finance confirmed, building and pest read.
-                </td>
-              </tr>
-            </table>
-
-            <!-- LEGAL GATE. Sale of Land Act 1962 (Vic) s31, per the LIV and
-                 REIV prescribed contract notice. Nirvan signs off before send.
-                 The notice says the period runs from "the day that you sign the
-                 contract" - this build uses that wording, not the secondary
-                 sources that tie it to receipt of the section 32. Settle the
-                 framing once, because it recurs.
-                 Exclusions trimmed from the send copy for length: industrial or
-                 commercial use, farmland over 20 hectares, a prior contract on
-                 substantially the same terms, and buyers who are agents or
-                 companies. Restore if legal wants them stated. -->
 
           </td>
         </tr>
@@ -514,7 +539,38 @@
     </td>
   </tr>
 
-  <!-- ============ 07 what's on ============ -->
+  <!-- ============ 06 one we had to show you ============ -->
+  <!-- The light moment. Most forwarded item in the email, so it always gets
+       the picture. One or two sentences, affectionate rather than sneering. -->
+  <tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
+        <tr>
+          <td style="padding:0; font-size:0; line-height:0;">
+            <img src="{{SLOT:CRAZY_LISTING_IMAGE}}" width="552" alt="{{SLOT:CRAZY_LISTING_IMAGE_ALT}}" style="display:block; width:100%; max-width:552px; height:auto; border-radius:12px 12px 0 0;" />
+          </td>
+        </tr>
+        <tr>
+          <td class="cardp" style="padding:24px 28px 28px 28px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:22px; line-height:29px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">One we had to show you.</td>
+              </tr>
+            </table>
+            <div style="padding-top:12px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:28px; color:#010a09;">
+              <span class="slot">{{SLOT:CRAZY_LISTING}}</span>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ============ 07 your weekend ============ -->
+  <!-- Three items, one line each. Corridor items carry the South East chip.
+       Always keep the transport line - it is hyper-local, genuinely useful,
+       and no other Melbourne property newsletter runs it. -->
   <tr>
     <td class="gut" style="padding:16px 24px 0 24px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
@@ -524,28 +580,31 @@
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
-                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">What&#8217;s on.</td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">Your weekend.</td>
               </tr>
             </table>
+            <div style="padding-top:12px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#5f6f6c;">
+              Because Saturday shouldn&#8217;t only be open homes.
+            </div>
 
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:18px;">
               <tr>
                 <td width="118" style="width:118px; vertical-align:top; padding:0 14px 18px 0;">
                   <img src="{{SLOT:EVENT_1_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:6px;" />
                 </td>
-                <td style="vertical-align:top; padding-bottom:18px; border-bottom:1px solid #ddd6c6;">
-                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:23px; font-weight:700; color:#0f3e3a;">School holidays start Mon 21 Sep</div>
-                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; color:#010a09;">Two weekends of thinner crowds and fewer auctions. Less competition, less stock.</div>
+                <td style="vertical-align:top; padding-bottom:18px; border-bottom:1px solid #e2dbca;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#0f3e3a;">School holidays start Monday</div>
+                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:23px; color:#010a09;">Two quieter weekends of inspections ahead, and less pressure on you.</div>
                 </td>
               </tr>
               <tr>
                 <td width="118" style="width:118px; vertical-align:top; padding:18px 14px 18px 0;">
                   <img src="{{SLOT:EVENT_2_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:6px;" />
                 </td>
-                <td style="vertical-align:top; padding:18px 0; border-bottom:1px solid #ddd6c6;">
+                <td style="vertical-align:top; padding:18px 0; border-bottom:1px solid #e2dbca;">
                   <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px; padding:3px 9px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:9px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#0f3e3a;">South East</td></tr></table>
-                  <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:23px; font-weight:700; color:#0f3e3a;">Cardinia holiday program, Pakenham</div>
-                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; color:#010a09;">Come-and-try sport at James Bathe Reserve, free Fishcare sessions. Books out early.</div>
+                  <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#0f3e3a;">Cardinia holiday program, Pakenham</div>
+                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:23px; color:#010a09;">Come-and-try sport and free fishing sessions at James Bathe Reserve. Books out early.</div>
                 </td>
               </tr>
               <tr>
@@ -553,22 +612,20 @@
                   <img src="{{SLOT:EVENT_3_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:6px;" />
                 </td>
                 <td style="vertical-align:top; padding-top:18px;">
-                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:23px; font-weight:700; color:#0f3e3a;">Cartier at the NGV, until 4 Oct</div>
-                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; color:#010a09;">300 pieces, the largest showing the house has staged in Australia.</div>
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#0f3e3a;">Cartier at the NGV, until 4 October</div>
+                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:23px; color:#010a09;">Three hundred pieces, the biggest the house has staged in Australia.</div>
                 </td>
               </tr>
             </table>
 
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; background-color:#eae5d8; border-radius:8px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; background-color:#eee9dc; border-radius:8px;">
               <tr>
-                <td style="padding:16px 18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:23px; color:#010a09;">
-                  <strong style="color:#206e65; letter-spacing:1.2px; font-size:10px; text-transform:uppercase;">On the roads</strong><br />
+                <td style="padding:16px 18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:24px; color:#010a09;">
+                  <strong style="color:#206e65; letter-spacing:1.4px; font-size:10px; text-transform:uppercase;">If you&#8217;re driving to inspections</strong><br />
                   <span class="slot">{{SLOT:TRANSPORT_LINE}}</span>
                 </td>
               </tr>
             </table>
-            <!-- Always keep the transport line. Hyper-local, genuinely useful,
-                 and no other Melbourne property newsletter runs it. -->
 
           </td>
         </tr>
@@ -576,7 +633,58 @@
     </td>
   </tr>
 
-  <!-- ============ 08 the close ============ -->
+  <!-- ============ 08 on the pod ============ -->
+  <!-- Compact on purpose. This is cross-promotion, so it sits late and stays
+       small. THE_HOOK is one line, phrased as the question a buyer would
+       actually ask. -->
+  <tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#010a09; border-radius:12px;">
+        <tr>
+          <td class="cardp" style="padding:26px 28px;">
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+                <td class="lst-i stack" width="122" style="width:122px; vertical-align:top; padding-right:18px;">
+                  <img src="{{SLOT:EPISODE_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:8px;" />
+                </td>
+                <td class="stack" style="vertical-align:top;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:#c5b085;">On the pod this week</div>
+                  <div style="padding-top:9px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:27px; font-weight:700; color:#f5f2eb;">
+                    <span class="slot">{{SLOT:EPISODE_TITLE}}</span>
+                  </div>
+                  <div style="padding-top:6px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; font-weight:500; color:#c5b085;">
+                    with <span class="slot">{{SLOT:GUEST_NAME}}</span>, <span class="slot">{{SLOT:GUEST_ONE_LINER}}</span>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <div style="padding-top:18px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:28px; font-weight:500; color:#feeacd;">
+              <span class="slot">{{SLOT:THE_HOOK}}</span>
+              <span style="display:block; padding-top:4px; font-size:13px; font-weight:500; color:#c5b085;">Answer at <span class="slot">{{SLOT:TIMESTAMP}}</span>.</span>
+            </div>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn" style="margin-top:20px;">
+              <tr>
+                <td align="center" bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px;">
+                  <a href="{{SLOT:EPISODE_URL}}" target="_blank" style="display:inline-block; padding:14px 32px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:700; letter-spacing:0.5px; color:#0f3e3a; text-decoration:none; border-radius:100px;">
+                    &#9654;&nbsp;&nbsp;Have a listen
+                  </a>
+                </td>
+              </tr>
+            </table>
+
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ============ 09 the close ============ -->
+  <!-- ONE call to action. A reply, never a booking link. Replies outperform
+       bookings on a cold list, and every reply feeds the reader question slot
+       from Issue 02. Do not add a second CTA. -->
   <tr>
     <td class="gut" style="padding:16px 24px 24px 24px;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-radius:12px;">
@@ -591,9 +699,9 @@
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr>
                   <td class="cardp" style="padding:34px 28px;">
-                    <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">Hit reply</div>
-                    <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:20px; line-height:32px; font-weight:700; letter-spacing:-0.3px; color:#feeacd;">
-                      Tell me the suburb you&#8217;re looking in and what you can spend. I&#8217;ll tell you what that actually buys right now. No pitch, and I&#8217;ll say so if we&#8217;re not the right fit.
+                    <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">Just hit reply</div>
+                    <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:32px; font-weight:600; letter-spacing:-0.2px; color:#feeacd;">
+                      Tell me the suburb you have your heart set on and what you can comfortably spend. I&#8217;ll tell you honestly what that buys there right now. If we&#8217;re not the right people to help, I&#8217;ll say so and point you to who is.
                     </div>
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:24px;">
                       <tr>
@@ -627,7 +735,12 @@
           </td>
         </tr>
         <tr>
-          <td align="center" style="padding-top:18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:22px; color:#c5b085;">
+          <td align="center" style="padding-top:16px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:23px; color:#c5b085;">
+            Written for people buying a home to live in.
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding-top:14px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:22px; color:#c5b085;">
             <a href="{{SLOT:INSTAGRAM_URL}}" style="color:#c5b085; text-decoration:none;">Instagram</a>
             &nbsp;&nbsp;&#183;&nbsp;&nbsp;
             <a href="{{SLOT:YOUTUBE_URL}}" style="color:#c5b085; text-decoration:none;">Podcast</a>
@@ -638,8 +751,8 @@
         <tr><td style="padding-top:22px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#0f3e3a;">&nbsp;</td></tr></table></td></tr>
         <tr>
           <td style="padding-top:18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:12px; line-height:20px; color:#66736f;">
-            <strong style="color:#c5b085; font-size:10px; letter-spacing:1.2px; text-transform:uppercase;">Sources</strong><br />
-            Domain auction results, Melbourne, week to 5 September 2026, preliminary. Reserve Bank of Australia, cash rate target. Victorian Department of Education, 2026 term dates. Sale of Land Act 1962 (Vic) s31 per the LIV and REIV prescribed notice. Clearance rates are revised as late results land, so read the number as a direction.
+            <strong style="color:#c5b085; font-size:10px; letter-spacing:1.2px; text-transform:uppercase;">Where our numbers come from</strong><br />
+            Clearance rates: Domain, Melbourne, week to 5 September 2026, preliminary and revised as late results land. Cash rate: Reserve Bank of Australia. Term dates: Victorian Department of Education. Cooling off: Sale of Land Act 1962 (Vic) s31, per the LIV and REIV prescribed notice.
           </td>
         </tr>
         <tr>
@@ -651,7 +764,7 @@
             &nbsp;&#183;&nbsp;
             <a href="{{SLOT:WEBVIEW_URL}}" style="color:#c5b085; text-decoration:underline;">View in browser</a>
             <br /><br />
-            General information only. Not financial, legal or tax advice.
+            General information only, and not financial, legal or tax advice. Please get advice that takes your own situation into account.
           </td>
         </tr>
       </table>

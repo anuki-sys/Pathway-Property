@@ -5,35 +5,58 @@ following issue is a content swap rather than a rebuild.
 
 ---
 
+## Who it is for, and how it sounds
+
+People buying a home to live in, corridor-weighted Dandenong to Pakenham.
+Written to be read by whoever is actually carrying the decision, which in a
+home purchase is usually a woman.
+
+The voice is warm, calm and on the reader's side. We name what buying actually
+feels like - the Saturday grind, the fear of overpaying, the pressure of the
+auction floor - and then give something useful about it. Never technical for
+its own sake, never breathless, never talking down. **A number only ever
+appears alongside the sentence that says what it means for her.**
+
+Three rules that keep it honest:
+
+- If a featured home has a compromise, the note names it. Never write a note a
+  selling agent could have written.
+- The standing line under Featured homes ("we don't sell homes") is what makes
+  that section trust-building rather than an ad. Do not remove it.
+- Tanuj's note is written by Tanuj, from his own voice note. If it is invented
+  it destroys the only thing it exists to build.
+
 ## Look
 
-The email follows the **Pathway Instagram grid**, not a generic newsletter
-layout: cream cards floating on the deep green ground, the brand gradient
-behind the masthead and the closing block, and every number pulled out as a
-display numeral or a pill rather than buried in a sentence.
+Cream cards floating on the deep green ground, matching the Pathway Instagram
+grid. The header runs as two sections: an Alabaster band carrying the Cyprus
+logo, then the green plate carrying the title lockup.
 
-The header runs as two sections: an Alabaster band carrying the Cyprus logo, then the green plate carrying the title lockup.
+Tanuj's note is the **only** card on Blanched Almond, because it is the only
+section that is a person talking rather than information. Everything factual
+sits on Alabaster.
 
-Section headings use the same device as the client review cards - the small
-Ecru diamond, then a lowercase heading with a full stop. `The read.`
-`The numbers.` `The weird one.` `What's on.`
+Section headings use the same device as the client review cards - the small Elm
+diamond, then a lowercase heading with a full stop. `A note from Tanuj.`
+`What this means for you.` `Three we'd walk through.` `Your weekend.`
 
 | Token | Hex | Name | Used for |
 |---|---|---|---|
-| Main | `#206e65` | Elm | the diamond, sub-labels, rules, the mid-tier budget pill |
-| Dark contrast | `#0f3e3a` | Cyprus | the ground, display numerals, dark pills |
+| Main | `#206e65` | Elm | the diamond, sub-labels, price guides, the mid budget pill |
+| Dark contrast | `#0f3e3a` | Cyprus | the ground, display numerals, the action blocks |
 | Black text | `#010a09` | Black green | body copy, the podcast card, the footer |
-| White text | `#f5f2eb` | Alabaster | every card face, text on dark |
-| Accent light text | `#feeacd` | Blanched Almond | the takeaway blocks, the take, pill text, the Close |
-| Accent icons | `#c5b085` | Ecru | the Listen button, chips, section marks on dark |
+| White text | `#f5f2eb` | Alabaster | factual cards, text on dark |
+| Accent light text | `#feeacd` | Blanched Almond | Tanuj's card, the take, text on Cyprus blocks |
+| Accent icons | `#c5b085` | Ecru | the Listen button, chips, hairlines, marks on dark |
 
-Type is **Plus Jakarta Sans** throughout, one family, the brand logo font.
-System fallbacks for Outlook and Gmail.
+`#c1531b` is the unfilled-slot marker and **must never be used as a design
+colour.** It was previously used for the word "None" in the cooling off block,
+which read as alarm; that is now Cyprus like the other two numerals.
 
-Cards are 12px radius on a 24px gutter, images 6 to 12px, pills fully round.
-Outlook squares the corners off - that degradation is accepted.
+Type is **Plus Jakarta Sans** throughout, the brand logo font, with system
+fallbacks. Body line height is open (28 to 30px on 16 to 17px type) because
+that is most of what makes the tone feel unhurried.
 
----
 
 ## Assets
 
@@ -57,8 +80,9 @@ Weekly photos have their own slots. Sizes the template expects, at 1x:
 | Slot | Size |
 |---|---|
 | `HERO_IMAGE` | 600 x 340 |
+| `LISTING_1..3_IMAGE` | 172 x 132 |
 | `CRAZY_LISTING_IMAGE` | 552 x 360 |
-| `EPISODE_IMAGE` | 552 x 300 |
+| `EPISODE_IMAGE` | 104 x 104, square |
 | `SUBURB_IMAGE` | 552 x 300 |
 | `TANUJ_PHOTO` | 88 x 88, square, rendered round |
 | `EVENT_1..3_IMAGE` | 208 x 160 |
@@ -67,36 +91,47 @@ Supply all of them at 2x and let the template scale down.
 
 ---
 
-## Content, and what was cut
+## Structure
 
-Issue 01 went from roughly 1,400 words to about 430. What changed:
+Value first, promotion last.
 
-| Section | Was | Now |
+| # | Section | Job |
 |---|---|---|
-| The read | unchanged | unchanged. Still Tanuj's own 60 to 100 words |
-| The numbers | six bullets of clearance and RBA detail | 55% as a display numeral with a "16 pts" pill, cash rate and countdown below, one takeaway. National figures cut |
-| The weird one | a bullet | a photo card with a result pill |
-| On the pod | three "what you'll get" bullets | episode art, guest, one hook line, one button |
-| Suburb in focus | seven numbered sub-headings | photo, three-row spec strip, three budget pills, three one-liners, the take |
-| Good to know | five legal bullets | three numerals (3 days / None / 0.2%) and two sentences |
-| What's on | six events | three with thumbnails, one line each, plus the transport line |
-| Sources | its own section | folded into the footer at 12px |
+| 1 | Logo band | Alabaster, Cyprus logo |
+| 2 | Masthead | green plate, title lockup, issue line |
+| 3 | Hero image | full bleed |
+| 4 | **A note from Tanuj** | the warm card. Proof he was on the floor |
+| 5 | **What this means for you** | the market, in plain language, plus one action |
+| 6 | **Three we'd walk through** | featured homes, honest notes |
+| 7 | **What it's like to live in [suburb]** | a Saturday there, then the practical detail |
+| 8 | **Before you raise your hand** | cooling off, as reassurance not legislation |
+| 9 | **One we had to show you** | the light moment. Most forwarded item |
+| 10 | **Your weekend** | three things, family-weighted |
+| 11 | **On the pod** | compact, sits late because it is promotion |
+| 12 | **The Close** | one reply CTA. Never two |
+| 13 | Footer | sources, compliance |
 
-Two cuts need a human decision:
+About 1,000 rendered words, roughly a 4 minute read. The masthead says 4 min;
+if a future issue grows past about 1,100 words, cut before you change the
+label.
 
-- **The suburb panel lost "who lives here", and "best pockets" became one
-  line.** The spine is intact and the panel is far more scannable, but if the
-  run sheet depends on all seven headings appearing, restore them.
-- **The cooling off exclusions were trimmed** - industrial or commercial use,
-  farmland over 20 hectares, a prior contract on substantially the same terms,
-  and buyers who are agents or companies. They sit in a build comment in block
-  06. Restore them if Nirvan wants them stated in the send copy.
+### Judgement calls to review
 
----
+- **The suburb panel is down from seven fixed sub-headings to five blocks.**
+  "Who lives here" is gone, and "it's a fit if" was folded into The Take. If
+  the run sheet depends on all seven appearing, say so and they come back.
+- **The cooling off exclusions are out of the send copy** - industrial or
+  commercial use, farmland over 20 hectares, a prior contract on substantially
+  the same terms, and buyers who are agents or companies. They sit in a build
+  comment in section 08. Restore if Nirvan wants them stated.
+- **The "investment read" cross-promo line was dropped** from the podcast
+  block. It was the deliberate single piece of investment content, but it
+  clashed with the owner-occupier voice. Easy to reinstate.
+
 
 ## Slots
 
-45 tokens. Grep must return **0** before scheduling:
+62 tokens. Grep must return **0** before scheduling:
 
 ```sh
 grep -c '{{SLOT:' issue-01.html
@@ -121,8 +156,8 @@ Pick one, delete the rest from the header comment:
 3. The RBA meets in 13 days. Read this before you bid.
 
 **Preheader** is set in the hidden div at the top and must also be pasted into
-the ESP field: *What's on before school holidays, and the cooling off trap that
-catches auction buyers.*
+the ESP field: *Plus what your budget really buys in Officer, and the thing
+nobody tells you about bidding.*
 
 ---
 
@@ -134,14 +169,14 @@ Every figure was verified on **10 September 2026** and will have moved.
 
 - [ ] Melbourne clearance rate and the year-earlier comparison (Domain)
 - [ ] Cash rate, and confirm the 29 September meeting still stands (rba.gov.au)
-- [ ] The days-until-RBA countdown - it is hard-coded at 13
+- [ ] Every featured listing is still live, and the price guide has not moved
 - [ ] Every event still running, not sold out, dates unchanged
 
 **If a figure cannot be verified against a named public source on the Monday,
 cut the line.** Never publish an unsourced number.
 
-Hard-coded figures to re-check: `55%`, `71%`, `16 pts`, `4.35%`, `13 days`,
-`4.6%`, and the three cooling off numerals.
+Hard-coded figures to re-check: `55%`, `71%`, the 29 September RBA date, and
+the three cooling off numerals (`3 days`, `$1,600`, `None`).
 
 ### Build gate
 
