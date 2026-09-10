@@ -12,6 +12,8 @@ layout: cream cards floating on the deep green ground, the brand gradient
 behind the masthead and the closing block, and every number pulled out as a
 display numeral or a pill rather than buried in a sentence.
 
+The header runs as two sections: an Alabaster band carrying the Cyprus logo, then the green plate carrying the title lockup.
+
 Section headings use the same device as the client review cards - the small
 Ecru diamond, then a lowercase heading with a full stop. `The read.`
 `The numbers.` `The weird one.` `What's on.`
@@ -40,8 +42,8 @@ Outlook squares the corners off - that degradation is accepted.
 
 | File | What it is |
 |---|---|
-| `logo-alabaster.png` | cream logo, transparent, 440px wide for retina, renders at 196px |
-| `logo-cyprus.png` | green logo for light backgrounds, currently unused, kept for future issues |
+| `logo-cyprus.png` | green logo, transparent, 440px for retina. The Alabaster logo band at the top, renders at 186px |
+| `logo-alabaster.png` | cream logo, same source. The Black green footer, renders at 132px |
 | `bg-masthead.jpg` | the Instagram green gradient, masthead |
 | `bg-close.jpg` | same gradient, mirrored, behind The Close |
 | `mark-elm.png` / `mark-ecru.png` | the section diamond, on light and dark |
