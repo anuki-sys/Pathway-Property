@@ -55,13 +55,12 @@ diamond, then a lowercase heading with a full stop. `A note from Tanuj.`
 | Accent icons | `#c5b085` | Ecru | the Listen button, chips, hairlines, marks on dark |
 
 `#c1531b` is the unfilled-slot marker and **must never be used as a design
-colour.** It was previously used for the word "None" in the cooling off block,
-which read as alarm; that is now Cyprus like the other two numerals.
+colour.** It briefly coloured a display numeral in an earlier draft, which both
+read as alarm and collided with the slot marker.
 
 Type is **Plus Jakarta Sans** throughout, the brand logo font, with system
 fallbacks. Body line height is open (28 to 30px on 16 to 17px type) because
 that is most of what makes the tone feel unhurried.
-
 
 ## Assets
 
@@ -109,12 +108,11 @@ Value first, promotion last.
 | 5 | **What this means for you** | the market, in plain language, plus one action |
 | 6 | **Three we'd walk through** | featured homes, honest notes |
 | 7 | **What it's like to live in [suburb]** | a Saturday there, then the practical detail |
-| 8 | **How long you get to change your mind** | cooling off, as a two-sided comparison. Private sale vs auction, one point |
-| 9 | **One we had to show you** | the light moment. Most forwarded item |
-| 10 | **Your weekend** | three things, family-weighted |
-| 11 | **On the pod** | compact, sits late because it is promotion |
-| 12 | **The Close** | one reply CTA. Never two |
-| 13 | Footer | sources, compliance |
+| 8 | **One we had to show you** | the light moment. Most forwarded item |
+| 9 | **Your weekend** | three things, family-weighted |
+| 10 | **On the pod** | compact, sits late because it is promotion |
+| 11 | **The Close** | one reply CTA. Never two |
+| 12 | Footer | sources, compliance |
 
 About 1,000 rendered words, roughly a 4 minute read. The masthead says 4 min;
 if a future issue grows past about 1,100 words, cut before you change the
@@ -125,20 +123,20 @@ label.
 - **The suburb panel is down from seven fixed sub-headings to five blocks.**
   "Who lives here" is gone, and "it's a fit if" was folded into The Take. If
   the run sheet depends on all seven appearing, say so and they come back.
-- **The cooling off exclusions are out of the send copy** - industrial or
-  commercial use, farmland over 20 hectares, a prior contract on substantially
-  the same terms, and buyers who are agents or companies. They sit in a build
-  comment in section 08. Restore if Nirvan wants them stated.
-- **Section 08 was restructured after review.** It first ran as three loose
-  figures (3 days / $1,600 / None), which read as three parallel facts when
-  two of them describe private sales and one describes auctions. It is now a
-  two-column comparison with the label above each numeral, and the $1,600 sits
-  in the body text where it belongs. It also opens by stating what the block
-  is for, because it was not self-evident.
+- **The cooling off explainer was removed at review.** It ran as section 08
+  and covered the fact that there is no cooling off at auction. It is gone
+  from the build, along with its source citation, the preheader line and the
+  subject line that referenced it. If a future issue wants it back, it is in
+  git history at commit `0b49af4`.
+
+  Two consequences worth knowing. The Digest now carries **no legal content**,
+  so nothing in it needs Nirvan's sign-off before send, which shortens the
+  pre-send path. It also no longer carries a rotating explainer slot, so the
+  original brief's "Good to Know" series has nowhere to live. If that series
+  is still wanted, it needs a home.
 - **The "investment read" cross-promo line was dropped** from the podcast
   block. It was the deliberate single piece of investment content, but it
   clashed with the owner-occupier voice. Easy to reinstate.
-
 
 ## Slots
 
@@ -186,8 +184,7 @@ Every figure was verified on **10 September 2026** and will have moved.
 **If a figure cannot be verified against a named public source on the Monday,
 cut the line.** Never publish an unsourced number.
 
-Hard-coded figures to re-check: `55%`, `71%`, the 29 September RBA date, and
-the three cooling off numerals (`3 days`, `$1,600`, `None`).
+Hard-coded figures to re-check: `55%`, `71%`, and the 29 September RBA date.
 
 ### Build gate
 
@@ -196,16 +193,7 @@ the three cooling off numerals (`3 days`, `$1,600`, `None`).
 - [ ] `ASSET_BASE` points at a live folder and every image loads with images off then on
 - [ ] Sender name, sender email and reply-to set (all three still TBC)
 - [ ] One CTA only, in The Close
-- [ ] Nirvan has signed off block 06
 - [ ] Read on a phone before scheduling
-
-### Legal gate, block 06
-
-Sale of Land Act 1962 (Vic) s31, per the LIV and REIV prescribed contract
-notice. The notice says the period runs from "the day that you sign the
-contract"; this build uses that wording rather than the secondary sources that
-tie it to receipt of the section 32. Settle the framing once, because it
-recurs.
 
 ---
 
