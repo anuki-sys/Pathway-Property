@@ -19,8 +19,13 @@ appears alongside the sentence that says what it means for her.**
 
 Three rules that keep it honest:
 
-- If a featured home has a compromise, the note names it. Never write a note a
-  selling agent could have written.
+- **Never say anything negative about a property, or about the people selling
+  it.** Notes on featured homes stay positive. They still have to be useful,
+  so frame them as fit rather than fault: who this home suits, not what is
+  wrong with it. "Ideal for a one-car household" does the same work as naming
+  the single garage, without criticising someone's home. Each note sits under
+  a "Why we like it" label, which is a standing reminder of what the note is
+  for.
 - The standing line under Featured homes ("we don't sell homes") is what makes
   that section trust-building rather than an ad. Do not remove it.
 - Tanuj's note is written by Tanuj, from his own voice note. If it is invented
@@ -104,7 +109,7 @@ Value first, promotion last.
 | 5 | **What this means for you** | the market, in plain language, plus one action |
 | 6 | **Three we'd walk through** | featured homes, honest notes |
 | 7 | **What it's like to live in [suburb]** | a Saturday there, then the practical detail |
-| 8 | **Before you raise your hand** | cooling off, as reassurance not legislation |
+| 8 | **How long you get to change your mind** | cooling off, as a two-sided comparison. Private sale vs auction, one point |
 | 9 | **One we had to show you** | the light moment. Most forwarded item |
 | 10 | **Your weekend** | three things, family-weighted |
 | 11 | **On the pod** | compact, sits late because it is promotion |
@@ -124,6 +129,12 @@ label.
   commercial use, farmland over 20 hectares, a prior contract on substantially
   the same terms, and buyers who are agents or companies. They sit in a build
   comment in section 08. Restore if Nirvan wants them stated.
+- **Section 08 was restructured after review.** It first ran as three loose
+  figures (3 days / $1,600 / None), which read as three parallel facts when
+  two of them describe private sales and one describes auctions. It is now a
+  two-column comparison with the label above each numeral, and the $1,600 sits
+  in the body text where it belongs. It also opens by stating what the block
+  is for, because it was not self-evident.
 - **The "investment read" cross-promo line was dropped** from the podcast
   block. It was the deliberate single piece of investment content, but it
   clashed with the owner-occupier voice. Easy to reinstate.
