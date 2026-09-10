@@ -16,36 +16,31 @@
   Pathway Property Melbourne South East
   Send: Wednesday 16 September 2026, 07:00 AEST
 
-  SUBJECT LINES - pick ONE before build, delete the other two:
-    1. Melbourne's clearance rate just fell 16 points in a year
-    2. The RBA meets in 13 days. Here's what it means for your offer.
-    3. 55%. That's the number that matters this week.
-
-  PREHEADER (set in block 00 below, and in the ESP field):
-    Plus what's on before school holidays, and the cooling off trap
-    that catches auction buyers.
+  SUBJECT LINES - pick ONE, delete the rest:
+    1. One in two Melbourne auctions now passes in
+    2. 55%. That's the number that matters this week.
+    3. The RBA meets in 13 days. Read this before you bid.
+  PREHEADER: What's on before school holidays, and the cooling off
+  trap that catches auction buyers.
 
   -------------------------------------------------------------------
-  BRAND PALETTE - Pathway Property brand guidelines
-    Elm             #206e65   main colour, eyebrows, rules, links
-    Cyprus          #0f3e3a   dark bands, sub-headings
-    Black green     #010a09   body and heading text on light
-    Alabaster       #f5f2eb   light band background, text on dark
-    Blanched Almond #feeacd   accent light text on dark bands
-    Ecru            #c5b085   accent icons, chips, dividers, numerals
-    Grey meta       #666666   sources, timestamps, footer only
-    Slot orange     #c1531b   BUILD ONLY - must not survive to send
+  DESIGN
+  Cream cards floating on the deep green ground, matching the Pathway
+  Instagram grid. Every section opens on the Ecru diamond and a
+  lowercase heading with a full stop. Every number is a pill or a
+  display numeral, never buried in a sentence.
 
-  TYPE
-    Headings / numerals / eyebrows: Plus Jakarta Sans (brand font)
-    Body: Inter, with a system fallback stack
-    Nothing in the body copy is set below 16px.
+  PALETTE     Elm #206e65 / Cyprus #0f3e3a / Black green #010a09
+              Alabaster #f5f2eb / Blanched Almond #feeacd / Ecru #c5b085
+  TYPE        Plus Jakarta Sans throughout, one family, brand logo font.
+  RULES       Hyphens only, no em or en dashes. 600px, single column.
+              One CTA in The Close. grep '{{SLOT:' must return 0.
 
-  RULES CARRIED FROM THE CONTENT BRIEF
-    - No em dashes or en dashes anywhere. Hyphens only.
-    - Mobile first, single column, 600px max.
-    - Block 07 carries ONE call to action. Never add a second.
-    - grep '{{SLOT:' must return 0 before this is scheduled.
+  IMAGES
+  {{SLOT:ASSET_BASE}} is your CDN folder holding the static brand files
+  (logo, backgrounds, mark). Set it once, no trailing slash. Weekly
+  photos have their own slots. Every image must be hosted - data URIs
+  are stripped by Gmail and Outlook.
   ===================================================================
 -->
 
@@ -53,10 +48,10 @@
 <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
 <![endif]-->
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet" type="text/css" />
 
 <style type="text/css">
-  html, body { margin:0 !important; padding:0 !important; height:100% !important; width:100% !important; }
+  html, body { margin:0 !important; padding:0 !important; width:100% !important; }
   body { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background-color:#0f3e3a; }
   table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
   img { -ms-interpolation-mode:bicubic; border:0; height:auto; line-height:100%; outline:none; text-decoration:none; display:block; }
@@ -65,806 +60,437 @@
   .ExternalClass { width:100%; }
   .ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalClass div { line-height:inherit; }
 
-  /* Build-only slot styling. If you can see orange, the email is not finished. */
-  .slot { color:#c1531b !important; font-weight:700; background:#fdf0e8; padding:1px 4px; border-bottom:2px dotted #c1531b; }
+  /* Build-only. If you can see orange, the email is not finished. */
+  .slot { color:#c1531b !important; font-weight:700; border-bottom:2px dotted #c1531b; }
 
-  @media only screen and (max-width:620px) {
-    .wrap    { width:100% !important; max-width:100% !important; }
-    .pad     { padding-left:22px !important; padding-right:22px !important; }
-    .padY    { padding-top:30px !important; padding-bottom:30px !important; }
-    .stack   { display:block !important; width:100% !important; max-width:100% !important; }
-    .stack-b { padding-top:22px !important; }
-    .h-main  { font-size:27px !important; line-height:34px !important; }
-    .h-sect  { font-size:23px !important; line-height:30px !important; }
-    .lead    { font-size:18px !important; line-height:30px !important; }
-    .stat    { font-size:56px !important; line-height:58px !important; }
-    .btn a   { display:block !important; }
-    .center-m{ text-align:center !important; }
-    .meta    { font-size:14px !important; line-height:23px !important; }
+  @media only screen and (max-width:560px) {
+    .wrap  { width:100% !important; max-width:100% !important; }
+    .gut   { padding-left:14px !important; padding-right:14px !important; }
+    .cardp { padding:26px 22px !important; }
+    .stack { display:block !important; width:100% !important; max-width:100% !important; }
+    .gap   { padding-top:12px !important; padding-left:0 !important; }
+    .h1    { font-size:28px !important; line-height:34px !important; }
+    .h2    { font-size:22px !important; line-height:29px !important; }
+    .big   { font-size:64px !important; line-height:64px !important; }
+    .mid   { font-size:30px !important; line-height:34px !important; }
+    .thumb { padding:0 0 12px 0 !important; }
+    .btn a { display:block !important; }
   }
 </style>
 </head>
 
 <body style="margin:0; padding:0; background-color:#0f3e3a;">
 
-<!-- ============ block: 00-preheader ============ -->
-<div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; font-family:Inter,Arial,sans-serif; color:#f5f2eb;">
-  Plus what's on before school holidays, and the cooling off trap that catches auction buyers.
-  &#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;
+<!-- preheader -->
+<div style="display:none; font-size:1px; line-height:1px; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; color:#0f3e3a;">
+  What's on before school holidays, and the cooling off trap that catches auction buyers.
+  &#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;&#8199;&#847;
 </div>
 
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#0f3e3a;">
-<tr>
-<td align="center" style="padding:0;">
+<tr><td align="center" style="padding:0;">
 
 <!--[if mso]><table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" width="600"><tr><td><![endif]-->
 <table role="presentation" class="wrap" cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px; max-width:600px; margin:0 auto;">
 
-  <!-- ============ block: 00-topbar | brand strip ============ -->
+  <!-- ============ masthead ============ -->
   <tr>
-    <td bgcolor="#206e65" style="background-color:#206e65; padding:11px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr>
-          <td align="left" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:#feeacd;">
-            Pathway Property
-          </td>
-          <td align="right" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:500; letter-spacing:1.2px; text-transform:uppercase; color:#c5b085;">
-            Melbourne South East
-          </td>
-        </tr>
-      </table>
+    <td background="{{SLOT:ASSET_BASE}}/bg-masthead.jpg" bgcolor="#0f3e3a" valign="top"
+        style="background-color:#0f3e3a; background-image:url('{{SLOT:ASSET_BASE}}/bg-masthead.jpg'); background-size:cover; background-position:center;">
+      <!--[if gte mso 9]>
+      <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px;">
+        <v:fill type="frame" src="{{SLOT:ASSET_BASE}}/bg-masthead.jpg" color="#0f3e3a" />
+        <v:textbox inset="0,0,0,0"><![endif]-->
+      <div>
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+          <tr>
+            <td align="center" class="gut" style="padding:42px 32px 40px 32px;">
+              <img src="{{SLOT:ASSET_BASE}}/logo-alabaster.png" width="196" alt="Pathway Property" style="display:block; width:196px; max-width:60%; height:auto; margin:0 auto;" />
+              <div style="padding-top:30px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.6px; text-transform:uppercase; color:#c5b085;">
+                The Melbourne Buyer's Digest
+              </div>
+              <div class="h1" style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:33px; line-height:40px; font-weight:800; letter-spacing:-0.8px; color:#f5f2eb;">
+                One in two auctions<br />is now a negotiation
+              </div>
+              <div style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:13px; font-weight:500; letter-spacing:1.4px; text-transform:uppercase; color:#c5b085;">
+                Issue 01 &nbsp;&#183;&nbsp; 16 September 2026 &nbsp;&#183;&nbsp; 2 min
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
     </td>
   </tr>
 
-  <!-- ============ block: 00-masthead ============ -->
+  <!-- hero image, full bleed -->
   <tr>
-    <td bgcolor="#0f3e3a" class="pad padY" style="background-color:#0f3e3a; padding:44px 32px 40px 32px;">
-
-      <!-- LOGO SLOT: replace this cell with the hosted Pathway Property mark.
-           <img src="https://cdn.pathwayprop.com.au/email/pathway-mark-alabaster.png"
-                width="132" height="34" alt="Pathway Property"
-                style="display:block; border:0;" />
-           Use the Alabaster (#f5f2eb) version of the mark on this dark band. -->
-
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr>
-          <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.4px; text-transform:uppercase; color:#c5b085; padding-bottom:16px;">
-            The Weekly Digest
-          </td>
-        </tr>
-        <tr>
-          <td class="h-main" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:36px; line-height:42px; font-weight:800; letter-spacing:-0.6px; color:#f5f2eb;">
-            The Melbourne<br />Buyer's Digest
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:22px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:16px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:13px; line-height:20px; font-weight:500; letter-spacing:0.8px; text-transform:uppercase; color:#c5b085;">
-            Issue 01 &nbsp;&#183;&nbsp; Wednesday 16 September 2026 &nbsp;&#183;&nbsp; 4 min read
-          </td>
-        </tr>
-      </table>
+    <td style="padding:0; font-size:0; line-height:0;">
+      <img src="{{SLOT:HERO_IMAGE}}" width="600" alt="{{SLOT:HERO_IMAGE_ALT}}" style="display:block; width:100%; max-width:600px; height:auto;" />
     </td>
   </tr>
 
-  <!-- ============ block: 01-the-read | type: hero_read ============ -->
-  <!-- design: cream, no image, large body type, signature in Elm. Give it air.
-       CONTENT GATE: TANUJ_OBSERVATION is written by Tanuj from his own 60-second
-       voice note and by nobody else. It is the only section that proves he was
-       physically at inspections this week. A fabricated version destroys the
-       exact thing the section exists to build.
-       Shape: a number he counted or a behaviour he watched / named suburb, no
-       street address / one line on what it means for a buyer / 60-100 words. -->
+  <!-- ============ 01 the read ============ -->
   <tr>
-    <td bgcolor="#f5f2eb" class="pad padY" style="background-color:#f5f2eb; padding:44px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+    <td class="gut" style="padding:22px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">
-            From the inspection floor
-          </td>
-        </tr>
-        <tr>
-          <td class="h-sect" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:28px; line-height:34px; font-weight:800; letter-spacing:-0.4px; color:#010a09;">
-            The Read
-          </td>
-        </tr>
-        <tr>
-          <td class="lead" style="padding-top:20px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:32px; font-weight:400; color:#010a09;">
-            <span class="slot">{{SLOT:TANUJ_OBSERVATION}}</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:26px;">
+          <td class="cardp" style="padding:30px 28px;">
+
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td width="36" style="width:36px; padding-top:9px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="24">
-                    <tr><td height="2" width="24" style="width:24px; height:2px; line-height:2px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
-                  </table>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">The read.</td>
+              </tr>
+            </table>
+
+            <div style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:29px; font-weight:400; color:#010a09;">
+              <span class="slot">{{SLOT:TANUJ_OBSERVATION}}</span>
+            </div>
+            <!-- 60 to 100 words, written by Tanuj from his own voice note and
+                 nobody else. A number he counted or a behaviour he watched, the
+                 suburb named but never a street address, one line on what it
+                 means for a buyer. This is the only section that proves he was
+                 at inspections this week. -->
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:22px;">
+              <tr>
+                <td width="56" style="width:56px;">
+                  <img src="{{SLOT:TANUJ_PHOTO}}" width="44" height="44" alt="Tanuj Singh" style="display:block; width:44px; height:44px; border-radius:22px;" />
                 </td>
-                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#206e65;">
+                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; line-height:21px; font-weight:700; color:#0f3e3a;">
                   Tanuj Singh<br />
-                  <span style="font-family:Inter,Arial,sans-serif; font-size:14px; font-weight:400; color:#666666;">Pathway Property Melbourne South East</span>
+                  <span style="font-size:13px; font-weight:500; color:#206e65;">Pathway Property Melbourne South East</span>
                 </td>
               </tr>
             </table>
+
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- ============ block: 02-episode | type: episode_card ============ -->
-  <!-- design: deep-green band, offwhite text, play affordance. The timestamp
-       teaser is the hook - it is set larger than the bullets on purpose.
-       BUILD NOTE: the closing italic line is the ONLY investment content in this
-       newsletter. One line, no expansion. The Digest never takes an investment
-       position in its own voice - that is what keeps the owner-occupier brand
-       line clean. -->
+  <!-- ============ 02 the numbers ============ -->
   <tr>
-    <td bgcolor="#0f3e3a" class="pad padY" style="background-color:#0f3e3a; padding:44px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">
-            This week on the pod
-          </td>
-        </tr>
-        <tr>
-          <td class="h-sect" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:28px; line-height:34px; font-weight:800; letter-spacing:-0.4px; color:#f5f2eb;">
-            The Melbourne Property Podcast
-          </td>
-        </tr>
+          <td class="cardp" style="padding:30px 28px;">
 
-        <!-- episode card -->
-        <tr>
-          <td style="padding-top:26px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#010a09; border-radius:4px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding:28px 26px 26px 26px;">
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">The numbers.</td>
+              </tr>
+            </table>
 
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                      <td width="34" style="width:34px; vertical-align:middle;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="26" style="width:26px; height:26px; background-color:#c5b085; border-radius:13px;">
-                          <tr><td align="center" style="width:26px; height:26px; font-family:Arial,sans-serif; font-size:11px; line-height:26px; color:#010a09;">&#9654;</td></tr>
-                        </table>
-                      </td>
-                      <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#c5b085;">
-                        New episode
-                      </td>
-                    </tr>
+            <!-- hero numeral -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px;">
+              <tr>
+                <td style="vertical-align:bottom;">
+                  <div class="big" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:72px; line-height:70px; font-weight:800; letter-spacing:-4px; color:#0f3e3a; font-variant-numeric:tabular-nums;">55%</div>
+                </td>
+                <td align="right" style="vertical-align:bottom;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="right">
+                    <tr><td bgcolor="#206e65" style="background-color:#206e65; border-radius:100px; padding:7px 14px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#feeacd; white-space:nowrap;">&#9660;&nbsp; 16 pts</td></tr>
                   </table>
-
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-                    <tr>
-                      <td style="padding-top:18px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:22px; line-height:30px; font-weight:700; color:#f5f2eb;">
-                        <span class="slot">{{SLOT:EPISODE_TITLE}}</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding-top:10px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#c5b085;">
-                        with <span class="slot">{{SLOT:GUEST_NAME}}</span>, <span class="slot">{{SLOT:GUEST_ONE_LINER}}</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="padding-top:24px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#206e65;">
-                        What you'll get
-                      </td>
-                    </tr>
-                  </table>
-
-                  <!-- bullets -->
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:12px;">
-                    <tr>
-                      <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                      </td>
-                      <td style="padding-bottom:10px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">
-                        <span class="slot">{{SLOT:EPISODE_BULLET_1}}</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                      </td>
-                      <td style="padding-bottom:10px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">
-                        <span class="slot">{{SLOT:EPISODE_BULLET_2}}</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                      </td>
-                      <td style="font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">
-                        <span class="slot">{{SLOT:EPISODE_BULLET_3}}</span>
-                      </td>
-                    </tr>
-                  </table>
-
-                  <!-- timestamp teaser: the hook. Larger than the bullets. -->
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:26px;">
-                    <tr>
-                      <td width="3" style="width:3px; background-color:#206e65; font-size:0; line-height:0;">&nbsp;</td>
-                      <td style="padding:2px 0 2px 18px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:29px; font-weight:600; color:#feeacd;">
-                        We asked <span class="slot">{{SLOT:GUEST_NAME}}</span> whether <span class="slot">{{SLOT:ASK_THE_GUEST_QUESTION}}</span>
-                        <span style="display:block; padding-top:6px; font-family:Inter,Arial,sans-serif; font-size:15px; font-weight:500; color:#c5b085;">Answer's at <span class="slot">{{SLOT:TIMESTAMP}}</span>.</span>
-                      </td>
-                    </tr>
-                  </table>
-
-                  <!-- CTA: bulletproof button -->
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:28px;" class="btn">
-                    <tr>
-                      <td align="center" bgcolor="#206e65" style="background-color:#206e65; border-radius:3px;">
-                        <!--[if mso]>&nbsp;<![endif]-->
-                        <a href="{{SLOT:EPISODE_URL}}" target="_blank" style="display:inline-block; padding:15px 32px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; font-weight:700; letter-spacing:0.6px; color:#f5f2eb; text-decoration:none; border-radius:3px;">
-                          Listen to the episode &#8594;
-                        </a>
-                        <!--[if mso]>&nbsp;<![endif]-->
-                      </td>
-                    </tr>
-                  </table>
-
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
+            <div style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; line-height:24px; font-weight:500; color:#206e65;">
+              of Melbourne auctions cleared in the week to 5 September.<br />
+              <span style="color:#6b7a77;">Same week last year: 71%.</span>
+            </div>
 
-        <!-- the single permitted investment line -->
-        <tr>
-          <td style="padding-top:20px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; font-style:italic; color:#c5b085;">
-            Also on the pod this week - the investment read on <span class="slot">{{SLOT:SEGMENT_4_SUBURB}}</span>.
+            <!-- pill row -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #ddd6c6;">
+              <tr>
+                <td class="stack" width="50%" style="width:50%; padding:18px 10px 0 0; vertical-align:top;">
+                  <div class="mid" style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:31px; line-height:34px; font-weight:800; letter-spacing:-1.2px; color:#0f3e3a; font-variant-numeric:tabular-nums;">4.35%</div>
+                  <div style="padding-top:6px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Cash rate, held</div>
+                </td>
+                <td class="stack gap" width="50%" style="width:50%; padding:18px 0 0 10px; vertical-align:top;">
+                  <div class="mid" style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:31px; line-height:34px; font-weight:800; letter-spacing:-1.2px; color:#0f3e3a; font-variant-numeric:tabular-nums;">13 days</div>
+                  <div style="padding-top:6px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Until the RBA decides</div>
+                </td>
+              </tr>
+            </table>
+
+            <!-- the one takeaway -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; background-color:#feeacd; border-radius:8px;">
+              <tr>
+                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; font-weight:500; color:#010a09;">
+                  <strong style="font-weight:700; color:#0f3e3a;">What it means.</strong> One in two homes passes in. If you are still standing after the hammer, you are negotiating, and that is leverage the underbidders never get. Before you bid, ask your broker what your number becomes at 4.6%.
+                </td>
+              </tr>
+            </table>
+
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- ============ block: 03-market | type: stat_block ============ -->
-  <!-- design: cream. 55% and 71% pulled out as large Plus Jakarta Sans numerals
-       side by side with a downward indicator. The "what this means" sub-block
-       carries an Elm left rule. -->
+  <!-- ============ 03 the weird one ============ -->
   <tr>
-    <td bgcolor="#f5f2eb" class="pad padY" style="background-color:#f5f2eb; padding:44px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">
-            The numbers
+          <td style="padding:0; font-size:0; line-height:0;">
+            <img src="{{SLOT:CRAZY_LISTING_IMAGE}}" width="552" alt="{{SLOT:CRAZY_LISTING_IMAGE_ALT}}" style="display:block; width:100%; max-width:552px; height:auto; border-radius:12px 12px 0 0;" />
           </td>
         </tr>
         <tr>
-          <td class="h-sect" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:28px; line-height:34px; font-weight:800; letter-spacing:-0.4px; color:#010a09;">
-            Melbourne Market This Week
-          </td>
-        </tr>
-
-        <!-- ---- the main point: hero stat pair ---- -->
-        <tr>
-          <td style="padding-top:12px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; font-weight:700; color:#0f3e3a;">
-            The main point
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:18px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+          <td class="cardp" style="padding:26px 28px 30px 28px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <!-- this week -->
-                <td class="stack" width="50%" style="width:50%; vertical-align:top; padding-right:7px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#0f3e3a; border-radius:3px;">
-                    <tr>
-                      <td style="padding:24px 22px 22px 22px;">
-                        <div class="stat" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:60px; line-height:60px; font-weight:800; letter-spacing:-2.5px; color:#f5f2eb;">55%</div>
-                        <div style="padding-top:12px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:#c5b085;">Melbourne, week to 5 Sep</div>
-                        <div style="padding-top:5px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:14px; line-height:20px; color:#feeacd;">of reported auctions cleared</div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <!-- a year ago -->
-                <td class="stack stack-b" width="50%" style="width:50%; vertical-align:top; padding-left:7px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #c5b085; border-radius:3px;">
-                    <tr>
-                      <td style="padding:24px 22px 22px 22px;">
-                        <div class="stat" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:60px; line-height:60px; font-weight:800; letter-spacing:-2.5px; color:#0f3e3a;">71%</div>
-                        <div style="padding-top:12px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; color:#206e65;">Same week, 2025</div>
-                        <div style="padding-top:5px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:14px; line-height:20px; color:#666666;">of reported auctions cleared</div>
-                      </td>
-                    </tr>
-                  </table>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">The weird one.</td>
+              </tr>
+            </table>
+            <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
+              <span class="slot">{{SLOT:CRAZY_LISTING}}</span>
+            </div>
+            <!-- One or two sentences. This is the most forwarded item in the
+                 email, so it always gets the picture and never a bullet. -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:18px;">
+              <tr>
+                <td bgcolor="#0f3e3a" style="background-color:#0f3e3a; border-radius:100px; padding:8px 16px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:0.3px; color:#feeacd;">
+                  Result of the week &nbsp;&#183;&nbsp; <span class="slot">{{SLOT:RESULT_OF_THE_WEEK}}</span>
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
-
-        <!-- downward indicator -->
-        <tr>
-          <td style="padding-top:14px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#206e65; border-radius:3px;">
-              <tr>
-                <td style="padding:13px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:14px; line-height:20px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:#feeacd;">
-                  <span style="color:#c5b085; font-size:15px;">&#9660;</span>&nbsp;&nbsp;Down 16 points year on year
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- national context -->
-        <tr>
-          <td style="padding-top:22px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr>
-                <td width="3" style="width:3px; background-color:#c5b085; font-size:0; line-height:0;">&nbsp;</td>
-                <td style="padding:0 0 0 16px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  It is not a Melbourne-only story. The national average was <strong style="color:#0f3e3a;">46.1%</strong>, down from 47.3% the week before, against <strong style="color:#0f3e3a;">74.4%</strong> for the same week last year.
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:14px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#666666;">
-            Both figures are preliminary. Final rates get revised as late results come in, so treat the number as a direction, not a decimal.
-          </td>
-        </tr>
-
-        <!-- ---- weird and unique ---- -->
-        <!-- BUILD NOTE: the Crazy Listing is the most screenshotted, most
-             forwarded item in the whole email. It gets an image and its own
-             visual block. Never render it as a bullet.
-             Image: 536px wide at 1x, supply 1072px for retina. -->
-        <tr>
-          <td style="padding-top:34px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; font-weight:700; color:#0f3e3a;">
-            Weird and unique
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:14px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#ffffff; border:1px solid #c5b085; border-radius:3px;">
-              <tr>
-                <td style="padding:0; font-size:0; line-height:0;">
-                  <img src="{{SLOT:CRAZY_LISTING_IMAGE_URL}}" width="534" alt="{{SLOT:CRAZY_LISTING_IMAGE_ALT}}" style="display:block; width:100%; max-width:534px; height:auto; border:0; border-radius:2px 2px 0 0;" />
-                </td>
-              </tr>
-              <tr>
-                <td style="padding:22px 22px 24px 22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#c5b085;">Crazy listing of the week</div>
-                  <div style="padding-top:12px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:28px; color:#010a09;">
-                    <span class="slot">{{SLOT:CRAZY_LISTING}}</span>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:14px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#feeacd; border-radius:3px;">
-              <tr>
-                <td style="padding:20px 22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#206e65;">Result of the week</div>
-                  <div style="padding-top:10px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:28px; color:#010a09;">
-                    <span class="slot">{{SLOT:RESULT_OF_THE_WEEK}}</span>
-                  </div>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- ---- the headline ---- -->
-        <tr>
-          <td style="padding-top:34px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; font-weight:700; color:#0f3e3a;">
-            The headline
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:16px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr>
-                <td class="stack" width="50%" style="width:50%; vertical-align:top; padding-right:7px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #c5b085; border-radius:3px;">
-                    <tr>
-                      <td style="padding:18px 20px;">
-                        <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:32px; line-height:36px; font-weight:800; letter-spacing:-1px; color:#0f3e3a;">4.35%</div>
-                        <div style="padding-top:8px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Cash rate, held</div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-                <td class="stack stack-b" width="50%" style="width:50%; vertical-align:top; padding-left:7px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border:1px solid #c5b085; border-radius:3px;">
-                    <tr>
-                      <td style="padding:18px 20px;">
-                        <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:32px; line-height:36px; font-weight:800; letter-spacing:-1px; color:#0f3e3a;">29 Sep</div>
-                        <div style="padding-top:8px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Next RBA call, 2:30pm</div>
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:18px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="padding-bottom:12px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  The cash rate is <strong style="color:#0f3e3a;">4.35%</strong>, unchanged since the August meeting and effective from 12 August. The RBA next decides on <strong style="color:#0f3e3a;">Tuesday 29 September at 2:30pm</strong> - 13 days after this email lands.
-                </td>
-              </tr>
-              <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="padding-bottom:12px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  The Bank has already raised three times this year, <strong style="color:#0f3e3a;">75 basis points</strong> in total. Headline inflation eased to <strong style="color:#0f3e3a;">3.5%</strong> in the year to July, down from 3.8% in June, but the trimmed mean held at <strong style="color:#0f3e3a;">3.6%</strong>. Both still sit above the 2 to 3% target.
-                </td>
-              </tr>
-              <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  All four major banks now expect another rise before the end of the year. NAB has it at September. ANZ, CBA and Westpac have it at November.
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- ---- what this means: Elm left rule ---- -->
-        <tr>
-          <td style="padding-top:32px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr>
-                <td width="4" style="width:4px; background-color:#206e65; font-size:0; line-height:0;">&nbsp;</td>
-                <td style="padding:2px 0 2px 20px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:19px; line-height:28px; font-weight:800; letter-spacing:-0.2px; color:#0f3e3a;">
-                    What this means if you're buying this weekend
-                  </div>
-                  <div style="padding-top:16px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                    <strong style="color:#0f3e3a;">You have more room than you did a year ago.</strong> A 55% clearance rate means roughly one in two auctions does not sell under the hammer. Passed-in properties are negotiations, and the buyer still standing afterwards has leverage the underbidders never get.
-                  </div>
-                  <div style="padding-top:14px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                    <strong style="color:#0f3e3a;">Check your pre-approval expiry before you bid.</strong> With a live chance of a rise on 29 September, an approval written at today's assessment rate may not stretch as far in October. Ask your broker what your number becomes at a 4.6% cash rate before you commit to a price.
-                  </div>
-                  <div style="padding-top:14px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                    <strong style="color:#0f3e3a;">Do not read a soft market as licence to lowball everything.</strong> Good stock in the corridor is still competitive. The softness is uneven, and it is concentrated in properties with a compromise attached.
-                  </div>
-                </td>
-              </tr>
-            </table>
+            <!-- Keep the result to a fragment: "Sold $1.14m, 140k over reserve" -->
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- ============ block: 04-whats-on | type: event_list ============ -->
-  <!-- design: deep-green band, offwhite text. Corridor items carry a SOUTH EAST
-       chip. Six items maximum.
-       BUILD NOTE: keep the transport line. It is hyper-local, genuinely useful,
-       and no other property newsletter in Melbourne does it. -->
+  <!-- ============ 04 on the pod ============ -->
   <tr>
-    <td bgcolor="#0f3e3a" class="pad padY" style="background-color:#0f3e3a; padding:44px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#010a09; border-radius:12px;">
         <tr>
-          <td style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">
-            Diary
+          <td style="padding:0; font-size:0; line-height:0;">
+            <img src="{{SLOT:EPISODE_IMAGE}}" width="552" alt="{{SLOT:EPISODE_IMAGE_ALT}}" style="display:block; width:100%; max-width:552px; height:auto; border-radius:12px 12px 0 0;" />
           </td>
         </tr>
         <tr>
-          <td class="h-sect" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:28px; line-height:34px; font-weight:800; letter-spacing:-0.4px; color:#f5f2eb;">
-            What's On in Melbourne This Week
-          </td>
-        </tr>
+          <td class="cardp" style="padding:28px;">
 
-        <tr>
-          <td style="padding-top:24px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-
-              <!-- 1 -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding-bottom:20px; border-bottom:1px solid #206e65;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:26px; font-weight:700; color:#feeacd;">School holidays start Monday 21 September.</div>
-                  <div style="padding-top:7px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">Term 3 finishes Friday 18 September and the break runs to Friday 2 October. Worth knowing as a buyer: the two weekends inside the holidays usually bring thinner inspection numbers and fewer auctions. Less competition, but also less stock.</div>
-                </td>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-ecru.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">On the pod</td>
               </tr>
+            </table>
 
-              <!-- 2 -->
-              <tr>
-                <td style="padding-top:20px; padding-bottom:20px; border-bottom:1px solid #206e65;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-                    <td bgcolor="#c5b085" style="background-color:#c5b085; padding:4px 9px; border-radius:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#0f3e3a;">South East</td>
-                  </tr></table>
-                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:26px; font-weight:700; color:#feeacd;">Cardinia Shire holiday program, Pakenham.</div>
-                  <div style="padding-top:7px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">Sports come-and-try mornings at James Bathe Reserve, plus ballet, pottery painting and free Fishcare Victoria fishing sessions at the Cardinia Cultural Centre. Sessions book out, so go early.</div>
-                </td>
-              </tr>
+            <div class="h2" style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:31px; font-weight:700; letter-spacing:-0.4px; color:#f5f2eb;">
+              <span class="slot">{{SLOT:EPISODE_TITLE}}</span>
+            </div>
+            <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; font-weight:500; color:#c5b085;">
+              with <span class="slot">{{SLOT:GUEST_NAME}}</span>, <span class="slot">{{SLOT:GUEST_ONE_LINER}}</span>
+            </div>
 
-              <!-- 3 -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px;">
               <tr>
-                <td style="padding-top:20px; padding-bottom:20px; border-bottom:1px solid #206e65;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-                    <td bgcolor="#c5b085" style="background-color:#c5b085; padding:4px 9px; border-radius:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#0f3e3a;">South East</td>
-                  </tr></table>
-                  <div style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:26px; font-weight:700; color:#feeacd;">Casey-Cardinia Libraries holiday program.</div>
-                  <div style="padding-top:7px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">Running across the Cranbourne, Narre Warren, Hampton Park, Endeavour Hills, Doveton and Pakenham branches. Free, and the easiest wet-weather backup in the region.</div>
-                </td>
-              </tr>
-
-              <!-- 4 -->
-              <tr>
-                <td style="padding-top:20px; padding-bottom:20px; border-bottom:1px solid #206e65;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:26px; font-weight:700; color:#feeacd;">The Songs of John Farnham, Rod Laver Arena, Sunday 20 September.</div>
-                  <div style="padding-top:7px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">More than 120 artists, headlined by Keith Urban and Richard Marx, with Celine Dion and Hugh Jackman appearing by satellite.</div>
-                </td>
-              </tr>
-
-              <!-- 5 -->
-              <tr>
-                <td style="padding-top:20px; padding-bottom:20px; border-bottom:1px solid #206e65;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:26px; font-weight:700; color:#feeacd;">Cartier at the NGV, until 4 October.</div>
-                  <div style="padding-top:7px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">A world-exclusive run of more than 300 pieces, the largest showing the house has ever staged in Australia. NGV Friday Nights run alongside every Friday to 2 October.</div>
-                </td>
-              </tr>
-
-              <!-- 6 -->
-              <tr>
-                <td style="padding-top:20px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:26px; font-weight:700; color:#feeacd;">RESET Festival, Fed Square, until 17 October.</div>
-                  <div style="padding-top:7px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">Free and family-friendly, built around slowing down and making things by hand.</div>
+                <td width="3" style="width:3px; background-color:#206e65; font-size:0; line-height:0;">&nbsp;</td>
+                <td style="padding-left:18px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:28px; font-weight:600; color:#feeacd;">
+                  <span class="slot">{{SLOT:THE_HOOK}}</span>
+                  <span style="display:block; padding-top:6px; font-size:14px; font-weight:500; color:#c5b085;">Answer at <span class="slot">{{SLOT:TIMESTAMP}}</span>.</span>
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
+            <!-- THE_HOOK is one line, phrased as the question we put to the
+                 guest. It replaces the old three bullets on purpose. -->
 
-        <!-- on the roads -->
-        <tr>
-          <td style="padding-top:26px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#010a09; border-radius:3px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="btn" style="margin-top:26px;">
               <tr>
-                <td style="padding:20px 22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#c5b085;">On the roads</div>
-                  <div style="padding-top:10px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#f5f2eb;">
-                    <span class="slot">{{SLOT:TRANSPORT_LINE}}</span>
-                  </div>
+                <td align="center" bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px;">
+                  <a href="{{SLOT:EPISODE_URL}}" target="_blank" style="display:inline-block; padding:15px 34px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:700; letter-spacing:0.6px; color:#0f3e3a; text-decoration:none; border-radius:100px;">
+                    &#9654;&nbsp;&nbsp;Listen now
+                  </a>
                 </td>
               </tr>
             </table>
+
+            <div style="padding-top:20px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:21px; color:#6b7a77;">
+              Also this week, the investment read on <span class="slot">{{SLOT:SEGMENT_4_SUBURB}}</span>.
+            </div>
+            <!-- The single line of investment content in the whole email. Never
+                 expand it. That is what keeps the owner-occupier line clean. -->
+
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- ============ block: 05-suburb | type: suburb_panel ============ -->
-  <!-- design: cream. Seven sub-headings, identical order every week, carried
-       across from Segment 5 of the run sheet. Three price points render as a
-       stepped table. Closes on a bolded take sitting on an Elm rule.
-       BUILD NOTE: THE TAKE is already written in the run sheet as "the one line
-       to land". Lift it verbatim and bold it. Strip every ON AIR line, every
-       SPEAKER NOTES block and every "Toss to next" line before pasting. -->
+  <!-- ============ 05 suburb in focus ============ -->
   <tr>
-    <td bgcolor="#f5f2eb" class="pad padY" style="background-color:#f5f2eb; padding:44px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">
-            Suburb in focus
+          <td style="padding:0; font-size:0; line-height:0;">
+            <img src="{{SLOT:SUBURB_IMAGE}}" width="552" alt="{{SLOT:SUBURB_IMAGE_ALT}}" style="display:block; width:100%; max-width:552px; height:auto; border-radius:12px 12px 0 0;" />
           </td>
         </tr>
         <tr>
-          <td class="h-sect" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:28px; line-height:34px; font-weight:800; letter-spacing:-0.4px; color:#010a09;">
-            <span class="slot">{{SLOT:SUBURB_NAME}}</span>
-          </td>
-        </tr>
+          <td class="cardp" style="padding:26px 28px 30px 28px;">
 
-        <tr>
-          <td style="padding-top:26px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-
-              <!-- 1 Snapshot -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">01</td>
-                <td style="padding-bottom:22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">Snapshot</div>
-                  <div style="padding-top:8px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_SNAPSHOT}}</span></div>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">Suburb in focus</td>
+              </tr>
+            </table>
+            <div class="h2" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:26px; line-height:32px; font-weight:800; letter-spacing:-0.6px; color:#0f3e3a;">
+              <span class="slot">{{SLOT:SUBURB_NAME}}</span>
+            </div>
+
+            <!-- spec strip -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px; border-top:1px solid #ddd6c6;">
+              <tr>
+                <td style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">House median</td>
+                <td align="right" style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a; font-variant-numeric:tabular-nums;"><span class="slot">{{SLOT:SUBURB_MEDIAN}}</span></td>
+              </tr>
+              <tr>
+                <td style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">To the CBD</td>
+                <td align="right" style="padding:13px 0; border-bottom:1px solid #ddd6c6; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a; font-variant-numeric:tabular-nums;"><span class="slot">{{SLOT:SUBURB_COMMUTE}}</span></td>
+              </tr>
+              <tr>
+                <td style="padding:13px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.4px; text-transform:uppercase; color:#206e65;">Zoned secondary</td>
+                <td align="right" style="padding:13px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#0f3e3a;"><span class="slot">{{SLOT:SUBURB_SCHOOL}}</span></td>
+              </tr>
+            </table>
+
+            <!-- what your budget buys -->
+            <div style="padding-top:24px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">What your budget buys</div>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:12px;">
+              <tr>
+                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 10px 0;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#0f3e3a" style="background-color:#0f3e3a; border-radius:100px; padding:6px 13px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#feeacd; white-space:nowrap;"><span class="slot">{{SLOT:BUDGET_1}}</span></td></tr></table>
+                </td>
+                <td style="padding:4px 0 10px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_1_BUYS}}</span></td>
+              </tr>
+              <tr>
+                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 10px 0;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#206e65" style="background-color:#206e65; border-radius:100px; padding:6px 13px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#feeacd; white-space:nowrap;"><span class="slot">{{SLOT:BUDGET_2}}</span></td></tr></table>
+                </td>
+                <td style="padding:4px 0 10px 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_2_BUYS}}</span></td>
+              </tr>
+              <tr>
+                <td width="106" style="width:106px; vertical-align:top; padding:0 12px 0 0;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px; padding:6px 13px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; font-weight:700; color:#0f3e3a; white-space:nowrap;"><span class="slot">{{SLOT:BUDGET_3}}</span></td></tr></table>
+                </td>
+                <td style="padding:4px 0 0 0; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:24px; color:#010a09;"><span class="slot">{{SLOT:BUDGET_3_BUYS}}</span></td>
+              </tr>
+            </table>
+
+            <!-- three short calls -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px;">
+              <tr>
+                <td style="padding-bottom:11px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
+                  <strong style="color:#206e65;">Best pocket.</strong> <span class="slot">{{SLOT:BEST_POCKET}}</span>
                 </td>
               </tr>
-
-              <!-- 2 Who lives here -->
               <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">02</td>
-                <td style="padding-bottom:22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">Who lives here</div>
-                  <div style="padding-top:8px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_DEMOGRAPHICS}}</span></div>
+                <td style="padding-bottom:11px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
+                  <strong style="color:#206e65;">Be careful.</strong> <span class="slot">{{SLOT:BE_CAREFUL}}</span>
                 </td>
               </tr>
-
-              <!-- 3 What your budget buys - stepped table -->
               <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">03</td>
-                <td style="padding-bottom:22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">What your budget buys</div>
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:12px; border-top:1px solid #c5b085;">
-                    <tr>
-                      <td width="30" style="width:30px; vertical-align:top; padding:12px 0 12px 0;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="14"><tr><td height="3" width="14" style="width:14px; height:3px; font-size:0; line-height:3px; background-color:#206e65;">&nbsp;</td></tr></table>
-                      </td>
-                      <td style="padding:6px 0 12px 0; border-bottom:1px solid #e3ddd0; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_PRICE_POINT_1}}</span></td>
-                    </tr>
-                    <tr>
-                      <td width="30" style="width:30px; vertical-align:top; padding:12px 0 12px 0;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="20"><tr><td height="3" width="20" style="width:20px; height:3px; font-size:0; line-height:3px; background-color:#206e65;">&nbsp;</td></tr></table>
-                      </td>
-                      <td style="padding:6px 0 12px 0; border-bottom:1px solid #e3ddd0; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_PRICE_POINT_2}}</span></td>
-                    </tr>
-                    <tr>
-                      <td width="30" style="width:30px; vertical-align:top; padding:12px 0 12px 0;">
-                        <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="26"><tr><td height="3" width="26" style="width:26px; height:3px; font-size:0; line-height:3px; background-color:#206e65;">&nbsp;</td></tr></table>
-                      </td>
-                      <td style="padding:6px 0 12px 0; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_PRICE_POINT_3}}</span></td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-
-              <!-- 4 School zones -->
-              <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">04</td>
-                <td style="padding-bottom:22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">School zones</div>
-                  <div style="padding-top:8px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_SCHOOLS}}</span></div>
-                </td>
-              </tr>
-
-              <!-- 5 Commute reality check -->
-              <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">05</td>
-                <td style="padding-bottom:22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">Commute reality check</div>
-                  <div style="padding-top:8px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_COMMUTE}}</span></div>
-                </td>
-              </tr>
-
-              <!-- 6 Best pockets -->
-              <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">06</td>
-                <td style="padding-bottom:22px;">
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">Best pockets, and where to be careful</div>
-                  <div style="padding-top:8px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_POCKETS}}</span></div>
-                </td>
-              </tr>
-
-              <!-- 7 Who should buy here -->
-              <tr>
-                <td width="34" style="width:34px; vertical-align:top; padding-top:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:15px; font-weight:800; color:#c5b085;">07</td>
-                <td>
-                  <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:#0f3e3a;">Who should buy here</div>
-                  <div style="padding-top:8px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;"><span class="slot">{{SLOT:SUBURB_WHO}}</span></div>
+                <td style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:25px; color:#010a09;">
+                  <strong style="color:#206e65;">Buy here if.</strong> <span class="slot">{{SLOT:BUY_HERE_IF}}</span>
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
 
-        <!-- the take -->
-        <tr>
-          <td style="padding-top:28px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr><td height="2" style="height:2px; line-height:2px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+            <!-- the take -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; background-color:#feeacd; border-radius:8px;">
               <tr>
-                <td style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">
-                  The take
-                </td>
-              </tr>
-              <tr>
-                <td class="lead" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:20px; line-height:31px; font-weight:700; letter-spacing:-0.2px; color:#010a09;">
+                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:17px; line-height:28px; font-weight:700; letter-spacing:-0.2px; color:#010a09;">
                   <span class="slot">{{SLOT:SUBURB_THE_TAKE}}</span>
                 </td>
               </tr>
             </table>
+            <!-- Lift THE TAKE verbatim from the run sheet's "one line to land".
+                 Strip every ON AIR, SPEAKER NOTES and "Toss to next" line. -->
+
           </td>
         </tr>
       </table>
     </td>
   </tr>
 
-  <!-- ============ block: 06-good-to-know | type: explainer_callout ============ -->
-  <!-- design: bordered cream card. This has to read as a distinct object - it is
-       the save-and-return section, so it sits inside its own frame rather than
-       running as another band.
-       LEGAL GATE: verified against the LIV and REIV prescribed contract notice.
-       Nirvan signs off before send.
-       One precision point to settle permanently: several secondary sources
-       online state the period runs from receipt of the contract AND the section
-       32. The prescribed notice says "of the day that you sign the contract."
-       This draft uses the prescribed wording. Confirm which framing the Digest
-       uses from here, because it will recur. -->
+  <!-- ============ 06 good to know ============ -->
   <tr>
-    <td bgcolor="#f5f2eb" class="pad padY" style="background-color:#f5f2eb; padding:8px 32px 44px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#ffffff; border:2px solid #0f3e3a; border-radius:4px;">
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding:32px 28px 30px 28px;">
+          <td class="cardp" style="padding:30px 28px;">
 
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr>
-              <td bgcolor="#0f3e3a" style="background-color:#0f3e3a; padding:5px 11px; border-radius:2px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:10px; font-weight:800; letter-spacing:1.8px; text-transform:uppercase; color:#feeacd;">Good to know</td>
-            </tr></table>
-
-            <div class="h-sect" style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:25px; line-height:33px; font-weight:800; letter-spacing:-0.4px; color:#010a09;">
-              The cooling off trap at auction
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#206e65;">Good to know</td>
+              </tr>
+            </table>
+            <div class="h2" style="padding-top:10px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:24px; line-height:31px; font-weight:800; letter-spacing:-0.5px; color:#0f3e3a;">
+              Cooling off does not exist at auction.
             </div>
+
+            <!-- three numerals -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; border-top:1px solid #ddd6c6; border-bottom:1px solid #ddd6c6;">
+              <tr>
+                <td width="33%" align="center" style="width:33%; padding:20px 4px;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:26px; line-height:28px; font-weight:800; letter-spacing:-1px; color:#0f3e3a;">3 days</div>
+                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:#206e65; line-height:15px;">Private sale</div>
+                </td>
+                <td width="33%" align="center" style="width:33%; padding:20px 4px; border-left:1px solid #ddd6c6; border-right:1px solid #ddd6c6;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:26px; line-height:28px; font-weight:800; letter-spacing:-1px; color:#c1531b;">None</div>
+                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:#206e65; line-height:15px;">At auction</div>
+                </td>
+                <td width="34%" align="center" style="width:34%; padding:20px 4px;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:26px; line-height:28px; font-weight:800; letter-spacing:-1px; color:#0f3e3a;">0.2%</div>
+                  <div style="padding-top:7px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:1.1px; text-transform:uppercase; color:#206e65; line-height:15px;">Or $100 to walk</div>
+                </td>
+              </tr>
+            </table>
 
             <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px;">
               <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="padding-bottom:13px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  <strong style="color:#0f3e3a;">The right exists, and it is short.</strong> Under section 31 of the Sale of Land Act 1962, you can end a residential contract within <strong style="color:#0f3e3a;">3 clear business days</strong> of the day you sign. You give the vendor or their agent written notice.
+                <td style="padding-bottom:12px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
+                  On a private sale you get <strong style="color:#0f3e3a;">3 clear business days</strong> from the day you sign to walk away in writing, and it costs you 0.2% of the price or $100, whichever is greater. On an $800,000 home, $1,600.
                 </td>
               </tr>
               <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="padding-bottom:13px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  <strong style="color:#0f3e3a;">It is not free.</strong> You get everything back except <strong style="color:#0f3e3a;">$100 or 0.2% of the purchase price, whichever is greater</strong>. On an $800,000 home that is $1,600.
-                </td>
-              </tr>
-              <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="padding-bottom:13px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  <strong style="color:#0f3e3a;">The clock starts when you sign, not when the vendor does.</strong> Vendors often sign days later. That does not extend your window.
-                </td>
-              </tr>
-              <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#206e65;">&nbsp;</td></tr></table>
-                </td>
-                <td style="padding-bottom:13px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  <strong style="color:#0f3e3a;">The trap: auctions have no cooling off at all.</strong> There is none if you buy at a publicly advertised auction or on the day it is held, and none if you buy within 3 clear business days either side of one. The bid is final.
-                </td>
-              </tr>
-              <tr>
-                <td width="18" style="width:18px; padding-top:11px; vertical-align:top;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="5"><tr><td height="5" width="5" style="width:5px; height:5px; font-size:0; line-height:5px; background-color:#c5b085;">&nbsp;</td></tr></table>
-                </td>
-                <td style="font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:26px; color:#010a09;">
-                  <strong style="color:#0f3e3a;">It also does not apply</strong> if the property is used primarily for industrial or commercial purposes, if it is over 20 hectares and used primarily for farming, if you and the vendor previously signed a contract for the same land on substantially the same terms, or if you are an estate agent or a company.
+                <td style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
+                  Buy at auction, on auction day, or within three days either side of one, and there is <strong style="color:#0f3e3a;">no cooling off at all</strong>. The bid is final.
                 </td>
               </tr>
             </table>
 
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:24px; background-color:#feeacd; border-radius:3px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:20px; background-color:#0f3e3a; border-radius:8px;">
               <tr>
-                <td width="4" style="width:4px; background-color:#206e65; font-size:0; line-height:0;">&nbsp;</td>
-                <td style="padding:18px 20px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; color:#010a09;">
-                  <strong style="color:#0f3e3a;">The point:</strong> cooling off is a safety net for private sales, and it does not exist at auction. Every check you were going to do afterwards has to be done before you raise your hand - contract reviewed, finance confirmed, building and pest read.
+                <td style="padding:20px 22px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:27px; font-weight:600; color:#feeacd;">
+                  So every check you were going to do afterwards has to happen before you raise your hand. Contract reviewed, finance confirmed, building and pest read.
                 </td>
               </tr>
             </table>
+
+            <!-- LEGAL GATE. Sale of Land Act 1962 (Vic) s31, per the LIV and
+                 REIV prescribed contract notice. Nirvan signs off before send.
+                 The notice says the period runs from "the day that you sign the
+                 contract" - this build uses that wording, not the secondary
+                 sources that tie it to receipt of the section 32. Settle the
+                 framing once, because it recurs.
+                 Exclusions trimmed from the send copy for length: industrial or
+                 commercial use, farmland over 20 hectares, a prior contract on
+                 substantially the same terms, and buyers who are agents or
+                 companies. Restore if legal wants them stated. -->
 
           </td>
         </tr>
@@ -872,98 +498,144 @@
     </td>
   </tr>
 
-  <!-- ============ block: 07-close | type: cta_close ============ -->
-  <!-- design: deep-green band. ONE reply prompt. Never a button as well.
-       BUILD NOTE: Issue 01 uses a reply CTA, not a booking link. Reply CTAs
-       outperform booking links on a cold list, and every reply feeds the Reader
-       Question slot from Issue 02 onward. Do not add a second CTA. -->
+  <!-- ============ 07 what's on ============ -->
   <tr>
-    <td bgcolor="#0f3e3a" class="pad padY" style="background-color:#0f3e3a; padding:48px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#206e65;">&nbsp;</td></tr>
+    <td class="gut" style="padding:16px 24px 0 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#f5f2eb; border-radius:12px;">
         <tr>
-          <td style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">
-            The close
-          </td>
-        </tr>
-        <tr>
-          <td class="lead" style="padding-top:16px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:21px; line-height:33px; font-weight:700; letter-spacing:-0.2px; color:#feeacd;">
-            Reply to this email with the suburb you're looking in and what you can spend. I'll tell you what that actually buys there right now - no pitch, and I'll say so if we're not the right fit.
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:28px;">
+          <td class="cardp" style="padding:30px 28px;">
+
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td width="36" style="width:36px; padding-top:9px;">
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="24"><tr><td height="2" width="24" style="width:24px; height:2px; line-height:2px; font-size:0; background-color:#c5b085;">&nbsp;</td></tr></table>
+                <td width="17" style="width:17px; vertical-align:middle;"><img src="{{SLOT:ASSET_BASE}}/mark-elm.png" width="9" alt="" style="display:block; width:9px;" /></td>
+                <td class="h2" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:23px; line-height:30px; font-weight:700; letter-spacing:-0.4px; color:#0f3e3a;">What's on.</td>
+              </tr>
+            </table>
+
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:18px;">
+              <tr>
+                <td width="118" style="width:118px; vertical-align:top; padding:0 14px 18px 0;">
+                  <img src="{{SLOT:EVENT_1_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:6px;" />
                 </td>
-                <td style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:16px; line-height:24px; font-weight:700; color:#f5f2eb;">
-                  Tanuj Singh<br />
-                  <span style="font-family:Inter,Arial,sans-serif; font-size:14px; font-weight:400; color:#c5b085;">Pathway Property Melbourne South East</span>
+                <td style="vertical-align:top; padding-bottom:18px; border-bottom:1px solid #ddd6c6;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:23px; font-weight:700; color:#0f3e3a;">School holidays start Mon 21 Sep</div>
+                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; color:#010a09;">Two weekends of thinner crowds and fewer auctions. Less competition, less stock.</div>
+                </td>
+              </tr>
+              <tr>
+                <td width="118" style="width:118px; vertical-align:top; padding:18px 14px 18px 0;">
+                  <img src="{{SLOT:EVENT_2_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:6px;" />
+                </td>
+                <td style="vertical-align:top; padding:18px 0; border-bottom:1px solid #ddd6c6;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0"><tr><td bgcolor="#c5b085" style="background-color:#c5b085; border-radius:100px; padding:3px 9px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:9px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#0f3e3a;">South East</td></tr></table>
+                  <div style="padding-top:8px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:23px; font-weight:700; color:#0f3e3a;">Cardinia holiday program, Pakenham</div>
+                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; color:#010a09;">Come-and-try sport at James Bathe Reserve, free Fishcare sessions. Books out early.</div>
+                </td>
+              </tr>
+              <tr>
+                <td width="118" style="width:118px; vertical-align:top; padding:18px 14px 0 0;">
+                  <img src="{{SLOT:EVENT_3_IMAGE}}" width="104" alt="" style="display:block; width:104px; max-width:104px; height:auto; border-radius:6px;" />
+                </td>
+                <td style="vertical-align:top; padding-top:18px;">
+                  <div style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:23px; font-weight:700; color:#0f3e3a;">Cartier at the NGV, until 4 Oct</div>
+                  <div style="padding-top:5px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:22px; color:#010a09;">300 pieces, the largest showing the house has staged in Australia.</div>
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
 
-  <!-- ============ block: 08-sources | type: source_footer ============ -->
-  <!-- design: cream, grey meta. Small but present - the sourcing IS the
-       credibility. Set at 13px per the block spec, lifted to 14px on mobile so
-       it stays readable on a phone. -->
-  <tr>
-    <td bgcolor="#f5f2eb" class="pad" style="background-color:#f5f2eb; padding:30px 32px 30px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#c5b085;">&nbsp;</td></tr>
-        <tr>
-          <td class="meta" style="padding-top:16px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:13px; line-height:21px; color:#666666;">
-            <strong style="color:#0f3e3a; font-family:'Plus Jakarta Sans',Arial,sans-serif; letter-spacing:0.6px; text-transform:uppercase; font-size:11px;">Sources</strong><br /><br />
-            Domain auction results, Melbourne, week 30 August to 5 September 2026, preliminary, updated 9 September. PropertyUpdate National Weekly Auction Report, 5 September 2026. Reserve Bank of Australia, cash rate target and CPI. Victorian Department of Education, 2026 school term dates. Sale of Land Act 1962 (Vic) s31, as set out in the LIV and REIV prescribed contract notice.
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-
-  <!-- ============ block: 09-footer ============ -->
-  <tr>
-    <td bgcolor="#010a09" class="pad" style="background-color:#010a09; padding:34px 32px 38px 32px;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr>
-          <td class="center-m" style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#c5b085;">
-            Pathway Property
-          </td>
-        </tr>
-        <tr>
-          <td class="center-m" style="padding-top:10px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:14px; line-height:23px; color:#f5f2eb;">
-            The Melbourne Buyer's Digest lands every Wednesday morning.<br />
-            Written for people buying a home to live in.
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top:22px;">
-            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
-              <tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#0f3e3a;">&nbsp;</td></tr>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="margin-top:22px; background-color:#eae5d8; border-radius:8px;">
+              <tr>
+                <td style="padding:16px 18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:14px; line-height:23px; color:#010a09;">
+                  <strong style="color:#206e65; letter-spacing:1.2px; font-size:10px; text-transform:uppercase;">On the roads</strong><br />
+                  <span class="slot">{{SLOT:TRANSPORT_LINE}}</span>
+                </td>
+              </tr>
             </table>
+            <!-- Always keep the transport line. Hyper-local, genuinely useful,
+                 and no other Melbourne property newsletter runs it. -->
+
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ============ 08 the close ============ -->
+  <tr>
+    <td class="gut" style="padding:16px 24px 24px 24px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-radius:12px;">
+        <tr>
+          <td background="{{SLOT:ASSET_BASE}}/bg-close.jpg" bgcolor="#0f3e3a" valign="top"
+              style="background-color:#0f3e3a; background-image:url('{{SLOT:ASSET_BASE}}/bg-close.jpg'); background-size:cover; background-position:center; border-radius:12px;">
+            <!--[if gte mso 9]>
+            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:552px;">
+              <v:fill type="frame" src="{{SLOT:ASSET_BASE}}/bg-close.jpg" color="#0f3e3a" />
+              <v:textbox inset="0,0,0,0"><![endif]-->
+            <div>
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tr>
+                  <td class="cardp" style="padding:34px 28px;">
+                    <div style="font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:#c5b085;">Hit reply</div>
+                    <div style="padding-top:14px; font-family:'Plus Jakarta Sans',-apple-system,'Segoe UI',Arial,sans-serif; font-size:20px; line-height:32px; font-weight:700; letter-spacing:-0.3px; color:#feeacd;">
+                      Tell me the suburb you're looking in and what you can spend. I'll tell you what that actually buys right now. No pitch, and I'll say so if we're not the right fit.
+                    </div>
+                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin-top:24px;">
+                      <tr>
+                        <td width="52" style="width:52px;">
+                          <img src="{{SLOT:TANUJ_PHOTO}}" width="40" height="40" alt="" style="display:block; width:40px; height:40px; border-radius:20px;" />
+                        </td>
+                        <td style="font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:21px; font-weight:700; color:#f5f2eb;">
+                          Tanuj Singh<br />
+                          <span style="font-size:13px; font-weight:500; color:#c5b085;">Pathway Property Melbourne South East</span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <!--[if gte mso 9]></v:textbox></v:rect><![endif]-->
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- ============ footer ============ -->
+  <tr>
+    <td bgcolor="#010a09" class="gut" style="background-color:#010a09; padding:34px 32px 38px 32px;">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td align="center">
+            <img src="{{SLOT:ASSET_BASE}}/logo-alabaster.png" width="132" alt="Pathway Property" style="display:block; width:132px; height:auto; margin:0 auto;" />
           </td>
         </tr>
         <tr>
-          <td class="meta center-m" style="padding-top:18px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:13px; line-height:21px; color:#666666;">
+          <td align="center" style="padding-top:18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:13px; line-height:22px; color:#c5b085;">
+            <a href="{{SLOT:INSTAGRAM_URL}}" style="color:#c5b085; text-decoration:none;">Instagram</a>
+            &nbsp;&nbsp;&#183;&nbsp;&nbsp;
+            <a href="{{SLOT:YOUTUBE_URL}}" style="color:#c5b085; text-decoration:none;">Podcast</a>
+            &nbsp;&nbsp;&#183;&nbsp;&nbsp;
+            <a href="{{SLOT:WEBSITE_URL}}" style="color:#c5b085; text-decoration:none;">pathwayprop.com.au</a>
+          </td>
+        </tr>
+        <tr><td style="padding-top:22px;"><table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%"><tr><td height="1" style="height:1px; line-height:1px; font-size:0; background-color:#0f3e3a;">&nbsp;</td></tr></table></td></tr>
+        <tr>
+          <td style="padding-top:18px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:12px; line-height:20px; color:#66736f;">
+            <strong style="color:#c5b085; font-size:10px; letter-spacing:1.2px; text-transform:uppercase;">Sources</strong><br />
+            Domain auction results, Melbourne, week to 5 September 2026, preliminary. Reserve Bank of Australia, cash rate target. Victorian Department of Education, 2026 term dates. Sale of Land Act 1962 (Vic) s31 per the LIV and REIV prescribed notice. Clearance rates are revised as late results land, so read the number as a direction.
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding-top:20px; font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:12px; line-height:20px; color:#66736f;">
             <span class="slot">{{SLOT:BUSINESS_NAME_AND_POSTAL_ADDRESS}}</span><br />
-            You are receiving this because you subscribed at pathwayprop.com.au.<br />
             <a href="{{SLOT:UNSUBSCRIBE_URL}}" style="color:#c5b085; text-decoration:underline;">Unsubscribe</a>
             &nbsp;&#183;&nbsp;
-            <a href="{{SLOT:PREFERENCES_URL}}" style="color:#c5b085; text-decoration:underline;">Update your preferences</a>
+            <a href="{{SLOT:PREFERENCES_URL}}" style="color:#c5b085; text-decoration:underline;">Preferences</a>
             &nbsp;&#183;&nbsp;
             <a href="{{SLOT:WEBVIEW_URL}}" style="color:#c5b085; text-decoration:underline;">View in browser</a>
-          </td>
-        </tr>
-        <tr>
-          <td class="meta center-m" style="padding-top:16px; font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif; font-size:12px; line-height:19px; color:#666666;">
-            General information only. Nothing in this email is financial, legal or tax advice, and it does not take your circumstances into account.
+            <br /><br />
+            General information only. Not financial, legal or tax advice.
           </td>
         </tr>
       </table>
@@ -973,8 +645,7 @@
 </table>
 <!--[if mso]></td></tr></table><![endif]-->
 
-</td>
-</tr>
+</td></tr>
 </table>
 
 </body>
