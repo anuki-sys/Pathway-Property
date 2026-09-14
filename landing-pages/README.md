@@ -90,8 +90,8 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9 | Process intro |
-| Over 1,000 properties purchased | Client, 8 Sep | Hero lede, "Why buyers bring us in", FAQ |
-| Thousands of families | Client, 8 Sep | "Why buyers bring us in" section lede |
+| ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
+| ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
 Retired on 14 Sep and swept from the whole page, body copy, FAQ answers and
 the JSON-LD mirrors alike: **90+ inspections a week**, the **3.7% average
@@ -111,6 +111,16 @@ reader's outcome, which 3.7% used to do.
 Each figure is an average or a business-wide throughput number, not a promise
 to an individual buyer. If this page is going to make these claims publicly,
 they need to be substantiable — keep the underlying records.
+
+### Legal advice: do not claim it
+
+**Pathway Property Law is a separate entity to the Melbourne buyer's agency,
+and this page must not offer or imply legal advice.** "What the contract
+actually says" was removed from the value list on 14 Sep for exactly this
+reason. Keep contracts, section 32s and anything a lawyer would sign off out of
+the service description. The FAQ answer about bringing us a property you have
+found still mentions reviewing "the contract and the section 32" and needs the
+same check.
 
 ## House style
 
