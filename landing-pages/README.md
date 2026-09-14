@@ -110,7 +110,11 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 100 due diligence reports produced every day | Client, 8 Sep (deck says 50) | Hero stat, "Why buyers bring us in" |
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
-| 9 weeks average time to secure | Deck 7/9 | Process intro |
+| 9 weeks average time to secure | Deck 7/9, confirmed 14 Sep | Process intro |
+
+**The flyer says six weeks and the site says nine. Nine is correct** (confirmed
+14 Sep). The flyer and any other collateral need updating to match; that is
+outside this repo.
 | ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
 | ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
@@ -142,6 +146,17 @@ reason. Keep contracts, section 32s and anything a lawyer would sign off out of
 the service description. The FAQ answer about bringing us a property you have
 found still mentions reviewing "the contract and the section 32" and needs the
 same check.
+
+### The process section
+
+Seven steps, sticky-stacked. Each card's `--i` drives its sticky offset, so a
+new step needs the next value in sequence or it will stack on top of its
+neighbour rather than below it.
+
+Step 7 is the post-settlement step and has to stay carefully worded: **it is not
+a promise of ongoing service.** Tracking equity, being an easy first call and
+connecting people to trades are the commitments; renovation and value-add work
+is a separate service and the page should only ever offer the introduction.
 
 ## House style
 
