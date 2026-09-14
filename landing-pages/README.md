@@ -84,27 +84,26 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 
 | Figure | Source | Used on the page |
 | --- | --- | --- |
-| 90+ inspections attended each week | Deck 1/9 | Hero stat |
-| 200+ off-market properties across Melbourne each week | Deck 2/9 | Hero stat |
-| 100+ Melbourne off markets every week | Client, 8 Sep | Off-market section heading |
-| 100 due diligence reports a day | Client, 8 Sep (deck says 50) | "Why buyers bring us in" |
-| 3.7% average discount negotiated | Deck 4/9 | Hero stat only (removed from the value list 8 Sep) |
+| 2000+ agent partnerships across Melbourne | Client, 14 Sep | Hero stat |
+| 100+ off-market properties across Melbourne | Client, 14 Sep | Hero stat, off-market section heading |
+| 100 due diligence reports produced every day | Client, 8 Sep (deck says 50) | Hero stat, "Why buyers bring us in" |
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9 | Process intro |
 | Over 1,000 properties purchased | Client, 8 Sep | Hero lede, "Why buyers bring us in", FAQ |
 | Thousands of families | Client, 8 Sep | "Why buyers bring us in" section lede |
 
-**Three numbers need settling before this goes public.**
+Retired on 14 Sep: **90+ inspections a week** and the **3.7% average discount**
+are no longer anywhere on the page. The 200+/100+ off-market contradiction is
+resolved, since the hero and the off-market heading now both say 100+.
 
-1. **Off-markets: 200+ or 100+?** The hero stat says 200+ a week (deck slide
-   2/9); the off-market section heading now says 100+ a week (8 Sep changes).
-   Both are on the page and they contradict each other in the reader's eye.
-2. **Due diligence reports: 50 or 100 a day?** The deck says 50, the 8 Sep
-   changes say 100. The page now says 100.
-3. **Speed.** Deck slide 7/9's heading says many clients secure "in just 4 to
-   5" weeks while its own bullet says "3 to 4 weeks". Neither is on the page —
-   only the 9-week average is.
+Still outstanding: the deck says **50** due diligence reports a day and the page
+says 100. Deck slide 7/9 also contradicts itself on speed, its heading saying
+many clients secure "in just 4 to 5" weeks and its own bullet saying "3 to 4
+weeks"; neither is on the page, only the 9-week average.
+
+One FAQ answer still says "we source over 200 off-market and pre-market
+properties" and should probably come down to 100+ to match.
 
 Each figure is an average or a business-wide throughput number, not a promise
 to an individual buyer. If this page is going to make these claims publicly,
