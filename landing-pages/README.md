@@ -242,10 +242,9 @@ the subject in half; the fix was to shrink the inset to 38% and raise
 from behind it. If a future hero photo puts its subject somewhere else, that
 padding is the dial.
 
-Eight headshots are also served from the Webflow CDN: Tanuj, Arshad, Nirvan
-and Abhimaan in the agent slider, and Rahul, Shamindri, Ali Al Hilo and
-Shashyani in Meet the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
-tall frame rather than centred.
+Four headshots are also served from the Webflow CDN: Tanuj, Arshad, Nirvan and
+Abhimaan in the agent slider. They sit at `object-position: 50% 28%`, which
+keeps a face high in a tall frame rather than centred.
 
 One photo is **inlined as a data URI** rather than pulled from the CDN, so the
 page still shows it when it is opened as a single file or in a preview that
@@ -294,16 +293,28 @@ This started as a Melbourne South East page and was widened to cover all of
 Melbourne on 8 Sep. A separate South East page is still to be built; when it is,
 it inherits this structure and narrows the copy, the map and the team back down.
 
+### Meet the team: removed, not retired
+
+The support team section was taken off the page on 14 Sep because the Sri
+Lankan team's headshots need re-taking, and the section is only as good as its
+photos. Nothing was wrong with the content, so if it comes back it comes back
+whole: Shashyani de Silva (Client Success Specialist), Rahul Vilvarajah
+(Property Operations Specialist), Shamindri Jayawarna (Settlement Specialist),
+Ali Al Hilo (Property Analyst) and Rumeysa, whose full name and role were never
+confirmed. Its markup and its `.team` / `.member` / `.role-chip` styles were
+removed with it rather than hidden, so restoring it means rebuilding both. The
+git history at this commit has the original if that is easier.
+
+The page now goes straight from the agent slider to the FAQ, and the support
+team appears nowhere: the only people named on the page are the four buyer's
+agents.
+
 ### Open items on the Melbourne page
 
 - Photography and video testimonials for all image slots.
 - Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
   (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
   "calendar link to confirm" state.
-- Rumeysa's full name and role. The other four in Meet the team are confirmed:
-  Shashyani de Silva (Client Success Specialist), Rahul Vilvarajah (Property
-  Operations Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali
-  Al Hilo (Property Analyst).
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler. The off-market form now carries phone, suburbs
   and a readiness flag, so whatever receives it needs those fields.

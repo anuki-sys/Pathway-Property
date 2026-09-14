@@ -523,7 +523,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   display:grid;grid-template-columns:300px 1fr;gap:44px;align-items:center;
 }
 .agent-card .shot{aspect-ratio:4/5;border-radius:36px}
-.agent-card .shot img,.member .shot img{object-position:50% 28%}
+.agent-card .shot img{object-position:50% 28%}
 .agent-body{position:relative}
 .agent-count{
   position:absolute;top:2px;right:0;font-size:.75rem;font-weight:700;
@@ -545,23 +545,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   .agent-card h3{font-size:1.625rem}
   .agent-count{position:static;display:block;margin-bottom:10px}
 }
-
-/* meet the team -------------------------------------------------- */
-.team{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;margin-top:40px}
-.member{background:var(--cream);border:var(--stroke);border-radius:30px;overflow:hidden;display:flex;flex-direction:column}
-.member .shot{border:0;border-radius:0;aspect-ratio:1;flex-shrink:0}
-/* the body fills the rest of the card and pins the chip to the bottom, so a
-   name that wraps to two lines does not drop its chip below the others */
-.member-body{padding:20px;flex:1;display:flex;flex-direction:column;align-items:flex-start}
-.member h3{font-size:1.0625rem;margin-bottom:8px;line-height:1.3}
-.member .role-chip{margin-top:auto;
-  display:inline-block;border:1.5px solid var(--green);background:var(--green-tint);color:var(--green);
-  border-radius:var(--pill);padding:3px 12px;font-size:.75rem;font-weight:600;line-height:1.45;
-}
-/* dashed = still a placeholder, so an unconfirmed role reads as one */
-.member .role-chip.tbc{border-style:dashed;background:transparent}
-@media(max-width:1000px){.team{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.team{grid-template-columns:1fr 1fr}}
 
 /* podcast ---------------------------------------------------------- */
 .pod{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-top:34px}
@@ -1220,38 +1203,7 @@ details .a p{font-size:.9375rem}
   </div>
 </section>
 
-<!-- 8. MEET THE TEAM -->
-<section class="section-tight band-cream">
-  <div class="wrap">
-    <div class="eyebrow">Meet the team</div>
-    <h2>The people behind every purchase.</h2>
-    <p class="lead" style="margin-top:16px">Client success, property operations, settlement and analysis, so nothing on your file sits waiting on one person's inbox.</p>
-    <div class="team">
-      <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Shashyani de Silva</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5e0b792bbbf4a481b3_shashyani.png" alt="Shashyani de Silva"></figure>
-        <div class="member-body"><h3>Shashyani de Silva</h3><span class="role-chip">Client Success Specialist</span></div>
-      </div>
-      <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Rahul Vilvarajah</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a2a3101e6e4dfc1fa_rahul.png" alt="Rahul Vilvarajah"></figure>
-        <div class="member-body"><h3>Rahul Vilvarajah</h3><span class="role-chip">Property Operations Specialist</span></div>
-      </div>
-      <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Shamindri Jayawarna</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5a4cabd3a3efe2aaf7_Shamindri.png" alt="Shamindri Jayawarna"></figure>
-        <div class="member-body"><h3>Shamindri Jayawarna</h3><span class="role-chip">Settlement Specialist</span></div>
-      </div>
-      <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Ali Al Hilo</div><img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6b5bdb1d7f8685a422fd_Ali.png" alt="Ali Al Hilo"></figure>
-        <div class="member-body"><h3>Ali Al Hilo</h3><span class="role-chip">Property Analyst</span></div>
-      </div>
-      <div class="member">
-        <figure class="shot"><div class="slot"><b>Photo</b>Rumeysa</div><img onerror="this.remove()" src="assets/team-rumeysa.jpg" alt=""></figure>
-        <div class="member-body"><h3>Rumeysa</h3><span class="role-chip tbc">Full name and role to confirm</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 9. FAQ -->
+<!-- 8. FAQ -->
 <section class="section" id="faq">
   <div class="wrap">
     <div class="eyebrow">Common questions</div>
@@ -1275,7 +1227,7 @@ details .a p{font-size:.9375rem}
   </div>
 </section>
 
-<!-- 10. PODCAST -->
+<!-- 9. PODCAST -->
 <section class="section-tight" id="podcast">
   <div class="wrap">
     <div class="eyebrow">Resources</div>
@@ -1306,7 +1258,7 @@ details .a p{font-size:.9375rem}
   </div>
 </section>
 
-<!-- 11. BOOKING + FOOTER -->
+<!-- 10. BOOKING + FOOTER -->
 <section class="booking" id="book">
   <div class="wrap">
     <div class="booking-head">
