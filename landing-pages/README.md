@@ -153,6 +153,18 @@ Seven steps, sticky-stacked. Each card's `--i` drives its sticky offset, so a
 new step needs the next value in sequence or it will stack on top of its
 neighbour rather than below it.
 
+Step 7 fires a **one-time celebration** as it arrives: a ring pulsing out from
+the step number and eighteen thin slivers in the greens and the star gold. No
+cream, which is invisible on a cream card. It runs for 1.5s, clears its own DOM
+after 2s, never repeats, and is suppressed entirely under reduced motion.
+
+Two things make it work, and both are easy to break:
+- It waits for the card's **computed opacity** to pass 0.9, not for the card to
+  intersect. The cards fade in on scroll, so a burst fired on arrival plays out
+  while the card is still transparent and the reader sees nothing.
+- It does not test for the `js-reveal` class, because the reveal script runs
+  after it and the class is not set yet at that point.
+
 Step 7 is the post-settlement step and has to stay carefully worded: **it is not
 a promise of ongoing service.** Tracking equity, being an easy first call and
 connecting people to trades are the commitments; renovation and value-add work

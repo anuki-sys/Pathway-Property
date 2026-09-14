@@ -381,8 +381,32 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   padding:4px 14px;font-size:.8125rem;font-weight:600;color:var(--green);white-space:nowrap;
 }
 .flow-card h3{font-size:1.375rem;margin-bottom:10px}
-.flow-emoji{font-size:1.25rem;line-height:1}
 .flow-card p{font-size:.9375rem;margin:0;max-width:46em}
+
+/* step seven: one quiet burst from the step number as the card arrives.
+   Brand colours, thin slivers, gone in under two seconds. Never repeats. */
+.flow-cheer{position:absolute;left:58px;top:54px;width:0;height:0;pointer-events:none;z-index:2}
+.flow-cheer i{
+  position:absolute;left:-2px;top:-6px;width:4px;height:12px;border-radius:2px;
+  background:var(--c);opacity:0;
+  animation:cheer 1500ms cubic-bezier(.17,.75,.3,1) var(--d) forwards;
+}
+@keyframes cheer{
+  0%{opacity:0;transform:translate(0,0) rotate(0) scale(.5)}
+  14%{opacity:1}
+  100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(1)}
+}
+.flow-cheer .halo{
+  position:absolute;left:-34px;top:-34px;width:68px;height:68px;border-radius:50%;
+  border:1.5px solid var(--green);opacity:0;
+  animation:cheer-halo 1100ms ease-out forwards;
+}
+@keyframes cheer-halo{
+  0%{opacity:.5;transform:scale(.4)}
+  100%{opacity:0;transform:scale(2)}
+}
+@media(max-width:960px){.flow-cheer{left:44px;top:46px}}
+@media (prefers-reduced-motion: reduce){.flow-cheer{display:none}}
 
 /* scroll reveal — added by script so the cards still show without JS */
 .js-reveal .flow-card{opacity:0;transform:translateY(26px);transition:opacity .55s ease,transform .55s ease}
@@ -1016,14 +1040,15 @@ details .a p{font-size:.9375rem}
             <p>Everything runs through us. Inspectors, your finance broker, the conveyancer, the selling agent and every date in the contract all come to us rather than to you. From the day you sign to the day you collect the keys, you never have to work out who to chase or what happens next.</p>
           </div>
         </article>
-        <article class="flow-card" style="--i:6">
+        <article class="flow-card flow-card--cheer" style="--i:6">
           <span class="flow-num">7</span>
           <div>
             <div class="flow-head">
               <span class="flow-kicker">Step 07</span>
               <span class="flow-when">Settlement day</span>
             </div>
-            <h3>Keys in your hand <span class="flow-emoji" role="img" aria-label="celebration">&#127881;</span></h3>
+            <h3>Keys in your hand</h3>
+            <span class="flow-cheer" aria-hidden="true"></span>
             <p>Settled, and the keys are yours. Then we stay in reach. We help you keep an eye on what your equity is doing and where that puts you for the next purchase, we are the easy first call when a property question comes up, and when you want to renovate or add value we put you with the right people.</p>
           </div>
         </article>
@@ -1515,6 +1540,54 @@ details .a p{font-size:.9375rem}
     items.forEach(close);
     menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');
   });
+})();
+
+/* step seven: a single burst as the card arrives, then never again */
+(function(){
+  var card=document.querySelector('.flow-card--cheer');
+  if(!card||!('IntersectionObserver' in window))return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var host=card.querySelector('.flow-cheer');
+  if(!host)return;
+
+  /* greens and the star gold: cream would be invisible on a cream card */
+  var colours=['#206E65','#E9A02C','#17544D','#2E8478','#C8861F'];
+  function burst(){
+    var halo=document.createElement('span');
+    halo.className='halo';
+    host.appendChild(halo);
+    for(var i=0;i<18;i++){
+      var a=(Math.PI*2*i)/18+(Math.random()-0.5)*0.34,
+          d=58+Math.random()*52,
+          el=document.createElement('i');
+      el.style.setProperty('--x',(Math.cos(a)*d).toFixed(1)+'px');
+      /* +24 so they drift down as they fade, rather than hanging in the air */
+      el.style.setProperty('--y',(Math.sin(a)*d+24).toFixed(1)+'px');
+      el.style.setProperty('--r',(Math.random()*300-150).toFixed(0)+'deg');
+      el.style.setProperty('--c',colours[i%colours.length]);
+      el.style.setProperty('--d',(Math.random()*130).toFixed(0)+'ms');
+      host.appendChild(el);
+    }
+    setTimeout(function(){host.textContent='';},2000);
+  }
+
+  /* The cards fade in on scroll. Fired on arrival alone the burst plays out
+     while the card is still transparent, so wait for the card to actually be
+     opaque. With the reveal disabled that is true immediately. */
+  function whenVisible(cb){
+    var frames=0;
+    (function check(){
+      if(parseFloat(getComputedStyle(card).opacity)>0.9||++frames>240)return cb();
+      requestAnimationFrame(check);
+    })();
+  }
+
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){io.disconnect();whenVisible(burst)}
+    });
+  },{threshold:0.5});
+  io.observe(card);
 })();
 
 /* process flow — reveal each card as it comes into view */
