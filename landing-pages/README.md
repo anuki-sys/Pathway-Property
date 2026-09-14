@@ -106,13 +106,18 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | Figure | Source | Used on the page |
 | --- | --- | --- |
 | 2000+ agent partnerships across Melbourne | Client, 14 Sep | Hero stat |
-| 100+ off-market properties across Melbourne | Client, 14 Sep | Hero stat, off-market section heading |
+| 100+ off-market properties every week | Client, 14 Sep | Hero stat, off-market section heading |
 | 100 due diligence reports produced every day | Client, 8 Sep (deck says 50) | Hero stat, "Why buyers bring us in" |
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9, confirmed 14 Sep | Process intro |
 | ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
 | ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
+
+The off-market figure carries its cadence everywhere it appears. The hero
+stat used to read "100+ off-market properties across Melbourne" with no time
+period while the section heading said "every week", which read as two different
+claims; the hero now says **every week** too.
 
 **The flyer says six weeks and the site says nine. Nine is correct** (confirmed
 14 Sep). The flyer and any other collateral need updating to match; that is
@@ -146,6 +151,28 @@ reason. Keep contracts, section 32s and anything a lawyer would sign off out of
 the service description. The FAQ answer about bringing us a property you have
 found still mentions reviewing "the contract and the section 32" and needs the
 same check.
+
+### The off-market section
+
+**The weekly list is an automation, not a walkthrough.** It is a static list
+generated and emailed each week, so no copy anywhere may suggest someone walks
+the reader through the properties in person or tailors the list to them. What
+is offered in person is the consult, and the hook for it is the deals already
+shortlisted for clients, which are deliberately not on the free list.
+
+The form collects name, email, phone, the suburbs they are watching and an
+"I'm ready to buy" checkbox. The readiness answer is a plain yes/no by request;
+if richer segmentation is wanted later it becomes a graded select, not a free
+text field. **The team does the filtering, the form does not** — nothing on the
+page promises the list is filtered to the suburbs given.
+
+The suburb field is a chip combobox, not free text: typing filters a list, a
+click or Enter adds a chip, Backspace on an empty input removes the last one,
+and the chips are written into a hidden `#om-suburbs-value` field for whatever
+handler eventually receives the form. Free text is still accepted on Enter so a
+missing suburb never blocks a submission. The suburb list is a **fixed array of
+about 130 Melbourne suburbs in the page** and is not complete; before launch it
+wants extending or replacing with a real dataset.
 
 ### The process section
 
@@ -273,7 +300,10 @@ it inherits this structure and narrows the copy, the map and the team back down.
   Operations Specialist), Shamindri Jayawarna (Settlement Specialist) and Ali
   Al Hilo (Property Analyst).
 - Form endpoints: the off-market, booking and newsletter forms are marked up
-  but not wired to a handler.
+  but not wired to a handler. The off-market form now carries phone, suburbs
+  and a readiness flag, so whatever receives it needs those fields.
+- The off-market suburb list is a hand-built array of about 130 suburbs and
+  does not cover all of Melbourne.
 - Real YouTube and Spotify links on the podcast section (both are `#`).
 - The nav logo is an inline SVG redraw of the brand mark. Swap it for the
   official logo file before this goes live — on the Webflow build it will use
