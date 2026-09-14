@@ -48,15 +48,21 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 
   | Territory | Regions | Pin |
   | --- | --- | --- |
-  | `west` | North West, West, Inner | Arshad |
-  | `east` | North East, Inner East, Outer East | Nirvan |
+  | `north` | North West, North East | Nirvan |
+  | `west` | West, Inner | Arshad |
+  | `east` | Inner East, Outer East | Abhimaan |
   | `south` | Inner South, South East, Mornington | Tanuj |
 
   Every region belongs to a territory, which is what stops Mornington reading
   as unstaffed. Hovering a pin lights its **whole** territory rather than the
-  single region under it, for the same reason. Abhimaan has no pin: he is
-  Support and Settlement, not a territory owner.
-  **Confirm the three names before launch.** The transcript named only Tanuj.
+  single region under it, for the same reason.
+
+  Inner sits with West and Mornington with South because they have to sit
+  somewhere: nine regions across four people does not divide evenly.
+
+  **Abhimaan Bhargava is a buyer's agent**, not Support and Settlement. The
+  owner-occupier deck (slide 11) still has him under Support and Settlement and
+  is wrong; the client corrected it on 14 Sep.
 
   Each pin is a teardrop whose
   **tip** is the anchor point, with the headshot in the head circle 87 units
