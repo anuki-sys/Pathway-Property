@@ -1542,13 +1542,15 @@ details .a p{font-size:.9375rem}
   });
 })();
 
-/* step seven: a single burst as the card arrives, then never again */
+/* step seven: a burst each time the card scrolls back into view */
 (function(){
   var card=document.querySelector('.flow-card--cheer');
   if(!card||!('IntersectionObserver' in window))return;
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   var host=card.querySelector('.flow-cheer');
   if(!host)return;
+
+  var armed,running;
 
   /* greens and the star gold: cream would be invisible on a cream card */
   var colours=['#206E65','#E9A02C','#17544D','#2E8478','#C8861F'];
@@ -1568,7 +1570,7 @@ details .a p{font-size:.9375rem}
       el.style.setProperty('--d',(Math.random()*130).toFixed(0)+'ms');
       host.appendChild(el);
     }
-    setTimeout(function(){host.textContent='';},2000);
+    setTimeout(function(){host.textContent='';running=false},2000);
   }
 
   /* The cards fade in on scroll. Fired on arrival alone the burst plays out
@@ -1582,12 +1584,19 @@ details .a p{font-size:.9375rem}
     })();
   }
 
-  var io=new IntersectionObserver(function(entries){
+  /* Fires at half visible, and only re-arms once the card has almost entirely
+     left again, so nudging the scroll wheel at the boundary cannot retrigger
+     it. `running` stops a second burst landing on top of one still playing. */
+  armed=true;running=false;
+  new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(e.isIntersecting){io.disconnect();whenVisible(burst)}
+      if(e.intersectionRatio>=0.5){
+        if(armed&&!running){armed=false;running=true;whenVisible(burst)}
+      }else if(e.intersectionRatio<0.15){
+        armed=true;
+      }
     });
-  },{threshold:0.5});
-  io.observe(card);
+  },{threshold:[0,0.15,0.5]}).observe(card);
 })();
 
 /* process flow — reveal each card as it comes into view */

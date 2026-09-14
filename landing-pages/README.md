@@ -42,7 +42,7 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
-- **Region map:** the nine SA4 regions are grouped into **three territories**
+- **Region map:** the nine SA4 regions are grouped into **four territories**
   (`data-territory` on each path), each painted a different shade of the one
   base colour so the region strokes still delineate inside a territory:
 
@@ -111,12 +111,12 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9, confirmed 14 Sep | Process intro |
+| ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
+| ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
 **The flyer says six weeks and the site says nine. Nine is correct** (confirmed
 14 Sep). The flyer and any other collateral need updating to match; that is
 outside this repo.
-| ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
-| ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
 Retired on 14 Sep and swept from the whole page, body copy, FAQ answers and
 the JSON-LD mirrors alike: **90+ inspections a week**, the **3.7% average
@@ -153,10 +153,16 @@ Seven steps, sticky-stacked. Each card's `--i` drives its sticky offset, so a
 new step needs the next value in sequence or it will stack on top of its
 neighbour rather than below it.
 
-Step 7 fires a **one-time celebration** as it arrives: a ring pulsing out from
-the step number and eighteen thin slivers in the greens and the star gold. No
-cream, which is invisible on a cream card. It runs for 1.5s, clears its own DOM
-after 2s, never repeats, and is suppressed entirely under reduced motion.
+Step 7 fires a **celebration every time it scrolls back into view**: a ring
+pulsing out from the step number and eighteen thin slivers in the greens and
+the star gold. No cream, which is invisible on a cream card. It runs for 1.5s,
+clears its own DOM after 2s, and is suppressed entirely under reduced motion.
+
+Repeating needs two guards, and dropping either one makes it feel broken:
+- It fires at 50% visible but only re-arms below 15%, so nudging the scroll
+  wheel around the trigger point cannot set it off again and again.
+- A `running` flag stops a second burst landing on top of one still playing;
+  it releases when the cleanup timer clears the DOM.
 
 Two things make it work, and both are easy to break:
 - It waits for the card's **computed opacity** to pass 0.9, not for the card to
