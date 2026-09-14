@@ -72,7 +72,8 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
   West, Inner Melbourne, and everywhere in between) and the CTA.
   **Check the licence on that boundary data before launch** — if it derives
   from ABS Statistical Area boundaries it is CC BY 4.0 and needs attribution.
-- **Motifs:** a "Rated 5 Stars on Google" row above the headline and soft
+- **Motifs:** a "Rated 5 Stars on Google" row above the headline, its wording
+  linked to the Google Maps listing (`maps.app.goo.gl/A6pDCRD7zQeitpSq8`), and soft
   white clouds drifting behind the hero, in the spirit of the main site's
   illustrations. The clouds hide below 1080px, where the hero becomes a
   single column and they would land on the headline. A flat-vector scene
