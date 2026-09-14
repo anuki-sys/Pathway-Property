@@ -160,11 +160,16 @@ the reader through the properties in person or tailors the list to them. What
 is offered in person is the consult, and the hook for it is the deals already
 shortlisted for clients, which are deliberately not on the free list.
 
-The form collects name, email, phone, the suburbs they are watching and an
-"I'm ready to buy" checkbox. The readiness answer is a plain yes/no by request;
-if richer segmentation is wanted later it becomes a graded select, not a free
-text field. **The team does the filtering, the form does not** — nothing on the
-page promises the list is filtered to the suburbs given.
+The form collects name, email, phone, the suburbs they are watching and a
+graded readiness select: ready to buy now, buying in 3 to 6 months, or just
+looking for now. Its first option is a disabled "Select one" placeholder, so an
+unanswered field records nothing rather than silently recording whichever
+option happens to sit first. **The team does the filtering, the form does
+not** — nothing on the page promises the list is filtered to the suburbs given.
+
+Note this sits next to the booking form's own "When are you buying?", which
+uses four different bands. If the two ever need to feed the same segmentation,
+align the bands.
 
 The suburb field is a chip combobox, not free text: typing filters a list, a
 click or Enter adds a chip, Backspace on an empty input removes the last one,

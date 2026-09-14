@@ -477,13 +477,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .combo-list li[aria-selected="true"],.combo-list li:hover{background:var(--green-tint);color:var(--green);font-weight:600}
 .field-hint{font-size:.75rem;color:var(--on-green-70);margin:7px 0 0}
 
-.check{
-  display:flex;align-items:center;gap:11px;margin:4px 0 22px;
-  font-size:.9375rem;color:var(--on-green);cursor:pointer;
+/* native selects sit on a dark card, so draw our own caret and keep the
+   option list readable in both light and dark browser chrome */
+.field select{
+  appearance:none;cursor:pointer;padding-right:44px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7' viewBox='0 0 11 7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' fill='none' stroke='%23F1EFE9' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 18px center;
 }
-.check input{
-  width:20px;height:20px;flex-shrink:0;margin:0;accent-color:var(--shell);cursor:pointer;
-}
+.field select option{background:var(--green-deep);color:var(--on-green)}
+.field select:has(option[value=""]:checked){color:rgba(241,239,233,.42)}
+.field-last{margin-bottom:22px}
 .form-note a{color:var(--mint);font-weight:600}
 @media(max-width:900px){.om-grid{grid-template-columns:1fr;gap:34px}}
 
@@ -1123,7 +1126,15 @@ details .a p{font-size:.9375rem}
             <p class="field-hint" id="om-suburb-hint">Pick one, then add the next.</p>
             <input type="hidden" id="om-suburbs-value" name="suburbs">
           </div>
-          <label class="check"><input type="checkbox" id="om-ready"><span>I'm ready to buy</span></label>
+          <div class="field field-last">
+            <label for="om-ready">Where are you up to?</label>
+            <select id="om-ready" name="readiness">
+              <option value="" disabled selected>Select one</option>
+              <option>Ready to buy now</option>
+              <option>Buying in 3 to 6 months</option>
+              <option>Just looking for now</option>
+            </select>
+          </div>
           <a class="btn btn-cream btn-block" href="#">Send me the list</a>
         </div>
       </div>
