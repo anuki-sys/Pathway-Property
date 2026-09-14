@@ -93,17 +93,20 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | Over 1,000 properties purchased | Client, 8 Sep | Hero lede, "Why buyers bring us in", FAQ |
 | Thousands of families | Client, 8 Sep | "Why buyers bring us in" section lede |
 
-Retired on 14 Sep: **90+ inspections a week** and the **3.7% average discount**
-are no longer anywhere on the page. The 200+/100+ off-market contradiction is
-resolved, since the hero and the off-market heading now both say 100+.
+Retired on 14 Sep and swept from the whole page, body copy, FAQ answers and
+the JSON-LD mirrors alike: **90+ inspections a week**, the **3.7% average
+discount**, **200+ off-markets** and **50 due diligence reports a day**. If any
+of them come back, put them everywhere or nowhere.
 
-Still outstanding: the deck says **50** due diligence reports a day and the page
-says 100. Deck slide 7/9 also contradicts itself on speed, its heading saying
-many clients secure "in just 4 to 5" weeks and its own bullet saying "3 to 4
-weeks"; neither is on the page, only the 9-week average.
+The one figure the deck and the client disagree on is due diligence: the deck
+says **50** a day, the client says **100**, and the page says 100. Deck slide
+7/9 also contradicts itself on speed, its heading saying many clients secure
+"in just 4 to 5" weeks and its own bullet saying "3 to 4 weeks"; neither is on
+the page, only the 9-week average.
 
-One FAQ answer still says "we source over 200 off-market and pre-market
-properties" and should probably come down to 100+ to match.
+Also note the page no longer carries a single figure expressed as a benefit to
+the buyer. Every remaining number measures Pathway's activity rather than the
+reader's outcome, which 3.7% used to do.
 
 Each figure is an average or a business-wide throughput number, not a promise
 to an individual buyer. If this page is going to make these claims publicly,
