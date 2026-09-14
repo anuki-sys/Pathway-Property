@@ -225,19 +225,17 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 .hero-stats dd{margin:6px 0 0;font-size:.8125rem;line-height:1.45;color:var(--ink-60)}
 @media(max-width:940px){.hero-stats{gap:20px 30px}.hero-stats dt{font-size:1.625rem}}
-.hero-media{position:relative;padding-bottom:52px;padding-left:44px}
+.hero-media{position:relative;padding-bottom:58px;padding-left:84px}
 .hero-media .shot-main{aspect-ratio:4/3.6;border-radius:50px;box-shadow:var(--shadow-green)}
 /* the photo is 3:4 portrait; this frame trims the sky and the footpath
    and centres the faces and the sign */
 .hero-media .shot-main img{object-position:50% 46%}
 .hero-media .shot-inset{
-  position:absolute;left:0;bottom:0;width:44%;aspect-ratio:1;
+  position:absolute;left:0;bottom:0;width:38%;aspect-ratio:1;
   border-radius:30px;background-color:#1B5E56;
   /* .shot img is z-index:1, so without this the main photo's image paints over
      this frame's outline wherever the two overlap and the border disappears */
   z-index:2;
-  /* and a ring of the page ground, so the two outlines never touch */
-  box-shadow:0 0 0 9px var(--ground);
 }
 @media(max-width:940px){
   .hero-grid{grid-template-columns:1fr;gap:40px}

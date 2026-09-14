@@ -169,8 +169,13 @@ bottom-left corner.
 creates no stacking context, so both photos' images land in the hero grid's
 stacking context at the same level while the inset's own frame sits at auto.
 Without the explicit z-index the main photo's image paints over the inset's
-border, and the outline vanishes exactly where the two overlap. It also carries
-a 9px `box-shadow` ring in the page ground so the two outlines never touch.
+border, and the outline vanishes exactly where the two overlap.
+
+The inset covers about **26%** of the main photo's width. It was 39%, which cut
+the subject in half; the fix was to shrink the inset to 38% and raise
+`.hero-media`'s left padding to 84px, which shifts the main photo right and out
+from behind it. If a future hero photo puts its subject somewhere else, that
+padding is the dial.
 
 Eight headshots are also served from the Webflow CDN: Tanuj, Arshad, Nirvan
 and Abhimaan in the agent slider, and Rahul, Shamindri, Ali Al Hilo and
