@@ -42,8 +42,23 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 - **Buttons:** primary is green fill + midnight outline + white text;
   secondary is transparent + midnight outline. Both 14px/400, 300ms ease.
 - **Footer:** Pathway green slab with rounded top corners.
-- **Region map:** four agent pins sit over the map — Tanuj (South East),
-  Arshad (West), Nirvan (North) and Abhimaan (East). Each is a teardrop whose
+- **Region map:** the nine SA4 regions are grouped into **three territories**
+  (`data-territory` on each path), each painted a different shade of the one
+  base colour so the region strokes still delineate inside a territory:
+
+  | Territory | Regions | Pin |
+  | --- | --- | --- |
+  | `west` | North West, West, Inner | Arshad |
+  | `east` | North East, Inner East, Outer East | Nirvan |
+  | `south` | Inner South, South East, Mornington | Tanuj |
+
+  Every region belongs to a territory, which is what stops Mornington reading
+  as unstaffed. Hovering a pin lights its **whole** territory rather than the
+  single region under it, for the same reason. Abhimaan has no pin: he is
+  Support and Settlement, not a territory owner.
+  **Confirm the three names before launch.** The transcript named only Tanuj.
+
+  Each pin is a teardrop whose
   **tip** is the anchor point, with the headshot in the head circle 87 units
   above it. Hovering or focusing fills the pin cream, lights its region and
   shows the name; clicking selects that person in the agent slider and scrolls
