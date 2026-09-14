@@ -130,31 +130,37 @@ green rooflines placeholder with a label describing the shot; an `<img>` sits
 on top of it, so dropping a real photo in is a one-line change and a missing
 photo degrades to the labelled placeholder rather than a broken image.
 
-The hero carries the "purchased off-market" client photo from the Webflow
-CDN, framed 4:3.6 with `object-position: 50% 46%` so the sky and footpath are
-trimmed and the faces and the sign sit centred.
+The hero carries two client photos from the Webflow CDN: the main one framed
+4:3.6 with `object-position: 50% 46%`, and a square inset overlapping its
+bottom-left corner.
+
+**The inset needs `z-index:2`.** `.shot img` is `z-index:1` and `.shot` itself
+creates no stacking context, so both photos' images land in the hero grid's
+stacking context at the same level while the inset's own frame sits at auto.
+Without the explicit z-index the main photo's image paints over the inset's
+border, and the outline vanishes exactly where the two overlap. It also carries
+a 9px `box-shadow` ring in the page ground so the two outlines never touch.
 
 Eight headshots are also served from the Webflow CDN: Tanuj, Arshad, Nirvan
 and Abhimaan in the agent slider, and Rahul, Shamindri, Ali Al Hilo and
 Shashyani in Meet the team. They sit at `object-position: 50% 28%`, which keeps a face high in a
 tall frame rather than centred.
 
-Two photos are **inlined as data URIs** rather than pulled from the CDN, so the
-page still shows them when it is opened as a single file or in a preview that
+One photo is **inlined as a data URI** rather than pulled from the CDN, so the
+page still shows it when it is opened as a single file or in a preview that
 blocks remote images:
 
 | Slot | Inlined file | Note |
 | --- | --- | --- |
-| Hero inset (square, beside the main hero photo) | `assets/keys-handover.jpg` | Keys in an open doorway; the keyring's green happens to match the brand |
 | "Why buyers bring us in" | `assets/approaching-home.jpg` | A buyer walking up to a front door. The frame has **no aspect ratio**: the grid is `align-items: stretch`, so it takes whatever height the list beside it ends up being and the two columns always end level. Below 900px the columns stack and it falls back to 4:5. |
 
-Both are in `assets/` at exactly the bytes that are inlined. When this moves
-into Webflow, upload them to the site asset library and replace each data URI
-with its CDN URL — data URIs are a preview convenience, not how the live page
+It is in `assets/` at exactly the bytes that are inlined. When this moves into
+Webflow, upload it to the site asset library and replace the data URI with its
+CDN URL — data URIs are a preview convenience, not how the live page
 should ship.
 
-Both are Unsplash stock (João Emanuel; Jakub Żerdzicki) and read as stock.
-Swap them for real Pathway photography when there is some.
+It is Unsplash stock (João Emanuel) and reads as stock. Swap it for real
+Pathway photography when there is some. Both hero photos are now real clients.
 
 Still needed: a headshot for **Rumeysa** and the "Recent buys" strip, which
 must be actual clients. The podcast thumbnail is wired to the Webflow CDN.
