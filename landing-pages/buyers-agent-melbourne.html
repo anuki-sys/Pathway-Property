@@ -587,36 +587,20 @@ details .a p{font-size:.9375rem}
 .field-wide{grid-column:1 / -1}
 
 .booking-foot{
-  display:grid;grid-template-columns:minmax(300px,.85fr) 1.15fr;gap:28px;align-items:center;
+  display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;justify-content:space-between;
   margin-top:28px;padding-top:26px;border-top:1px solid var(--on-green-45);
 }
-.tabs-label{font-size:.8125rem;font-weight:600;color:var(--mint);margin:0 0 10px}
-.booking-alt{font-size:.9375rem;color:var(--on-green-70);margin:0;max-width:30em}
-.tabs{display:flex;flex-wrap:wrap;gap:8px}
-.tab{
-  border:1.5px solid var(--on-green-45);background:transparent;color:var(--on-green);
-  border-radius:var(--pill);padding:8px 16px;font-family:var(--font);font-size:.875rem;font-weight:500;
-  cursor:pointer;transition:background-color .3s ease,color .3s ease,border-color .3s ease;
-}
-.tab:hover{border-color:var(--on-green)}
-.tab[aria-selected="true"]{background:var(--shell);color:var(--ink);border-color:var(--shell)}
-.tab-panel{
-  border:1px dashed var(--on-green-45);border-radius:26px;padding:18px 22px;
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-}
-.tab-panel .cal-name{color:var(--shell);font-weight:600;font-size:1rem;margin-bottom:2px}
-.tab-panel .cal-note{font-size:.875rem;color:var(--on-green-70)}
-.tab-panel .btn{flex-shrink:0}
+.booking-alt{font-size:.9375rem;color:var(--on-green-70);margin:0;max-width:34em}
+.booking-foot .btn{flex-shrink:0}
 
 @media(max-width:1040px){
   .booking-head{grid-template-columns:1fr;gap:22px;align-items:start}
-  .booking-foot{grid-template-columns:1fr;align-items:stretch}
+  .booking-foot{align-items:stretch}
 }
 @media(max-width:760px){
   .form-grid{grid-template-columns:1fr 1fr}
   .booking-card{padding:26px 22px;border-radius:32px}
-  .tab-panel{flex-direction:column;align-items:stretch;gap:16px}
-  .tab-panel .btn{width:100%}
+  .booking-foot .btn{width:100%;text-align:center}
 }
 @media(max-width:520px){.form-grid{grid-template-columns:1fr}}
 @media(max-width:900px){.booking{border-radius:50px 50px 0 0;padding:64px 0 32px}}
@@ -1209,20 +1193,18 @@ details .a p{font-size:.9375rem}
     <div class="eyebrow">Common questions</div>
     <h2>Before you call</h2>
     <div class="faq">
-      <details><summary>What does a buyer's agent do in Melbourne?</summary>
-        <div class="a"><p>A buyer's agent works only for the buyer. Across Melbourne that means searching the north, south east, east and west, including off-market and pre-market properties, attending inspections on your behalf, running due diligence on inspections, overlays, amenities, school zones and council planning, valuing the property independently, and negotiating or bidding for you.</p></div></details>
       <details><summary>Is a buyer's agent worth it for a first home buyer?</summary>
         <div class="a"><p>Yes, and arguably it matters most the first time. This is the largest purchase you have made, you are doing it for the first time, and the person on the other side of the table negotiates every week. With an experienced professional beside you, you buy at the right price and on the right terms, with every check done before you commit, and you spend your weekends looking at homes worth seeing instead of losing auctions. That is the difference between a purchase you are still happy with in five years and one you are not.</p></div></details>
       <details><summary>Which suburbs do you cover?</summary>
-        <div class="a"><p>All of Melbourne. We have specialists across each corner of the city: Tanuj in the south east, Arshad in the west, Nirvan in the north and Abhimaan in the east. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help.</p></div></details>
+        <div class="a"><p>All of Melbourne. We have buyer's agents working across every corner of the city, north, south, east and west, and we put the right one on your search once we understand what you are after. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help.</p></div></details>
       <details><summary>Can you find homes that aren't listed online?</summary>
-        <div class="a"><p>Yes, and it is one of the main reasons buyers come to us. We source 100+ off-market and pre-market properties every week through our 2000+ agent partnerships across Melbourne, so you are seeing homes that never reach a portal. Deals we have shortlisted for our clients sit behind that again, and those we walk you through in person.</p></div></details>
+        <div class="a"><p>Yes, and it is one of the main reasons buyers come to us. We source 100+ off-market and pre-market properties every week through our 2000+ agent partnerships across Melbourne, so you are seeing homes that never reach a portal. The properties we have already shortlisted for clients sit behind that again, and those are worth a conversation.</p></div></details>
       <details><summary>Do you work with property investors?</summary>
-        <div class="a"><p>Yes. As well as buying homes for people to live in, the wider Pathway Property team buys investment property for clients around the country. Tell us what you are trying to achieve and we will put you with the right person on the team.</p></div></details>
+        <div class="a"><p>Yes. As well as buying homes for people to live in, the wider Pathway Property team buys investment property for clients around the country. If that is what you are after, start with <a href="https://www.pathwayprop.com.au/services/commercial-property-investing">our property investing service</a>, or tell us what you are trying to achieve and we will put you with the right person on the team.</p></div></details>
       <details><summary>How long does it take to buy a home with a buyer's agent?</summary>
         <div class="a"><p>It depends on your brief and how tight the market is when you start. We'll give you a realistic range on the first call based on what you're after and what you can spend, rather than a number that just sounds good on a website.</p></div></details>
       <details><summary>What if I've already found a property I like?</summary>
-        <div class="a"><p>Bring it to us. We can give you an independent read on what it is worth, review the contract and the section 32, flag anything that deserves a closer look, and negotiate or bid on your behalf. Even if you are close to the finish line, a second set of eyes before you sign is worth the conversation.</p></div></details>
+        <div class="a"><p>Bring it to us. We can give you an independent read on what it is worth, flag anything about the property that deserves a closer look, and negotiate or bid on your behalf. Even if you are close to the finish line, a second set of eyes before you sign is worth the conversation.</p></div></details>
     </div>
   </div>
 </section>
@@ -1263,12 +1245,22 @@ details .a p{font-size:.9375rem}
   <div class="wrap">
     <div class="booking-head">
       <h2>Your dream home awaits you, and we have the keys.</h2>
-      <p class="booking-lede">Answer five quick questions and we'll come back to you. Fifteen minutes, free, and you'll get a straight answer on how we can help.</p>
+      <p class="booking-lede">Tell us what you're after and we'll come back to you. Fifteen minutes, free, and you'll get a straight answer on how we can help.</p>
     </div>
 
     <div class="booking-card">
       <div class="form-grid">
-        <div class="field field-wide"><label for="b-suburbs">Suburbs you're looking at</label><input id="b-suburbs" type="text" placeholder="Glen Waverley, Berwick, Oakleigh…"></div>
+        <div class="field field-wide">
+          <label for="b-suburbs">Suburbs you're looking at</label>
+          <div class="combo">
+            <ul class="chips" id="b-chips"></ul>
+            <input id="b-suburbs" type="text" autocomplete="off" placeholder="Start typing a suburb…"
+                   role="combobox" aria-expanded="false" aria-controls="b-suburb-list" aria-autocomplete="list">
+            <ul class="combo-list" id="b-suburb-list" role="listbox" aria-label="Matching suburbs" hidden></ul>
+          </div>
+          <p class="field-hint">Pick one, then add the next.</p>
+          <input type="hidden" id="b-suburbs-value" name="suburbs">
+        </div>
         <div class="field"><label for="b-name">Name</label><input id="b-name" type="text" placeholder="Your name"></div>
         <div class="field"><label for="b-phone">Phone</label><input id="b-phone" type="tel" placeholder="04…"></div>
         <div class="field"><label for="b-email">Email</label><input id="b-email" type="email" placeholder="you@email.com"></div>
@@ -1298,17 +1290,8 @@ details .a p{font-size:.9375rem}
       </div>
 
       <div class="booking-foot">
-        <div>
-          <div class="tabs-label">Or book straight in</div>
-          <p class="booking-alt">Skip the form and take a fifteen minute slot in Tanuj's calendar.</p>
-        </div>
-        <div class="tab-panel">
-          <div>
-            <div class="cal-name">Tanuj Singh</div>
-            <div class="cal-note">Buyer's Agent · 15-minute consult</div>
-          </div>
-          <a class="btn btn-cream" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book with Tanuj</a>
-        </div>
+        <p class="booking-alt">We read every one of these before the call, so the fifteen minutes is spent on you rather than on the basics.</p>
+        <a class="btn btn-cream" href="#">Request my consult</a>
       </div>
     </div>
 
@@ -1323,7 +1306,7 @@ details .a p{font-size:.9375rem}
           <input id="sub-email" type="email" placeholder="you@email.com" aria-label="Your email address">
           <a class="btn btn-cream" href="#">Subscribe</a>
         </div>
-        <p class="sub-note">By subscribing you agree to our privacy policy.</p>
+        <p class="sub-note">By subscribing you agree to our <a href="/policies/privacy-policy">privacy policy</a>.</p>
       </div>
     </div>
 
@@ -1345,11 +1328,12 @@ details .a p{font-size:.9375rem}
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-{"@type": "Question", "name": "What does a buyer's agent do in Melbourne?", "acceptedAnswer": {"@type": "Answer", "text": "A buyer's agent works only for the buyer. Across Melbourne that means searching the north, south east, east and west, including off-market and pre-market properties, attending inspections on your behalf, running due diligence on inspections, overlays, amenities, school zones and council planning, valuing the property independently, and negotiating or bidding for you."}},
 {"@type": "Question", "name": "Is a buyer's agent worth it for a first home buyer?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and arguably it matters most the first time. This is the largest purchase you have made, you are doing it for the first time, and the person on the other side of the table negotiates every week. With an experienced professional beside you, you buy at the right price and on the right terms, with every check done before you commit, and you spend your weekends looking at homes worth seeing instead of losing auctions. That is the difference between a purchase you are still happy with in five years and one you are not."}},
-{"@type": "Question", "name": "Which suburbs do you cover?", "acceptedAnswer": {"@type": "Answer", "text": "We are in Glen Waverley, Oakleigh, Brighton, Ringwood, Berwick and Pakenham regularly, and we have purchased homes right across Melbourne. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help."}},
-{"@type": "Question", "name": "Can you find homes that aren't listed online?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it is one of the main reasons buyers come to us. We source 100+ off-market and pre-market properties every week through our 2000+ agent partnerships across Melbourne, so you are seeing homes that never reach a portal. When the right one still is not among them, we approach owners directly on your behalf. It does not work every time. When it does, you are the only buyer in the conversation."}},
-{"@type": "Question", "name": "Do you work with property investors?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. As well as buying homes for people to live in, the wider Pathway Property team buys investment property for clients around the country. Tell us what you are trying to achieve and we will put you with the right person on the team."}}
+{"@type": "Question", "name": "Which suburbs do you cover?", "acceptedAnswer": {"@type": "Answer", "text": "All of Melbourne. We have buyer's agents working across every corner of the city, north, south, east and west, and we put the right one on your search once we understand what you are after. Wherever you are looking, get in touch for a confidential conversation and we will tell you how we can help."}},
+{"@type": "Question", "name": "Can you find homes that aren't listed online?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it is one of the main reasons buyers come to us. We source 100+ off-market and pre-market properties every week through our 2000+ agent partnerships across Melbourne, so you are seeing homes that never reach a portal. The properties we have already shortlisted for clients sit behind that again, and those are worth a conversation."}},
+{"@type": "Question", "name": "Do you work with property investors?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. As well as buying homes for people to live in, the wider Pathway Property team buys investment property for clients around the country. If that is what you are after, start with our property investing service, or tell us what you are trying to achieve and we will put you with the right person on the team."}},
+{"@type": "Question", "name": "How long does it take to buy a home with a buyer's agent?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on your brief and how tight the market is when you start. We'll give you a realistic range on the first call based on what you're after and what you can spend, rather than a number that just sounds good on a website."}},
+{"@type": "Question", "name": "What if I've already found a property I like?", "acceptedAnswer": {"@type": "Answer", "text": "Bring it to us. We can give you an independent read on what it is worth, flag anything about the property that deserves a closer look, and negotiate or bid on your behalf. Even if you are close to the finish line, a second set of eyes before you sign is worth the conversation."}}
 ]}
 </script>
 <script type="application/ld+json">
@@ -1554,14 +1538,9 @@ details .a p{font-size:.9375rem}
 
 /* suburb picker: type, choose from the list, chip appears, add the next.
    Anything typed can also be added with Enter, so a suburb missing from the
-   list below never blocks the form. */
+   list below never blocks the form. Mounted on both forms, which each keep
+   their own chips. */
 (function(){
-  var input=document.getElementById('om-suburbs'),
-      list=document.getElementById('om-suburb-list'),
-      chips=document.getElementById('om-chips'),
-      store=document.getElementById('om-suburbs-value');
-  if(!input||!list||!chips||!store)return;
-
   var SUBURBS=('Abbotsford,Albert Park,Altona,Armadale,Ascot Vale,Ashburton,Ashwood,Aspendale,Balaclava,Balwyn,'+
    'Balwyn North,Bayswater,Beaconsfield,Bentleigh,Bentleigh East,Berwick,Blackburn,Bonbeach,Boronia,Box Hill,'+
    'Braybrook,Brighton,Brighton East,Broadmeadows,Brunswick,Bulleen,Bundoora,Burwood,Camberwell,Carlton,'+
@@ -1576,6 +1555,13 @@ details .a p{font-size:.9375rem}
    'South Melbourne,South Yarra,Springvale,St Kilda,Sunbury,Sunshine,Surrey Hills,Tarneit,Templestowe,'+
    'Thornbury,Toorak,Truganina,Vermont,Wantirna,Werribee,Wheelers Hill,Williamstown,Windsor,Yarraville'
   ).split(',');
+
+  function mount(prefix){
+  var input=document.getElementById(prefix+'-suburbs'),
+      list=document.getElementById(prefix+'-suburb-list'),
+      chips=document.getElementById(prefix+'-chips'),
+      store=document.getElementById(prefix+'-suburbs-value');
+  if(!input||!list||!chips||!store)return;
 
   var chosen=[],active=-1;
 
@@ -1648,6 +1634,10 @@ details .a p{font-size:.9375rem}
   });
 
   sync();
+  }
+
+  mount('om');
+  mount('b');
 })();
 
 /* step seven: a burst each time the card scrolls back into view */

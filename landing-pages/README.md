@@ -147,10 +147,32 @@ they need to be substantiable — keep the underlying records.
 **Pathway Property Law is a separate entity to the Melbourne buyer's agency,
 and this page must not offer or imply legal advice.** "What the contract
 actually says" was removed from the value list on 14 Sep for exactly this
-reason. Keep contracts, section 32s and anything a lawyer would sign off out of
-the service description. The FAQ answer about bringing us a property you have
-found still mentions reviewing "the contract and the section 32" and needs the
-same check.
+reason, and "review the contract and the section 32" came out of the FAQ on the
+same grounds on 14 Sep. Keep contracts, section 32s and anything a lawyer would
+sign off out of the service description. The page is now clear of both words;
+grep for them before shipping any new copy.
+
+### The FAQ and its JSON-LD twin
+
+The FAQ is mirrored in an `FAQPage` JSON-LD block at the foot of the page, and
+the two had silently drifted: the block still carried a deleted question and two
+superseded answers. **The block is now generated from the rendered FAQ**, so
+regenerate it rather than hand-editing, and check the two match after any FAQ
+change. Inline links are stripped from the JSON-LD text, which is what schema
+expects.
+
+Two standing rules the FAQ answers have to hold to:
+- **No individual agents by name.** "Tanuj in the south east, Arshad in the
+  west" came out on 14 Sep: enquiries all route to Tanuj anyway, and naming
+  people boxes the business into an allocation it may not keep. The answer now
+  says buyer's agents work across every corner of the city and the right one is
+  put on the search. Note the map and the agent slider still name all four and
+  tag them by territory, which is the same commitment made visually. If the
+  boxing-in concern applies there too, that is a bigger change than this one.
+- **No legal advice.** See the section above.
+
+"What does a buyer's agent do in Melbourne?" was removed on 14 Sep as too basic
+for a reader who has got this far.
 
 ### The off-market section
 
@@ -178,6 +200,17 @@ handler eventually receives the form. Free text is still accepted on Enter so a
 missing suburb never blocks a submission. The suburb list is a **fixed array of
 about 130 Melbourne suburbs in the page** and is not complete; before launch it
 wants extending or replacing with a real dataset.
+
+### The booking form
+
+The "Or book straight in" panel, which let a reader skip the form for Tanuj's
+calendar, was removed on 14 Sep: the form is the filter, so a bypass next to it
+defeats the point. The form gained the submit button it had been missing
+entirely, and its suburb field is now the same chip combobox as the off-market
+form. Both mount from one list; each keeps its own chips.
+
+The lede promised "five quick questions" against a seven field form and now
+just says what it does. If fields are added, do not put a count back in.
 
 ### The process section
 
@@ -315,9 +348,21 @@ agents.
 - Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
   (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
   "calendar link to confirm" state.
+- The hero CTA still goes straight to Tanuj's calendar, which is the one
+  remaining way to reach a booking without answering the filter questions. The
+  booking section's own "skip the form" panel was removed on 14 Sep precisely
+  so every enquiry comes through the form. Worth deciding whether the hero
+  should point at `#book` instead, but it was an explicit earlier request so it
+  was left alone.
+- **The privacy policy page does not exist yet.** The newsletter line says "by
+  subscribing you agree to our privacy policy" and now links to
+  `/policies/privacy-policy`, as the footer already did. The page has to be
+  written and published before the form collects a single address. It is a
+  legal document for the business to produce, not page copy.
 - Form endpoints: the off-market, booking and newsletter forms are marked up
   but not wired to a handler. The off-market form now carries phone, suburbs
-  and a readiness flag, so whatever receives it needs those fields.
+  and a readiness flag, and the booking form posts chips from a hidden
+  `#b-suburbs-value`, so whatever receives them needs those fields.
 - The off-market suburb list is a hand-built array of about 130 suburbs and
   does not cover all of Melbourne.
 - Real YouTube and Spotify links on the podcast section (both are `#`).
