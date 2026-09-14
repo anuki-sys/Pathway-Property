@@ -162,21 +162,26 @@ should ship.
 It is Unsplash stock (João Emanuel) and reads as stock. Swap it for real
 Pathway photography when there is some. Both hero photos are now real clients.
 
-Still needed: a headshot for **Rumeysa** and the "Recent buys" strip, which
-must be actual clients. The podcast thumbnail is wired to the Webflow CDN.
+Still needed: a headshot for **Rumeysa**. Everything else is wired to the
+Webflow CDN, including the podcast thumbnail and all eight Recent buys tiles.
+There are no local image placeholders left on the page.
 
 Role chips are solid once the role is confirmed and dashed while it is still a
 placeholder, so an unconfirmed card is obvious at a glance.
 
-"Recent buys" is an auto-scrolling marquee. Its tiles are written out twice so
-the loop is seamless: **whatever you change in the first set, change in the
-second**. Six tiles is the target; three works too. It pauses on hover and on
-focus, and becomes a plain horizontal scroller under reduced motion.
+"Recent buys" is an auto-scrolling marquee carrying **eight real client
+photos**. Its tiles are written out twice so the loop is seamless: **whatever
+you change in the first set, change in the second**, and keep the duplicate set
+`aria-hidden` so screen readers do not read every photo twice.
 
-Candidate assets already on the site (from the Webflow asset library):
-`tom-rumble-…`, `dillon-kydd-…`, `r-architecture-…`, `pat-whelen-…`,
-`blaire-harmon-…`, `esther-zheng-…`, `cristine-enero-…`, `opollo-photography-…`,
-plus `Gal 1–5.webp` and `Hero 1–4.webp`.
+The loop relies on `translateX(calc(-50% - 10px))` matching one set plus one
+20px gap. At eight 300px tiles the track is 5100px and the shift is 2560px,
+which is exactly right. Change the tile count, the tile width or the gap and
+that offset has to be re-checked or the loop will visibly jump.
+
+Duration is 62s, scaled up from 46s when the set grew from six tiles to eight
+so the scroll speed stayed the same. It pauses on hover and on focus, and
+becomes a plain horizontal scroller under reduced motion.
 
 ## Pages
 
