@@ -106,27 +106,34 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | Figure | Source | Used on the page |
 | --- | --- | --- |
 | 2000+ agent partnerships across Melbourne | Client, 14 Sep | Hero stat |
-| 100+ off-market properties every week | Client, 14 Sep | Hero stat, off-market section heading |
-| 100 due diligence reports produced every day | Client, 8 Sep (deck says 50) | Hero stat, "Why buyers bring us in" |
+| 100+ off-market properties across Melbourne each week | Client, 14 Sep | Hero stat, off-market section heading |
+| 3.7% average discount negotiated for clients | Deck 4/9, restored to the hero 15 Sep | Hero stat |
+| 100 due diligence reports produced every day | Client, 8 Sep (deck says 50) | "Why buyers bring us in" |
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 9 weeks average time to secure | Deck 7/9, confirmed 14 Sep | Process intro |
 | ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
 | ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
-The off-market figure carries its cadence everywhere it appears. The hero
-stat used to read "100+ off-market properties across Melbourne" with no time
-period while the section heading said "every week", which read as two different
-claims; the hero now says **every week** too.
+The off-market figure carries its cadence everywhere it appears. The hero stat
+once read "100+ off-market properties across Melbourne" with no time period
+while the section heading said "every week", which read as two different
+claims. Both now carry the week.
+
+**3.7% came back on 15 Sep**, taking the third hero slot from the due diligence
+figure, which still appears in "Why buyers bring us in". It had been retired on
+14 Sep as part of the sweep below, so treat the retired list as a record of what
+was pulled and why, not as a permanent ban.
 
 **The flyer says six weeks and the site says nine. Nine is correct** (confirmed
 14 Sep). The flyer and any other collateral need updating to match; that is
 outside this repo.
 
-Retired on 14 Sep and swept from the whole page, body copy, FAQ answers and
-the JSON-LD mirrors alike: **90+ inspections a week**, the **3.7% average
-discount**, **200+ off-markets** and **50 due diligence reports a day**. If any
-of them come back, put them everywhere or nowhere.
+Retired on 14 Sep and swept from the whole page, body copy, FAQ answers and the
+JSON-LD mirrors alike: **90+ inspections a week**, **200+ off-markets** and
+**50 due diligence reports a day**. The **3.7% average discount** went with them
+and was restored to the hero on 15 Sep at the client's request. If any of the
+others come back, put them everywhere or nowhere.
 
 The one figure the deck and the client disagree on is due diligence: the deck
 says **50** a day, the client says **100**, and the page says 100. Deck slide
@@ -134,9 +141,10 @@ says **50** a day, the client says **100**, and the page says 100. Deck slide
 "in just 4 to 5" weeks and its own bullet saying "3 to 4 weeks"; neither is on
 the page, only the 9-week average.
 
-Also note the page no longer carries a single figure expressed as a benefit to
-the buyer. Every remaining number measures Pathway's activity rather than the
-reader's outcome, which 3.7% used to do.
+With 3.7% back, the page again carries one figure expressed as a benefit to the
+reader rather than as a measure of Pathway's own activity. It is the only one,
+and it is the one a buyer is most likely to repeat, so it is also the one most
+worth being able to substantiate on request.
 
 Each figure is an average or a business-wide throughput number, not a promise
 to an individual buyer. If this page is going to make these claims publicly,
