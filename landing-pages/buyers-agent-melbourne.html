@@ -129,6 +129,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .dd-note{font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-45);white-space:nowrap}
 .nav-dropdown a[aria-current="page"] .dd-note{color:var(--green)}
 .dd-soon{color:var(--ink-45)}
+/* a child page of the row above it, not a sibling */
+.nav-dropdown a.dd-sub{margin-left:16px;padding-left:16px;border-left:1.5px solid var(--hair)}
 
 .navbar-buttons{display:flex;align-items:center;gap:.5rem;flex-shrink:0;margin-left:auto}
 .navbar-buttons .btn{padding:.7rem 1.35rem;font-size:14px}
@@ -154,6 +156,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   .navbar-menu.is-open{display:flex}
   .navbar-link{padding:.85rem 1rem;font-size:15px;justify-content:space-between;width:100%}
   .nav-dropdown{position:static;display:none;min-width:0;border:0;border-radius:0;padding:0 0 6px 12px;background:transparent}
+  .nav-dropdown a.dd-sub{margin-left:10px;padding-left:12px}
   .nav-item.is-open .nav-dropdown{display:block}
   .navbar-buttons{margin-left:0}
   .navbar-buttons .btn{padding:.7rem 1.1rem}
@@ -663,18 +666,14 @@ details .a p{font-size:.9375rem}
       <div class="nav-item"><a class="navbar-link" href="/about">About <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <div class="nav-item"><a class="navbar-link" href="/resources">Resources</a></div>
       <div class="nav-item"><a class="navbar-link" href="/tools">Tools</a></div>
-      <div class="nav-item"><a class="navbar-link" href="/services">Services <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-
       <div class="nav-item has-menu">
-        <button class="navbar-link nav-trigger" aria-expanded="false" aria-controls="dd-where">Where we buy <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="nav-dropdown" id="dd-where">
-          <a href="/melbourne" aria-current="page">Melbourne <span class="dd-note">You are here</span></a>
-          <a href="#">Melbourne South East <span class="dd-note dd-soon">Coming soon</span></a>
-          <a href="#">Melbourne East <span class="dd-note dd-soon">Coming soon</span></a>
-          <a href="#">Melbourne North <span class="dd-note dd-soon">Coming soon</span></a>
-          <a href="#">Melbourne West <span class="dd-note dd-soon">Coming soon</span></a>
+        <button class="navbar-link nav-trigger" aria-expanded="false" aria-controls="dd-services">Services <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dropdown" id="dd-services">
+          <a href="/services/buyer-advocacy">Buyer advocacy</a>
+          <a class="dd-sub" href="/melbourne" aria-current="page">Melbourne <span class="dd-note">You are here</span></a>
         </div>
       </div>
+
 
       <div class="nav-item"><a class="navbar-link" href="/partners">Partners <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
       <div class="nav-item"><a class="navbar-link" href="/events">Event <svg class="caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
@@ -738,7 +737,7 @@ details .a p{font-size:.9375rem}
         <div class="eyebrow">Recent buys</div>
         <h2>Real families, real front yards.</h2>
       </div>
-      <a class="btn btn-secondary" href="#book">Book a consult</a>
+      <a class="btn btn-secondary" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
     </div>
     <div class="marquee" aria-label="Recent purchases">
       <div class="marquee-track">
@@ -872,7 +871,7 @@ details .a p{font-size:.9375rem}
               <span class="pill">Inner Melbourne</span>
               <span class="pill pill-soft">and everywhere in between</span>
             </div>
-            <a class="btn btn-cream btn-block" href="#book">Book a consult</a>
+            <a class="btn btn-cream btn-block" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
           </div>
         </div>
 
@@ -1140,7 +1139,7 @@ details .a p{font-size:.9375rem}
             <span class="agent-role">Buyer's Agent</span> <span class="agent-area">South specialist</span>
             <h3>Tanuj Singh</h3>
             <p>Grew up in Melbourne's south east and studied at Monash, so he knows the corridor street by street rather than suburb by suburb. Involved in over $100 million of property transactions, and the person who runs your search from the first call through to settlement.</p>
-            <a class="btn btn-primary" href="#book">Book a consult</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
           </div>
         </article>
         <article class="agent-card" id="agent-arshad" role="group" aria-roledescription="slide" aria-label="2 of 4: Arshad Zacky">
@@ -1153,7 +1152,7 @@ details .a p{font-size:.9375rem}
             <span class="agent-role">Head of Client Success</span> <span class="agent-area">West specialist</span>
             <h3>Arshad Zacky</h3>
             <p>Covers Melbourne's west, from the established inner suburbs out to the estates still going up, and knows which of them will still feel right in ten years. Oversees how every client file is run, and the person clients call when they want a second opinion on a shortlist or an offer.</p>
-            <a class="btn btn-primary" href="#book">Book a consult</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
           </div>
         </article>
         <article class="agent-card" id="agent-nirvan" role="group" aria-roledescription="slide" aria-label="3 of 4: Nirvan Jamshidpey">
@@ -1166,7 +1165,7 @@ details .a p{font-size:.9375rem}
             <span class="agent-role">Head of Deal Acquisition</span> <span class="agent-area">North specialist</span>
             <h3>Nirvan Jamshidpey</h3>
             <p>Buys across Melbourne's north, where a good buy can sit a single street away from one you would regret. Brings the legal expertise and commercial know-how behind every offer and contract that goes out the door.</p>
-            <a class="btn btn-primary" href="#book">Book a consult</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
           </div>
         </article>
         <article class="agent-card" id="agent-abhimaan" role="group" aria-roledescription="slide" aria-label="4 of 4: Abhimaan Bhargava">
@@ -1179,7 +1178,7 @@ details .a p{font-size:.9375rem}
             <span class="agent-role">Buyer's Agent</span> <span class="agent-area">East specialist</span>
             <h3>Abhimaan Bhargava</h3>
             <p>Buys across Melbourne's east, inner and outer, where school zones and a few hundred metres of boundary can change everything. Runs your search from the first inspection through to settlement.</p>
-            <a class="btn btn-primary" href="#book">Book a consult</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/8NCaGay2AG5pu6yo9" target="_blank" rel="noopener">Book a consult</a>
           </div>
         </article>
       </div>
@@ -1498,7 +1497,7 @@ details .a p{font-size:.9375rem}
   show(null);
 })();
 
-/* navbar — mobile menu and the "Where we buy" dropdown */
+/* navbar — mobile menu and the Services dropdown */
 (function(){
   var toggle=document.getElementById('nav-toggle'),
       menu=document.getElementById('nav-menu'),

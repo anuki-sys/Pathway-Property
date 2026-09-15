@@ -211,24 +211,42 @@ missing suburb never blocks a submission. The suburb list is a **fixed array of
 about 130 Melbourne suburbs in the page** and is not complete; before launch it
 wants extending or replacing with a real dataset.
 
+### Navigation
+
+This page sits at **Services > Buyer advocacy > Melbourne**, set on 15 Sep. The
+"Where we buy" top level menu was removed entirely at the same time.
+
+Services is now the dropdown: `.nav-item.has-menu` with a `.nav-trigger`
+button. The dropdown JS is generic over `.nav-item.has-menu`, so moving the
+menu from one top level item to another needs no script change. The second
+level row carries `.dd-sub`, which indents it and rules it off against its
+parent so it reads as a child page rather than a sibling.
+
+Only this page's branch is shown. The real Services menu lives in Webflow's
+global navbar component, so on the Webflow build this markup is a stand-in.
+
 ### The discovery call is thirty minutes
 
 Set on 15 Sep, and the page now says thirty everywhere it names a length: the
 step 1 card and its timing chip, the booking lede and the line above the submit
 button. If it changes again, change all four.
 
-**The Google Calendar booking link has to match.** The hero CTA drops straight
-into `calendar.app.google/8NCaGay2AG5pu6yo9`, which was set up as a fifteen
-minute slot. Until that event's duration is changed in Google Calendar, the page
-promises half an hour and the calendar books fifteen minutes. That is a setting
-outside this repo, and the same applies to the other agents' links when they
-are wired up.
+**The Google Calendar booking link has to match.** Every "Book a consult" CTA
+drops straight into `calendar.app.google/8NCaGay2AG5pu6yo9`, which was set up as
+a fifteen minute slot. Until that event's duration is changed in Google
+Calendar, the page promises half an hour and the calendar books fifteen minutes.
+That is a setting outside this repo, and the same applies to the other agents'
+links when they are wired up.
 
 ### The booking form
 
 The "Or book straight in" panel, which let a reader skip the form for Tanuj's
 calendar, was removed on 14 Sep: the form is the filter, so a bypass next to it
-defeats the point. The form gained the submit button it had been missing
+defeats the point. **That decision was then narrowed on 15 Sep**: every "Book a
+consult" CTA elsewhere on the page goes straight to the calendar, so the form is
+no longer the only route to a booking, it is just the only route offered from
+inside the booking section. Its submit button is the one "Book a consult" on the
+page that does not link to the calendar. The form gained the submit button it had been missing
 entirely, and its suburb field is now the same chip combobox as the off-market
 form. Both mount from one list; each keeps its own chips.
 
@@ -369,14 +387,11 @@ agents.
 
 - Photography and video testimonials for all image slots.
 - Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
-  (`calendar.app.google/uVUJEXzLsU1i73S97`) is wired; the others show a
-  "calendar link to confirm" state.
-- The hero CTA still goes straight to Tanuj's calendar, which is the one
-  remaining way to reach a booking without answering the filter questions. The
-  booking section's own "skip the form" panel was removed on 14 Sep precisely
-  so every enquiry comes through the form. Worth deciding whether the hero
-  should point at `#book` instead, but it was an explicit earlier request so it
-  was left alone.
+  (`calendar.app.google/8NCaGay2AG5pu6yo9`) is wired. Every "Book a consult"
+  button on the page now points at it, including the four in the agent slider,
+  so a reader who clicks Abhimaan's card books time with Tanuj. That matches how
+  enquiries are actually routed, but it is worth revisiting once the others have
+  their own links.
 - **The privacy policy page does not exist yet.** The newsletter line says "by
   subscribing you agree to our privacy policy" and now links to
   `/policies/privacy-policy`, as the footer already did. The page has to be
@@ -392,11 +407,15 @@ agents.
 - The nav logo is an inline SVG redraw of the brand mark. Swap it for the
   official logo file before this goes live — on the Webflow build it will use
   the site's own logo asset anyway.
-- Nav submenu contents for About, Services, Partners and Event — the carets
-  match the live nav but the items themselves come from the site's global
-  navbar component in Webflow, which isn't readable through the API.
-- The three other areas in the "Where we buy" nav dropdown (East, North,
-  West) are marked "coming soon" and need real URLs once those pages exist.
-  Note this sits slightly against the 3 Sep call, which asked for coverage to
-  stay open-ended — the page body no longer assigns agents to corridors, but
-  the nav dropdown still lists locations because that is where the page lives.
+- Nav submenu contents for About, Partners and Event — the carets match the
+  live nav but the items themselves come from the site's global navbar
+  component in Webflow, which isn't readable through the API. The Services
+  dropdown here shows only the one branch this page sits in, not the real
+  service list.
+- `/services/buyer-advocacy` is the assumed parent URL and needs confirming
+  against the live site, as does this page's own path.
+- **The four "coming soon" area pages lost their nav home.** Melbourne South
+  East, East, North and West were listed under "Where we buy", which was
+  removed on 15 Sep. They are not in the nav at all now. When they are built
+  they most naturally become siblings of Melbourne under Buyer advocacy, but
+  that was not asked for, so nothing was added on their behalf.
