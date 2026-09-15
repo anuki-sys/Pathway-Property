@@ -211,6 +211,19 @@ missing suburb never blocks a submission. The suburb list is a **fixed array of
 about 130 Melbourne suburbs in the page** and is not complete; before launch it
 wants extending or replacing with a real dataset.
 
+### The discovery call is thirty minutes
+
+Set on 15 Sep, and the page now says thirty everywhere it names a length: the
+step 1 card and its timing chip, the booking lede and the line above the submit
+button. If it changes again, change all four.
+
+**The Google Calendar booking link has to match.** The hero CTA drops straight
+into `calendar.app.google/8NCaGay2AG5pu6yo9`, which was set up as a fifteen
+minute slot. Until that event's duration is changed in Google Calendar, the page
+promises half an hour and the calendar books fifteen minutes. That is a setting
+outside this repo, and the same applies to the other agents' links when they
+are wired up.
+
 ### The booking form
 
 The "Or book straight in" panel, which let a reader skip the form for Tanuj's
