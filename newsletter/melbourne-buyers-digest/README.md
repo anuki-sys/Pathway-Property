@@ -11,11 +11,26 @@ People buying a home to live in, corridor-weighted Dandenong to Pakenham.
 Written to be read by whoever is actually carrying the decision, which in a
 home purchase is usually a woman.
 
-The voice is warm, calm and on the reader's side. We name what buying actually
-feels like - the Saturday grind, the fear of overpaying, the pressure of the
-auction floor - and then give something useful about it. Never technical for
-its own sake, never breathless, never talking down. **A number only ever
-appears alongside the sentence that says what it means for her.**
+**The voice is roughly 75% plain and direct, 25% warm and supportive.**
+
+Default to plain. Short sentences. Say the useful thing and stop. No hedging,
+no editorialising, no reassurance with nothing under it. If a line could be cut
+without losing information, cut it. A number only ever appears with the
+sentence that says what it means for the reader.
+
+**Warmth is rationed, and belongs in three places only:**
+
+1. the closing line of Tanuj's note
+2. the standing line under Your weekend
+3. The Close
+
+Everywhere else, write plain. If a warm sentence turns up in the market
+section, the listing notes, the suburb figures or the pod, it is in the wrong
+place. Cut it.
+
+The test: read any section aloud. If it sounds like someone being kind to you
+rather than someone telling you something useful, and it is not one of the
+three places above, rewrite it.
 
 Three rules that keep it honest:
 

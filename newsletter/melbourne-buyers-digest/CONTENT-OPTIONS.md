@@ -1,5 +1,11 @@
 # The Melbourne Buyer's Digest - content and structure options
 
+> **Decided.** Voice is roughly **75% voice 03 plain and direct** with
+> **25% voice 02 warm and supportive**, warmth rationed to three named places.
+> Structure is **B, The Companion**. Both are now built into `issue-01.html`,
+> and the operating rules are in the README. This document is kept as the
+> record of what was considered and why.
+
 Three voices and four structures, written from the same facts so they can be
 compared directly. Nothing here is built into `issue-01.html` yet.
 
