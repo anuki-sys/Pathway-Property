@@ -112,6 +112,9 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
 | 7 weeks average time to secure | Client, 15 Sep | Process intro |
+| $100m+ in transactions (Tanuj) | Bio copy, client, 15 Sep | Agent slider |
+| $10bn+ in real estate transactions (Nirvan) | Bio copy, client, 15 Sep | Agent slider |
+| 10,000+ real estate interactions (Arshad) | Bio copy, client, 15 Sep | Agent slider |
 | ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
 | ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
@@ -210,6 +213,26 @@ handler eventually receives the form. Free text is still accepted on Enter so a
 missing suburb never blocks a submission. The suburb list is a **fixed array of
 about 130 Melbourne suburbs in the page** and is not complete; before launch it
 wants extending or replacing with a real dataset.
+
+### The agent bios
+
+Rewritten from client-supplied copy on 15 Sep, in a warmer voice that uses "he"
+rather than the clipped third person the cards carried before. They run 60 to 67
+words against the old 40 and still fit the card with room to spare, but that is
+close to the ceiling: much longer and the body outgrows the portrait beside it.
+
+Two things in the new copy to keep an eye on:
+- **Abhimaan's bio claims the inner CBD**, and on the map the inner Melbourne
+  SA4 is shaded as Arshad's. One of the two is wrong, and a reader can see both.
+- **Nirvan's opens "Corporate and commercial lawyer first."** Describing a
+  background is not the same as offering legal advice, and this is his own copy,
+  so it stands. But it sits beside "every offer and contract Pathway sends out
+  the door" on a page that must not imply legal services, so it is worth him
+  reading once more with the Pathway Property Law separation in mind.
+
+The three career figures in these bios are the only numbers on the page attached
+to a person rather than to the business. They are in the table above and need the
+same substantiation as the rest.
 
 ### Navigation
 
