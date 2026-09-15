@@ -111,7 +111,7 @@ and 62% rather than 60% and 45%, which keeps body copy and small labels above
 | 100 due diligence reports produced every day | Client, 8 Sep (deck says 50) | "Why buyers bring us in" |
 | 7+ professionals coordinated to settlement | Deck 5/9 | "Why buyers bring us in" |
 | 120 hours saved on a typical purchase | Deck 6/9 | Process intro |
-| 9 weeks average time to secure | Deck 7/9, confirmed 14 Sep | Process intro |
+| 7 weeks average time to secure | Client, 15 Sep | Process intro |
 | ~~Over 1,000 properties purchased~~ | **Withdrawn 14 Sep, inaccurate (Nirvan)** | Removed from the meta description, hero lede, value list and FAQ |
 | ~~Thousands of families~~ | **Withdrawn 14 Sep** | Removed: it cannot be true if the properties figure was not |
 
@@ -125,9 +125,11 @@ figure, which still appears in "Why buyers bring us in". It had been retired on
 14 Sep as part of the sweep below, so treat the retired list as a record of what
 was pulled and why, not as a permanent ban.
 
-**The flyer says six weeks and the site says nine. Nine is correct** (confirmed
-14 Sep). The flyer and any other collateral need updating to match; that is
-outside this repo.
+**The average time to secure has now been three different numbers.** The deck
+and the original page said nine weeks, confirmed on 14 Sep; the flyer said six;
+the client set it to **seven** on 15 Sep, and seven is what the page says. Every
+piece of collateral needs to land on the same figure, and the deck and the flyer
+are both still wrong. That is outside this repo.
 
 Retired on 14 Sep and swept from the whole page, body copy, FAQ answers and the
 JSON-LD mirrors alike: **90+ inspections a week**, **200+ off-markets** and
@@ -139,7 +141,7 @@ The one figure the deck and the client disagree on is due diligence: the deck
 says **50** a day, the client says **100**, and the page says 100. Deck slide
 7/9 also contradicts itself on speed, its heading saying many clients secure
 "in just 4 to 5" weeks and its own bullet saying "3 to 4 weeks"; neither is on
-the page, only the 9-week average.
+the page, only the average above.
 
 With 3.7% back, the page again carries one figure expressed as a benefit to the
 reader rather than as a measure of Pathway's own activity. It is the only one,
