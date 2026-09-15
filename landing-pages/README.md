@@ -386,12 +386,16 @@ agents.
 ### Open items on the Melbourne page
 
 - Photography and video testimonials for all image slots.
-- Booking calendar links for Arshad, Nirvan and Abhimaan — only Tanuj's
-  (`calendar.app.google/8NCaGay2AG5pu6yo9`) is wired. Every "Book a consult"
-  button on the page now points at it, including the four in the agent slider,
-  so a reader who clicks Abhimaan's card books time with Tanuj. That matches how
-  enquiries are actually routed, but it is worth revisiting once the others have
-  their own links.
+- Booking calendar links for **Nirvan and Abhimaan**. Two are wired: Tanuj's
+  (`calendar.app.google/8NCaGay2AG5pu6yo9`), which every general CTA uses, and
+  Arshad's own appointment schedule on his card, added 15 Sep. Nirvan's and
+  Abhimaan's cards still fall back to Tanuj's link, so a reader who clicks
+  either books time with Tanuj. That matches how enquiries are routed today,
+  but each card should get its owner's link.
+- Arshad's is a Google Calendar **appointment schedule** URL
+  (`calendar.google.com/calendar/u/0/appointments/schedules/…`), a different
+  shape from Tanuj's `calendar.app.google` short link. Both work; do not try to
+  normalise one into the other.
 - **The privacy policy page does not exist yet.** The newsletter line says "by
   subscribing you agree to our privacy policy" and now links to
   `/policies/privacy-policy`, as the footer already did. The page has to be
