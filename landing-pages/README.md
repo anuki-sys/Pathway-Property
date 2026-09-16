@@ -214,6 +214,29 @@ missing suburb never blocks a submission. The suburb list is a **fixed array of
 about 130 Melbourne suburbs in the page** and is not complete; before launch it
 wants extending or replacing with a real dataset.
 
+### Pin photos: one focal point per face
+
+The four pin sources are not interchangeable. Tanuj's and Abhimaan's are 500x500
+with the head centred; Arshad's and Nirvan's are 500x750 portraits with the head
+sitting right of centre and lower in frame. A single shared focal point framed
+the two squares well and left the two portraits low and off to the right, which
+is what Tanuj was seeing on 16 Sep.
+
+Each `.pin-photo` now carries **`data-fx` / `data-fy`**, the face centre as a
+fraction of its own source, measured off the file. The script places that point
+at the same spot in every disc: horizontally centred, 35px down of 92, which is
+how a face reads right in a circle. All four now land identically.
+
+`ZOOM` (1.25) is load-bearing, not decoration. At plain cover scale a 500x750
+source comes out exactly disc-width, so any sideways nudge would pull a photo
+edge inside the circle. Cropping in slightly buys the room to move. The x and y
+are then clamped so a photo can never be dragged far enough to show an edge.
+
+**A new or replaced pin photo needs its own `data-fx` / `data-fy`.** Without
+them it falls back to 0.5 / 0.38, which suits a centred square headshot and
+little else. The values in use: Tanuj 0.50/0.38, Arshad 0.565/0.40, Nirvan
+0.545/0.41, Abhimaan 0.49/0.35.
+
 ### The agent bios
 
 Rewritten from client-supplied copy on 15 Sep, in a warmer voice that uses "he"
@@ -247,6 +270,20 @@ parent so it reads as a child page rather than a sibling.
 
 Only this page's branch is shown. The real Services menu lives in Webflow's
 global navbar component, so on the Webflow build this markup is a stand-in.
+
+### Two lines Tanuj questioned, 16 Sep
+
+**"found with you, not sold to you" keeps "with".** "For you" is what every
+buyer's agency says and it puts the reader back in the passenger seat; "with"
+is the partner positioning the team asked for on 8 Sep, and with/to is a
+sharper opposition than for/to. Worth revisiting only if "with" ever reads as
+though the buyer is expected to do the work.
+
+**"and we have the keys" came off the booking headline.** It claims possession
+of a home nobody has found yet, and it was the only line on the page that
+promised rather than described. Now "Your dream home is out there. Let's go and
+find it." The original was the client's own wording from the 8 Sep changes
+document, so putting it back is a one-line revert if they prefer it.
 
 ### The discovery call is thirty minutes
 
