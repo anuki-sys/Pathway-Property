@@ -1,26 +1,59 @@
 # The Melbourne Buyer's Digest - email design system
 
-**Two design options are in this folder. Pick one and delete the other before
-you go weekly.**
+**Three design options are in this folder. Pick one and delete the others
+before you go weekly.**
 
-| File | Design | Sections | Length |
+| File | Design | Order | Length |
 |---|---|---|---|
-| `issue-01.html` | Dark. Cream cards on the green ground, matching the Instagram grid | 8, opening on a personal note from Tanuj | ~790 words |
-| `issue-01-light.html` | Light. White ground, green content, one filled green block | 5, ending on listings | ~580 words |
+| `issue-01.html` | Dark. Cream cards on the green ground, matching the Instagram grid | 8 sections, opens on a note from Tanuj | ~790 words |
+| `issue-01-light.html` | Light. White ground, green content, cards replaced by rules | 5 sections, CTA last | ~580 words |
+| `issue-01-editorial.html` | Light, left-rail editorial. Serif display type, sourced data table | 5 sections, CTA last | ~745 words |
 
-Both are production ready, both use the same brand assets in `../assets/`, and
-both follow the same voice rule below. They differ in look and in running
-order, not in palette or type.
+All three are production ready, share the assets in `../assets/`, follow the
+same voice rule, and carry the corrected market figures.
+
+> **Read `MARKET-DATA-CHECK.md` before you send anything.** The figures the
+> original brief supplied were wrong and pointed the wrong way. All three
+> templates have been corrected, but the numbers are still a week old by
+> definition and must be re-pulled on the Monday.
+
+### The editorial edition, and why it exists
+
+The light edition was called out as looking machine-made, which was fair. It
+used five patterns that are the house style of generated design: `01 / 02 / 03`
+section numerals, a centred masthead, an uppercase letterspaced label above
+every section, hairline rules between dense columns, and a symmetrical pair of
+big percentages.
+
+`issue-01-editorial.html` has none of them. Instead:
+
+- **A left-aligned nameplate.** Logo left, issue and date right, one heavy rule
+  under it. A masthead, not a centred stack.
+- **A left rail spine.** Every section is two columns: a narrow rail carrying
+  the section name in sentence case, content beside it. The vertical spine down
+  the page is the layout idea.
+- **No section numerals**, because these sections are not a sequence, and **zero
+  uppercase labels** in the whole email.
+- **A serif for display type.** Newsreader, falling back to Georgia, which is on
+  effectively every device, so the serif survives where webfonts do not.
+  **This is an extension beyond the brand guide,** which names only Plus Jakarta
+  Sans. It is confined to the nameplate, section leads, the suburb name and the
+  client quote. Reverting it is a find-and-replace.
+- **One oversized figure**, not a pair.
+- **A sourced data table.** Every market figure shows its source in the email.
+  Given the brief's numbers were wrong, that is the honest answer to a reader
+  wondering whether to trust them.
+- **Listings as a shortlist**, image left and figures in aligned columns, so
+  four homes can be compared down the page rather than read one at a time.
 
 ### The light edition in one paragraph
 
-White ground, Cyprus body copy, and no cards at all - separation comes from
-hairline rules, space and the section numerals, so it reads as an editorial
-page rather than a stack of tiles. Green is spent rather than spread: exactly
-one filled green block, section 04, which is also the only CTA. Its five
+White ground, Cyprus body copy, and no cards - separation comes from hairline
+rules and space. Green is spent rather than spread: exactly one filled green
+block, section 05, which is also the only CTA and now sits last. Its five
 sections are the market, what's on (every item links out to the organiser), a
-four-point suburb feature that hands off to the podcast, **Secure your own
-home** with the consult button and client proof, then four listings two up.
+four-point suburb feature that hands off to the podcast, four listings two up,
+then **Secure your own home** with the consult button and client proof.
 
 Its extra slots over the dark edition: `CONSULT_URL`, `CLIENTS_HELPED`,
 `CLIENT_QUOTE`, `CLIENT_NAME`, `CLIENT_1..3_PHOTO`, `EVENT_1..3_URL`,
