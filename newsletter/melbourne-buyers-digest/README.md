@@ -1,7 +1,35 @@
 # The Melbourne Buyer's Digest - email design system
 
-`issue-01.html` is the production build of Issue 01, structured so every
-following issue is a content swap rather than a rebuild.
+**Two design options are in this folder. Pick one and delete the other before
+you go weekly.**
+
+| File | Design | Sections | Length |
+|---|---|---|---|
+| `issue-01.html` | Dark. Cream cards on the green ground, matching the Instagram grid | 8, opening on a personal note from Tanuj | ~790 words |
+| `issue-01-light.html` | Light. White ground, green content, one filled green block | 5, ending on listings | ~580 words |
+
+Both are production ready, both use the same brand assets in `../assets/`, and
+both follow the same voice rule below. They differ in look and in running
+order, not in palette or type.
+
+### The light edition in one paragraph
+
+White ground, Cyprus body copy, and no cards at all - separation comes from
+hairline rules, space and the section numerals, so it reads as an editorial
+page rather than a stack of tiles. Green is spent rather than spread: exactly
+one filled green block, section 04, which is also the only CTA. Its five
+sections are the market, what's on (every item links out to the organiser), a
+four-point suburb feature that hands off to the podcast, **Secure your own
+home** with the consult button and client proof, then four listings two up.
+
+Its extra slots over the dark edition: `CONSULT_URL`, `CLIENTS_HELPED`,
+`CLIENT_QUOTE`, `CLIENT_NAME`, `CLIENT_1..3_PHOTO`, `EVENT_1..3_URL`,
+`EVENT_1..3_TITLE`, `EVENT_1..3_LINE`, `POINT_1..4` with labels, and a fourth
+listing. Client photos must be real, with permission on file. Never stock.
+
+Image sizes it expects, at 1x: `SUBURB_IMAGE` 520 x 280, `LISTING_1..4_IMAGE`
+250 x 178, `EVENT_1..3_IMAGE` 78 x 78, `EPISODE_IMAGE` 78 x 78,
+`CLIENT_1..3_PHOTO` 54 x 54 square rendered round. Supply everything at 2x.
 
 ---
 
