@@ -1521,6 +1521,10 @@ details .a p{font-size:.9375rem}
   var toggle=document.getElementById('nav-toggle'),
       menu=document.getElementById('nav-menu'),
       items=document.querySelectorAll('.nav-item.has-menu');
+  /* On the Webflow build the real navbar component replaces this stand-in, so
+     these elements are absent. Without this guard the throw would stop every
+     script after it in the same file. */
+  if(!toggle||!menu)return;
 
   toggle.addEventListener('click',function(){
     var open=menu.classList.toggle('is-open');
