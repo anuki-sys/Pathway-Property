@@ -257,6 +257,35 @@ The three career figures in these bios are the only numbers on the page attached
 to a person rather than to the business. They are in the table above and need the
 same substantiation as the rest.
 
+### The shared navbar, and the Melbourne second level
+
+The page uses an instance of the site's real **navbar component**
+(`de7e9126-a6ab-641f-3a7e-02f98887b1c2`, 14 instances). The hand-built nav in
+`buyers-agent-melbourne.html` is only a stand-in so the file reviews offline;
+the Webflow build of the stylesheet strips its 30 nav rules and the body padding
+so the real component's own styling governs.
+
+**"Melbourne homebuying" was added to the shared component on 18 Sep**, which
+means it is on every page of the site and will reach pathwayprop.com.au on the
+next production publish, including one somebody makes for an unrelated reason.
+
+How it works, because it is not obvious: the Services dropdown is a single CMS
+Collection List over the Services collection, so there is no per-service place
+to hang a child. The nested row is therefore inside **every** service item and
+revealed only in the one whose link points at `buyers-advocacy`, via a `:has()`
+rule in the site's head custom code. Webflow's own conditional visibility is a
+Designer feature and is not reachable through the API.
+
+Consequences to know:
+- Adding a second sub-page under a different service means another `:has()`
+  rule, not a CMS edit. If this becomes more than one or two, do it properly in
+  the Designer with conditional visibility, or add a sub-pages collection and a
+  nested Collection List bound to a multi-reference field.
+- The rule keys off the `buyers-advocacy` slug. Change that slug and the nested
+  row silently disappears from the nav.
+- It sits in **site-wide** head code alongside the subscribe popup script. That
+  block is replaced wholesale on write, so read it before editing it.
+
 ### Navigation
 
 This page sits at **Services > Buyer advocacy > Melbourne**, set on 15 Sep. The
