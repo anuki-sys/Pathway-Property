@@ -577,6 +577,16 @@ over the field hint. Nothing in the CSS hid it: locally it was the browser's own
 script toggles alongside the attribute. The attribute stays for assistive tech.
 **Do not rely on a bare HTML attribute to do anything visual on this page.**
 
+**Webflow's base CSS sizes every form control.** `.w-input` and `.w-select`
+carry `height:38px` and `margin-bottom:10px`. The field rule declared padding
+and font size but no height, so Webflow's won: 38px minus 12px padding top and
+bottom and the borders left about 12px of content box for 15px text, which
+sliced the select's label in half. Every input and textarea was crushed the same
+way; only the select showed it, because a select clips its label where an input
+just centres and overflows. `.field input,.field select,.field textarea` now
+declares `height:auto;line-height:normal;margin-bottom:0`. **A form control on
+this page must declare every box property it depends on.**
+
 **Select options are Designer-only.** Webflow turns every `<select>` into a
 `FormSelect`, whose options live in the Designer and are not exposed by the Data
 API at all — the element's settings are just `domId`, `visibility`, `name` and

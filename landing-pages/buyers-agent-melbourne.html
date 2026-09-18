@@ -453,6 +453,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   width:100%;padding:12px 18px;border-radius:var(--pill);
   border:1.5px solid var(--on-green-45);background:rgba(0,0,0,.16);color:var(--on-green);
   font-family:var(--font);font-size:.9375rem;
+  /* height and margin are declared, not left to default: Webflow's own
+     .w-input/.w-select pin every field to 38px, which leaves 12px of content
+     box for 15px text and slices the select's label in half. */
+  height:auto;line-height:normal;margin-bottom:0;
 }
 .field input::placeholder,.field textarea::placeholder{color:rgba(241,239,233,.42)}
 .field textarea{border-radius:24px;resize:vertical;min-height:92px;line-height:1.6}
