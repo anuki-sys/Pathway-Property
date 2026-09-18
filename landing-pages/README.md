@@ -446,9 +446,25 @@ The head also carries the Plus Jakarta Sans links. The JS and CSS went in as
 assets rather than page custom code to sidestep Webflow's custom-code character
 limit, which 32KB of CSS and 15KB of JS would have blown through.
 
+**Link assets by their `hostedUrl`, not the `cdn.prod.website-files.com` URL
+returned by `create_asset`.** The first staging publish came out almost entirely
+unstyled because both the stylesheet and the script were linked from the CDN
+form, and the CDN does not serve an asset the API uploaded. The `hostedUrl`
+`get_asset` reports (`s3.amazonaws.com/webflow-prod-assets/…`) serves all three
+files correctly, verified: 200, right MIME type, right byte counts.
+
+**Ignore `size: 0` on an API-uploaded asset.** All three report zero bytes while
+serving their full contents, so the field is stale metadata rather than a failed
+upload. Do not re-upload on the strength of it.
+
 **Re-uploading a changed asset does not update the page.** Webflow content-
 addresses assets, so a new upload gets a new URL and the `<link>`/`<script>` in
 the page head and footer has to be repointed.
+
+The whole page is 28KB of CSS and 12KB of JS, well past Webflow's 10,000
+character per-block custom-code limit, which is why they are assets at all. If
+the asset route ever fails, the fallback is several HtmlEmbed elements each
+carrying a chunk under that limit, not page custom code.
 
 Things the builder changed on the way in, worth knowing before editing:
 - **Every form field must sit inside a `<form>`.** Webflow rejects a stray
