@@ -466,6 +466,25 @@ character per-block custom-code limit, which is why they are assets at all. If
 the asset route ever fails, the fallback is several HtmlEmbed elements each
 carrying a chunk under that limit, not page custom code.
 
+**Register every class before inserting markup that uses it.** This is the one
+that actually broke the page. The WHTML builder silently **drops any class that
+is not already a Webflow style** — the element goes in, the class does not, and
+nothing warns you. The first build looked fine through the API (`styleNames`
+came back populated for `navbar` and `section`) because those classes already
+existed in the site's own stylesheet; everything unique to this page went in
+naked, so the stylesheet loaded correctly and had nothing to match.
+
+The fix is a one-off registration pass: extract every class in the markup and
+send them through the `css` parameter as inert shells (`.wrap{--r:1}` and so on,
+127 of them, about 2KB) on the first insert. The real styling still comes from
+the linked stylesheet, which loads after Webflow's CSS and therefore wins. After
+that, classes stick and stay.
+
+**`a` is a reserved Webflow style name.** The FAQ answer wrapper was
+`<div class="a">` and was rejected outright. Renamed to `faq-a` in the source.
+If a class is rejected, the whole insert still succeeds and you get a
+`dropped_style` warning buried in the response, so read those warnings.
+
 Things the builder changed on the way in, worth knowing before editing:
 - **Every form field must sit inside a `<form>`.** Webflow rejects a stray
   `<label>` or text input outright, which is why the off-market, booking and
