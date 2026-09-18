@@ -417,11 +417,67 @@ Duration is 62s, scaled up from 46s when the set grew from six tiles to eight
 so the scroll speed stayed the same. It pauses on hover and on focus, and
 becomes a plain horizontal scroller under reduced motion.
 
+## The Webflow build
+
+Rebuilt into Webflow on 18 Sep and published to **staging only**:
+`pathwayproperty.webflow.io/melbourne` (page id `6aac8e9b4ed859874f97b3af`).
+Production domains were not published.
+
+**The elements are native Webflow; the styling is not.** The Data API's WHTML
+builder rejects any CSS selector that is not a plain class, which rules out
+`:root` (where every design token lives), all the element selectors, every
+descendant selector like `.nav-dropdown a`, and the attribute selectors. Only
+126 of the page's 257 rules would have gone through, and without `:root` those
+126 would have rendered with broken `var()` references. So the full stylesheet is
+served as an asset and linked from the page head instead. What that means in
+practice: **the team can edit text and structure in the Designer, but not
+styling.** Styling changes go to `buyers-agent-melbourne.html` in this repo, and
+the asset is re-uploaded.
+
+Three assets carry the page, all uploaded through the Data API:
+
+| Asset | Purpose |
+| --- | --- |
+| `melbourne-page.css` | the whole stylesheet, linked from the page head |
+| `melbourne-page.js` | the whole script, linked from the page footer |
+| `melbourne-approaching-home.jpg` | the one photo that had been a data URI |
+
+The head also carries the Plus Jakarta Sans links. The JS and CSS went in as
+assets rather than page custom code to sidestep Webflow's custom-code character
+limit, which 32KB of CSS and 15KB of JS would have blown through.
+
+**Re-uploading a changed asset does not update the page.** Webflow content-
+addresses assets, so a new upload gets a new URL and the `<link>`/`<script>` in
+the page head and footer has to be repointed.
+
+Things the builder changed on the way in, worth knowing before editing:
+- **Every form field must sit inside a `<form>`.** Webflow rejects a stray
+  `<label>` or text input outright, which is why the off-market, booking and
+  newsletter fields are now wrapped in real forms in the source too. That is an
+  improvement, not a workaround: they need to be forms to be wired up anyway.
+- `<button>` became a Webflow **Link**, so the nav toggle and slider arrows are
+  links. Their ids and ARIA survived, so the script still binds.
+- `style="--i:N"` on the process cards became generated classes
+  (`inline-article-0` … `-6`). The sticky offsets depend on `--i`, so check the
+  stack still steps correctly on staging.
+- Images come in unbound and must be attached to an asset id afterwards. The
+  SVG `<image>` pins are DOM elements and keep their `href`, so they are fine.
+
+### Two bugs the port surfaced
+
+**A stray `</g>` in the map SVG.** Abhimaan's pin sat outside `.map-pins` with
+the group tree one level unbalanced. Browsers silently corrected it, which is
+why it never showed, and `querySelectorAll('.pin')` still found all four. Fixed
+in the source on 16 Sep.
+
+**No `<form>` anywhere.** Every field on the page was loose markup. Fixed on 18
+Sep, as above.
+
 ## Pages
 
 | File | Intended path | Status |
 | --- | --- | --- |
-| `buyers-agent-melbourne.html` | TBC (e.g. `/melbourne`) | Draft |
+| `buyers-agent-melbourne.html` | `/melbourne` | On Webflow staging |
 
 This started as a Melbourne South East page and was widened to cover all of
 Melbourne on 8 Sep. A separate South East page is still to be built; when it is,

@@ -586,6 +586,7 @@ details .a p{font-size:.9375rem}
 
 .booking-card{background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);border-radius:40px;padding:34px 36px}
 .form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
+.form-fields{display:contents}
 .form-grid .field{margin-bottom:0}
 .field-wide{grid-column:1 / -1}
 
@@ -946,7 +947,6 @@ details .a p{font-size:.9375rem}
                     <text y="-172">Nirvan</text>
                   </g>
                 </g>
-                </g>
                 <g class="pin" data-agent="abhimaan" data-territory="east" data-region="outer-east" transform="translate(775,430)"
                    role="button" tabindex="0" aria-label="Abhimaan, east specialist. See their profile.">
                   <title>Abhimaan, east specialist</title>
@@ -1078,6 +1078,7 @@ details .a p{font-size:.9375rem}
         <div class="form-card">
           <h3>See this week's off-markets</h3>
           <p>Tell us where you're looking and the list lands in your inbox each week, free.</p>
+          <form class="form-fields" name="off-market" onsubmit="return false">
           <div class="field"><label for="om-name">Name</label><input id="om-name" type="text" placeholder="Your name"></div>
           <div class="field"><label for="om-email">Email</label><input id="om-email" type="email" placeholder="you@email.com"></div>
           <div class="field"><label for="om-phone">Phone</label><input id="om-phone" type="tel" placeholder="04…"></div>
@@ -1102,6 +1103,7 @@ details .a p{font-size:.9375rem}
             </select>
           </div>
           <a class="btn btn-cream btn-block" href="#">Send me the list</a>
+          </form>
         </div>
       </div>
     </div>
@@ -1248,7 +1250,7 @@ details .a p{font-size:.9375rem}
     </div>
 
     <div class="booking-card">
-      <div class="form-grid">
+      <form class="form-grid" name="booking" onsubmit="return false">
         <div class="field field-wide">
           <label for="b-suburbs">Suburbs you're looking at</label>
           <div class="combo">
@@ -1286,7 +1288,7 @@ details .a p{font-size:.9375rem}
           </select>
         </div>
         <div class="field field-wide"><label for="b-notes">Anything else we should know?</label><textarea id="b-notes" rows="3" placeholder="Must-haves, a property you've seen, where you're up to, whatever helps us prepare for the call."></textarea></div>
-      </div>
+      </form>
 
       <div class="booking-foot">
         <p class="booking-alt">We read every one of these before the call, so the half hour is spent on you rather than on the basics.</p>
@@ -1301,10 +1303,10 @@ details .a p{font-size:.9375rem}
         <p>What sold, what it went for, and what's coming up off-market in your suburbs. One email a month.</p>
       </div>
       <div>
-        <div class="sub-form">
+        <form class="sub-form" name="newsletter">
           <input id="sub-email" type="email" placeholder="you@email.com" aria-label="Your email address">
           <a class="btn btn-cream" href="#">Subscribe</a>
-        </div>
+        </form>
         <p class="sub-note">By subscribing you agree to our <a href="/policies/privacy-policy">privacy policy</a>.</p>
       </div>
     </div>
