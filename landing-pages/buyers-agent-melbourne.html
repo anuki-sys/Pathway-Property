@@ -60,10 +60,13 @@ p{margin:0 0 1rem;color:var(--ink-60)}
 p:last-child{margin-bottom:0}
 
 .wrap{max-width:var(--wrap);margin:0 auto;padding:0 5%}
-.section{padding:100px 0}
+.section{padding:100px 0;display:block}  /* display:block resets the site's own .section, which is flex-column */
 .section-tight{padding:72px 0}
 .band-cream{background:var(--cream);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.eyebrow{color:var(--green);font-size:1.0625rem;font-weight:600;margin-bottom:14px}
+.eyebrow{color:var(--green);font-size:1.0625rem;font-weight:600;margin-bottom:14px;
+  /* the Webflow site has its own .eyebrow (a dashed uppercase pill). Same specificity,
+     so this sheet wins only where it declares something: reset each leaked property. */
+  border:0;border-radius:0;padding:0;text-transform:none;letter-spacing:normal;line-height:inherit}
 .lead{font-size:1.0625rem;max-width:38em}
 .stack{display:flex;flex-direction:column;gap:1.1rem}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap}

@@ -527,6 +527,51 @@ Things the builder changed on the way in, worth knowing before editing:
 - Images come in unbound and must be attached to an asset id afterwards. The
   SVG `<image>` pins are DOM elements and keep their `href`, so they are fine.
 
+### Class names collide with the site's own
+
+Mirroring the live site's class names was deliberate, so the page would sit
+visually inside the rest of pathwayprop.com.au. The cost is that where the site
+already has a class of that name, **its declarations leak into this page**, and
+this stylesheet only wins on the properties it actually declares. Same
+specificity, later in the cascade: everything else comes through.
+
+Two names collide. Audited all 127 on 18 Sep via `query_styles`; these are the
+only two:
+
+| Class | What leaks in | Reset |
+| --- | --- | --- |
+| `.eyebrow` | a dashed 1px pill, `100rem` radius, `.25rem/.5rem` padding, `text-transform:uppercase`, `letter-spacing:-.02em`, `line-height:1` | `border:0;border-radius:0;padding:0;text-transform:none;letter-spacing:normal;line-height:inherit` |
+| `.section` | `display:flex; flex-direction:column; justify-content:center; align-items:stretch; position:relative` | `display:block` (which makes the flex properties inert) |
+
+Tanuj spotted the first one: every eyebrow rendered as a bordered uppercase pill.
+`position:relative` on `.section` is left alone deliberately — it is harmless
+here, and overriding it would move the anchor for anything absolutely positioned.
+
+**How to tell a collision from your own class.** Every style registered by the
+registration pass shares the id prefix `b5dc7e39-f2ee-4682-144d-…` and has empty
+properties. A pre-existing site style has a different prefix and real
+properties — and Webflow will have auto-renamed the registered shell with a
+`-1` suffix, because the name was taken. `.eyebrow-1` and `.section-1` are those
+orphans; they are unused and harmless.
+
+**Emulate the cascade locally before publishing.** `scratchpad/live-emu.html` is
+the page with the colliding site rules injected ahead of the built stylesheet,
+which reproduces staging faithfully; `pure-emu.html` is the same page with this
+stylesheet alone. When a change is right, the two render identically. That is
+the check that was missing when the port first went out looking correct through
+the API and wrong in the browser.
+
+### Rebuilding the stylesheet
+
+`build-wf-css.py` derives the asset from the source page. It makes
+exactly two changes — drops the nav rules (the real navbar component replaces
+the stand-in) and drops body's `padding-top` — and copies every other byte
+verbatim, so `diff` against the previously served file shows only real changes.
+Two things it has to get right, both of which an earlier hand-rolled version got
+wrong: nav rules nested **inside `@media` blocks** must be dropped too, and
+`padding-top:104px` must be **removed**, not set to `0`, or it overrides the
+site's own body padding.
+
 ### Two bugs the port surfaced
 
 **A stray `</g>` in the map SVG.** Abhimaan's pin sat outside `.map-pins` with
