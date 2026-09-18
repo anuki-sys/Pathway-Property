@@ -474,11 +474,16 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 }
 .chips button:hover{background:rgba(0,0,0,.42)}
 .combo-list{
+  /* hidden by CSS, not by the hidden attribute alone: on the Webflow build the
+     attribute is stored but does not reach the published markup, and the list
+     rendered as an empty white bar over the field hint. */
+  display:none;
   list-style:none;position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:5;
   margin:0;padding:6px;max-height:214px;overflow-y:auto;
   background:var(--shell);border:var(--stroke);border-radius:22px;
   box-shadow:0 14px 28px rgba(9,13,43,.18);
 }
+.combo-list.is-open{display:block}
 .combo-list li{
   padding:9px 14px;border-radius:14px;font-size:.9375rem;color:var(--ink);cursor:pointer;
 }
@@ -1563,6 +1568,41 @@ details .a p{font-size:.9375rem}
   });
 })();
 
+/* Select options, restored at runtime.
+
+   Webflow turns every <select> into its own FormSelect element, whose options
+   live in the Designer and are not reachable through the Data API, so the three
+   selects came through the port empty. These are the same options as the markup
+   above; the markup stays the source of truth and this only fills a select that
+   arrived without its choices. Editing the options in the Designer is safe: a
+   select that already has them is left alone. */
+(function(){
+  var OPTIONS={
+    'om-ready':[['','Select one'],'Ready to buy now','Buying in 3 to 6 months','Just looking for now'],
+    'b-budget':['Under $500k','$500k \u2013 $750k','$750k \u2013 $1m','$1m \u2013 $1.25m','$1.25m \u2013 $1.5m',
+                '$1.5m \u2013 $2m','$2m \u2013 $2.5m','$2.5m \u2013 $3m','$3m \u2013 $4m','$4m \u2013 $5m',
+                '$5m+','Not sure yet'],
+    'b-when':['In the next 3 months','3 \u2013 6 months','6 \u2013 12 months','Just starting to look']
+  };
+  var NAMES={'om-ready':'readiness','b-budget':'budget','b-when':'timing'};
+  Object.keys(OPTIONS).forEach(function(id){
+    var sel=document.getElementById(id);
+    if(!sel)return;
+    if(!sel.name||sel.name==='Field')sel.name=NAMES[id];
+    if(sel.options.length>1)return;          /* already carries its choices */
+    sel.innerHTML='';
+    OPTIONS[id].forEach(function(o,i){
+      var opt=document.createElement('option');
+      if(Array.isArray(o)){
+        opt.value=o[0];opt.textContent=o[1];opt.disabled=true;opt.selected=true;
+      }else{
+        opt.textContent=o;
+      }
+      sel.appendChild(opt);
+    });
+  });
+})();
+
 /* suburb picker: type, choose from the list, chip appears, add the next.
    Anything typed can also be added with Enter, so a suburb missing from the
    list below never blocks the form. Mounted on both forms, which each keep
@@ -1611,7 +1651,7 @@ details .a p{font-size:.9375rem}
     });
   }
 
-  function close(){list.hidden=true;list.innerHTML='';active=-1;input.setAttribute('aria-expanded','false')}
+  function close(){list.hidden=true;list.classList.remove('is-open');list.innerHTML='';active=-1;input.setAttribute('aria-expanded','false')}
 
   function add(name){
     name=name.trim();
@@ -1635,7 +1675,7 @@ details .a p{font-size:.9375rem}
       li.addEventListener('mousedown',function(e){e.preventDefault();add(n)});
       list.appendChild(li);
     });
-    list.hidden=false;active=-1;
+    list.hidden=false;list.classList.add('is-open');active=-1;
     input.setAttribute('aria-expanded','true');
   }
 

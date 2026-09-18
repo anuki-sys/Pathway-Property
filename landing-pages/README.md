@@ -561,16 +561,46 @@ stylesheet alone. When a change is right, the two render identically. That is
 the check that was missing when the port first went out looking correct through
 the API and wrong in the browser.
 
-### Rebuilding the stylesheet
+### Webflow drops things the markup relies on
 
-`build-wf-css.py` derives the asset from the source page. It makes
-exactly two changes — drops the nav rules (the real navbar component replaces
+Two more losses in the port, both found on staging on 18 Sep, both now handled
+in the source so they cannot recur:
+
+**Valueless attributes do not reach the published page.** The suburb dropdown
+is a `<ul class="combo-list" hidden>` that the script fills as you type. The
+`hidden` attribute is stored on the element (`query_elements` shows it), but the
+published markup does not carry it, and since `.combo-list` is absolutely
+positioned with a light background it rendered as an empty white bar sitting
+over the field hint. Nothing in the CSS hid it: locally it was the browser's own
+`[hidden]{display:none}` doing the work. The list is now hidden by
+`.combo-list{display:none}` and opened with `.combo-list.is-open`, which the
+script toggles alongside the attribute. The attribute stays for assistive tech.
+**Do not rely on a bare HTML attribute to do anything visual on this page.**
+
+**Select options are Designer-only.** Webflow turns every `<select>` into a
+`FormSelect`, whose options live in the Designer and are not exposed by the Data
+API at all — the element's settings are just `domId`, `visibility`, `name` and
+`required`. All three selects came through with no choices and with `name` reset
+to `Field`. The script now refills them from the same lists as the markup, and
+fixes the names (`readiness`, `budget`, `timing`). It skips any select that
+already has its options, so adding them in the Designer later is safe and takes
+precedence. The markup remains the source of truth.
+
+### Rebuilding the assets
+
+`build-wf-assets.py` derives both assets from the source page, writing
+`melbourne-page.css` and `melbourne-page.js` into a directory you name. The JS is
+copied verbatim; the CSS gets exactly two changes — drops the nav rules (the real navbar component replaces
 the stand-in) and drops body's `padding-top` — and copies every other byte
 verbatim, so `diff` against the previously served file shows only real changes.
 Two things it has to get right, both of which an earlier hand-rolled version got
 wrong: nav rules nested **inside `@media` blocks** must be dropped too, and
 `padding-top:104px` must be **removed**, not set to `0`, or it overrides the
 site's own body padding.
+
+Earlier uploads stripped the comments from both files. They are kept now — the
+few KB buy a stylesheet you can read on the live site when something looks wrong,
+which is how both collisions above got found.
 
 ### Two bugs the port surfaced
 
