@@ -577,6 +577,19 @@ over the field hint. Nothing in the CSS hid it: locally it was the browser's own
 script toggles alongside the attribute. The attribute stays for assistive tech.
 **Do not rely on a bare HTML attribute to do anything visual on this page.**
 
+**Webflow puts the class on the form's wrapper, not the form.** A `<form>` in
+the source becomes a `FormWrapper` (`<div class="w-form">`) holding a `FormForm`
+plus Webflow's success and error messages, and our class lands on the wrapper.
+So anything the class lays out sees the form and two message divs as its
+children, and the real fields sit a level below. The booking grid collapsed to a
+single column because of this. Each form container now declares its layout on a
+child `<form>` as well (`.form-grid,.form-grid>form`), and
+`.form-grid.w-form,.form-fields.w-form,.sub-form.w-form` collapse the wrapper
+with `display:contents`. Locally there is no form inside a form, so the extra
+selectors are inert. The wrapper reset keys off Webflow's own `w-form` class
+rather than `:has(>form)` on purpose: an unsupported `:has()` invalidates a
+whole selector list, and this rule must not be the one that fails.
+
 **Webflow's base CSS sizes every form control.** `.w-input` and `.w-select`
 carry `height:38px` and `margin-bottom:10px`. The field rule declared padding
 and font size but no height, so Webflow's won: 38px minus 12px padding top and

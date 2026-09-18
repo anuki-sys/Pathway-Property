@@ -599,8 +599,16 @@ details .a p{font-size:.9375rem}
 .booking-lede{font-size:1.0625rem;color:var(--on-green-70);max-width:34em;margin:0 0 6px}
 
 .booking-card{background:rgba(255,255,255,.07);border:1px solid var(--on-green-45);border-radius:40px;padding:34px 36px}
-.form-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
-.form-fields{display:contents}
+/* Webflow wraps every form in a <div class="w-form"> and puts our class on the
+   WRAPPER, building the real <form> as its child. The fields therefore sit one
+   level below whatever layout the class carries: the booking grid ended up with
+   three children (the form and Webflow's success and error messages) and the
+   fields stacked inside the form. So each form container declares its layout on
+   a child <form> as well, and the wrapper steps out of the way. Locally there is
+   no form inside a form, so the extra selectors are inert. */
+.form-grid,.form-grid>form{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
+.form-fields,.form-fields>form{display:contents}
+.form-grid.w-form,.form-fields.w-form,.sub-form.w-form{display:contents}
 .form-grid .field{margin-bottom:0}
 .field-wide{grid-column:1 / -1}
 
@@ -616,11 +624,11 @@ details .a p{font-size:.9375rem}
   .booking-foot{align-items:stretch}
 }
 @media(max-width:760px){
-  .form-grid{grid-template-columns:1fr 1fr}
+  .form-grid,.form-grid>form{grid-template-columns:1fr 1fr}
   .booking-card{padding:26px 22px;border-radius:32px}
   .booking-foot .btn{width:100%;text-align:center}
 }
-@media(max-width:520px){.form-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.form-grid,.form-grid>form{grid-template-columns:1fr}}
 @media(max-width:900px){.booking{border-radius:50px 50px 0 0;padding:64px 0 32px}}
 
 /* footer --------------------------------------------------------- */
@@ -630,7 +638,7 @@ details .a p{font-size:.9375rem}
 }
 .newsletter h3{color:var(--shell);margin-bottom:8px}
 .newsletter p{font-size:.9375rem;color:var(--on-green-70)}
-.sub-form{display:flex;gap:10px;flex-wrap:wrap}
+.sub-form,.sub-form>form{display:flex;gap:10px;flex-wrap:wrap}
 .sub-form input{
   flex:1 1 240px;padding:13px 20px;border-radius:var(--pill);
   border:1.5px solid var(--on-green-45);background:rgba(0,0,0,.16);color:var(--on-green);
