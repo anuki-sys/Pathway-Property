@@ -198,7 +198,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .hero{position:relative;padding:48px 0 88px}
 .hero-clouds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .cloud{position:absolute;fill:#fff;opacity:.85}
-.cloud-1{top:6%;left:-4%;width:230px;animation:drift 34s ease-in-out infinite}
+/* a fixed offset, not a percentage: the navbar floats over the top of the
+   hero, and a percentage of a variable hero height drifts under it */
+.cloud-1{top:150px;left:-4%;width:230px;animation:drift 34s ease-in-out infinite}
 .cloud-2{top:34%;right:-3%;width:150px;animation:drift 28s ease-in-out infinite reverse}
 @keyframes drift{0%,100%{transform:translateX(0)}50%{transform:translateX(26px)}}
 .hero .wrap{position:relative;z-index:1}
