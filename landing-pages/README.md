@@ -577,6 +577,22 @@ over the field hint. Nothing in the CSS hid it: locally it was the browser's own
 script toggles alongside the attribute. The attribute stays for assistive tech.
 **Do not rely on a bare HTML attribute to do anything visual on this page.**
 
+**Every `<button>` becomes a Link.** Not a button with a class — a Webflow
+`Link`, which publishes as `<a href="#">` when no href is set. Three
+consequences, all of which bit the agent slider:
+
+- **Clicking scrolls the page to the top**, because `#` is an anchor. Every
+  handler on a former button therefore calls `preventDefault()`. This hit the
+  four agent tabs as well as the two arrows.
+- **`disabled` does nothing.** An `<a>` ignores the property, so
+  `prev.disabled = true` neither greyed the arrow nor blocked the click. The
+  slider now wraps around instead, which removes the disabled state entirely:
+  from the last agent, next goes to the first.
+- **The button UA defaults are gone**, in particular `line-height:normal` and
+  `text-align:center`. The agent tabs inherited the body's 1.7 instead and grew
+  from 36px to 44px, which threw the row out against the 48px arrows. `.agent-tab`
+  and `.arrow` now declare both.
+
 **Webflow puts the class on the form's wrapper, not the form.** A `<form>` in
 the source becomes a `FormWrapper` (`<div class="w-form">`) holding a `FormForm`
 plus Webflow's success and error messages, and our class lands on the wrapper.

@@ -514,6 +514,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
   border:1.5px solid var(--ink);border-radius:var(--pill);background:transparent;
   padding:9px 20px;font-family:var(--font);font-size:.875rem;font-weight:500;color:var(--ink);
   cursor:pointer;transition:background-color .3s ease,color .3s ease,border-color .3s ease;
+  /* Webflow imports every <button> as a Link, and an <a> has none of the button
+     UA defaults: without these the pills inherit the body's 1.7 line-height and
+     grow from 36px to 44px, which throws the row out against the 48px arrows. */
+  line-height:normal;text-align:center;text-decoration:none;display:block;
 }
 .agent-tab:hover{background:var(--green-tint)}
 .agent-tab[aria-selected="true"]{background:var(--green);border-color:var(--green);color:#fff}
@@ -522,10 +526,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .arrow{
   width:48px;height:48px;border-radius:50%;border:var(--stroke);background:transparent;
   color:var(--ink);display:grid;place-items:center;cursor:pointer;font-size:1.2rem;
-  transition:background-color .3s ease,color .3s ease,opacity .3s ease;
+  transition:background-color .3s ease,color .3s ease;
+  line-height:1;text-decoration:none;  /* as above: an <a> on the Webflow build */
 }
-.arrow:hover:not([disabled]){background:var(--ink);color:var(--shell)}
-.arrow[disabled]{opacity:.28;cursor:default}
+.arrow:hover{background:var(--ink);color:var(--shell)}
 
 /* native scroll-snap: swipes and works with the script disabled */
 .track-wrap{
@@ -1380,19 +1384,23 @@ details .a p{font-size:.9375rem}
     sync();
   }
   function sync(){
-    prev.disabled=i<=0;
-    next.disabled=i>=cards.length-1;
     tabs.forEach(function(t,n){t.setAttribute('aria-selected',n===i?'true':'false')});
   }
+  /* the arrows wrap around, so neither is ever a dead end and neither needs a
+     disabled state — which is just as well, since Webflow imports them as links
+     and an <a> ignores the disabled property entirely */
+  function step(d){go((i+d+cards.length)%cards.length)}
 
+  /* every one of these is an <a href="#"> on the Webflow build, so without
+     preventDefault a click jumps the page back to the top */
   tabs.forEach(function(tab){
-    tab.addEventListener('click',function(){go(+tab.getAttribute('data-index'))});
+    tab.addEventListener('click',function(e){e.preventDefault();go(+tab.getAttribute('data-index'))});
   });
-  prev.addEventListener('click',function(){go(i-1)});
-  next.addEventListener('click',function(){go(i+1)});
+  prev.addEventListener('click',function(e){e.preventDefault();step(-1)});
+  next.addEventListener('click',function(e){e.preventDefault();step(1)});
   wrap.addEventListener('keydown',function(e){
-    if(e.key==='ArrowRight'){e.preventDefault();go(i+1)}
-    if(e.key==='ArrowLeft'){e.preventDefault();go(i-1)}
+    if(e.key==='ArrowRight'){e.preventDefault();step(1)}
+    if(e.key==='ArrowLeft'){e.preventDefault();step(-1)}
   });
 
   /* a swipe or a trackpad scroll moves the card, so keep the tabs in step */
