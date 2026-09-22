@@ -613,6 +613,8 @@ details .a p{font-size:.9375rem}
 .form-grid,.form-grid>form{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
 .form-fields,.form-fields>form{display:contents}
 .form-grid.w-form,.form-fields.w-form,.sub-form.w-form{display:contents}
+/* the honeypot: off-screen rather than display:none, which some bots skip */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 .form-status{margin:14px 0 0;font-size:.875rem;color:var(--on-green-70);min-height:1.2em}
 .form-status.is-bad{color:#FFD7C2}
 .form-grid .field{margin-bottom:0}
@@ -1133,6 +1135,8 @@ details .a p{font-size:.9375rem}
               <option>Just looking for now</option>
             </select>
           </div>
+          <div class="hp" aria-hidden="true"><label for="om-company">Company</label>
+            <input id="om-company" name="company" type="text" tabindex="-1" autocomplete="off"></div>
           <button class="btn btn-cream btn-block" type="submit">Send me the list</button>
           <p class="form-status" id="om-status" role="status" aria-live="polite"></p>
           </form>
@@ -1600,11 +1604,12 @@ details .a p{font-size:.9375rem}
    give the suburb field a type-ahead, because it is cross-origin. So the form
    is ours and the submission is theirs.
 
-   ENDPOINT: in LeadConnector, Automation > Workflows > new workflow > Inbound
-   Webhook trigger. Paste the URL it gives you here. Until it is set the form
-   says so and offers the mailbox instead, rather than accepting a lead and
-   dropping it. */
-var OFF_MARKET_ENDPOINT = '';
+   ENDPOINT: a LeadConnector inbound webhook trigger (Automation > Workflows).
+   It is a public URL in a public script, which is unavoidable for a form that
+   posts from the browser: anyone can read it and post to it. The honeypot below
+   turns away the simplest bots; anything beyond that belongs in LeadConnector's
+   own filtering. Swap the URL there if it ever starts attracting junk. */
+var OFF_MARKET_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/yFT4bqG8R4yHAr9h14Lb/webhook-trigger/e7255d1b-6ba8-4199-8d38-ac571213b879';
 
 (function(){
   var form=document.getElementById('om-form');
@@ -1623,6 +1628,12 @@ var OFF_MARKET_ENDPOINT = '';
 
     /* novalidate is on the form so the browser does not scold field by field;
        we ask for the whole picture at once instead */
+    /* bots fill every field they find, including the one nobody can see */
+    if(form.elements.company && form.elements.company.value){
+      say("You're on the list. The first one lands this week.");
+      return;
+    }
+
     var missing=[];
     ['name','email','phone'].forEach(function(n){
       if(!form.elements[n].value.trim())missing.push(n);

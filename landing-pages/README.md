@@ -203,11 +203,18 @@ inbound webhook:
 Automation > Workflows > new workflow > Inbound Webhook trigger
 ```
 
-Paste that URL into `OFF_MARKET_ENDPOINT` at the top of the off-market block in
-the page script. **Until it is set the form says it is not connected and offers
-the mailbox** — it never accepts a lead and drops it. The payload is `name`,
-`email`, `phone`, `suburbs` (comma separated), `readiness`, plus `source` and
-`page`.
+That URL lives in `OFF_MARKET_ENDPOINT` at the top of the off-market block in
+the page script; it was wired up on 22 Sep. The payload is `name`, `email`,
+`phone`, `suburbs` (comma separated), `readiness`, plus `source` and `page`.
+If the constant is ever emptied the form says it is not connected and offers the
+mailbox — it never accepts a lead and drops it.
+
+**The webhook URL is public.** It sits in a public script, which is unavoidable
+for a form that posts from the browser: anyone can read it and post to it. A
+honeypot field (`#om-company`, off-screen and out of the tab order) turns away
+the simplest bots — a submission that fills it is told it succeeded and nothing
+is sent. Anything past that belongs in LeadConnector's own filtering. If the
+webhook starts attracting junk, rotate it there and change the constant here.
 
 The suburb field is the same type-ahead multi-picker as the booking form: type,
 choose, a chip appears, repeat. That is what was asked for when the
