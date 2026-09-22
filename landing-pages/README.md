@@ -187,6 +187,31 @@ Two standing rules the FAQ answers have to hold to:
 "What does a buyer's agent do in Melbourne?" was removed on 14 Sep as too basic
 for a reader who has got this far.
 
+### The off-market form is a LeadConnector embed
+
+Since 22 Sep the off-market form is not ours. The card keeps our heading and
+lede; below them sits an iframe on
+`api.leadconnectorhq.com/widget/form/iKyI1SRaGfuL5h7vI0E6`, with
+`link.msgsndr.com/js/form_embed.js` beside it — that script listens for a
+postMessage from the iframe and writes the real height inline. `.om-embed` only
+has to hold a floor (`min-height:554px`, LeadConnector's own `data-height`) so
+the card keeps its shape before that lands, and does not collapse if the script
+never loads.
+
+**The fields, the validation and the submissions now live in LeadConnector.**
+Editing them here does nothing. Two things the hand-built form had are gone with
+it unless LeadConnector reproduces them: the suburb autocomplete, and the graded
+readiness question ("Ready to buy now / Buying in 3 to 6 months / Just looking
+for now") that was added on 14 Sep for finer segmentation. The booking form at
+the foot of the page still has both.
+
+**On Webflow it had to be an HtmlEmbed.** The WHTML builder has no mapping for
+`<iframe>` and answers `No elements found in WHTML` — it silently produces
+nothing rather than erroring on the tag. The embed is an `HtmlEmbed` element
+created with the element builder, its `code` setting written separately. One
+upside: an HtmlEmbed's contents are rendered verbatim rather than parsed into
+Webflow elements, so `.om-embed` needs no class registration.
+
 ### The off-market section
 
 **The weekly list is an automation, not a walkthrough.** It is a static list
