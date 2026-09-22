@@ -187,30 +187,39 @@ Two standing rules the FAQ answers have to hold to:
 "What does a buyer's agent do in Melbourne?" was removed on 14 Sep as too basic
 for a reader who has got this far.
 
-### The off-market form is a LeadConnector embed
+### The off-market form is ours; LeadConnector receives it
 
-Since 22 Sep the off-market form is not ours. The card keeps our heading and
-lede; below them sits an iframe on
-`api.leadconnectorhq.com/widget/form/iKyI1SRaGfuL5h7vI0E6`, with
-`link.msgsndr.com/js/form_embed.js` beside it — that script listens for a
-postMessage from the iframe and writes the real height inline. `.om-embed` only
-has to hold a floor (`min-height:554px`, LeadConnector's own `data-height`) so
-the card keeps its shape before that lands, and does not collapse if the script
-never loads.
+Tried as a LeadConnector iframe on 22 Sep and reverted the same day. The iframe
+is cross-origin, so **nothing on the page can touch it** — not our stylesheet,
+not our script. It rendered LeadConnector's default white form inside our dark
+card, with a free-text state field and a US phone placeholder, and neither the
+look nor the fields could be changed from here. Both would have had to be redone
+in LeadConnector's form builder.
 
-**The fields, the validation and the submissions now live in LeadConnector.**
-Editing them here does nothing. Two things the hand-built form had are gone with
-it unless LeadConnector reproduces them: the suburb autocomplete, and the graded
-readiness question ("Ready to buy now / Buying in 3 to 6 months / Just looking
-for now") that was added on 14 Sep for finer segmentation. The booking form at
-the foot of the page still has both.
+So the form is ours again and only the submission is theirs. It posts JSON to an
+inbound webhook:
 
-**On Webflow it had to be an HtmlEmbed.** The WHTML builder has no mapping for
-`<iframe>` and answers `No elements found in WHTML` — it silently produces
-nothing rather than erroring on the tag. The embed is an `HtmlEmbed` element
-created with the element builder, its `code` setting written separately. One
-upside: an HtmlEmbed's contents are rendered verbatim rather than parsed into
-Webflow elements, so `.om-embed` needs no class registration.
+```
+Automation > Workflows > new workflow > Inbound Webhook trigger
+```
+
+Paste that URL into `OFF_MARKET_ENDPOINT` at the top of the off-market block in
+the page script. **Until it is set the form says it is not connected and offers
+the mailbox** — it never accepts a lead and drops it. The payload is `name`,
+`email`, `phone`, `suburbs` (comma separated), `readiness`, plus `source` and
+`page`.
+
+The suburb field is the same type-ahead multi-picker as the booking form: type,
+choose, a chip appears, repeat. That is what was asked for when the
+LeadConnector state field could not do it.
+
+**On Webflow the whole form lives inside the HtmlEmbed** created for the iframe.
+This is worth knowing generally: an HtmlEmbed renders its markup verbatim, so
+none of Webflow's import mangling applies inside one. No `w-form` wrapper around
+the form, no `<button>` turned into a link, no select losing its options, no
+class registration needed. Everything this file documents about fighting the
+WHTML builder can be sidestepped that way, at the cost of the Designer not being
+able to edit those fields.
 
 ### The off-market section
 

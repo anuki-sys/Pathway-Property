@@ -611,10 +611,10 @@ details .a p{font-size:.9375rem}
    a child <form> as well, and the wrapper steps out of the way. Locally there is
    no form inside a form, so the extra selectors are inert. */
 .form-grid,.form-grid>form{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px}
-.form-grid.w-form,.sub-form.w-form{display:contents}
-/* the LeadConnector iframe: min-height, not height, so it keeps its footprint
-   before form_embed.js reports the real height and if the script never loads */
-.om-embed{display:block;width:100%;min-height:554px;border:0;border-radius:8px;background:transparent}
+.form-fields,.form-fields>form{display:contents}
+.form-grid.w-form,.form-fields.w-form,.sub-form.w-form{display:contents}
+.form-status{margin:14px 0 0;font-size:.875rem;color:var(--on-green-70);min-height:1.2em}
+.form-status.is-bad{color:#FFD7C2}
 .form-grid .field{margin-bottom:0}
 .field-wide{grid-column:1 / -1}
 
@@ -1106,29 +1106,36 @@ details .a p{font-size:.9375rem}
         <div class="form-card">
           <h3>See this week's off-markets</h3>
           <p>Tell us where you're looking and the list lands in your inbox each week, free.</p>
-          <!-- The off-market form is a LeadConnector embed, so the fields, the
-               validation and the submissions all live in LeadConnector, not here.
-               form_embed.js listens for a postMessage from the iframe and sets its
-               height inline; .om-embed only has to hold a sensible height until
-               that lands, and not collapse if the script never loads. -->
-          <iframe class="om-embed"
-                  src="https://api.leadconnectorhq.com/widget/form/iKyI1SRaGfuL5h7vI0E6"
-                  id="inline-iKyI1SRaGfuL5h7vI0E6"
-                  title="Off Market Form"
-                  data-layout="{'id':'INLINE'}"
-                  data-trigger-type="alwaysShow"
-                  data-trigger-value=""
-                  data-activation-type="alwaysActivated"
-                  data-activation-value=""
-                  data-deactivation-type="neverDeactivate"
-                  data-deactivation-value=""
-                  data-form-name="Off Market Form"
-                  data-height="554"
-                  data-layout-iframe-id="inline-iKyI1SRaGfuL5h7vI0E6"
-                  data-form-id="iKyI1SRaGfuL5h7vI0E6"
-                  data-cookie-consent="true"
-                  data-cookie-consent-provider="auto"></iframe>
-          <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+          <form class="form-fields" id="om-form" name="off-market" novalidate>
+          <div class="field"><label for="om-name">Full name</label>
+            <input id="om-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+          <div class="field"><label for="om-email">Email</label>
+            <input id="om-email" name="email" type="email" autocomplete="email" required placeholder="you@email.com"></div>
+          <div class="field"><label for="om-phone">Phone</label>
+            <input id="om-phone" name="phone" type="tel" autocomplete="tel" required placeholder="04…"></div>
+          <div class="field">
+            <label for="om-suburbs">Suburbs you're looking at</label>
+            <div class="combo">
+              <ul class="chips" id="om-chips"></ul>
+              <input id="om-suburbs" type="text" autocomplete="off" placeholder="Start typing a suburb…"
+                     role="combobox" aria-expanded="false" aria-controls="om-suburb-list" aria-autocomplete="list">
+              <ul class="combo-list" id="om-suburb-list" role="listbox" aria-label="Matching suburbs" hidden></ul>
+            </div>
+            <p class="field-hint" id="om-suburb-hint">Pick one, then add the next.</p>
+            <input type="hidden" id="om-suburbs-value" name="suburbs">
+          </div>
+          <div class="field field-last">
+            <label for="om-ready">Where are you up to?</label>
+            <select id="om-ready" name="readiness" required>
+              <option value="" disabled selected>Select one</option>
+              <option>Ready to buy now</option>
+              <option>Buying in 3 to 6 months</option>
+              <option>Just looking for now</option>
+            </select>
+          </div>
+          <button class="btn btn-cream btn-block" type="submit">Send me the list</button>
+          <p class="form-status" id="om-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </div>
     </div>
@@ -1584,6 +1591,81 @@ details .a p{font-size:.9375rem}
     if(e.key!=='Escape')return;
     items.forEach(close);
     menu.classList.remove('is-open');toggle.setAttribute('aria-expanded','false');
+  });
+})();
+
+/* Off-market form: posts to LeadConnector.
+
+   LeadConnector's own iframe embed could not be styled to match the page or
+   give the suburb field a type-ahead, because it is cross-origin. So the form
+   is ours and the submission is theirs.
+
+   ENDPOINT: in LeadConnector, Automation > Workflows > new workflow > Inbound
+   Webhook trigger. Paste the URL it gives you here. Until it is set the form
+   says so and offers the mailbox instead, rather than accepting a lead and
+   dropping it. */
+var OFF_MARKET_ENDPOINT = '';
+
+(function(){
+  var form=document.getElementById('om-form');
+  if(!form)return;
+  var status=document.getElementById('om-status'),
+      button=form.querySelector('button[type="submit"]'),
+      label=button?button.textContent:'';
+
+  function say(msg,bad){
+    status.textContent=msg;
+    status.classList.toggle('is-bad',!!bad);
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    /* novalidate is on the form so the browser does not scold field by field;
+       we ask for the whole picture at once instead */
+    var missing=[];
+    ['name','email','phone'].forEach(function(n){
+      if(!form.elements[n].value.trim())missing.push(n);
+    });
+    if(!form.elements.readiness.value)missing.push('readiness');
+    if(missing.length){
+      say('Please fill in your name, email, phone and where you are up to.',true);
+      form.elements[missing[0]].focus();
+      return;
+    }
+
+    var payload={
+      name:form.elements.name.value.trim(),
+      email:form.elements.email.value.trim(),
+      phone:form.elements.phone.value.trim(),
+      suburbs:form.elements.suburbs.value,
+      readiness:form.elements.readiness.value,
+      source:'melbourne landing page, off-market list',
+      page:location.href
+    };
+
+    if(!OFF_MARKET_ENDPOINT){
+      say('This form is not connected yet. Email tanuj@pathwayprop.com.au and we will add you to the list.',true);
+      return;
+    }
+
+    button.disabled=true;button.textContent='Sending…';say('');
+    fetch(OFF_MARKET_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    }).then(function(r){
+      if(!r.ok)throw new Error(r.status);
+      form.reset();
+      /* the chips live outside the form's own state, so clear them by hand */
+      var chips=document.getElementById('om-chips');
+      if(chips){chips.innerHTML='';form.elements.suburbs.value='';}
+      say("You're on the list. The first one lands this week.");
+    }).catch(function(){
+      say('That did not send. Please try again, or email tanuj@pathwayprop.com.au.',true);
+    }).then(function(){
+      button.disabled=false;button.textContent=label;
+    });
   });
 })();
 
