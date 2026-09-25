@@ -4,9 +4,10 @@
     python3 build-wf-assets.py buyers-agent-melbourne.html <out-dir>
 
 writes melbourne-page.css and melbourne-page.js. The CSS gets two transforms,
-and only two: drop the nav rules (on Webflow the real navbar component replaces
-the stand-in) and drop body's padding-top (the component carries its own
-offset). The JS is copied verbatim. Everything else is byte for byte, so a diff
+and only two: drop the nav rules only — on Webflow the real navbar
+component replaces the stand-in. body's padding-top is KEPT: the real navbar is
+fixed and floats over the hero exactly as the stand-in does, so removing that
+offset slides the hero underneath it. The JS is copied verbatim. Everything else is byte for byte, so a diff
 against the previously served file only ever shows a real change."""
 import re, sys
 NAV = re.compile(r'\.navbar|\.nav-item|\.nav-toggle|\.nav-dropdown|\.nav-trigger'
@@ -54,7 +55,7 @@ for a, b in sorted(x for x in cut if x):
         continue
     out.append(css[prev:a]); prev = b
 out.append(css[prev:])
-o = re.sub(r'\n?\s*padding-top:104px;?', '', ''.join(out))
+o = ''.join(out)
 open(f'{out_dir}/melbourne-page.css', 'w').write(o)
 print(f'css: dropped {dropped} nav rules, {len(o)} bytes')
 

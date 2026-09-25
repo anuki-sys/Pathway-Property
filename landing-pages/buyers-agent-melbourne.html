@@ -17,7 +17,8 @@
 :root{
   color-scheme:light;
 
-  --ground:#BCD3D0;        /* page ground — the site's sage (.primary-body) */
+  --ground:#C4D9D6;        /* page ground — sampled from the live navbar's own band, so
+                              the first fold meets the navbar with no seam */
   --shell:#FAF8F5;         /* surfaces: navbar, cards, light buttons */
   --cream:#F5F2EB;         /* card + alternating band fill */
   --ink:#090D2B;           /* Midnight — text and every outline */
@@ -46,7 +47,11 @@ html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--ground);color:var(--ink);
   font-family:var(--font);font-size:16px;line-height:1.7;
-  -webkit-font-smoothing:antialiased;padding-top:104px;
+  -webkit-font-smoothing:antialiased;
+  /* clears the navbar, which is fixed and floats over the top of the hero on
+     BOTH builds. Stripping this for Webflow slid the hero under the navbar and
+     hid the rating row completely. */
+  padding-top:104px;
 }
 @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}html{scroll-behavior:auto}}
 img{max-width:100%}
@@ -1609,7 +1614,7 @@ details .a p{font-size:.9375rem}
    posts from the browser: anyone can read it and post to it. The honeypot below
    turns away the simplest bots; anything beyond that belongs in LeadConnector's
    own filtering. Swap the URL there if it ever starts attracting junk. */
-var OFF_MARKET_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/yFT4bqG8R4yHAr9h14Lb/webhook-trigger/e7255d1b-6ba8-4199-8d38-ac571213b879';
+var OFF_MARKET_ENDPOINT = 'https://services.leadconnectorhq.com/hooks/yFT4bqG8R4yHAr9h14Lb/webhook-trigger/1a6d3e92-5ee7-4651-a7c3-50be1ee56d6e';
 
 (function(){
   var form=document.getElementById('om-form');

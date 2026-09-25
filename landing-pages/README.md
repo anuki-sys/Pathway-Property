@@ -666,6 +666,30 @@ fixes the names (`readiness`, `budget`, `timing`). It skips any select that
 already has its options, so adding them in the Designer later is safe and takes
 precedence. The markup remains the source of truth.
 
+### The navbar floats; do not take its offset away
+
+The real Webflow navbar is **fixed**, exactly like the stand-in: it hovers 15px
+from the top, 78px tall, with the page ground showing around it. `body`'s
+`padding-top:104px` is what clears it.
+
+The build script used to strip that rule, on the assumption that the Webflow
+navbar sat in the flow and carried its own offset. It does not. The hero
+therefore slid up underneath, and **the "Rated 5 Stars on Google" row sat behind
+the navbar, invisible, from the first port until 25 Sep.** Only the headline
+showed, 22px under the navbar, which is what made the fold look cramped. The
+arithmetic matched the published page to the pixel: hero padding 48 + rating 20
++ its margin 20 + the h1's 26px of half-leading puts the caps at y=114, and the
+screenshot had them at 113.
+
+The script no longer strips it. If the fold ever looks tight again, check that
+`padding-top:104px` is still in the served stylesheet before touching `.hero`.
+
+**The ground colour is sampled from the navbar, not guessed.** `--ground` is
+`#C4D9D6`, taken from the navbar's own band in a screenshot of the live page. It
+was `#BCD3D0`, which was close enough to look deliberate and wrong enough to
+show a seam where the fold met the navbar. It is used in exactly one place,
+`body`, so the whole page moves together and no seam can open up.
+
 ### Rebuilding the assets
 
 `build-wf-assets.py` derives both assets from the source page, writing
