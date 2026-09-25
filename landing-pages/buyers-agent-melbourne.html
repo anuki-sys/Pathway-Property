@@ -577,6 +577,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 /* podcast ---------------------------------------------------------- */
 .pod{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;margin-top:34px}
 .pod .shot{aspect-ratio:16/9;border-radius:30px}
+.shot-link{position:absolute;inset:0;z-index:3;display:block}
 .pod-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
 .pod-actions .btn{gap:.6rem}
 .pod-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
@@ -1262,6 +1263,7 @@ details .a p{font-size:.9375rem}
         <div class="slot"><b>Latest episode</b>YouTube thumbnail for the current week's episode</div>
         <img onerror="this.remove()" src="https://cdn.prod.website-files.com/64d063d22c0ee57d46bfca71/6a9e6cb7b4b87d9f73629a52_Screenshot%202026-09-07%20131946.png" alt="The Melbourne Property Podcast, latest episode">
         <span class="play"><svg width="16" height="18" viewBox="0 0 16 18" aria-hidden="true"><path d="M15 9L1 17V1z" fill="#090D2B"/></svg></span>
+        <a class="shot-link" href="https://www.youtube.com/@PathwayProperty/videos" target="_blank" rel="noopener" aria-label="Watch the Melbourne Property Podcast on YouTube"></a>
       </figure>
       <div>
         <p class="lead">Every week we sit down and talk through what's actually happening in Melbourne property: the auctions that went off, the suburbs buyers keep asking about, what we saw at inspections, and what any of it means if you're out looking right now.</p>
