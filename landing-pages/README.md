@@ -666,29 +666,37 @@ fixes the names (`readiness`, `budget`, `timing`). It skips any select that
 already has its options, so adding them in the Designer later is safe and takes
 precedence. The markup remains the source of truth.
 
-### The navbar floats; do not take its offset away
+### The navbar overlaps the hero; clear it from inside the hero
 
-The real Webflow navbar is **fixed**, exactly like the stand-in: it hovers 15px
-from the top, 78px tall, with the page ground showing around it. `body`'s
-`padding-top:104px` is what clears it.
+The navbar is **out of the flow on both builds** and overlaps the top of the
+hero. Measured off the live page: it starts 17px into the hero and its bottom
+edge is 93px down. The hero box begins underneath it, not after it.
 
-The build script used to strip that rule, on the assumption that the Webflow
-navbar sat in the flow and carried its own offset. It does not. The hero
-therefore slid up underneath, and **the "Rated 5 Stars on Google" row sat behind
-the navbar, invisible, from the first port until 25 Sep.** Only the headline
-showed, 22px under the navbar, which is what made the fold look cramped. The
-arithmetic matched the published page to the pixel: hero padding 48 + rating 20
-+ its margin 20 + the h1's 26px of half-leading puts the caps at y=114, and the
-screenshot had them at 113.
+**Padding on `body` does not help.** It moves the navbar and the hero together,
+because the navbar's position is anchored to the same content top, so the gap
+under the navbar never changes and you just get dead space above everything.
+That was tried on 25 Sep and reverted the same day. The clearance has to sit
+inside `.hero`: 93px to clear the navbar, then the gap you actually want.
+`.hero` is `padding-top:136px`, giving 43px of air before the rating row, and
+128px under 767px.
 
-The script no longer strips it. If the fold ever looks tight again, check that
-`padding-top:104px` is still in the served stylesheet before touching `.hero`.
+**This is why the rating row was invisible.** With `.hero` at its old 48px, the
+"Rated 5 Stars on Google" row rendered at 48..68 — entirely inside the navbar's
+93px footprint — so only the headline showed, 22px below the navbar. It had been
+that way since the first port. The arithmetic matched the published page to the
+pixel twice: 48 + 20 + 20 + 26 puts the caps at y=114 against a measured 113,
+and after the body-padding attempt the caps landed at 351 against a predicted
+351.
+
+If the fold ever looks wrong again, measure the published page rather than
+reasoning about it: screenshot it, find the navbar's bottom edge and the first
+row of ink below it, and check what is between them.
 
 **The ground colour is sampled from the navbar, not guessed.** `--ground` is
-`#C4D9D6`, taken from the navbar's own band in a screenshot of the live page. It
-was `#BCD3D0`, which was close enough to look deliberate and wrong enough to
-show a seam where the fold met the navbar. It is used in exactly one place,
-`body`, so the whole page moves together and no seam can open up.
+`#C4D9D6`, taken from the navbar's own band on the live page. It was `#BCD3D0`,
+close enough to look deliberate and wrong enough to show a seam where the fold
+met the navbar. It is used in exactly one place, `body`, so the whole page moves
+together and no seam can open up.
 
 ### Rebuilding the assets
 

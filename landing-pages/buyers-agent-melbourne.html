@@ -48,10 +48,6 @@ body{
   margin:0;background:var(--ground);color:var(--ink);
   font-family:var(--font);font-size:16px;line-height:1.7;
   -webkit-font-smoothing:antialiased;
-  /* clears the navbar, which is fixed and floats over the top of the hero on
-     BOTH builds. Stripping this for Webflow slid the hero under the navbar and
-     hid the rating row completely. */
-  padding-top:104px;
 }
 @media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}html{scroll-behavior:auto}}
 img{max-width:100%}
@@ -203,7 +199,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .play svg{margin-left:3px}
 
 /* hero ----------------------------------------------------------- */
-.hero{position:relative;padding:48px 0 88px}
+/* The navbar is out of the flow and overlaps the hero on both builds, sitting
+   17px into it and reaching 93px down. Padding on body does NOT help: it moves
+   the navbar and the hero together and only adds dead space above everything.
+   The clearance has to live here, inside the hero, below the navbar's footprint:
+   93px to clear it, then the gap you actually see. */
+.hero{position:relative;padding:136px 0 88px}
 .hero-clouds{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
 .cloud{position:absolute;fill:#fff;opacity:.85}
 /* a fixed offset, not a percentage: the navbar floats over the top of the
@@ -221,6 +222,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,s
 .stars{display:flex;gap:3px}
 .stars svg{display:block;fill:var(--star)}
 @media(max-width:1080px){.hero-clouds{display:none}}
+@media(max-width:767px){.hero{padding-top:128px}}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
 .hero h1 em{font-style:normal;color:var(--green);display:block}
 .hero-lede{font-size:1.125rem;max-width:33em;margin-top:22px}
