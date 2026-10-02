@@ -33,6 +33,7 @@ the Webflow asset library and replace the img src below with its full https URL.
   img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; }
   a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
   .btn:hover { background-color: #18574f !important; }
+  .btn-outline:hover { background-color: #eef5f3 !important; }
   @media only screen and (max-width: 620px) {
     .container { width: 100% !important; }
     .px { padding-left: 24px !important; padding-right: 24px !important; }
@@ -108,7 +109,24 @@ the Webflow asset library and replace the img src below with its full https URL.
         <!-- Consult + sign-off -->
         <tr>
           <td class="px" style="padding:28px 48px 44px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <p style="margin:0 0 24px; font-size:15px; line-height:24px; color:#3f5552;">Want help working out which ones are right for you? Just reply to this email and we'll book a time to go through the current list together.</p>
+            <p style="margin:0 0 18px; font-size:15px; line-height:24px; color:#3f5552;">Want help working out which ones are right for you? Book a consult with me to go through the current list together.</p>
+
+            <!-- Consult button -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 32px; border-collapse:separate;">
+              <tr>
+                <td align="center" style="border-radius:999px; border:2px solid #206e65;">
+                  <!--[if mso]>
+                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://api.leadconnectorhq.com/widget/booking/KTOGsftXqNsjkNA1uPqD" style="height:48px; v-text-anchor:middle; width:220px;" arcsize="50%" strokecolor="#206e65" strokeweight="2px" fillcolor="#ffffff">
+                  <center style="color:#206e65; font-family:Arial, sans-serif; font-size:15px; font-weight:bold;">Book a consult</center>
+                  </v:roundrect>
+                  <![endif]-->
+                  <!--[if !mso]><!-->
+                  <a class="btn-outline btn-full" href="https://api.leadconnectorhq.com/widget/booking/KTOGsftXqNsjkNA1uPqD" target="_blank" style="display:inline-block; padding:13px 30px; border-radius:999px; background-color:#ffffff; color:#206e65; font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:15px; line-height:20px; font-weight:700; text-decoration:none;">Book a consult</a>
+                  <!--<![endif]-->
+                </td>
+              </tr>
+            </table>
+
             <p style="margin:0 0 2px; font-size:15px; line-height:23px; color:#3f5552;">Happy hunting,</p>
             <p style="margin:0; font-size:15px; line-height:23px; font-weight:700; color:#0f3d3a;">Tanuj and the Pathway Property team</p>
           </td>
