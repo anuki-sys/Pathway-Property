@@ -5,11 +5,8 @@ Sent automatically when someone submits the off-market form on
 https://www.pathwayprop.com.au/melbourne
 
 Merge tags (rename to match your email platform's syntax):
-  {{first_name}}       first name from the form ("there" if blank)
-  {{suburb}}           "What is the suburb you are looking at?"
-  {{listings_url}}     page with all current off-market listings
-  {{consult_url}}      booking link for a consult
-  {{video_url}}        Tanuj's walkthrough video
+  {{first_name}}       first name from the form
+  {{listings_url}}     page with all current off-market listings (link to come)
   {{unsubscribe_url}}  platform unsubscribe link (required by the Spam Act)
 
 Before sending, upload assets/pathway-melbourne-header.jpg to your platform or
@@ -34,25 +31,22 @@ the Webflow asset library and replace the img src below with its full https URL.
   body { margin: 0; padding: 0; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
   table { border-collapse: collapse; mso-table-lspace: 0; mso-table-rspace: 0; }
   img { border: 0; line-height: 100%; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic; display: block; }
-  a { color: #206e65; }
   a[x-apple-data-detectors] { color: inherit !important; text-decoration: none !important; }
   .btn:hover { background-color: #18574f !important; }
-  .btn-light:hover { background-color: #ffffff !important; }
   @media only screen and (max-width: 620px) {
     .container { width: 100% !important; }
     .px { padding-left: 24px !important; padding-right: 24px !important; }
     .h1 { font-size: 28px !important; line-height: 34px !important; }
-    .stack { display: block !important; width: 100% !important; }
-    .stack-gap { padding-bottom: 12px !important; }
     .btn-full { display: block !important; text-align: center !important; }
   }
 </style>
 </head>
 <body style="margin:0; padding:0; background-color:#c4d9d6;">
+<!--EMAIL-START-->
 
 <!-- Preheader: shows next to the subject line in the inbox -->
 <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#c4d9d6; opacity:0;">
-  This week's Melbourne off-markets are in. Properties that never make it to the portals, direct to vendor.
+  This week's Melbourne off-markets are in. Properties that never make it to the market, direct to vendor.
   &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847; &#847;
 </div>
 
@@ -60,35 +54,36 @@ the Webflow asset library and replace the img src below with its full https URL.
   <tr>
     <td align="center" style="padding:32px 12px;">
 
-      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:20px; overflow:hidden;">
+      <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px; background-color:#ffffff; border-radius:20px; border-collapse:separate; overflow:hidden;">
 
-        <!-- Header / logo -->
+        <!-- Logo -->
         <tr>
           <td style="background-color:#18574f; border-radius:20px 20px 0 0;">
             <a href="https://www.pathwayprop.com.au/melbourne" target="_blank" style="text-decoration:none;">
-              <img src="assets/pathway-melbourne-header.jpg" width="600" alt="Pathway Property | Melbourne South-East" style="width:100%; max-width:600px; height:auto; color:#f4f1ea; font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:20px; font-weight:700;">
+              <img src="assets/pathway-melbourne-header.jpg" width="600" alt="Pathway Property | Melbourne South-East" style="width:100%; max-width:600px; height:auto; border-radius:20px 20px 0 0; color:#ffffff; font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:20px; font-weight:700;">
             </a>
           </td>
         </tr>
 
-        <!-- Hero -->
+        <!-- Main message -->
         <tr>
-          <td class="px" style="background-color:#206e65; padding:40px 48px 44px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <p style="margin:0 0 12px; font-size:13px; line-height:18px; letter-spacing:0.4px; color:#a8d4cd;">Off-market and direct to vendor</p>
-            <h1 class="h1" style="margin:0 0 16px; font-size:34px; line-height:40px; font-weight:700; letter-spacing:-0.6px; color:#ffffff;">Hi {{first_name}}, your off-market list is ready.</h1>
-            <p style="margin:0 0 28px; font-size:16px; line-height:25px; color:#d9ebe8;">These are Melbourne properties that never make it to realestate.com.au or Domain. They're being sold quietly, so you'll only hear about them through lists like this one.</p>
+          <td class="px" style="padding:44px 48px 12px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
+            <p style="margin:0 0 12px; font-size:13px; line-height:18px; font-weight:600; letter-spacing:0.4px; color:#206e65;">Off-market and direct to vendor</p>
+            <h1 class="h1" style="margin:0 0 18px; font-size:32px; line-height:38px; font-weight:700; letter-spacing:-0.6px; color:#0f3d3a;">Hi {{first_name}}, here are this week's off-markets.</h1>
+            <p style="margin:0 0 16px; font-size:16px; line-height:26px; color:#3f5552;">Thanks for signing up. Your list of 100+ Melbourne off-market properties is ready. These are homes that never make it to the market, so you won't find them on the usual property sites.</p>
+            <p style="margin:0 0 30px; font-size:16px; line-height:26px; color:#3f5552;">Click below to see every property on this week's list.</p>
 
-            <!-- Primary button -->
+            <!-- Button -->
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td align="center" style="border-radius:999px; background-color:#f4f1ea;">
+                <td align="center" style="border-radius:999px; background-color:#206e65;">
                   <!--[if mso]>
-                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{listings_url}}" style="height:52px; v-text-anchor:middle; width:300px;" arcsize="50%" stroke="f" fillcolor="#f4f1ea">
-                  <center style="color:#0f3d3a; font-family:Arial, sans-serif; font-size:16px; font-weight:bold;">View this week's off-markets</center>
+                  <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{listings_url}}" style="height:54px; v-text-anchor:middle; width:300px;" arcsize="50%" stroke="f" fillcolor="#206e65">
+                  <center style="color:#ffffff; font-family:Arial, sans-serif; font-size:16px; font-weight:bold;">View the off-market list</center>
                   </v:roundrect>
                   <![endif]-->
                   <!--[if !mso]><!-->
-                  <a class="btn-light btn-full" href="{{listings_url}}" target="_blank" style="display:inline-block; padding:16px 32px; border-radius:999px; background-color:#f4f1ea; color:#0f3d3a; font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:700; text-decoration:none;">View this week's off-markets &rarr;</a>
+                  <a class="btn btn-full" href="{{listings_url}}" target="_blank" style="display:inline-block; padding:17px 36px; border-radius:999px; background-color:#206e65; color:#ffffff; font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:16px; line-height:20px; font-weight:700; text-decoration:none;">View the off-market list &rarr;</a>
                   <!--<![endif]-->
                 </td>
               </tr>
@@ -96,107 +91,25 @@ the Webflow asset library and replace the img src below with its full https URL.
           </td>
         </tr>
 
-        <!-- Your search -->
+        <!-- Weekly note -->
         <tr>
-          <td class="px" style="padding:36px 48px 8px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eef5f3; border-radius:14px;">
+          <td class="px" style="padding:32px 48px 0; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eef5f3; border-radius:14px; border-collapse:separate;">
               <tr>
-                <td style="padding:20px 24px;">
-                  <p style="margin:0 0 4px; font-size:12px; line-height:16px; font-weight:600; letter-spacing:0.6px; text-transform:uppercase; color:#206e65;">You told us you're looking at</p>
-                  <p style="margin:0 0 6px; font-size:22px; line-height:28px; font-weight:700; color:#0f3d3a;">{{suburb}}</p>
-                  <p style="margin:0; font-size:14px; line-height:21px; color:#4b5f5c;">The full list covers all of Melbourne, so take a look at the surrounding suburbs too. Good buys often sit one suburb over.</p>
+                <td style="padding:22px 24px;">
+                  <p style="margin:0 0 6px; font-size:16px; line-height:22px; font-weight:700; color:#0f3d3a;">A new list every week</p>
+                  <p style="margin:0; font-size:15px; line-height:23px; color:#3f5552;">The list is free and lands in your inbox automatically each week. Off-markets move quickly, so if something catches your eye, don't wait too long.</p>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
 
-        <!-- How it works -->
-        <tr>
-          <td class="px" style="padding:32px 48px 8px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <h2 style="margin:0 0 20px; font-size:20px; line-height:26px; font-weight:700; color:#0f3d3a;">How the weekly list works</h2>
-
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-              <tr>
-                <td width="44" valign="top" style="padding:0 0 20px;">
-                  <div style="width:32px; height:32px; border-radius:16px; background-color:#206e65; color:#ffffff; font-size:14px; line-height:32px; font-weight:700; text-align:center;">1</div>
-                </td>
-                <td valign="top" style="padding:0 0 20px;">
-                  <p style="margin:0 0 2px; font-size:16px; line-height:22px; font-weight:700; color:#0f3d3a;">A fresh list, every week</p>
-                  <p style="margin:0; font-size:15px; line-height:23px; color:#4b5f5c;">100+ off-market properties across Melbourne land in your inbox automatically. It's free, and you don't need to do anything to keep getting it.</p>
-                </td>
-              </tr>
-              <tr>
-                <td width="44" valign="top" style="padding:0 0 20px;">
-                  <div style="width:32px; height:32px; border-radius:16px; background-color:#206e65; color:#ffffff; font-size:14px; line-height:32px; font-weight:700; text-align:center;">2</div>
-                </td>
-                <td valign="top" style="padding:0 0 20px;">
-                  <p style="margin:0 0 2px; font-size:16px; line-height:22px; font-weight:700; color:#0f3d3a;">Shortlist the ones you like</p>
-                  <p style="margin:0; font-size:15px; line-height:23px; color:#4b5f5c;">Off-markets move quickly and quietly. If something catches your eye, don't sit on it for too long.</p>
-                </td>
-              </tr>
-              <tr>
-                <td width="44" valign="top" style="padding:0 0 8px;">
-                  <div style="width:32px; height:32px; border-radius:16px; background-color:#206e65; color:#ffffff; font-size:14px; line-height:32px; font-weight:700; text-align:center;">3</div>
-                </td>
-                <td valign="top" style="padding:0 0 8px;">
-                  <p style="margin:0 0 2px; font-size:16px; line-height:22px; font-weight:700; color:#0f3d3a;">We work out which ones are right for you</p>
-                  <p style="margin:0; font-size:15px; line-height:23px; color:#4b5f5c;">Book a consult and we'll go through the current list with you, side by side with your budget and goals.</p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- Video -->
-        <tr>
-          <td class="px" style="padding:28px 48px 8px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #d6e5e2; border-radius:14px; border-collapse:separate;">
-              <tr>
-                <td width="76" valign="middle" style="padding:20px 0 20px 20px;">
-                  <a href="{{video_url}}" target="_blank" style="display:block; width:56px; height:56px; border-radius:28px; background-color:#206e65; color:#ffffff; font-size:20px; line-height:56px; text-align:center; text-decoration:none;">&#9654;</a>
-                </td>
-                <td valign="middle" style="padding:20px 20px 20px 16px;">
-                  <p style="margin:0 0 2px; font-size:16px; line-height:22px; font-weight:700; color:#0f3d3a;">New to off-markets?</p>
-                  <p style="margin:0; font-size:14px; line-height:21px; color:#4b5f5c;">Watch Tanuj walk you through our off-market system in under 2 minutes. <a href="{{video_url}}" target="_blank" style="color:#206e65; font-weight:600; text-decoration:underline;">Watch the video</a></p>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- Consult CTA -->
+        <!-- Consult + sign-off -->
         <tr>
           <td class="px" style="padding:28px 48px 44px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#0f3d3a; border-radius:16px;">
-              <tr>
-                <td style="padding:28px 28px 30px;">
-                  <h2 style="margin:0 0 8px; font-size:20px; line-height:26px; font-weight:700; color:#ffffff;">Not sure where to start?</h2>
-                  <p style="margin:0 0 20px; font-size:15px; line-height:23px; color:#c9dfdb;">Book a consult and we'll go through this week's list with you and work out which properties are worth a closer look.</p>
-                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-                    <tr>
-                      <td align="center" style="border-radius:999px; background-color:#206e65;">
-                        <!--[if mso]>
-                        <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{consult_url}}" style="height:48px; v-text-anchor:middle; width:220px;" arcsize="50%" stroke="f" fillcolor="#206e65">
-                        <center style="color:#ffffff; font-family:Arial, sans-serif; font-size:15px; font-weight:bold;">Book a consult</center>
-                        </v:roundrect>
-                        <![endif]-->
-                        <!--[if !mso]><!-->
-                        <a class="btn btn-full" href="{{consult_url}}" target="_blank" style="display:inline-block; padding:14px 28px; border-radius:999px; background-color:#206e65; color:#ffffff; font-family:'Plus Jakarta Sans', Arial, sans-serif; font-size:15px; line-height:20px; font-weight:700; text-decoration:none;">Book a consult</a>
-                        <!--<![endif]-->
-                      </td>
-                    </tr>
-                  </table>
-                </td>
-              </tr>
-            </table>
-          </td>
-        </tr>
-
-        <!-- Sign-off -->
-        <tr>
-          <td class="px" style="padding:0 48px 40px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif;">
-            <p style="margin:0 0 4px; font-size:15px; line-height:23px; color:#4b5f5c;">Happy hunting,</p>
+            <p style="margin:0 0 24px; font-size:15px; line-height:24px; color:#3f5552;">Want help working out which ones are right for you? Just reply to this email and we'll book a time to go through the current list together.</p>
+            <p style="margin:0 0 2px; font-size:15px; line-height:23px; color:#3f5552;">Happy hunting,</p>
             <p style="margin:0; font-size:15px; line-height:23px; font-weight:700; color:#0f3d3a;">Tanuj and the Pathway Property team</p>
           </td>
         </tr>
@@ -206,10 +119,9 @@ the Webflow asset library and replace the img src below with its full https URL.
       <!-- Footer -->
       <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px; max-width:600px;">
         <tr>
-          <td class="px" align="center" style="padding:28px 48px 8px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#3d5a56;">
+          <td class="px" align="center" style="padding:26px 48px 8px; font-family:'Plus Jakarta Sans', Arial, Helvetica, sans-serif; font-size:12px; line-height:19px; color:#3d5a56;">
             <p style="margin:0 0 8px;"><strong style="color:#0f3d3a;">Pathway Property | Melbourne South-East</strong></p>
             <p style="margin:0 0 8px;">You're getting this email because you asked for our weekly off-market list at <a href="https://www.pathwayprop.com.au/melbourne" target="_blank" style="color:#206e65; text-decoration:underline;">pathwayprop.com.au</a>.</p>
-            <p style="margin:0 0 8px;">Listings are supplied for general information only and availability changes quickly. Nothing in this email is financial advice.</p>
             <p style="margin:0;"><a href="{{unsubscribe_url}}" target="_blank" style="color:#206e65; text-decoration:underline;">Unsubscribe</a></p>
           </td>
         </tr>
@@ -219,5 +131,6 @@ the Webflow asset library and replace the img src below with its full https URL.
   </tr>
 </table>
 
+<!--EMAIL-END-->
 </body>
 </html>
