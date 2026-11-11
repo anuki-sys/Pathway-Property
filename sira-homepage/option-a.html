@@ -191,11 +191,23 @@ header.nav .wrap { display: flex; align-items: center; gap: 24px; height: 72px; 
 .founder-cap b { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
 .founder-cap span { font-size: 13.5px; color: var(--on-dark-muted); }
 .reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.reason { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: grid; gap: 10px; align-content: start; }
-.reason .ic { width: 42px; height: 42px; border-radius: 12px; background: #e8f1ef; color: var(--elm); display: grid; place-items: center; }
+.reason { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 12px; align-content: start; }
+.reason .ic { width: 44px; height: 44px; border-radius: 12px; background: #e8f1ef; color: var(--elm); display: grid; place-items: center; }
 .reason .ic svg { width: 22px; height: 22px; }
-.reason h3 { font-size: 19px; letter-spacing: -0.015em; }
+.reason h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; }
 .reason p { color: var(--muted); font-size: 14.5px; }
+.reason p a { color: var(--elm); font-weight: 600; }
+.more { margin-top: 28px; display: grid; gap: 14px; }
+.more-label { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--elm); }
+.chips { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.chips li { display: flex; gap: 10px; align-items: flex-start; background: #ece6d8; border-radius: var(--r-md); padding: 12px 14px; font-size: 13.5px; line-height: 1.45; color: var(--muted); min-width: 0; }
+.chips li b { color: var(--cyprus); font-weight: 600; }
+.chips .ic { width: 30px; height: 30px; flex: none; border-radius: 9px; background: var(--card); color: var(--elm); display: grid; place-items: center; }
+.chips .ic svg { width: 17px; height: 17px; }
+.fine { margin: 20px auto 0; max-width: 80ch; text-align: center; font-size: 12px; color: var(--muted); }
+#why .cta-row { margin-top: 32px; }
+@media (max-width: 1000px) { .chips { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .chips { grid-template-columns: 1fr; } }
 @media (max-width: 960px) { .why-grid { grid-template-columns: 1fr; } .founder { min-height: 360px; } }
 @media (max-width: 560px) { .reasons { grid-template-columns: 1fr; } }
 
@@ -365,6 +377,14 @@ footer a:hover { color: var(--alabaster); }
   <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M4 8h16M7 8l-3 6a3 3 0 0 0 6 0zM17 8l-3 6a3 3 0 0 0 6 0z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6zM8.5 12l2.5 2.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 7h15v12H4zM4 7V5h12v2M15 12.5h4v3h-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><path d="M12 4a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM5 20a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.3-4.9L4 8M4 4v4h4M4 13a8 8 0 0 0 14.3 4.9L20 16M20 20v-4h-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4M5 4h11l-2 4 2 4H5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-pie" viewBox="0 0 24 24"><path d="M12 3v9h9a9 9 0 1 1-9-9zM15 3.5A9 9 0 0 1 20.5 9H15z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-steps" viewBox="0 0 24 24"><path d="M3 20h5v-5h5v-5h5V5h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M9 5a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM3 20a6 6 0 0 1 12 0M16 5.5a3 3 0 0 1 0 5.5M18 14a5.5 5.5 0 0 1 3 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 2h13v-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
   <symbol id="i-in" viewBox="0 0 24 24"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.5 7v8h2.6v-8zm1.3-4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 10v8h2.6v-4.3c0-1.2.6-1.8 1.5-1.8s1.4.6 1.4 1.8V18H19v-4.9c0-2.4-1.3-3.3-3-3.3-1.2 0-2 .6-2.4 1.2V10z" fill="currentColor"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.5 21.5l4.9-1.3A9.4 9.4 0 1 0 12 2.5zm0 1.7a7.7 7.7 0 1 1-4 14.3l-.3-.2-2.9.8.8-2.8-.2-.3A7.7 7.7 0 0 1 12 4.2zm-3.2 3.9c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.3 2.5 1 3 .8 3.5.7.6 0 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4l-.5-.3-1.8-.9c-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z" fill="currentColor"/></symbol>
@@ -509,37 +529,45 @@ footer a:hover { color: var(--alabaster); }
   </div>
 </section>
 
-<!-- WHY CLIENTS CHOOSE SIRA: product value, condensed from the Why Sira deck + founder video -->
+<!-- WHY SIRA: founder video left, six reasons in a 2 x 3 grid right, "And there's more" chips below -->
 <section id="why">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Why Sira</span>
-      <h2>Islamic finance, <em class="s">minus the headache</em></h2>
-      <p>We handle the comparing, the paperwork and the chasing, and we're still here after settlement.</p>
+      <h2>The smarter way to get <em class="s">Islamic finance</em></h2>
+      <p>Islamic finance shouldn't come with extra headaches. We do the comparing, the paperwork and the chasing - so you can focus on the home, not the process.</p>
     </div>
     <div class="why-grid">
-      <a class="founder" href="#" aria-label="Watch the Why Sira video from our founder">
+      <a class="founder" href="#" aria-label="Watch: hear from our founder on why clients choose Sira">
         <img src="assets/team-muneer.jpg" alt="Muneer Saleh, founder of Sira Finance">
         <span class="play"><svg><use href="#i-play"/></svg></span>
         <div class="founder-cap">
           <small>Watch · [2:30]</small>
-          <b>"Why I started Sira", in Muneer's words</b>
-          <span>The informal founder video (Loom), embedded here.</span>
+          <b>Hear from our founder: why clients choose Sira</b>
         </div>
       </a>
       <div class="reasons">
-        <div class="reason"><span class="ic"><svg><use href="#i-layers"/></svg></span><h3>Options from multiple funders</h3><p>We compare Shariah-compliant products side by side, so you're not stuck with one bank's offer.</p></div>
-        <div class="reason"><span class="ic"><svg><use href="#i-doc"/></svg></span><h3>We do the admin</h3><p>Forms, documents and funder follow-ups are on us. You'll always know what's next.</p></div>
-        <div class="reason"><span class="ic"><svg><use href="#i-chat"/></svg></span><h3>Your broker on WhatsApp</h3><p>Message the person handling your file directly. No call centres, no ticket numbers.</p></div>
-        <div class="reason"><span class="ic"><svg><use href="#i-scale"/></svg></span><h3>Real numbers in writing</h3><p>Costs, features and trade-offs explained plainly before you commit to anything.</p></div>
-        <div class="reason"><span class="ic"><svg><use href="#i-trend"/></svg></span><h3>Built for your next step</h3><p>We structure today's finance so it supports your next property or business move.</p></div>
-        <div class="reason"><span class="ic"><svg><use href="#i-shield"/></svg></span><h3>Here after settlement</h3><p>A yearly Loyalty Check makes sure your finance still fits as life changes.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-layers"/></svg></span><h3>One call. Multiple Islamic funders.</h3><p>One conversation gives you access to a broad panel of Shariah-compliant funders - and the right one can make a real difference to your approval and structure.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-wallet"/></svg></span><h3>Keep your cash for the property</h3><p>For standard residential finance, we generally don't charge upfront broker fees. We're usually paid by the funder at settlement - our <a href="#">Credit Guide</a> explains how.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-user"/></svg></span><h3>A real person, start to settlement</h3><p>One dedicated contact, a clear process and proactive updates on WhatsApp, so you're never left guessing.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-trend"/></svg></span><h3>Structured for the long run</h3><p>We look beyond the rate to your long-term plans, structuring your finance to stay flexible and protect your borrowing capacity.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-refresh"/></svg></span><h3>We don't disappear after settlement</h3><p>We review your rate and structure regularly, ask your funder for better pricing where possible, and tell you when a refinance is worth considering.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-key"/></svg></span><h3>A plan to own your home sooner</h3><p>A clear roadmap to reduce your finance term - targeting 7 to 10 years where your income and goals allow.</p></div>
       </div>
     </div>
-    <div class="cta-row">
-      <a class="btn btn-primary" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost" href="#">Why use a broker?</a>
+    <div class="more">
+      <span class="more-label">And there's more</span>
+      <ul class="chips">
+        <li><span class="ic"><svg><use href="#i-pie"/></svg></span><span><b>Portfolio reviews</b> - see where you stand today and how your finance fits your bigger picture.</span></li>
+        <li><span class="ic"><svg><use href="#i-steps"/></svg></span><span><b>Not ready yet?</b> - we'll show you what needs to change and help you get there.</span></li>
+        <li><span class="ic"><svg><use href="#i-users"/></svg></span><span><b>Trusted network</b> - introductions to the right professionals for your property journey.</span></li>
+        <li><span class="ic"><svg><use href="#i-book"/></svg></span><span><b>First home buyer education</b> - eligible clients can get up to 20% off an independent first home buyer program.</span></li>
+      </ul>
     </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#book">Book a call <svg><use href="#i-arrow"/></svg></a>
+    </div>
+    <p class="fine">No upfront broker fees applies to standard residential finance; other fees may apply - see our Credit Guide. Rate reviews and pricing requests are subject to funder approval. All finance is subject to eligibility and approval criteria.</p>
   </div>
 </section>
 
