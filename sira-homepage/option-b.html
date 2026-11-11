@@ -1,0 +1,774 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sira Homepage Option B</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Noto+Naskh+Arabic:wght@500&display=swap">
+<style>
+/* Option B "Mission-led": dark Cyprus hero with an "I want to..." sentence builder and the four service
+   blocks breaking out of it, an editorial dictionary-entry mission, four plain category columns
+   (no toggles), a horizontal process, and a moving wall of reviews. Single brand look (no dark mode). */
+:root {
+  --elm: #206e65;
+  --cyprus: #0f3e3a;
+  --deep: #0a2d2a;
+  --ink: #010a09;
+  --alabaster: #f5f2eb;
+  --almond: #feeacd;
+  --ecru: #c5b085;
+  --card: #ffffff;
+  --line: #e3ddcf;
+  --muted: #52605d;
+  --on-dark-muted: #b3c4c0;
+  --f-display: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --f-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-arabic: "Noto Naskh Arabic", "Geeza Pro", "Arial", serif;
+  --r: 18px;
+  --r-sm: 10px;
+  --wrap: 1200px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--alabaster); color: var(--ink); font: 400 16px/1.6 var(--f-sans); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--f-display); color: var(--cyprus); line-height: 1.06; letter-spacing: -0.035em; font-weight: 700; text-wrap: balance; }
+p { margin: 0; }
+em.s { font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 104px; }
+.kicker { display: inline-flex; align-items: center; gap: 10px; font: 600 12.5px/1 var(--f-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--elm); }
+.kicker::before { content: ""; width: 22px; height: 1.5px; background: currentColor; }
+h2.big { font-size: clamp(34px, 4.8vw, 58px); }
+.head-row { display: flex; justify-content: space-between; align-items: end; gap: 24px 40px; flex-wrap: wrap; margin-bottom: 48px; }
+.head-row > div { display: grid; gap: 16px; max-width: 680px; }
+.head-row p { color: var(--muted); font-size: 17px; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font: 600 15px/1 var(--f-sans); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s, background .15s, color .15s; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.btn:focus-visible, a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--ecru); outline-offset: 2px; }
+.btn-dark { background: var(--cyprus); color: var(--alabaster); }
+.btn-dark:hover { background: var(--elm); }
+.btn-almond { background: var(--almond); color: var(--cyprus); }
+.btn-almond:hover { background: #fff3e0; }
+.btn-line { border-color: var(--cyprus); color: var(--cyprus); }
+.btn-line-light { border-color: rgba(245,242,235,.5); color: var(--alabaster); }
+.btn-line-light:hover { border-color: var(--almond); color: var(--almond); }
+
+/* Photo placeholder */
+.ph { position: relative; overflow: hidden; background: radial-gradient(110% 80% at 80% 0%, rgba(197,176,133,.45), transparent 60%), linear-gradient(165deg, #2b7b71, var(--cyprus)); color: var(--alabaster); }
+.ph::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(255,255,255,.09) 1px, transparent 1.2px); background-size: 14px 14px; }
+.ph .ph-icon { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; transform: translate(-50%, -50%); opacity: .5; }
+.ph .ph-tag { position: absolute; top: 12px; left: 12px; right: 12px; display: flex; gap: 6px; font-size: 12px; line-height: 1.35; color: var(--almond); }
+.ph .ph-tag svg { width: 14px; height: 14px; flex: none; margin-top: 1px; }
+.ph.sand { background: radial-gradient(110% 80% at 20% 0%, rgba(254,234,205,.95), transparent 60%), linear-gradient(165deg, #e4dac4, #cbbd9c); color: var(--cyprus); }
+.ph.sand .ph-tag { color: var(--cyprus); }
+
+/* Top bar + nav (sits on the dark hero) */
+.topbar { background: var(--deep); color: var(--almond); font-size: 13.5px; font-weight: 500; text-align: center; }
+.topbar a { display: block; padding: 9px max(16px, env(safe-area-inset-right, 0px)) 9px max(16px, env(safe-area-inset-left, 0px)); text-decoration: none; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 40; background: var(--cyprus); }
+header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--cyprus); border-bottom: 1px solid rgba(245,242,235,.1); }
+header.nav .wrap { display: flex; align-items: center; gap: 24px; height: 74px; }
+.logo img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 24px; margin-left: auto; font-size: 14.5px; font-weight: 500; color: var(--alabaster); }
+.nav-links a { text-decoration: none; opacity: .88; }
+.nav-links a:hover { opacity: 1; color: var(--almond); }
+.nav-cta { padding: 11px 18px; font-size: 14px; }
+.menu-btn { display: none; margin-left: auto; background: none; border: 1.5px solid rgba(245,242,235,.5); color: var(--alabaster); border-radius: 999px; padding: 8px 14px; font: 600 14px var(--f-sans); }
+@media (max-width: 1040px) {
+  .nav-links { display: none; position: absolute; top: 74px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--cyprus); padding: 8px max(20px, env(safe-area-inset-left, 0px)) 18px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 13px 0; border-bottom: 1px solid rgba(245,242,235,.12); }
+  .menu-btn { display: block; }
+  .nav-cta { display: none; }
+}
+
+/* Hero */
+.hero { background: var(--cyprus); color: var(--alabaster); padding-block: 64px 0; position: relative; overflow-x: clip; }
+.hero::after { content: ""; position: absolute; width: 900px; height: 900px; right: -300px; top: -140px; border-radius: 50%; border: 1px solid rgba(197,176,133,.18); box-shadow: 0 0 0 90px rgba(197,176,133,.03), 0 0 0 180px rgba(197,176,133,.025); pointer-events: none; }
+.hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.rating { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; color: var(--on-dark-muted); }
+.rating .stars { color: var(--ecru); letter-spacing: 2px; }
+.rating b { color: var(--alabaster); }
+.hero h1 { color: var(--alabaster); font-size: clamp(44px, 6.2vw, 80px); margin-top: 20px; font-weight: 800; }
+.hero h1 em.s { color: var(--almond); font-weight: 400; display: block; letter-spacing: -0.02em; }
+.hero-lede { margin-top: 22px; font-size: 18.5px; color: var(--on-dark-muted); max-width: 48ch; }
+/* "I want to..." sentence builder = the old "What brings you here?" section, text only */
+.builder { margin-top: 32px; background: rgba(245,242,235,.07); border: 1px solid rgba(245,242,235,.16); border-radius: 22px; padding: 10px 10px 10px 22px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; max-width: 620px; }
+.builder label { font: 600 19px var(--f-display); color: var(--alabaster); letter-spacing: -0.02em; }
+.builder select { flex: 1; min-width: 0; appearance: none; -webkit-appearance: none; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m6 9 6 6 6-6' fill='none' stroke='%23feeacd' stroke-width='2'/%3E%3C/svg%3E") no-repeat right 4px center / 20px; border: 0; border-bottom: 1.5px dashed var(--ecru); color: var(--almond); font: 400 italic 24px var(--f-serif); padding: 4px 30px 4px 2px; border-radius: 0; cursor: pointer; }
+.builder select option { color: var(--ink); font: 400 15px var(--f-sans); }
+.builder .btn { padding: 14px 20px; }
+.hero-quick { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.hero-quick a { font-size: 13.5px; color: var(--on-dark-muted); text-decoration: none; border: 1px solid rgba(245,242,235,.18); border-radius: 999px; padding: 6px 12px; }
+.hero-quick a:hover { color: var(--almond); border-color: var(--ecru); }
+.hero-photo { position: relative; border-radius: 28px 28px 28px 120px; overflow: hidden; aspect-ratio: 4 / 4.6; max-width: 100%; }
+.hero-photo .ph { position: absolute; inset: 0; }
+.hero-photo .float { position: absolute; left: 18px; bottom: 18px; right: 18px; z-index: 2; background: rgba(245,242,235,.96); color: var(--cyprus); border-radius: 14px; padding: 14px 16px; display: flex; gap: 12px; align-items: center; font-size: 14px; }
+.hero-photo .float b { display: block; font-family: var(--f-display); font-size: 16px; letter-spacing: -0.01em; }
+.hero-photo .float .wa-dot { width: 36px; height: 36px; border-radius: 50%; background: #25d366; color: #fff; display: grid; place-items: center; flex: none; }
+.hero-photo .float .wa-dot svg { width: 20px; height: 20px; }
+/* Four service blocks break out of the dark band */
+.services { position: relative; z-index: 2; margin-top: 64px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: -110px; }
+.svc { position: relative; display: grid; grid-template-rows: auto 1fr; background: var(--card); border-radius: var(--r); overflow: hidden; text-decoration: none; color: var(--cyprus); box-shadow: 0 18px 40px rgba(1,10,9,.18); transition: transform .2s; }
+.svc:hover { transform: translateY(-4px); }
+.svc .ph { aspect-ratio: 4 / 3; }
+.svc div.body { padding: 16px 18px 18px; display: grid; gap: 4px; }
+.svc h3 { font-size: 19px; letter-spacing: -0.02em; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.svc h3 svg { width: 18px; height: 18px; color: var(--elm); flex: none; transition: transform .2s; }
+.svc:hover h3 svg { transform: translateX(3px); }
+.svc p { font-size: 14px; color: var(--muted); }
+.after-hero { padding-top: 160px; }
+@media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; } .hero-photo { aspect-ratio: 16 / 11; border-radius: 24px 24px 24px 80px; } .services { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .svc .ph-icon { display: none; } .builder { padding: 16px; } .builder select { flex-basis: 100%; font-size: 21px; } .builder .btn { width: 100%; } .svc .ph { aspect-ratio: 16 / 10; } .svc h3 { font-size: 16px; } .svc p { font-size: 13px; } }
+
+/* Proof strip */
+.proof { padding-block: 0 0; }
+.stat-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat { padding: 28px 24px; display: grid; gap: 6px; border-left: 1px solid var(--line); }
+.stat:first-child { border-left: 0; padding-left: 0; }
+.stat b { font: 700 clamp(34px, 3.8vw, 50px)/1 var(--f-display); color: var(--cyprus); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--muted); }
+.stat .stars { color: var(--ecru); font-size: 16px; letter-spacing: 1px; }
+.vids { margin-top: 40px; display: grid; grid-template-columns: 1fr 2.4fr; gap: 28px; align-items: center; }
+.vids-copy { display: grid; gap: 12px; }
+.vids-copy h3 { font-size: 28px; }
+.vids-copy p { color: var(--muted); }
+.vid-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.vid { position: relative; aspect-ratio: 3 / 4; border-radius: 16px; overflow: hidden; text-decoration: none; max-width: 100%; }
+.vid .ph { position: absolute; inset: 0; }
+.vid .play { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); width: 50px; height: 50px; border-radius: 50%; background: var(--alabaster); color: var(--cyprus); display: grid; place-items: center; z-index: 2; transition: transform .2s; }
+.vid:hover .play { transform: translate(-50%, -50%) scale(1.08); }
+.vid .play svg { width: 18px; height: 18px; margin-left: 3px; }
+.vid .cap { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 2; color: var(--alabaster); font-size: 12.5px; line-height: 1.35; }
+.vid .cap b { display: block; font-size: 14px; }
+@media (max-width: 900px) { .stat-row { grid-template-columns: 1fr 1fr; } .stat:nth-child(3) { border-left: 0; padding-left: 0; } .stat:nth-child(n+3) { border-top: 1px solid var(--line); } .vids { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .vid-row { grid-template-columns: 1fr 1fr; } .stat { padding: 20px 14px; } }
+
+/* Mission: dictionary entry */
+.mission-grid { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 64px; align-items: start; }
+.dict { position: sticky; top: 110px; background: var(--card); border-radius: 28px; padding: 40px; border: 1px solid var(--line); }
+.dict .head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+.dict .word { font: 400 italic clamp(64px, 8vw, 104px)/0.9 var(--f-serif); color: var(--cyprus); letter-spacing: -0.02em; }
+.dict .ar { font: 500 clamp(40px, 5vw, 60px)/1 var(--f-arabic); color: var(--ecru); }
+.dict .pron { margin-top: 16px; font-size: 14px; color: var(--muted); letter-spacing: .02em; }
+.dict ol { margin: 18px 0 0; padding-left: 20px; display: grid; gap: 10px; color: var(--ink); font-size: 17px; }
+.dict ol li::marker { color: var(--elm); font-weight: 600; }
+.dict .usage { margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line); font: 400 italic 22px/1.35 var(--f-serif); color: var(--elm); }
+.mission-copy { display: grid; gap: 22px; }
+.mission-copy h2 em.s { color: var(--elm); }
+.mission-copy > p { font-size: 18px; color: var(--muted); max-width: 58ch; }
+.mission-copy > p strong { color: var(--cyprus); }
+.gap { background: var(--cyprus); color: var(--alabaster); border-radius: var(--r); padding: 28px; display: grid; grid-template-columns: auto 1fr; gap: 8px 24px; align-items: center; }
+.gap b { font: 800 64px/1 var(--f-display); color: var(--almond); letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.gap p { color: var(--alabaster); }
+.gap small { grid-column: 1 / -1; color: var(--on-dark-muted); font-size: 12px; }
+.proofs { display: grid; grid-template-columns: 1.3fr 1fr; gap: 14px; }
+.pod { display: grid; grid-template-columns: 84px 1fr; gap: 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; text-decoration: none; transition: border-color .15s; }
+.pod:hover { border-color: var(--elm); }
+.pod .ph { aspect-ratio: 1; border-radius: 12px; background: linear-gradient(160deg, var(--ecru), #8a744c); max-width: 100%; }
+.pod .ph .ph-icon { width: 36px; height: 36px; opacity: .85; }
+.pod small { font-size: 11.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--elm); }
+.pod b { display: block; font-family: var(--f-display); color: var(--cyprus); font-size: 17px; letter-spacing: -0.01em; margin: 2px 0; }
+.pod span { font-size: 13.5px; color: var(--muted); }
+.events { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: grid; gap: 4px; align-content: center; }
+.events b { font: 700 32px/1 var(--f-display); color: var(--cyprus); font-variant-numeric: tabular-nums; }
+.events span { font-size: 13.5px; color: var(--muted); }
+.mission-copy .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 960px) { .mission-grid { grid-template-columns: 1fr; gap: 36px; } .dict { position: static; padding: 28px; } }
+@media (max-width: 560px) { .proofs { grid-template-columns: 1fr; } .gap { grid-template-columns: 1fr; } }
+
+/* Why clients choose Sira */
+.why { background: var(--deep); color: var(--alabaster); }
+.why h2 { color: var(--alabaster); }
+.why h2 em.s { color: var(--almond); }
+.why .kicker { color: var(--ecru); }
+.why .head-row p { color: var(--on-dark-muted); }
+.why-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.film { position: sticky; top: 110px; border-radius: 22px; overflow: hidden; aspect-ratio: 16 / 11; text-decoration: none; display: block; max-width: 100%; }
+.film img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; }
+.film::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,10,9,.85), rgba(1,10,9,.1) 60%); }
+.film .play { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%); width: 76px; height: 76px; border-radius: 50%; background: var(--almond); color: var(--cyprus); display: grid; place-items: center; z-index: 2; transition: transform .2s; box-shadow: 0 0 0 12px rgba(254,234,205,.18); }
+.film:hover .play { transform: translate(-50%, -50%) scale(1.06); }
+.film .play svg { width: 26px; height: 26px; margin-left: 4px; }
+.film .cap { position: absolute; left: 24px; right: 24px; bottom: 22px; z-index: 2; display: grid; gap: 4px; }
+.film .cap small { color: var(--ecru); font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+.film .cap b { font: 700 24px/1.2 var(--f-display); letter-spacing: -0.02em; color: var(--alabaster); }
+.reason-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.reason-list li { display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 22px 0; border-top: 1px solid rgba(245,242,235,.12); }
+.reason-list li:last-child { border-bottom: 1px solid rgba(245,242,235,.12); }
+.reason-list .ic { width: 44px; height: 44px; border-radius: 12px; background: rgba(197,176,133,.14); color: var(--ecru); display: grid; place-items: center; }
+.reason-list .ic svg { width: 22px; height: 22px; }
+.reason-list h3 { color: var(--alabaster); font-size: 21px; letter-spacing: -0.02em; }
+.reason-list p { color: var(--on-dark-muted); font-size: 15px; margin-top: 4px; }
+.why .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+@media (max-width: 960px) { .why-grid { grid-template-columns: 1fr; } .film { position: relative; top: 0; } }
+
+/* What we finance: four columns, no toggles */
+.cats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.cat { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: grid; grid-template-rows: auto auto auto 1fr auto; }
+.cat .ph { aspect-ratio: 5 / 4; }
+.cat h3 { padding: 20px 20px 4px; font-size: 22px; }
+.cat > p { padding: 0 20px; color: var(--muted); font-size: 14px; }
+.cat ul { list-style: none; margin: 14px 0 0; padding: 0 20px; display: grid; align-content: start; }
+.cat li a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); text-decoration: none; font-size: 14.5px; font-weight: 500; color: var(--cyprus); }
+.cat li a:hover { color: var(--elm); }
+.cat li a svg { width: 14px; height: 14px; color: var(--elm); flex: none; }
+.cat .more { margin: 16px 20px 20px; padding: 12px; border-radius: 999px; background: var(--alabaster); text-align: center; text-decoration: none; font-weight: 600; font-size: 14px; color: var(--cyprus); }
+.cat .more:hover { background: var(--cyprus); color: var(--alabaster); }
+@media (max-width: 1000px) { .cats { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .cats { grid-template-columns: 1fr; } .cat .ph { aspect-ratio: 16 / 8; } }
+
+/* How it works: banner photo + horizontal steps */
+.how { padding-top: 0; }
+.banner { position: relative; border-radius: 28px; overflow: hidden; aspect-ratio: 21 / 8; max-width: 100%; }
+.banner img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,45,42,.92) 0%, rgba(10,45,42,.55) 45%, rgba(10,45,42,0) 75%); }
+.banner .txt { position: absolute; left: 44px; top: 50%; transform: translateY(-50%); z-index: 2; max-width: 460px; display: grid; gap: 16px; }
+.banner .kicker { color: var(--ecru); }
+.banner h2 { color: var(--alabaster); font-size: clamp(30px, 4vw, 50px); }
+.banner h2 em.s { color: var(--almond); }
+.steps { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; position: relative; }
+.steps::before { content: ""; position: absolute; top: 27px; left: 28px; right: 28px; height: 2px; background: repeating-linear-gradient(90deg, var(--ecru) 0 8px, transparent 8px 14px); }
+.step { position: relative; display: grid; gap: 10px; align-content: start; }
+.step .n { width: 56px; height: 56px; border-radius: 50%; background: var(--cyprus); color: var(--almond); display: grid; place-items: center; font: 700 20px var(--f-display); border: 5px solid var(--alabaster); font-variant-numeric: tabular-nums; }
+.step h3 { font-size: 20px; margin-top: 6px; }
+.step p { color: var(--muted); font-size: 14.5px; }
+.step .when { justify-self: start; font-size: 12.5px; font-weight: 600; color: var(--elm); background: #e6efec; border-radius: 999px; padding: 4px 10px; }
+.how .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+@media (max-width: 900px) { .banner { aspect-ratio: 4 / 3; } .banner::after { background: linear-gradient(0deg, rgba(10,45,42,.95) 10%, rgba(10,45,42,.2) 80%); } .banner .txt { top: auto; bottom: 28px; left: 24px; right: 24px; transform: none; } .steps { grid-template-columns: 1fr 1fr; gap: 28px 14px; } .steps::before { display: none; } }
+@media (max-width: 520px) { .steps { grid-template-columns: 1fr; } }
+
+/* Team */
+.team { padding-top: 0; }
+.lead { display: grid; grid-template-columns: 1.2fr 0.8fr; background: var(--cyprus); border-radius: 28px; overflow: hidden; }
+.lead .body { padding: 48px; display: grid; gap: 16px; align-content: center; color: var(--on-dark-muted); }
+.lead .role { color: var(--ecru); font-size: 12.5px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.lead h3 { color: var(--alabaster); font-size: clamp(34px, 4vw, 48px); }
+.lead p { max-width: 58ch; }
+.lead blockquote { margin: 6px 0; font: 400 italic 26px/1.3 var(--f-serif); color: var(--almond); }
+.lead .socials { display: flex; flex-wrap: wrap; gap: 8px; }
+.lead .socials a { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--alabaster); text-decoration: none; border: 1px solid rgba(245,242,235,.25); border-radius: 999px; padding: 8px 13px; }
+.lead .socials a:hover { border-color: var(--almond); color: var(--almond); }
+.lead .socials svg { width: 15px; height: 15px; }
+.lead .pic { position: relative; background: #e4e4e2; min-height: 420px; }
+.lead .pic img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 14%; }
+.minis { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.mini { display: grid; grid-template-columns: 120px 1fr; gap: 18px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; }
+.mini img { width: 120px; height: 120px; object-fit: cover; object-position: 50% 10%; border-radius: 12px; background: #e4e4e2; }
+.mini h4 { font-size: 19px; }
+.mini .role { font-size: 13px; font-weight: 600; color: var(--elm); }
+.mini p { font-size: 14px; color: var(--muted); margin-top: 4px; }
+.mini a { font-size: 13px; font-weight: 600; color: var(--elm); }
+@media (max-width: 900px) { .lead { grid-template-columns: 1fr; } .lead .pic { min-height: 0; aspect-ratio: 4 / 3.2; order: -1; } .lead .body { padding: 28px 24px; } .minis { grid-template-columns: 1fr; } }
+@media (max-width: 420px) { .mini { grid-template-columns: 88px 1fr; } .mini img { width: 88px; height: 88px; } }
+
+/* Reviews wall */
+.reviews { background: var(--cyprus); overflow: hidden; }
+.reviews h2 { color: var(--alabaster); }
+.reviews h2 em.s { color: var(--almond); }
+.reviews .kicker { color: var(--ecru); }
+.reviews .head-row p { color: var(--on-dark-muted); }
+.score { display: flex; gap: 14px; align-items: center; color: var(--alabaster); }
+.score b { font: 800 54px/1 var(--f-display); letter-spacing: -0.04em; }
+.score .stars { color: var(--ecru); letter-spacing: 2px; display: block; }
+.score span { font-size: 14px; color: var(--on-dark-muted); }
+.marquee { display: grid; gap: 14px; }
+.lane { display: flex; gap: 14px; width: max-content; animation: slide 70s linear infinite; }
+.lane.rev { animation-direction: reverse; animation-duration: 80s; }
+.marquee:hover .lane, .marquee:focus-within .lane { animation-play-state: paused; }
+@keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.rv { width: 340px; flex: none; background: var(--alabaster); border-radius: 16px; padding: 18px 20px; display: grid; gap: 8px; align-content: start; }
+.rv .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.rv b { font-family: var(--f-display); color: var(--cyprus); font-size: 15px; }
+.rv .stars { color: #b0964f; font-size: 13px; letter-spacing: 1px; }
+.rv p { font-size: 14px; color: #253230; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.rv small { font-size: 12px; color: var(--muted); }
+.rv .tag { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: #8a6d2f; background: #f0e4c8; border-radius: 6px; padding: 2px 6px; }
+.reviews .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 40px; }
+@media (prefers-reduced-motion: reduce) { .lane { animation: none; } .marquee { overflow-x: auto; } }
+@media (max-width: 520px) { .rv { width: 280px; } }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.faq-side { position: sticky; top: 110px; display: grid; gap: 18px; }
+.faq-side p { color: var(--muted); }
+.ask { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; display: grid; gap: 12px; }
+.ask b { font-family: var(--f-display); color: var(--cyprus); font-size: 18px; letter-spacing: -0.01em; }
+.ask span { font-size: 14px; color: var(--muted); }
+.ask .btn { justify-self: start; }
+.faq-list { display: grid; }
+details { border-top: 1px solid var(--line); }
+details:last-child { border-bottom: 1px solid var(--line); }
+summary { list-style: none; cursor: pointer; padding: 22px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font: 600 19px/1.3 var(--f-display); color: var(--cyprus); letter-spacing: -0.015em; }
+summary::-webkit-details-marker { display: none; }
+summary .pm { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1.5px solid var(--cyprus); display: grid; place-items: center; transition: transform .2s, background .2s; }
+summary .pm svg { width: 16px; height: 16px; }
+details[open] summary .pm { transform: rotate(45deg); background: var(--cyprus); color: var(--alabaster); }
+details p { padding: 0 50px 22px 0; color: var(--muted); }
+.faq-list + .btn { margin-top: 24px; }
+@media (max-width: 900px) { .faq-grid { grid-template-columns: 1fr; gap: 28px; } .faq-side { position: static; } details p { padding-right: 0; } summary { font-size: 17px; } }
+
+/* Final CTA: outcome image with the form on top */
+.final { padding-top: 0; }
+.final-wrap { position: relative; border-radius: 32px; overflow: hidden; min-height: 640px; display: grid; align-items: center; }
+.final-wrap > .ph { position: absolute; inset: 0; background: radial-gradient(90% 90% at 80% 20%, rgba(254,234,205,.5), transparent 60%), linear-gradient(160deg, #b9a679, #5a4b2f 75%, var(--cyprus)); }
+.final-wrap > .ph .ph-tag { left: auto; right: 18px; top: 18px; max-width: 280px; justify-content: flex-end; text-align: right; }
+.final-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 460px; gap: 40px; align-items: center; padding: 48px; }
+.final-copy { display: grid; gap: 18px; color: var(--alabaster); }
+.final-copy h2 { color: var(--alabaster); font-size: clamp(40px, 5.4vw, 68px); font-weight: 800; }
+.final-copy h2 em.s { color: var(--almond); font-weight: 400; }
+.final-copy p { font-size: 18px; max-width: 40ch; color: var(--alabaster); }
+.ticks { display: grid; gap: 8px; font-size: 15px; }
+.ticks span::before { content: "✓"; color: var(--almond); font-weight: 700; margin-right: 8px; }
+.form-card { background: var(--alabaster); border-radius: 22px; padding: 28px; display: grid; gap: 14px; box-shadow: 0 30px 60px rgba(1,10,9,.3); }
+.form-card h3 { font-size: 24px; }
+.form-card .sub { font-size: 14px; color: var(--muted); margin-top: -6px; }
+.form-card form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-card label { display: grid; gap: 5px; font-size: 13px; font-weight: 600; color: var(--cyprus); min-width: 0; }
+.form-card input, .form-card select { width: 100%; font: 400 15px var(--f-sans); padding: 12px 13px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--card); color: var(--ink); }
+.form-card .full { grid-column: 1 / -1; }
+.form-card button.btn { width: 100%; padding: 16px; font-size: 16px; }
+.form-card .note { grid-column: 1 / -1; font-size: 12.5px; color: var(--muted); text-align: center; }
+.form-done { grid-column: 1 / -1; background: #e6efec; color: var(--cyprus); border-radius: var(--r-sm); padding: 11px 13px; font-size: 14px; }
+@media (max-width: 960px) { .final-inner { grid-template-columns: 1fr; padding: 28px 20px; } .final-wrap { min-height: 0; } .final-copy { padding-top: 140px; } }
+@media (max-width: 460px) { .form-card { padding: 20px; } .form-card form { grid-template-columns: 1fr; } }
+
+/* Footer */
+footer { background: var(--deep); color: var(--on-dark-muted); font-size: 14px; }
+footer .wrap { padding-block: 64px 110px; }
+.foot-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 0.8fr; gap: 32px; }
+footer h4 { color: var(--alabaster); font: 600 14px var(--f-sans); letter-spacing: 0; margin-bottom: 14px; }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--almond); }
+.foot-brand img { height: 40px; width: auto; }
+.foot-brand p { margin-top: 14px; color: var(--alabaster); max-width: 30ch; }
+.news { display: flex; gap: 8px; margin-top: 18px; max-width: 340px; }
+.news input { flex: 1; min-width: 0; padding: 11px 14px; border-radius: 999px; border: 0; font: 400 14px var(--f-sans); background: var(--alabaster); color: var(--ink); }
+.news .btn { padding: 11px 16px; background: var(--elm); color: var(--alabaster); }
+.legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(245,242,235,.14); display: grid; gap: 14px; font-size: 12px; line-height: 1.6; }
+.legal b { color: var(--alabaster); }
+@media (max-width: 900px) { .foot-top { grid-template-columns: 1fr 1fr; } .foot-brand { grid-column: 1 / -1; } }
+
+/* Sticky action bar: WhatsApp everywhere, plus Book a call on phones */
+.dock { position: fixed; z-index: 35; right: max(18px, calc(env(safe-area-inset-right, 0px) + 12px)); bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 12px)); display: flex; gap: 8px; }
+.dock a { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 13px 18px; border-radius: 999px; font-weight: 600; font-size: 14.5px; box-shadow: 0 12px 30px rgba(1,10,9,.25); }
+.dock .d-wa { background: #25d366; color: #05331b; }
+.dock .d-wa svg { width: 20px; height: 20px; }
+.dock .d-book { display: none; background: var(--cyprus); color: var(--alabaster); }
+@media (max-width: 640px) {
+  .dock { left: 0; right: 0; bottom: 0; padding: 10px max(12px, env(safe-area-inset-right, 0px)) calc(10px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); background: rgba(245,242,235,.96); backdrop-filter: blur(10px); border-top: 1px solid var(--line); }
+  .dock a { flex: 1; justify-content: center; box-shadow: none; }
+  .dock .d-book { display: inline-flex; }
+  section { padding-block: 72px; }
+  .after-hero { padding-top: 120px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 7h3l2-2.5h6L17 7h3v12H4z M12 10a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20h-6v-5h-6v5H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M3 16v-4l2-5h14l2 5v4h-2.5M3 16h2.5m3 0h7M5.5 16a1.75 1.75 0 1 0 3.5 0 1.75 1.75 0 0 0-3.5 0zm10 0a1.75 1.75 0 1 0 3.5 0 1.75 1.75 0 0 0-3.5 0zM3.5 12h17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8M5 18.5a1.5 1.5 0 1 0 0-.01M16.5 18.5a1.5 1.5 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-build" viewBox="0 0 24 24"><path d="M3 20h18M5 20V10l7-5 7 5v10M9 20v-5h6v5M5 10h14M12 5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><path d="M3 8h18v11H3zM8 8V5h8v3M3 13h18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-family" viewBox="0 0 24 24"><path d="M7 7a2 2 0 1 0 0-.01M17 7a2 2 0 1 0 0-.01M12 12a1.6 1.6 0 1 0 0-.01M4 20v-6a3 3 0 0 1 6 0v6M14 20v-6a3 3 0 0 1 6 0v6M10.5 20v-3.5a1.5 1.5 0 0 1 3 0V20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M14.5 4a5.5 5.5 0 0 0-5.2 7.3L3 17.6V21h3.4l.6-.6V19h1.5v-1.5H10l1.2-1.2A5.5 5.5 0 1 0 14.5 4zm1.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M4 8h16M7 8l-3 6a3 3 0 0 0 6 0zM17 8l-3 6a3 3 0 0 0 6 0z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6zM8.5 12l2.5 2.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.5 7v8h2.6v-8zm1.3-4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 10v8h2.6v-4.3c0-1.2.6-1.8 1.5-1.8s1.4.6 1.4 1.8V18H19v-4.9c0-2.4-1.3-3.3-3-3.3-1.2 0-2 .6-2.4 1.2V10z" fill="currentColor"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.5 21.5l4.9-1.3A9.4 9.4 0 1 0 12 2.5zm0 1.7a7.7 7.7 0 1 1-4 14.3l-.3-.2-2.9.8.8-2.8-.2-.3A7.7 7.7 0 0 1 12 4.2zm-3.2 3.9c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.3 2.5 1 3 .8 3.5.7.6 0 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4l-.5-.3-1.8-.9c-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="topbar"><a href="#">Got questions? Ask us live every Wednesday on Facebook Live →</a></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Sira Finance home"><img src="assets/sira-logo-light.png" alt="Sira Finance"></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="#mission">About</a>
+      <a href="#finance">Home Finance</a>
+      <a href="#finance">Car &amp; Asset Finance</a>
+      <a href="#finance">Commercial Finance</a>
+      <a href="#why">Why Sira</a>
+      <a href="#">Tools</a>
+      <a href="#faq">Resources</a>
+    </nav>
+    <a class="btn btn-almond nav-cta" href="#book">Book a strategy call</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </div>
+</header>
+
+<main>
+<!-- HERO: one representative photo, the "I want to..." builder, four service blocks breaking out below -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="rating"><span class="stars" aria-hidden="true">★★★★★</span><b>5.0</b> from [20+] Google reviews</span>
+        <h1>Own your home, car and business. <em class="s">The halal way.</em></h1>
+        <p class="hero-lede">Sira is an Islamic finance broker. We compare Shariah-compliant options across multiple funders, handle the paperwork and stay with you long after settlement.</p>
+        <form class="builder" id="builder">
+          <label for="goal">I want to</label>
+          <select id="goal" aria-label="What do you want to do?">
+            <option value="first-home">buy my first home</option>
+            <option value="switch">switch to Islamic finance</option>
+            <option value="rate">check my current rate</option>
+            <option value="invest">buy an investment property</option>
+            <option value="car">finance a car</option>
+            <option value="business">finance equipment or a business</option>
+            <option value="develop">fund a development</option>
+          </select>
+          <button class="btn btn-almond" type="submit">Show me how <svg><use href="#i-arrow"/></svg></button>
+        </form>
+        <div class="hero-quick"><a href="#book">Book a strategy call</a><a href="#book">2-minute pre-assessment</a><a href="https://wa.me/61424399396">WhatsApp a broker</a></div>
+      </div>
+      <div class="hero-photo">
+        <div class="ph"><svg class="ph-icon"><use href="#i-family"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Photo: young Australian Muslim family at home. Warm, natural light, not studio stock</div></div>
+        <div class="float"><span class="wa-dot"><svg><use href="#i-wa"/></svg></span><div><b>Your broker is on WhatsApp</b>Real answers, usually same day</div></div>
+      </div>
+    </div>
+    <div class="services">
+      <a class="svc" href="#finance">
+        <div class="ph sand"><svg class="ph-icon"><use href="#i-home"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Young family, front of house</div></div>
+        <div class="body"><h3>Home Finance <svg><use href="#i-arrow"/></svg></h3><p>Buy, build, invest or switch</p></div>
+      </a>
+      <a class="svc" href="#finance">
+        <div class="ph sand"><svg class="ph-icon"><use href="#i-car"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Family car in a driveway</div></div>
+        <div class="body"><h3>Car Finance <svg><use href="#i-arrow"/></svg></h3><p>New and used, personal or business</p></div>
+      </a>
+      <a class="svc" href="#finance">
+        <div class="ph sand"><svg class="ph-icon"><use href="#i-truck"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Trucks or machinery on site</div></div>
+        <div class="body"><h3>Commercial &amp; Asset <svg><use href="#i-arrow"/></svg></h3><p>Equipment, fleet and premises</p></div>
+      </a>
+      <a class="svc" href="#finance">
+        <div class="ph sand"><svg class="ph-icon"><use href="#i-build"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Half-built home, frame up</div></div>
+        <div class="body"><h3>Development <svg><use href="#i-arrow"/></svg></h3><p>Duplexes, townhouses and sites</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF: stats (Muneer to choose) + video testimonials -->
+<section class="proof after-hero">
+  <div class="wrap">
+    <div class="stat-row">
+      <div class="stat"><b>[$XXM+]</b><span>in Islamic finance settled</span></div>
+      <div class="stat"><b>[XXX+]</b><span>people helped</span></div>
+      <div class="stat"><b>[90%]</b><span>approved within [2 weeks]</span></div>
+      <div class="stat"><b>5.0</b><span><span class="stars" aria-hidden="true">★★★★★</span> Google rating</span></div>
+    </div>
+    <div class="vids">
+      <div class="vids-copy">
+        <span class="kicker">Client stories</span>
+        <h3>Don't take our word for it</h3>
+        <p>Real Sira clients on what the process was actually like.</p>
+        <a class="btn btn-dark" href="#book" style="justify-self:start">Book a strategy call <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="vid-row">
+        <a class="vid" href="#"><div class="ph"><div class="ph-tag"><svg><use href="#i-cam"/></svg>Video still</div></div><span class="play"><svg><use href="#i-play"/></svg></span><div class="cap"><b>[Client name]</b>First home · 1:20</div></a>
+        <a class="vid" href="#"><div class="ph"><div class="ph-tag"><svg><use href="#i-cam"/></svg>Video still</div></div><span class="play"><svg><use href="#i-play"/></svg></span><div class="cap"><b>[Client name]</b>Switched from a bank · 0:58</div></a>
+        <a class="vid" href="#"><div class="ph"><div class="ph-tag"><svg><use href="#i-cam"/></svg>Video still</div></div><span class="play"><svg><use href="#i-play"/></svg></span><div class="cap"><b>[Client name]</b>Investment property · 1:05</div></a>
+        <a class="vid" href="#"><div class="ph"><div class="ph-tag"><svg><use href="#i-cam"/></svg>Video still</div></div><span class="play"><svg><use href="#i-play"/></svg></span><div class="cap"><b>[Client name]</b>Business finance · 1:12</div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION: why Sira exists -->
+<section id="mission">
+  <div class="wrap mission-grid">
+    <aside class="dict" aria-label="Meaning of Sira">
+      <div class="head"><span class="word">Sira</span><span class="ar" lang="ar" dir="rtl">سيرة</span></div>
+      <div class="pron">/ˈsiː.ra/ · Arabic · noun</div>
+      <ol>
+        <li>A journey; the path a person travels.</li>
+        <li>The story of a life, and how it is lived.</li>
+      </ol>
+      <p class="usage">"Every family's sira includes a home of their own."</p>
+    </aside>
+    <div class="mission-copy">
+      <span class="kicker">Our mission</span>
+      <h2 class="big">Levelling up Australian Muslims, <em class="s">financially.</em></h2>
+      <p>A home means <strong>security and peace of mind</strong>. A business means independence. We want more Muslim families to have both, without compromising on what they believe.</p>
+      <p>When our community is financially strong, it gives more, builds more and lifts each other up in every field. Every client we help is part of that journey.</p>
+      <div class="gap">
+        <b>80.1%</b>
+        <p>of conventional home loans in Australia go through a broker. In Islamic finance, most people are still doing it alone. We started Sira to change that.</p>
+        <small>[Source: broker association figure - confirm wording and date]</small>
+      </div>
+      <div class="proofs">
+        <a class="pod" href="#"><div class="ph"><svg class="ph-icon"><use href="#i-mic"/></svg></div><div><small>Listen</small><b>[Podcast name]</b><span>Halal wealth, property and legacy. Latest episode →</span></div></a>
+        <div class="events"><b>[XX]</b><span>community events sponsored and hosted</span></div>
+      </div>
+      <div class="ctas"><a class="btn btn-dark" href="#book">Start your journey <svg><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="#">Our story</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CLIENTS CHOOSE SIRA: deck content + founder video -->
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="kicker">Why choose Sira</span>
+        <h2 class="big">Islamic finance, <em class="s">without the headache.</em></h2>
+      </div>
+      <p style="max-width:420px">Six reasons clients pick us, condensed from our Why Sira deck. Or hear it straight from Muneer.</p>
+    </div>
+    <div class="why-grid">
+      <a class="film" href="#" aria-label="Watch the Why Sira video">
+        <img src="assets/team-muneer.jpg" alt="Muneer Saleh">
+        <span class="play"><svg><use href="#i-play"/></svg></span>
+        <div class="cap"><small>Watch · [2:30]</small><b>Why Sira? Muneer explains, unscripted.</b></div>
+      </a>
+      <div>
+        <ul class="reason-list">
+          <li><span class="ic"><svg><use href="#i-layers"/></svg></span><div><h3>Choice, not one bank's offer</h3><p>We compare multiple Shariah-compliant funders and put your interests first.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-doc"/></svg></span><div><h3>The admin is on us</h3><p>Documents, forms and funder follow-ups handled, with updates at every stage.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-chat"/></svg></span><div><h3>A broker you can message</h3><p>Talk to the person running your file on WhatsApp. No call centre.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-scale"/></svg></span><div><h3>The real numbers, in writing</h3><p>Costs, features and trade-offs laid out before you commit.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-trend"/></svg></span><div><h3>Set up for what's next</h3><p>Finance structured to help you build an investment portfolio over time.</p></div></li>
+          <li><span class="ic"><svg><use href="#i-shield"/></svg></span><div><h3>Still here after settlement</h3><p>An annual Loyalty Check keeps your finance working for you.</p></div></li>
+        </ul>
+        <div class="ctas"><a class="btn btn-almond" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a><a class="btn btn-line-light" href="#">Why use a broker?</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE FINANCE: four clear columns, products may appear in more than one -->
+<section id="finance">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="kicker">What we finance</span>
+        <h2 class="big">Whatever you're building, <em class="s" style="color:var(--elm)">we can fund it.</em></h2>
+      </div>
+      <a class="btn btn-dark" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a>
+    </div>
+    <div class="cats">
+      <article class="cat">
+        <div class="ph"><svg class="ph-icon"><use href="#i-home"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Family at home</div></div>
+        <h3>Personal</h3><p>Homes for you and your family.</p>
+        <ul><li><a href="#">First home buyers <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Investment property <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Refinance and switch <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Equity and debt consolidation <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Construction and land <svg><use href="#i-arrow"/></svg></a></li></ul>
+        <a class="more" href="#">Explore personal</a>
+      </article>
+      <article class="cat">
+        <div class="ph"><svg class="ph-icon"><use href="#i-brief"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Business owner at work</div></div>
+        <h3>Business</h3><p>Premises, equipment and growth.</p>
+        <ul><li><a href="#">Commercial property <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Equipment finance <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Business finance <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Investment property <svg><use href="#i-arrow"/></svg></a></li></ul>
+        <a class="more" href="#">Explore business</a>
+      </article>
+      <article class="cat">
+        <div class="ph"><svg class="ph-icon"><use href="#i-car"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Car or work ute</div></div>
+        <h3>Auto</h3><p>Cars, utes, trucks and fleet.</p>
+        <ul><li><a href="#">Personal car finance <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Business vehicles <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Trucks and machinery <svg><use href="#i-arrow"/></svg></a></li></ul>
+        <a class="more" href="#">Explore auto</a>
+      </article>
+      <article class="cat">
+        <div class="ph"><svg class="ph-icon"><use href="#i-build"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Development site</div></div>
+        <h3>Private funding</h3><p>Flexible funding for projects.</p>
+        <ul><li><a href="#">Development finance <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Private lending <svg><use href="#i-arrow"/></svg></a></li><li><a href="#">Bridging finance <svg><use href="#i-arrow"/></svg></a></li></ul>
+        <a class="more" href="#">Explore private funding</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS: working-culture photo banner + steps -->
+<section class="how">
+  <div class="wrap">
+    <div class="banner">
+      <img src="assets/team-working.jpg" alt="Sira brokers in conversation">
+      <div class="txt"><span class="kicker">How it works</span><h2>From first chat to keys, <em class="s">in four steps.</em></h2></div>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="n">1</span><h3>Tell us your goal</h3><p>A few quick questions about what you want to finance.</p><span class="when">2 minutes</span></li>
+      <li class="step"><span class="n">2</span><h3>Talk to your broker</h3><p>We call to understand your situation and answer your questions.</p><span class="when">Within 12 business hours</span></li>
+      <li class="step"><span class="n">3</span><h3>See your options</h3><p>Funders compared in writing, with features, risks and trade-offs explained.</p><span class="when">Within 3 business days</span></li>
+      <li class="step"><span class="n">4</span><h3>Settle and stay supported</h3><p>We manage approval to settlement, then review your finance every year.</p><span class="when">For the long run</span></li>
+    </ol>
+    <div class="ctas"><a class="btn btn-dark" href="#book">Start step one <svg><use href="#i-arrow"/></svg></a><a class="btn btn-line" href="#">See our full process</a></div>
+  </div>
+</section>
+
+<!-- TEAM: Muneer first and largest -->
+<section class="team">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="kicker">The team</span><h2 class="big">Real people. <em class="s" style="color:var(--elm)">Five-star results.</em></h2></div>
+      <p style="max-width:380px">The people who'll guide you from your first call to settlement and beyond.</p>
+    </div>
+    <article class="lead">
+      <div class="body">
+        <span class="role">Founder · Head Broker and Managing Director</span>
+        <h3>Muneer Saleh</h3>
+        <p>Muneer has helped [#] families into Shariah-compliant finance and knows the Islamic funder panel inside out. He started Sira so Muslim families would have an advocate in their corner, not just a product. [Add background, credentials and his personal why.]</p>
+        <blockquote>"[One or two lines from Muneer on why this work matters to him.]"</blockquote>
+        <div class="socials"><a href="#"><svg><use href="#i-in"/></svg>LinkedIn</a><a href="#"><svg><use href="#i-ig"/></svg>Instagram</a><a href="#"><svg><use href="#i-mic"/></svg>[Personal brand / podcast]</a></div>
+        <div><a class="btn btn-almond" href="#book">Book a call with Muneer <svg><use href="#i-arrow"/></svg></a></div>
+      </div>
+      <div class="pic"><img src="assets/team-muneer.jpg" alt="Muneer Saleh"></div>
+    </article>
+    <div class="minis">
+      <article class="mini"><img src="assets/team-nirvan.jpg" alt="Nirvan Jamshidpey"><div><h4>Nirvan Jamshidpey</h4><span class="role">Head of Risk and Operations</span><p>Property lawyer by training (ex-King &amp; Wood Mallesons). Every file structured properly, every settlement on time.</p><a href="#">LinkedIn →</a></div></article>
+      <article class="mini"><img src="assets/team-arshad.jpg" alt="Arshad Zacky"><div><h4>Arshad Zacky</h4><span class="role">Head of Growth</span><p>Connects you with trusted builders, buyer's agents and community groups.</p><a href="#">LinkedIn →</a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS: two moving lanes, 12+ verbatim reviews -->
+<section class="reviews">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="kicker">Reviews</span><h2 class="big">Hear what <em class="s">our clients</em> have to say.</h2></div>
+      <div class="score"><b>5.0</b><div><span class="stars" aria-hidden="true">★★★★★</span><span>[20+] reviews on Google</span></div></div>
+    </div>
+  </div>
+  <div class="marquee" id="marquee" tabindex="0" aria-label="Client reviews, moving. Hover or focus to pause."></div>
+  <div class="wrap"><div class="ctas"><a class="btn btn-almond" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a><a class="btn btn-line-light" href="#">Read all reviews on Google</a></div></div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap faq-grid">
+    <div class="faq-side">
+      <span class="kicker">FAQ</span>
+      <h2 class="big">Good questions.</h2>
+      <p>The ones we hear most. [Muneer to confirm the final list.]</p>
+      <div class="ask"><b>Still have a question?</b><span>Ask a broker directly. Most WhatsApp messages get a same-day reply.</span><a class="btn btn-dark" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a></div>
+    </div>
+    <div>
+      <div class="faq-list">
+        <details open><summary>How is Islamic finance different from a normal loan?<span class="pm"><svg><use href="#i-plus"/></svg></span></summary><p>No interest is charged on money lent. The funder buys or co-owns the asset with you and earns rent or a profit margin instead, through structures like Ijarah, Diminishing Musharakah and Murabaha.</p></details>
+        <details><summary>Can I switch my existing loan?<span class="pm"><svg><use href="#i-plus"/></svg></span></summary><p>In most cases, yes. We compare your options, show you the real numbers and manage the switch for you.</p></details>
+        <details><summary>Will it cost me more than a bank loan?<span class="pm"><svg><use href="#i-plus"/></svg></span></summary><p>It depends on you and the funder. The gap is often smaller than people expect, and comparing is how you find out.</p></details>
+        <details><summary>How much deposit do I need?<span class="pm"><svg><use href="#i-plus"/></svg></span></summary><p>[Typical deposit range, and which first home buyer schemes apply.]</p></details>
+        <details><summary>What does Sira charge?<span class="pm"><svg><use href="#i-plus"/></svg></span></summary><p>No upfront processing fee (a small credit-check fee may apply). Brokers are usually paid by the funder at settlement. Our credit guide explains how.</p></details>
+      </div>
+      <a class="btn btn-line" href="#">See all FAQs <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA: the outcome, not the team -->
+<section class="final" id="book">
+  <div class="wrap">
+    <div class="final-wrap">
+      <div class="ph"><svg class="ph-icon"><use href="#i-key"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Full-bleed photo: the outcome. Keys handed over at the front door of a new home</div></div>
+      <div class="final-inner">
+        <div class="final-copy">
+          <h2>Ready when you are. <em class="s">Let's get you home.</em></h2>
+          <p>Two minutes now. A broker on the phone within 12 business hours. Your options in writing within 3 days.</p>
+          <div class="ticks"><span>No obligation, no pressure</span><span>Shariah-compliant options only</span><span>One broker from start to settlement</span></div>
+        </div>
+        <div class="form-card">
+          <h3>Start my pre-assessment</h3>
+          <p class="sub">Takes about 2 minutes.</p>
+          <!-- Replace with the CRM web form embed, styled to these colours -->
+          <form id="leadForm" novalidate>
+            <label for="f-name">Name<input id="f-name" autocomplete="name" placeholder="Your name" required></label>
+            <label for="f-mobile">Mobile<input id="f-mobile" type="tel" autocomplete="tel" placeholder="04XX XXX XXX" required></label>
+            <label class="full" for="f-email">Email<input id="f-email" type="email" autocomplete="email" placeholder="you@email.com" required></label>
+            <label for="f-state">State<select id="f-state"><option value="">Select</option><option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select></label>
+            <label for="f-goal">Goal<select id="f-goal"><option value="">Select one</option><option value="first-home">First home</option><option value="switch">Switch my loan</option><option value="rate">Check my rate</option><option value="invest">Investment property</option><option value="car">Car</option><option value="business">Business or equipment</option><option value="develop">Development</option></select></label>
+            <div class="full"><button class="btn btn-dark" type="submit">Get my options <svg><use href="#i-arrow"/></svg></button></div>
+            <p class="note">Or WhatsApp us on +61 424 399 396</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="assets/sira-logo-light.png" alt="Sira Finance">
+        <p>The smarter path to Islamic finance in Australia.</p>
+        <form class="news" onsubmit="event.preventDefault()"><input id="f-news" type="email" placeholder="Email for our newsletter" aria-label="Email for our newsletter"><button class="btn" type="submit">Subscribe</button></form>
+      </div>
+      <div><h4>Links</h4><ul><li><a href="#">Credit Guide</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms and Conditions</a></li><li><a href="#">Compliments and Concerns</a></li><li><a href="#">Calculators</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>info@sirafinance.com.au</li><li>+61 424 399 396</li><li><a href="https://wa.me/61424399396">WhatsApp</a></li><li><a href="#book">Book a strategy call</a></li></ul></div>
+      <div><h4>Social</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">TikTok</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <div><b>Disclosure</b><br>Credit Representative Number: 575590. Sira Pty Ltd ABN 51 692 867 628 (Credit Representative Number 575591) are credit representatives of Purple Circle Financial Services Pty Ltd ABN 21 611 305 170, Australian Credit Licence Number 486112.</div>
+      <div><b>General information</b><br>The information on this website is general in nature and does not take into account your objectives, financial situation or needs. All finance is subject to the funder's eligibility and approval criteria.</div>
+      <div>© 2026 Sira Finance. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<div class="dock"><a class="d-book" href="#book">Book a call</a><a class="d-wa" href="https://wa.me/61424399396"><svg><use href="#i-wa"/></svg>WhatsApp</a></div>
+
+<script>
+(function () {
+  var menuBtn = document.getElementById('menuBtn'), links = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function () { var o = links.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); });
+  links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); } });
+
+  // Sentence builder: in the live site each option links to its own page; here it pre-fills the form
+  document.getElementById('builder').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('f-goal').value = document.getElementById('goal').value;
+    document.getElementById('book').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Reviews: one real review, the rest are placeholders for verbatim Google reviews
+  var real = { n: 'Alaa Hafda', w: '2 months ago', t: "I had a really positive experience working with Muneer. As someone who isn't an expert in lending and mortgages, I appreciated how patient he was in explaining everything and helping me understand my options. He was upfront, transparent, and genuinely seemed to care about helping me make the right financial decision rather than pushing me into something I wasn't ready for." };
+  var ph = [
+    'Paste a full Google review here, word for word, typos included.',
+    'A first home buyer review, ideally mentioning how quickly it was approved.',
+    'A review from someone who switched from a conventional bank loan.',
+    'A review that mentions WhatsApp or how easy the paperwork was.',
+    'An investor review about building a portfolio.',
+    'A car or business finance review to show the range.',
+    'A review that names Nirvan or Arshad.',
+    'A review that mentions the annual Loyalty Check.',
+    'A review from a client in another state.',
+    'Short and punchy reviews work well in this wall too.',
+    'Twelfth review. The wall takes as many as you add.'
+  ].map(function (t) { return { n: '[Client name]', w: '[Date]', t: t, ph: true }; });
+  var all = [real].concat(ph);
+  function card(r) { return '<article class="rv"><div class="top"><b>' + r.n + '</b><span class="stars" aria-label="5 stars">★★★★★</span></div><p>' + r.t + '</p><div class="top"><small>' + r.w + ' · Google</small>' + (r.ph ? '<span class="tag">Placeholder</span>' : '') + '</div></article>'; }
+  var a = all.slice(0, 6), b = all.slice(6);
+  function lane(list, cls) { var html = list.map(card).join(''); return '<div class="lane ' + cls + '">' + html + html + '</div>'; }
+  document.getElementById('marquee').innerHTML = lane(a, '') + lane(b, 'rev');
+  // Duplicated copies are for the seamless loop only; hide them from screen readers
+  document.querySelectorAll('.lane').forEach(function (l) { var c = l.children; for (var i = c.length / 2; i < c.length; i++) c[i].setAttribute('aria-hidden', 'true'); });
+
+  document.getElementById('leadForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, old = f.querySelector('.form-done'); if (old) old.remove();
+    var m = document.createElement('p'); m.className = 'form-done';
+    m.textContent = f.checkValidity() ? 'Thanks. On the live site this goes straight into the CRM and a broker calls you within 12 business hours.' : 'Please add your name, mobile and email so we can call you back.';
+    f.appendChild(m);
+  });
+})();
+</script>
+</body>
+</html>

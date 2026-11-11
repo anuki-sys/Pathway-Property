@@ -1,0 +1,845 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sira Homepage Option A</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Noto+Naskh+Arabic:wght@500&display=swap">
+<style>
+/* Option A "Clear path": stays close to Home V2, light Alabaster page, service tiles in the hero,
+   one dark Cyprus band for the mission and one for the team. Single brand look (no dark mode). */
+:root {
+  --elm: #206e65;
+  --cyprus: #0f3e3a;
+  --ink: #010a09;
+  --alabaster: #f5f2eb;
+  --almond: #feeacd;
+  --ecru: #c5b085;
+  --card: #ffffff;
+  --line: #e4ded1;
+  --muted: #4d5a57;
+  --on-dark-muted: #b9c8c4;
+  --f-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --f-arabic: "Noto Naskh Arabic", "Geeza Pro", "Arial", serif;
+  --r-lg: 20px;
+  --r-md: 14px;
+  --r-sm: 10px;
+  --wrap: 1180px;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--alabaster); color: var(--ink); font: 400 16px/1.55 var(--f-sans); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+h1, h2, h3, h4 { margin: 0; color: var(--cyprus); line-height: 1.08; letter-spacing: -0.025em; text-wrap: balance; font-weight: 600; }
+p { margin: 0; }
+em.s { font-family: var(--f-serif); font-style: italic; font-weight: 400; letter-spacing: -0.01em; color: var(--elm); }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+section { padding-block: 96px; }
+.eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--elm); }
+.sec-head { display: grid; gap: 14px; justify-items: center; text-align: center; margin-bottom: 48px; }
+.sec-head h2 { font-size: clamp(32px, 4.4vw, 50px); max-width: 18ch; }
+.sec-head p { color: var(--muted); max-width: 56ch; }
+.ph-note { font-size: 12px; color: var(--muted); }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 10px; font: 600 15px/1 var(--f-sans); text-decoration: none; border: 1.5px solid transparent; cursor: pointer; transition: transform .15s ease, background .15s ease; white-space: nowrap; }
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible, a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--ecru); outline-offset: 2px; }
+.btn-primary { background: var(--cyprus); color: var(--alabaster); }
+.btn-primary:hover { background: var(--elm); }
+.btn-ghost { background: transparent; color: var(--cyprus); border-color: var(--cyprus); }
+.btn-light { background: var(--alabaster); color: var(--cyprus); }
+.btn-almond { background: var(--almond); color: var(--cyprus); }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 44px; }
+
+/* Announcement + nav */
+.topbar { background: var(--cyprus); color: var(--alabaster); font-size: 14px; font-weight: 500; text-align: center; }
+.topbar a { display: block; padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); text-decoration: none; }
+.topbar a span { color: var(--almond); }
+header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(245, 242, 235, .94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header.nav .wrap { display: flex; align-items: center; gap: 24px; height: 72px; }
+.logo img { height: 34px; width: auto; }
+.nav-links { display: flex; gap: 22px; margin-left: auto; font-size: 14.5px; font-weight: 500; color: var(--cyprus); }
+.nav-links a { text-decoration: none; }
+.nav-links a:hover { color: var(--elm); }
+.nav-cta { padding: 11px 16px; font-size: 14px; }
+.menu-btn { display: none; margin-left: auto; background: none; border: 1.5px solid var(--cyprus); border-radius: 8px; padding: 8px 10px; color: var(--cyprus); font: 600 14px var(--f-sans); }
+@media (max-width: 1020px) {
+  .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--alabaster); border-bottom: 1px solid var(--line); padding: 8px max(20px, env(safe-area-inset-left, 0px)) 16px; }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .menu-btn { display: block; }
+  .nav-cta { display: none; }
+}
+
+/* Photo placeholder: stands in for a real photo until the shoot or stock is chosen */
+.ph { position: relative; overflow: hidden; background:
+  radial-gradient(120% 90% at 85% 0%, rgba(197, 176, 133, .38), transparent 60%),
+  linear-gradient(160deg, #2a7a70 0%, var(--cyprus) 100%); color: var(--alabaster); }
+.ph::before { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 1px, transparent 1px 14px); }
+.ph .ph-tag { position: absolute; left: 12px; bottom: 12px; right: 12px; font-size: 12px; line-height: 1.35; color: var(--almond); display: flex; gap: 6px; align-items: flex-start; }
+.ph .ph-tag svg { width: 14px; height: 14px; flex: none; margin-top: 1px; }
+.ph .ph-icon { position: absolute; top: 50%; left: 50%; width: 64px; height: 64px; transform: translate(-50%, -60%); opacity: .55; }
+.ph.light { background: radial-gradient(120% 90% at 15% 0%, rgba(254,234,205,.9), transparent 60%), linear-gradient(160deg, #e9e2d2, #d9cfb9); color: var(--cyprus); }
+.ph.light .ph-tag { color: var(--cyprus); }
+
+/* Hero */
+.hero { padding-block: 56px 72px; }
+.hero-grid { display: grid; grid-template-columns: 1.02fr 1fr; gap: 48px; align-items: center; }
+.badge { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 600; color: var(--cyprus); }
+.stars { color: var(--ecru); letter-spacing: 1px; }
+.hero h1 { font-size: clamp(40px, 4.9vw, 62px); margin-top: 22px; }
+.hero h1 em.s { display: block; font-size: 1.04em; }
+.hero-lede { margin-top: 22px; font-size: 18px; color: var(--muted); max-width: 46ch; }
+.hero .cta-row { justify-content: flex-start; margin-top: 30px; }
+.hero-reassure { margin-top: 18px; font-size: 13.5px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.hero-reassure span::before { content: "✓"; color: var(--elm); font-weight: 700; margin-right: 6px; }
+.tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.tile { position: relative; display: block; border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 1 / 1.02; text-decoration: none; isolation: isolate; max-width: 100%; }
+.tile .ph { position: absolute; inset: 0; }
+.tile .ph .ph-tag { top: 12px; bottom: auto; }
+.tile-label { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 16px; background: linear-gradient(to top, rgba(1,10,9,.72), transparent); color: var(--alabaster); display: flex; align-items: flex-end; justify-content: space-between; gap: 8px; z-index: 2; }
+.tile-label strong { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+.tile-label small { display: block; font-size: 13px; color: var(--almond); font-weight: 500; margin-top: 4px; }
+.tile .arrow { width: 36px; height: 36px; border-radius: 50%; background: var(--alabaster); color: var(--cyprus); display: grid; place-items: center; flex: none; transition: transform .2s; }
+.tile:hover .arrow { transform: translateX(3px); }
+.tile .arrow svg { width: 16px; height: 16px; }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .tile .ph-icon { display: none; } .tile .ph .ph-tag { font-size: 11px; } }
+@media (max-width: 420px) { .tile-label strong { font-size: 16px; } .tile .arrow { display: none; } }
+
+/* Intent options */
+.intent { padding-block: 0 88px; }
+.intent-box { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 28px; display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: start; }
+.intent-box h2 { font-size: 26px; }
+.intent-box h2 + p { margin-top: 8px; color: var(--muted); font-size: 14.5px; }
+.intent-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.intent-list a { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 16px 18px; border: 1.5px solid var(--line); border-radius: var(--r-md); text-decoration: none; font-weight: 600; color: var(--cyprus); font-size: 15px; transition: border-color .15s, background .15s; min-width: 0; }
+.intent-list a:hover { border-color: var(--elm); background: #f1f7f5; }
+.intent-list a svg { width: 16px; height: 16px; flex: none; color: var(--elm); }
+@media (max-width: 960px) { .intent-box { grid-template-columns: 1fr; } .intent-list { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .intent-list { grid-template-columns: 1fr; } }
+
+/* Proof: stats + video testimonials */
+.proof { padding-block: 0 96px; }
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 24px; display: grid; gap: 8px; align-content: space-between; min-height: 150px; }
+.stat b { font-size: clamp(34px, 3.6vw, 46px); font-weight: 600; color: var(--cyprus); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 14px; color: var(--muted); }
+.stat.feature { background: var(--cyprus); border-color: var(--cyprus); }
+.stat.feature b { color: var(--almond); }
+.stat.feature span { color: var(--on-dark-muted); }
+.videos { margin-top: 36px; display: grid; grid-template-columns: 260px repeat(3, minmax(0, 1fr)); gap: 14px; align-items: stretch; }
+.videos-intro { display: grid; gap: 10px; align-content: center; }
+.videos-intro h3 { font-size: 24px; }
+.videos-intro p { color: var(--muted); font-size: 14.5px; }
+.video { position: relative; border-radius: var(--r-md); overflow: hidden; aspect-ratio: 4 / 5; text-decoration: none; display: block; max-width: 100%; }
+.video .ph { position: absolute; inset: 0; }
+.play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 58px; height: 58px; border-radius: 50%; background: rgba(245,242,235,.95); color: var(--cyprus); display: grid; place-items: center; z-index: 2; transition: transform .2s; }
+.video:hover .play { transform: translate(-50%, -50%) scale(1.07); }
+.play svg { width: 20px; height: 20px; margin-left: 3px; }
+.video-cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 14px 14px; background: linear-gradient(to top, rgba(1,10,9,.8), transparent); color: var(--alabaster); font-size: 14px; z-index: 2; }
+.video-cap b { display: block; font-size: 15px; }
+.video-cap span { color: var(--almond); font-size: 12.5px; }
+@media (max-width: 960px) { .stats { grid-template-columns: 1fr 1fr; } .videos { grid-template-columns: 1fr 1fr 1fr; } .videos-intro { grid-column: 1 / -1; } }
+@media (max-width: 560px) { .stat { padding: 18px; min-width: 0; } .stat b { font-size: 30px; } .videos { grid-template-columns: 1fr 1fr; } .videos .video:last-child { display: none; } }
+
+/* Mission */
+.mission { background: var(--cyprus); color: var(--alabaster); position: relative; overflow: hidden; }
+.mission::after { content: "سيرة"; position: absolute; right: -2%; bottom: -12%; font-family: var(--f-arabic); font-size: clamp(180px, 26vw, 380px); color: rgba(254, 234, 205, .05); line-height: 1; pointer-events: none; }
+.mission .wrap { position: relative; z-index: 1; }
+.mission .eyebrow { color: var(--ecru); }
+.definition { display: grid; width: fit-content; max-width: 100%; gap: 2px; border-left: 2px solid var(--ecru); padding: 4px 0 4px 18px; margin: 26px 0 30px; }
+.definition .word { font-family: var(--f-serif); font-style: italic; font-size: 34px; color: var(--almond); line-height: 1.1; }
+.definition .word span { font-family: var(--f-arabic); font-style: normal; font-size: 26px; margin-left: 10px; color: var(--ecru); }
+.definition .pos { font-size: 13px; color: var(--on-dark-muted); letter-spacing: .04em; }
+.definition .mean { font-size: 16px; color: var(--alabaster); }
+.mission-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
+.mission h2 { color: var(--alabaster); font-size: clamp(34px, 4.6vw, 56px); max-width: 15ch; }
+.mission h2 em.s { color: var(--almond); }
+.mission-body { margin-top: 22px; display: grid; gap: 16px; color: var(--on-dark-muted); max-width: 56ch; font-size: 17px; }
+.mission-body strong { color: var(--alabaster); font-weight: 600; }
+.mission .cta-row { justify-content: flex-start; }
+.mission-side { display: grid; gap: 14px; }
+.gap-stat { border: 1px solid rgba(197,176,133,.4); border-radius: var(--r-lg); padding: 26px; display: grid; gap: 10px; }
+.gap-stat b { font-size: 60px; line-height: 1; color: var(--almond); font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.gap-stat p { color: var(--alabaster); }
+.gap-stat small { color: var(--on-dark-muted); font-size: 12px; }
+.podcast { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: center; background: rgba(245,242,235,.07); border-radius: var(--r-lg); padding: 16px; text-decoration: none; transition: background .15s; }
+.podcast:hover { background: rgba(245,242,235,.12); }
+.podcast .ph { aspect-ratio: 1; border-radius: var(--r-sm); background: linear-gradient(160deg, var(--ecru), #8f7a52); max-width: 100%; }
+.podcast .ph .ph-icon { opacity: .8; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+.podcast small { font-size: 12px; color: var(--ecru); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.podcast b { display: block; color: var(--alabaster); font-size: 17px; margin: 4px 0; }
+.podcast span { color: var(--on-dark-muted); font-size: 14px; }
+.community { display: flex; gap: 14px; }
+.community div { flex: 1; background: rgba(245,242,235,.07); border-radius: var(--r-md); padding: 16px; }
+.community b { display: block; font-size: 26px; color: var(--almond); font-weight: 600; font-variant-numeric: tabular-nums; }
+.community span { font-size: 13.5px; color: var(--on-dark-muted); }
+@media (max-width: 900px) { .mission-grid { grid-template-columns: 1fr; gap: 36px; } }
+
+/* Why Sira (product) */
+.why-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; align-items: stretch; }
+.founder { position: relative; border-radius: var(--r-lg); overflow: hidden; min-height: 460px; text-decoration: none; display: block; }
+.founder img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; }
+.founder::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(1,10,9,.82) 8%, rgba(1,10,9,0) 55%); }
+.founder .play { top: 42%; }
+.founder-cap { position: absolute; left: 22px; right: 22px; bottom: 22px; z-index: 2; color: var(--alabaster); display: grid; gap: 6px; }
+.founder-cap small { color: var(--almond); font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.founder-cap b { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+.founder-cap span { font-size: 13.5px; color: var(--on-dark-muted); }
+.reasons { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.reason { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: grid; gap: 10px; align-content: start; }
+.reason .ic { width: 42px; height: 42px; border-radius: 12px; background: #e8f1ef; color: var(--elm); display: grid; place-items: center; }
+.reason .ic svg { width: 22px; height: 22px; }
+.reason h3 { font-size: 19px; letter-spacing: -0.015em; }
+.reason p { color: var(--muted); font-size: 14.5px; }
+@media (max-width: 960px) { .why-grid { grid-template-columns: 1fr; } .founder { min-height: 360px; } }
+@media (max-width: 560px) { .reasons { grid-template-columns: 1fr; } }
+
+/* What we finance */
+.tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 28px; }
+.tab { display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 999px; border: 1.5px solid var(--cyprus); background: transparent; color: var(--cyprus); font: 600 14.5px var(--f-sans); cursor: pointer; }
+.tab[aria-selected="true"] { background: var(--cyprus); color: var(--alabaster); }
+.tab svg { width: 16px; height: 16px; }
+.panel { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: stretch; }
+.panel .ph { border-radius: var(--r-lg); min-height: 420px; }
+.panel-body { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 30px; display: grid; gap: 18px; align-content: start; }
+.panel-body h3 { font-size: 28px; }
+.panel-body > p { color: var(--muted); }
+.products { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.products a { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-sm); text-decoration: none; font-weight: 600; color: var(--cyprus); }
+.products a:hover { border-color: var(--elm); background: #f1f7f5; }
+.products a span { font-weight: 400; color: var(--muted); font-size: 13.5px; }
+.products a svg { width: 16px; height: 16px; color: var(--elm); flex: none; }
+.panel-body .btn { justify-self: start; }
+@media (max-width: 860px) { .panel { grid-template-columns: 1fr; } .panel .ph { min-height: 240px; } }
+
+/* How it works */
+.how { background: #efeadf; }
+.how-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+.how-photo { border-radius: var(--r-lg); overflow: hidden; position: relative; aspect-ratio: 4 / 4.4; max-width: 100%; }
+.how-photo img { width: 100%; height: 100%; object-fit: cover; }
+.how-photo .chip { position: absolute; left: 16px; bottom: 16px; right: 16px; background: rgba(245,242,235,.96); border-radius: var(--r-md); padding: 14px 16px; display: flex; gap: 12px; align-items: center; font-size: 14px; color: var(--cyprus); }
+.how-photo .chip b { display: block; font-size: 15px; }
+.how-photo .chip .dot { width: 10px; height: 10px; border-radius: 50%; background: #2fb36d; box-shadow: 0 0 0 4px rgba(47,179,109,.2); flex: none; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; counter-reset: step; }
+.step { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 18px; padding: 20px 22px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); align-items: start; }
+.step .n { width: 56px; height: 56px; border-radius: 14px; background: var(--cyprus); color: var(--almond); display: grid; place-items: center; font: 600 20px var(--f-sans); font-variant-numeric: tabular-nums; }
+.step h3 { font-size: 20px; }
+.step p { color: var(--muted); font-size: 14.5px; margin-top: 4px; }
+.step .time { display: inline-block; margin-top: 10px; font-size: 12.5px; font-weight: 600; color: var(--elm); background: #e8f1ef; border-radius: 999px; padding: 4px 10px; }
+.how .cta-row { justify-content: flex-start; margin-top: 24px; }
+@media (max-width: 900px) { .how-grid { grid-template-columns: 1fr; } .how-photo { aspect-ratio: 16 / 11; } }
+
+/* Team */
+.team { background: var(--cyprus); }
+.team .sec-head h2 { color: var(--alabaster); }
+.team .sec-head h2 em.s { color: var(--ecru); }
+.team .sec-head p { color: var(--on-dark-muted); }
+.team .eyebrow { color: var(--ecru); }
+.lead-card { display: grid; grid-template-columns: 340px 1fr; gap: 0; background: var(--card); border-radius: var(--r-lg); overflow: hidden; }
+.lead-card img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 15%; background: #e6e6e6; min-height: 380px; }
+.lead-body { padding: 36px; display: grid; gap: 14px; align-content: center; }
+.lead-body .role { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--elm); }
+.lead-body h3 { font-size: 36px; }
+.lead-body p { color: var(--muted); max-width: 60ch; }
+.lead-body blockquote { margin: 4px 0 0; font-family: var(--f-serif); font-style: italic; font-size: 24px; line-height: 1.3; color: var(--cyprus); border-left: 2px solid var(--ecru); padding-left: 16px; }
+.socials { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.socials a { display: inline-flex; align-items: center; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--cyprus); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 8px 12px; }
+.socials a:hover { border-color: var(--elm); }
+.socials svg { width: 15px; height: 15px; }
+.lead-body .cta-row { justify-content: flex-start; margin-top: 8px; }
+.members { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.member { display: grid; grid-template-columns: 150px 1fr; background: var(--card); border-radius: var(--r-lg); overflow: hidden; }
+.member img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; background: #e6e6e6; min-height: 200px; }
+.member div { padding: 22px; display: grid; gap: 6px; align-content: center; }
+.member h4 { font-size: 21px; }
+.member .role { font-size: 13px; color: var(--elm); font-weight: 600; }
+.member p { font-size: 14px; color: var(--muted); }
+.member a { font-size: 13.5px; font-weight: 600; color: var(--elm); }
+@media (max-width: 900px) { .lead-card { grid-template-columns: 1fr; } .lead-card img { aspect-ratio: 4 / 3.4; min-height: 0; height: auto; } .members { grid-template-columns: 1fr; } }
+@media (max-width: 460px) { .member { grid-template-columns: 110px 1fr; } .lead-body { padding: 24px; } }
+
+/* Reviews slider */
+.reviews-top { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin-bottom: 32px; }
+.reviews-top .sec-head { text-align: left; justify-items: start; margin: 0; }
+.g-score { display: flex; align-items: center; gap: 12px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); padding: 12px 16px; }
+.g-score b { font-size: 30px; color: var(--cyprus); font-weight: 600; }
+.g-score span { font-size: 13px; color: var(--muted); display: block; }
+.slider { position: relative; }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 32px) / 3); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 4px; }
+.track::-webkit-scrollbar { display: none; }
+.review { scroll-snap-align: start; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 22px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.review-head { display: flex; gap: 12px; align-items: center; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--elm); color: var(--alabaster); display: grid; place-items: center; font-weight: 600; flex: none; }
+.review-head b { display: block; font-size: 15px; color: var(--cyprus); }
+.review-head span { font-size: 12.5px; color: var(--muted); }
+.review p { font-size: 14.5px; color: #26302e; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.tag { justify-self: start; font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: #8a6d2f; background: #f6eedb; border-radius: 6px; padding: 3px 7px; }
+.slider-ctrl { display: flex; justify-content: center; align-items: center; gap: 14px; margin-top: 22px; }
+.slider-ctrl button { width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid var(--cyprus); background: var(--card); color: var(--cyprus); cursor: pointer; display: grid; place-items: center; }
+.slider-ctrl button svg { width: 16px; height: 16px; }
+.slider-ctrl .count { font-size: 13.5px; color: var(--muted); min-width: 70px; text-align: center; font-variant-numeric: tabular-nums; }
+@media (max-width: 900px) { .track { grid-auto-columns: calc((100% - 16px) / 2); } }
+@media (max-width: 600px) { .track { grid-auto-columns: 86%; } }
+
+/* FAQ */
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 1000px; margin: 0 auto; align-items: start; }
+details { background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); }
+summary { list-style: none; cursor: pointer; padding: 18px 20px; display: flex; justify-content: space-between; gap: 14px; font-weight: 600; color: var(--cyprus); font-size: 15.5px; }
+summary::-webkit-details-marker { display: none; }
+summary svg { width: 18px; height: 18px; flex: none; transition: transform .2s; color: var(--elm); margin-top: 2px; }
+details[open] summary svg { transform: rotate(45deg); }
+details p { padding: 0 20px 18px; color: var(--muted); font-size: 14.5px; }
+@media (max-width: 760px) { .faq-grid { grid-template-columns: 1fr; } }
+
+/* Final CTA + form */
+.final { padding-block: 0 96px; }
+.final-card { display: grid; grid-template-columns: 1.05fr 1fr; background: var(--cyprus); border-radius: 28px; overflow: hidden; }
+.final-copy { padding: 48px; display: grid; gap: 18px; align-content: start; }
+.final-copy h2 { color: var(--alabaster); font-size: clamp(34px, 4.2vw, 52px); }
+.final-copy h2 em.s { color: var(--almond); }
+.final-copy > p { color: var(--on-dark-muted); }
+#leadForm { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 6px; }
+#leadForm label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 600; color: var(--alabaster); min-width: 0; }
+input, select { width: 100%; font: 400 15px var(--f-sans); padding: 13px 14px; border-radius: var(--r-sm); border: 1px solid transparent; background: var(--alabaster); color: var(--ink); }
+.full { grid-column: 1 / -1; }
+#leadForm .btn { justify-content: center; width: 100%; padding: 16px; font-size: 16px; }
+.form-note { grid-column: 1 / -1; font-size: 13px; color: var(--on-dark-muted); text-align: center; }
+.form-done { grid-column: 1 / -1; background: rgba(254,234,205,.12); color: var(--almond); border-radius: var(--r-sm); padding: 12px 14px; font-size: 14px; }
+.final-visual { position: relative; min-height: 420px; }
+.final-visual .ph { position: absolute; inset: 0; background: linear-gradient(160deg, #c9b78f, #7e6a45); }
+.final-visual .quote { position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 2; background: rgba(245,242,235,.96); border-radius: var(--r-md); padding: 16px 18px; display: grid; gap: 6px; color: var(--cyprus); font-size: 14px; }
+.final-visual .quote b { font-family: var(--f-serif); font-style: italic; font-weight: 400; font-size: 21px; line-height: 1.25; }
+@media (max-width: 900px) { .final-card { grid-template-columns: 1fr; } .final-visual { min-height: 260px; order: -1; } .final-copy { padding: 28px 22px; } }
+@media (max-width: 480px) { #leadForm { grid-template-columns: 1fr; } }
+
+/* Footer */
+footer { background: var(--cyprus); color: var(--on-dark-muted); font-size: 14px; }
+footer .wrap { padding-block: 64px 40px; }
+.foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 0.8fr; gap: 32px; }
+footer h4 { color: var(--alabaster); font-size: 14px; font-weight: 600; letter-spacing: 0; margin-bottom: 14px; }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+footer a { text-decoration: none; }
+footer a:hover { color: var(--alabaster); }
+.foot-brand img { height: 40px; width: auto; }
+.foot-brand p { margin-top: 14px; color: var(--alabaster); max-width: 30ch; }
+.news { display: flex; gap: 8px; margin-top: 18px; max-width: 340px; }
+.news input { flex: 1; min-width: 0; padding: 11px 12px; }
+.news .btn { padding: 11px 16px; background: var(--elm); color: var(--alabaster); }
+.legal { margin-top: 48px; padding-top: 24px; border-top: 1px solid rgba(245,242,235,.15); display: grid; gap: 14px; font-size: 12px; line-height: 1.6; }
+.legal b { color: var(--alabaster); font-size: 12.5px; }
+@media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-brand { grid-column: 1 / -1; } }
+
+/* Floating WhatsApp */
+.wa { position: fixed; right: max(18px, calc(env(safe-area-inset-right, 0px) + 12px)); bottom: max(18px, calc(env(safe-area-inset-bottom, 0px) + 12px)); z-index: 30; display: inline-flex; align-items: center; gap: 8px; background: var(--elm); color: var(--alabaster); text-decoration: none; padding: 12px 16px; border-radius: 999px; font-weight: 600; font-size: 14.5px; box-shadow: 0 10px 30px rgba(15,62,58,.3); }
+.wa svg { width: 20px; height: 20px; }
+@media (max-width: 520px) { .wa span { display: none; } .wa { padding: 14px; } }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+@media (max-width: 640px) { section { padding-block: 64px; } .sec-head { margin-bottom: 32px; } }
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l12.5-7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+  <symbol id="i-cam" viewBox="0 0 24 24"><path d="M4 7h3l2-2.5h6L17 7h3v12H4z M12 10a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20h-6v-5h-6v5H3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24"><path d="M3 16v-4l2-5h14l2 5v4h-2.5M3 16h2.5m3 0h7M5.5 16a1.75 1.75 0 1 0 3.5 0 1.75 1.75 0 0 0-3.5 0zm10 0a1.75 1.75 0 1 0 3.5 0 1.75 1.75 0 0 0-3.5 0zM3.5 12h17" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8M5 18.5a1.5 1.5 0 1 0 0-.01M16.5 18.5a1.5 1.5 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-build" viewBox="0 0 24 24"><path d="M3 20h18M5 20V10l7-5 7 5v10M9 20v-5h6v5M5 10h14M12 5v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-dasharray="0"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><path d="M3 8h18v11H3zM8 8V5h8v3M3 13h18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><path d="M14.5 4a5.5 5.5 0 0 0-5.2 7.3L3 17.6V21h3.4l.6-.6V19h1.5v-1.5H10l1.2-1.2A5.5 5.5 0 1 0 14.5 4zm1.5 3a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5zM3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6zM14 3v4h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 4v16M6 20h12M4 8h16M7 8l-3 6a3 3 0 0 0 6 0zM17 8l-3 6a3 3 0 0 0 6 0z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trend" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6zM8.5 12l2.5 2.5 4.5-4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2.5 7v8h2.6v-8zm1.3-4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 10v8h2.6v-4.3c0-1.2.6-1.8 1.5-1.8s1.4.6 1.4 1.8V18H19v-4.9c0-2.4-1.3-3.3-3-3.3-1.2 0-2 .6-2.4 1.2V10z" fill="currentColor"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.5 21.5l4.9-1.3A9.4 9.4 0 1 0 12 2.5zm0 1.7a7.7 7.7 0 1 1-4 14.3l-.3-.2-2.9.8.8-2.8-.2-.3A7.7 7.7 0 0 1 12 4.2zm-3.2 3.9c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.3 2.5 1 3 .8 3.5.7.6 0 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4l-.5-.3-1.8-.9c-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z" fill="currentColor"/></symbol>
+</svg>
+
+<div class="topbar"><a href="#">Got questions? Ask us live every Wednesday on Facebook Live <span>→</span></a></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="Sira Finance home"><img src="assets/sira-logo-dark.png" alt="Sira Finance"></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main">
+      <a href="#mission">About</a>
+      <a href="#finance">Home Finance</a>
+      <a href="#finance">Car &amp; Asset Finance</a>
+      <a href="#finance">Commercial Finance</a>
+      <a href="#why">Why Sira</a>
+      <a href="#">Tools</a>
+      <a href="#faq">Resources</a>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#book">Book a call</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO: headline + 4 service blocks (Nirvan: make it obvious what Sira finances the moment you land) -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge"><span class="stars" aria-hidden="true">★★★★★</span> 5.0 on Google · [20+] reviews</span>
+      <h1>Advocates on your <em class="s">Islamic finance journey</em></h1>
+      <p class="hero-lede">Shariah-compliant finance for your home, car, business and next development. We compare multiple Islamic funders and do the legwork, so you get the right structure without the headache.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#book">Start my 2-minute pre-assessment</a>
+      </div>
+      <div class="hero-reassure"><span>No obligation</span><span>Broker on WhatsApp</span><span>Call back within 12 business hours</span></div>
+    </div>
+    <div class="tiles">
+      <a class="tile" href="#finance" data-tab="personal">
+        <div class="ph"><svg class="ph-icon"><use href="#i-home"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Photo: young Muslim family outside their new home</div></div>
+        <div class="tile-label"><div><strong>Home Finance</strong><small>Buy, build, invest or switch</small></div><span class="arrow"><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="tile" href="#finance" data-tab="auto">
+        <div class="ph"><svg class="ph-icon"><use href="#i-car"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Photo: new family car in a driveway</div></div>
+        <div class="tile-label"><div><strong>Car Finance</strong><small>Personal and business vehicles</small></div><span class="arrow"><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="tile" href="#finance" data-tab="business">
+        <div class="ph"><svg class="ph-icon"><use href="#i-truck"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Photo: trucks or machinery on a work site</div></div>
+        <div class="tile-label"><div><strong>Commercial &amp; Asset Finance</strong><small>Equipment, fleet, premises</small></div><span class="arrow"><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+      <a class="tile" href="#finance" data-tab="private">
+        <div class="ph"><svg class="ph-icon"><use href="#i-build"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>Photo: half-built residential development, frame up</div></div>
+        <div class="tile-label"><div><strong>Development Finance</strong><small>Duplexes, townhouses, sites</small></div><span class="arrow"><svg><use href="#i-arrow"/></svg></span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT BRINGS YOU HERE: text-only options that route to the right page -->
+<section class="intent">
+  <div class="wrap">
+    <div class="intent-box">
+      <div>
+        <h2>What brings you here?</h2>
+        <p>Pick one and we'll take you straight to it.</p>
+      </div>
+      <div class="intent-list">
+        <a href="#">I want to buy my first home <svg><use href="#i-arrow"/></svg></a>
+        <a href="#">I want to switch to Islamic finance <svg><use href="#i-arrow"/></svg></a>
+        <a href="#">I want to check my current rate <svg><use href="#i-arrow"/></svg></a>
+        <a href="#">I want to buy an investment property <svg><use href="#i-arrow"/></svg></a>
+        <a href="#">I want to finance a car or equipment <svg><use href="#i-arrow"/></svg></a>
+        <a href="#">I want to fund a development <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF: stats (Muneer to confirm figures) + short video testimonials -->
+<section class="proof">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat feature"><b>[$XXM+]</b><span>in Islamic finance settled</span></div>
+      <div class="stat"><b>[XXX+]</b><span>people helped into Shariah-compliant finance</span></div>
+      <div class="stat"><b>[90%]</b><span>of clients approved within [2 weeks] of applying</span></div>
+      <div class="stat"><b>5.0 <span class="stars" aria-hidden="true" style="font-size:18px">★★★★★</span></b><span>Google rating from [20+] reviews</span></div>
+    </div>
+    <div class="videos">
+      <div class="videos-intro">
+        <span class="eyebrow">Client stories</span>
+        <h3>Hear it from the families we've helped</h3>
+        <p>Short videos from real Sira clients. Tap to watch.</p>
+        <a class="btn btn-primary" href="#book" style="justify-self:start">Book a call <svg><use href="#i-arrow"/></svg></a>
+      </div>
+      <a class="video" href="#" aria-label="Watch client video testimonial 1">
+        <div class="ph light"><div class="ph-tag" style="top:12px;bottom:auto"><svg><use href="#i-cam"/></svg>Video still: client 1</div></div>
+        <span class="play"><svg><use href="#i-play"/></svg></span>
+        <div class="video-cap"><b>[Client name]</b><span>First home, [suburb] · 1:20</span></div>
+      </a>
+      <a class="video" href="#" aria-label="Watch client video testimonial 2">
+        <div class="ph light"><div class="ph-tag" style="top:12px;bottom:auto"><svg><use href="#i-cam"/></svg>Video still: client 2</div></div>
+        <span class="play"><svg><use href="#i-play"/></svg></span>
+        <div class="video-cap"><b>[Client name]</b><span>Switched from a bank loan · 0:58</span></div>
+      </a>
+      <a class="video" href="#" aria-label="Watch client video testimonial 3">
+        <div class="ph light"><div class="ph-tag" style="top:12px;bottom:auto"><svg><use href="#i-cam"/></svg>Video still: client 3</div></div>
+        <span class="play"><svg><use href="#i-play"/></svg></span>
+        <div class="video-cap"><b>[Client name]</b><span>Investment property · 1:05</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION: why Sira exists (separate from why clients choose Sira) -->
+<section class="mission" id="mission">
+  <div class="wrap mission-grid">
+    <div>
+      <span class="eyebrow">Our mission</span>
+      <div class="definition">
+        <span class="word">Sira <span lang="ar" dir="rtl">سيرة</span></span>
+        <span class="pos">Arabic · noun</span>
+        <span class="mean">Journey. The path a life takes.</span>
+      </div>
+      <h2>We're here to level up Australian Muslims <em class="s">financially.</em></h2>
+      <div class="mission-body">
+        <p>A home is more than an asset. It's <strong>security and peace of mind</strong> for the people you love. Our job is to help more Muslim families and business owners build that security without stepping outside their values.</p>
+        <p>When our community is financially strong, it can give more, build more and lift each other up in every field. That's the journey we want to be part of, one client at a time.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-almond" href="#book">Start your journey <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" style="color:var(--alabaster);border-color:rgba(245,242,235,.5)" href="#">Read our story</a>
+      </div>
+    </div>
+    <div class="mission-side">
+      <div class="gap-stat">
+        <b>80.1%</b>
+        <p>of conventional home loans in Australia are settled through a broker. Far fewer Islamic finance customers get that kind of support. We're here to close that gap.</p>
+        <small>[Source: broker association figure - confirm wording and date]</small>
+      </div>
+      <a class="podcast" href="#">
+        <div class="ph"><svg class="ph-icon"><use href="#i-mic"/></svg></div>
+        <div>
+          <small>The podcast</small>
+          <b>[Podcast name]</b>
+          <span>Conversations on halal wealth, property and building legacy. Listen to the latest episode →</span>
+        </div>
+      </a>
+      <div class="community">
+        <div><b>[XX]</b><span>community events sponsored</span></div>
+        <div><b>[XX]</b><span>podcast episodes and live Q&amp;As</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CLIENTS CHOOSE SIRA: product value, condensed from the Why Sira deck + founder video -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why Sira</span>
+      <h2>Islamic finance, <em class="s">minus the headache</em></h2>
+      <p>We handle the comparing, the paperwork and the chasing, and we're still here after settlement.</p>
+    </div>
+    <div class="why-grid">
+      <a class="founder" href="#" aria-label="Watch the Why Sira video from our founder">
+        <img src="assets/team-muneer.jpg" alt="Muneer Saleh, founder of Sira Finance">
+        <span class="play"><svg><use href="#i-play"/></svg></span>
+        <div class="founder-cap">
+          <small>Watch · [2:30]</small>
+          <b>"Why I started Sira", in Muneer's words</b>
+          <span>The informal founder video (Loom), embedded here.</span>
+        </div>
+      </a>
+      <div class="reasons">
+        <div class="reason"><span class="ic"><svg><use href="#i-layers"/></svg></span><h3>Options from multiple funders</h3><p>We compare Shariah-compliant products side by side, so you're not stuck with one bank's offer.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-doc"/></svg></span><h3>We do the admin</h3><p>Forms, documents and funder follow-ups are on us. You'll always know what's next.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-chat"/></svg></span><h3>Your broker on WhatsApp</h3><p>Message the person handling your file directly. No call centres, no ticket numbers.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-scale"/></svg></span><h3>Real numbers in writing</h3><p>Costs, features and trade-offs explained plainly before you commit to anything.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-trend"/></svg></span><h3>Built for your next step</h3><p>We structure today's finance so it supports your next property or business move.</p></div>
+        <div class="reason"><span class="ic"><svg><use href="#i-shield"/></svg></span><h3>Here after settlement</h3><p>A yearly Loyalty Check makes sure your finance still fits as life changes.</p></div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#book">Book a strategy call <svg><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#">Why use a broker?</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE FINANCE: four categories, photo switches with each tab -->
+<section id="finance" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we finance</span>
+      <h2>Finance for <em class="s">every part</em> of your life</h2>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Finance categories">
+      <button class="tab" role="tab" id="tab-personal" aria-controls="panel" aria-selected="true" data-tab="personal"><svg><use href="#i-home"/></svg>Personal</button>
+      <button class="tab" role="tab" id="tab-business" aria-controls="panel" aria-selected="false" data-tab="business"><svg><use href="#i-brief"/></svg>Business</button>
+      <button class="tab" role="tab" id="tab-auto" aria-controls="panel" aria-selected="false" data-tab="auto"><svg><use href="#i-car"/></svg>Auto</button>
+      <button class="tab" role="tab" id="tab-private" aria-controls="panel" aria-selected="false" data-tab="private"><svg><use href="#i-build"/></svg>Private funding</button>
+    </div>
+    <div class="panel" id="panel" role="tabpanel" aria-labelledby="tab-personal">
+      <div class="ph" id="panelPhoto"><svg class="ph-icon" id="panelIcon"><use href="#i-home"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg><span id="panelPhotoLabel">Photo: family in front of their home</span></div></div>
+      <div class="panel-body">
+        <h3 id="panelTitle">Personal finance</h3>
+        <p id="panelLede">Buying, upgrading, building or switching. We find home finance that suits your income and goals.</p>
+        <ul class="products" id="panelList"></ul>
+        <a class="btn btn-primary" href="#book">Book a call about this <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS: working-culture photo + clear steps -->
+<section class="how">
+  <div class="wrap how-grid">
+    <div class="how-photo">
+      <img src="assets/team-working.jpg" alt="Sira brokers talking through a client's options">
+      <div class="chip"><span class="dot"></span><div><b>Talk to a real broker</b>On WhatsApp, phone or in person</div></div>
+    </div>
+    <div>
+      <div class="sec-head" style="text-align:left;justify-items:start;margin-bottom:28px">
+        <span class="eyebrow">How it works</span>
+        <h2>Four steps from <em class="s">first call</em> to keys</h2>
+      </div>
+      <ol class="steps">
+        <li class="step"><span class="n">1</span><div><h3>Tell us your goal</h3><p>Answer a few quick questions about what you want to finance.</p><span class="time">2 minutes</span></div></li>
+        <li class="step"><span class="n">2</span><div><h3>Talk to your broker</h3><p>We call you back to understand your situation properly.</p><span class="time">Within 12 business hours</span></div></li>
+        <li class="step"><span class="n">3</span><div><h3>See your options</h3><p>Funders compared in writing, with features, risks and trade-offs explained.</p><span class="time">Within 3 business days</span></div></li>
+        <li class="step"><span class="n">4</span><div><h3>Settle and stay supported</h3><p>We manage approval through to settlement, then review your finance every year.</p><span class="time">Every year after</span></div></li>
+      </ol>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#book">Start step one <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#">See our process</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM: Muneer in a large horizontal block, others smaller below -->
+<section class="team">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The team</span>
+      <h2>Real people. <em class="s">Five-star results.</em></h2>
+      <p>The people who'll guide you from your first call to settlement and beyond.</p>
+    </div>
+    <article class="lead-card">
+      <img src="assets/team-muneer.jpg" alt="Muneer Saleh">
+      <div class="lead-body">
+        <span class="role">Founder · Head Broker and Managing Director</span>
+        <h3>Muneer Saleh</h3>
+        <p>Muneer started Sira after seeing how many Muslim families were left to work out Islamic finance on their own. He has helped [#] families into Shariah-compliant finance and knows the Islamic funder panel inside out. [Add a line on his background, credentials and why this matters to him personally.]</p>
+        <blockquote>"[Short personal quote from Muneer about the mission, one or two lines.]"</blockquote>
+        <div class="socials">
+          <a href="#"><svg><use href="#i-in"/></svg>LinkedIn</a>
+          <a href="#"><svg><use href="#i-ig"/></svg>Instagram</a>
+          <a href="#"><svg><use href="#i-mic"/></svg>[Muneer's personal brand / podcast]</a>
+        </div>
+        <div class="cta-row"><a class="btn btn-primary" href="#book">Book a call with Muneer <svg><use href="#i-arrow"/></svg></a></div>
+      </div>
+    </article>
+    <div class="members">
+      <article class="member">
+        <img src="assets/team-nirvan.jpg" alt="Nirvan Jamshidpey">
+        <div><h4>Nirvan Jamshidpey</h4><span class="role">Head of Risk and Operations</span><p>A property lawyer by training (ex-King &amp; Wood Mallesons). Makes sure every file is structured properly and settles on time.</p><a href="#">LinkedIn →</a></div>
+      </article>
+      <article class="member">
+        <img src="assets/team-arshad.jpg" alt="Arshad Zacky">
+        <div><h4>Arshad Zacky</h4><span class="role">Head of Growth</span><p>Builds Sira's partnerships with builders, buyer's agents and community groups, so you have the right people around you.</p><a href="#">LinkedIn →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS: 12 verbatim Google reviews in an auto-advancing slider -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="reviews-top">
+      <div class="sec-head">
+        <span class="eyebrow">Reviews</span>
+        <h2>Hear what <em class="s">our clients</em> have to say</h2>
+      </div>
+      <div class="g-score"><b>5.0</b><div><span class="stars" aria-hidden="true">★★★★★</span><span>[20+] Google reviews</span></div></div>
+    </div>
+    <div class="slider">
+      <div class="track" id="track" tabindex="0" aria-label="Client reviews"></div>
+      <div class="slider-ctrl">
+        <button type="button" id="prev" aria-label="Previous reviews"><svg><use href="#i-left"/></svg></button>
+        <span class="count" id="count">1 / 12</span>
+        <button type="button" id="next" aria-label="Next reviews"><svg><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#book">Book a call <svg><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#">Read all reviews on Google</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ: punchy, shows expertise, leads to the full FAQ page -->
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Straight answers to <em class="s">common questions</em></h2>
+      <p>[Muneer to confirm the final five or six.]</p>
+    </div>
+    <div class="faq-grid">
+      <div style="display:grid;gap:12px">
+        <details open><summary>Is Islamic finance really different from a normal loan?<svg><use href="#i-plus"/></svg></summary><p>Yes. Instead of charging interest on money lent, the funder buys or co-owns the asset with you and charges rent or a profit margin, using structures like Ijarah, Diminishing Musharakah and Murabaha.</p></details>
+        <details><summary>Can I switch my current loan to Islamic finance?<svg><use href="#i-plus"/></svg></summary><p>Usually, yes. We compare your options, show you the real numbers and manage the switch from start to finish.</p></details>
+        <details><summary>Is it more expensive than conventional finance?<svg><use href="#i-plus"/></svg></summary><p>It depends on you and the funder. The gap is often smaller than people expect, and comparing is how you find out.</p></details>
+      </div>
+      <div style="display:grid;gap:12px">
+        <details><summary>How much deposit do I need?<svg><use href="#i-plus"/></svg></summary><p>[Typical deposit range for Islamic home finance, and whether first home buyer schemes apply.]</p></details>
+        <details><summary>Is Sira a bank?<svg><use href="#i-plus"/></svg></summary><p>No. We're an Islamic finance broker. We compare Shariah-compliant products from multiple funders and help you choose.</p></details>
+        <details><summary>What does it cost to use Sira?<svg><use href="#i-plus"/></svg></summary><p>No upfront processing fee (a small credit-check fee may apply). Brokers are usually paid by the funder at settlement, and our credit guide explains how.</p></details>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#book">Ask us on a call <svg><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="#">See all FAQs</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA: punchier copy, image of the outcome (not the team), CRM web form -->
+<section class="final" id="book">
+  <div class="wrap">
+    <div class="final-card">
+      <div class="final-copy">
+        <span class="eyebrow" style="color:var(--ecru)">Get started</span>
+        <h2>Your keys. Your values. <em class="s">Start in 2 minutes.</em></h2>
+        <p>Tell us what you're financing and a broker will call you within 12 business hours with your next steps.</p>
+        <!-- Replace this form with the CRM web form embed, styled to these colours -->
+        <form id="leadForm" novalidate>
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" placeholder="Your name" required></label>
+          <label for="f-mobile">Mobile<input id="f-mobile" name="mobile" type="tel" autocomplete="tel" placeholder="04XX XXX XXX" required></label>
+          <label for="f-email">Email<input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@email.com" required></label>
+          <label for="f-state">State<select id="f-state" name="state"><option value="">Select your state</option><option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option></select></label>
+          <label class="full" for="f-goal">What do you want to finance?<select id="f-goal" name="goal"><option value="">Select one</option><option>My first home</option><option>Switch my current loan</option><option>Investment property</option><option>Car or vehicle</option><option>Business or equipment</option><option>Development</option></select></label>
+          <div class="full"><button class="btn btn-almond" type="submit">Get my options <svg><use href="#i-arrow"/></svg></button></div>
+          <p class="form-note">No obligation. Prefer to chat? WhatsApp us on +61 424 399 396.</p>
+        </form>
+      </div>
+      <div class="final-visual">
+        <div class="ph"><svg class="ph-icon"><use href="#i-key"/></svg><div class="ph-tag" style="top:14px;bottom:auto;color:var(--cyprus)"><svg><use href="#i-cam"/></svg>Photo: the outcome. A family at their front door, keys in hand</div></div>
+        <div class="quote"><b>"[One-line pull quote from a five-star review.]"</b><span>[Client name], Google review</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/sira-logo-light.png" alt="Sira Finance">
+        <p>The smarter path to Islamic finance in Australia.</p>
+        <form class="news" onsubmit="event.preventDefault()"><input id="f-news" type="email" placeholder="Email for our newsletter" aria-label="Email for our newsletter"><button class="btn" type="submit">Subscribe</button></form>
+      </div>
+      <div><h4>Links</h4><ul><li><a href="#">Credit Guide</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms and Conditions</a></li><li><a href="#">Compliments and Concerns</a></li><li><a href="#">Calculators</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li>info@sirafinance.com.au</li><li>+61 424 399 396</li><li><a href="https://wa.me/61424399396">WhatsApp</a></li><li><a href="#book">Book a call</a></li></ul></div>
+      <div><h4>Social</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">TikTok</a></li></ul></div>
+    </div>
+    <div class="legal">
+      <div><b>Disclosure</b><br>Credit Representative Number: 575590. Sira Pty Ltd ABN 51 692 867 628 (Credit Representative Number 575591) are credit representatives of Purple Circle Financial Services Pty Ltd ABN 21 611 305 170, Australian Credit Licence Number 486112.</div>
+      <div><b>General information</b><br>The information on this website is general in nature and does not take into account your objectives, financial situation or needs. All finance is subject to the funder's eligibility and approval criteria.</div>
+      <div>© 2026 Sira Finance. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/61424399396" aria-label="WhatsApp us"><svg><use href="#i-wa"/></svg><span>WhatsApp us</span></a>
+
+<script>
+(function () {
+  // Mobile menu
+  var menuBtn = document.getElementById('menuBtn'), links = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', function () {
+    var open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  links.addEventListener('click', function (e) { if (e.target.tagName === 'A') { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); } });
+
+  // What we finance tabs (photo, copy and product list switch together)
+  var data = {
+    personal: { icon: 'i-home', photo: 'Photo: young family in front of their home', title: 'Personal finance', lede: 'Buying, upgrading, building or switching. We find home finance that suits your income and goals.',
+      items: [['First home buyers', 'Deposits, grants and the halal path to your keys'], ['Investment property', 'Grow a portfolio the halal way'], ['Refinance and switch', 'Leave your conventional loan'], ['Equity and debt consolidation', 'Put your equity to work'], ['Construction and land', 'Build from the ground up']] },
+    business: { icon: 'i-brief', photo: 'Photo: business owner in their warehouse or shopfront', title: 'Business finance', lede: 'Shariah-compliant funding to buy premises, equipment or grow your business.',
+      items: [['Commercial property', 'Offices, warehouses, retail'], ['Equipment finance', 'Machinery, tools, fit-outs'], ['Business finance', 'Working capital and growth'], ['Investment property', 'Held in a company or trust']] },
+    auto: { icon: 'i-car', photo: 'Photo: family car or work ute in a driveway', title: 'Car and vehicle finance', lede: 'Halal finance for the car you drive every day, or the fleet that runs your business.',
+      items: [['Personal car finance', 'New and used vehicles'], ['Business vehicles', 'Utes, vans and fleet'], ['Trucks and machinery', 'Heavy vehicles and plant']] },
+    private: { icon: 'i-build', photo: 'Photo: half-built residential development, frame up', title: 'Private funding and development', lede: 'For projects that need more flexibility than a standard funder can offer.',
+      items: [['Development finance', 'Duplexes, townhouses and small projects'], ['Private lending', 'Short-term, asset-backed funding'], ['Bridging finance', 'Buy before you sell']] }
+  };
+  var tabs = document.querySelectorAll('.tab');
+  function show(key) {
+    var d = data[key];
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === key); });
+    document.getElementById('panel').setAttribute('aria-labelledby', 'tab-' + key);
+    document.querySelector('#panelIcon use').setAttribute('href', '#' + d.icon);
+    document.getElementById('panelPhotoLabel').textContent = d.photo;
+    document.getElementById('panelTitle').textContent = d.title;
+    document.getElementById('panelLede').textContent = d.lede;
+    document.getElementById('panelList').innerHTML = d.items.map(function (i) {
+      return '<li><a href="#">' + i[0] + ' <span>' + i[1] + '</span><svg><use href="#i-arrow"/></svg></a></li>';
+    }).join('');
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { show(t.dataset.tab); }); });
+  document.querySelectorAll('.tile[data-tab]').forEach(function (a) { a.addEventListener('click', function () { show(a.dataset.tab); }); });
+  show('personal');
+
+  // Reviews: 1 real review + 11 placeholders to be swapped for verbatim Google reviews
+  var real = { n: 'Alaa Hafda', w: '2 months ago', t: "I had a really positive experience working with Muneer. As someone who isn't an expert in lending and mortgages, I appreciated how patient he was in explaining everything and helping me understand my options. He was upfront, transparent, and genuinely seemed to care about helping me make the right financial decision rather than pushing me into something I wasn't ready for. I left the process feeling informed and supported, and I look forward to reconnecting with him in the future." };
+  var samples = [
+    'Paste the full review here exactly as it appears on Google, typos and all.',
+    'Second review goes here. Keep the original wording so it reads as authentic.',
+    'A review that mentions the switch from a conventional loan would work well here.',
+    'A first home buyer review, ideally mentioning how long it took to get approved.',
+    'An investor review mentioning the portfolio strategy.',
+    'A review that mentions WhatsApp or how easy the admin was.',
+    'A car or business finance review to show range.',
+    'A review that mentions Nirvan or Arshad by name.',
+    'A review that mentions the annual Loyalty Check.',
+    'A review from a client outside NSW, if there is one.',
+    'Twelfth review. Add more as they come in; the slider takes any number.'
+  ];
+  var reviews = [real].concat(samples.map(function (s, i) { return { n: '[Client name]', w: '[Date]', t: s, ph: true }; }));
+  var track = document.getElementById('track');
+  track.innerHTML = reviews.map(function (r) {
+    return '<article class="review"><div class="review-head"><span class="avatar">' + (r.ph ? '?' : r.n[0]) + '</span><div><b>' + r.n + '</b><span>' + r.w + '</span></div></div>' +
+      '<span class="stars" aria-label="5 stars">★★★★★</span><p>' + r.t + '</p>' + (r.ph ? '<span class="tag">Placeholder</span>' : '') + '</article>';
+  }).join('');
+  var cards = track.children, idx = 0, count = document.getElementById('count');
+  function perView() { return Math.max(1, Math.round(track.clientWidth / cards[0].getBoundingClientRect().width)); }
+  function go(i) {
+    var max = cards.length - perView();
+    idx = i > max ? 0 : i < 0 ? max : i;
+    track.scrollTo({ left: cards[idx].offsetLeft - track.offsetLeft, behavior: 'smooth' });
+  }
+  track.addEventListener('scroll', function () {
+    var w = cards[0].getBoundingClientRect().width + 16;
+    idx = Math.round(track.scrollLeft / w);
+    count.textContent = (idx + 1) + ' / ' + cards.length;
+  });
+  document.getElementById('next').addEventListener('click', function () { go(idx + 1); });
+  document.getElementById('prev').addEventListener('click', function () { go(idx - 1); });
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches, paused = false;
+  ['mouseenter', 'focusin', 'touchstart'].forEach(function (ev) { track.addEventListener(ev, function () { paused = true; }, { passive: true }); });
+  ['mouseleave', 'focusout'].forEach(function (ev) { track.addEventListener(ev, function () { paused = false; }); });
+  if (!reduce) setInterval(function () { if (!paused) go(idx + 1); }, 4500);
+
+  // Lead form (demo only: the CRM web form replaces this)
+  document.getElementById('leadForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = e.target, old = f.querySelector('.form-done');
+    if (old) old.remove();
+    var msg = document.createElement('p');
+    msg.className = 'form-done';
+    msg.textContent = f.checkValidity() ? 'Thanks. In the live site this goes straight to the CRM and a broker calls you within 12 business hours.' : 'Please add your name, mobile and email so we can call you back.';
+    f.appendChild(msg);
+  });
+})();
+</script>
+</body>
+</html>
