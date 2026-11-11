@@ -172,7 +172,9 @@ header.nav .wrap { display: flex; align-items: center; gap: 24px; height: 72px; 
 .mission-body strong { color: var(--alabaster); font-weight: 600; }
 .mission .cta-row { justify-content: flex-start; }
 .mission-side { display: grid; gap: 14px; }
-.gap-stat { border: 1px solid rgba(197,176,133,.4); border-radius: var(--r-lg); padding: 26px; display: grid; gap: 10px; }
+.gap-stat { border: 1px solid rgba(197,176,133,.45); background: rgba(1,10,9,.18); border-radius: var(--r-lg); padding: 24px; display: grid; grid-template-columns: auto 1fr; gap: 10px 22px; align-items: center; }
+.gap-stat small { grid-column: 1 / -1; }
+@media (max-width: 480px) { .gap-stat { grid-template-columns: 1fr; } }
 .gap-stat b { font-size: 60px; line-height: 1; color: var(--almond); font-weight: 600; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
 .gap-stat p { color: var(--alabaster); }
 .gap-stat small { color: var(--on-dark-muted); font-size: 12px; }
@@ -577,6 +579,11 @@ footer a:hover { color: var(--alabaster); }
         <div class="pillar"><span class="ic"><svg><use href="#i-shield"/></svg></span><div><b>Security</b><p>A home is more than an asset. It's security and peace of mind for your family.</p></div></div>
         <div class="pillar"><span class="ic"><svg><use href="#i-scale"/></svg></span><div><b>Values first</b><p>Finance that lets you live by your values, without settling for less.</p></div></div>
         <div class="pillar"><span class="ic"><svg><use href="#i-users"/></svg></span><div><b>Community</b><p>A financially stronger Muslim community, one family and business at a time.</p></div></div>
+      </div>
+      <div class="gap-stat">
+        <b>80.1%</b>
+        <p>of conventional home loans in Australia go through a broker. In Islamic finance, most people are still doing it alone. We started Sira to change that.</p>
+        <small>[Source: broker association figure - confirm wording and date]</small>
       </div>
     </div>
   </div>
