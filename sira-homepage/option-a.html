@@ -66,7 +66,12 @@ section { padding-block: 96px; }
 /* Announcement + nav */
 .topbar { background: var(--cyprus); color: var(--alabaster); font-size: 14px; font-weight: 500; text-align: center; }
 .topbar a { display: block; padding: 10px max(16px, env(safe-area-inset-right, 0px)) 10px max(16px, env(safe-area-inset-left, 0px)); text-decoration: none; }
-.topbar a span { color: var(--almond); }
+.topbar a { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 4px 10px; }
+.topbar .go { color: var(--almond); text-decoration: underline; text-underline-offset: 3px; }
+.topbar .live { display: inline-flex; align-items: center; gap: 6px; background: var(--almond); color: var(--cyprus); font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; border-radius: 999px; padding: 3px 9px 3px 8px; }
+.topbar .live i { width: 7px; height: 7px; border-radius: 50%; background: #d64545; animation: pulse 1.6s ease-in-out infinite; }
+@media (max-width: 560px) { .topbar .tb-more { display: none; } }
+@keyframes pulse { 50% { opacity: .35; } }
 header.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(245, 242, 235, .94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
 header.nav .wrap { display: flex; align-items: center; gap: 24px; height: 72px; }
 .logo img { height: 34px; width: auto; }
@@ -160,7 +165,7 @@ header.nav .wrap { display: flex; align-items: center; gap: 24px; height: 72px; 
 .definition .word span { font-family: var(--f-arabic); font-style: normal; font-size: 26px; margin-left: 10px; color: var(--ecru); }
 .definition .pos { font-size: 13px; color: var(--on-dark-muted); letter-spacing: .04em; }
 .definition .mean { font-size: 16px; color: var(--alabaster); }
-.mission-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
+.mission-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: center; }
 .mission h2 { color: var(--alabaster); font-size: clamp(34px, 4.6vw, 56px); max-width: 15ch; }
 .mission h2 em.s { color: var(--almond); }
 .mission-body { margin-top: 22px; display: grid; gap: 16px; color: var(--on-dark-muted); max-width: 56ch; font-size: 17px; }
@@ -403,6 +408,30 @@ footer a:hover { color: var(--alabaster); }
   .mbar svg { width: 18px; height: 18px; }
   footer .wrap { padding-bottom: 110px; }
 }
+
+/* Podcast section */
+.podcast-sec { padding-bottom: 0; }
+.pod-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: center; }
+.pod-cover { display: block; position: relative; aspect-ratio: 1; border-radius: 28px; background: radial-gradient(90% 80% at 80% 10%, rgba(254,234,205,.55), transparent 60%), linear-gradient(160deg, var(--ecru), #7f6a43); max-width: 100%; }
+.pod-cover .ph-tag { top: 16px; bottom: auto; left: 16px; color: var(--cyprus); }
+.pod-cover .ph-icon { width: 96px; height: 96px; opacity: .5; color: var(--cyprus); transform: translate(-50%, -50%); }
+.pod-cover .play { top: auto; bottom: 22px; left: auto; right: 22px; transform: none; width: 64px; height: 64px; background: var(--cyprus); color: var(--almond); }
+.pod-cover:hover .play { transform: scale(1.06); }
+.pod-copy { display: grid; gap: 16px; }
+.pod-copy h2 { font-size: clamp(30px, 3.8vw, 46px); max-width: 18ch; }
+.pod-copy > p { color: var(--muted); font-size: 17px; max-width: 54ch; }
+.episodes { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
+.episodes a { display: grid; grid-template-columns: 64px 1fr auto; gap: 12px; align-items: center; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r-md); text-decoration: none; transition: border-color .15s; }
+.episodes a:hover { border-color: var(--elm); }
+.episodes .ep { font-size: 12.5px; font-weight: 600; color: var(--elm); font-variant-numeric: tabular-nums; }
+.episodes .t { font-weight: 600; color: var(--cyprus); min-width: 0; }
+.episodes .d { font-size: 13px; color: var(--muted); }
+.listen { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); }
+.listen a { font-weight: 600; color: var(--cyprus); text-decoration: none; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 6px 12px; }
+.listen a:hover { border-color: var(--elm); }
+.pod-copy .cta-row { justify-content: flex-start; margin-top: 8px; }
+@media (max-width: 860px) { .pod-grid { grid-template-columns: 1fr; gap: 28px; } .pod-cover { max-width: 420px; } }
+@media (prefers-reduced-motion: reduce) { .topbar .live i { animation: none; } }
 </style>
 </head>
 <body>
@@ -440,7 +469,7 @@ footer a:hover { color: var(--alabaster); }
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2.5a9.4 9.4 0 0 0-8.1 14.2L2.5 21.5l4.9-1.3A9.4 9.4 0 1 0 12 2.5zm0 1.7a7.7 7.7 0 1 1-4 14.3l-.3-.2-2.9.8.8-2.8-.2-.3A7.7 7.7 0 0 1 12 4.2zm-3.2 3.9c-.2 0-.5 0-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.2 5 4.3 2.5 1 3 .8 3.5.7.6 0 1.7-.7 2-1.4.2-.7.2-1.3.1-1.4l-.5-.3-1.8-.9c-.3-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1-.3-.1-1.1-.4-2.1-1.3-.8-.7-1.3-1.5-1.4-1.8-.2-.3 0-.4.1-.5l.4-.5.3-.4v-.5l-.8-2c-.2-.5-.4-.4-.6-.4z" fill="currentColor"/></symbol>
 </svg>
 
-<div class="topbar"><a href="#">Got questions? Ask us live every Wednesday on Facebook Live <span>→</span></a></div>
+<div class="topbar"><a href="#"><span class="live"><i></i>Live</span>Every Wednesday on Facebook<span class="tb-more">: bring your Islamic finance questions</span> <span class="go">Join us →</span></a></div>
 
 <header class="nav">
   <div class="wrap">
@@ -549,14 +578,28 @@ footer a:hover { color: var(--alabaster); }
         <div class="pillar"><span class="ic"><svg><use href="#i-scale"/></svg></span><div><b>Values first</b><p>Finance that lets you live by your values, without settling for less.</p></div></div>
         <div class="pillar"><span class="ic"><svg><use href="#i-users"/></svg></span><div><b>Community</b><p>A financially stronger Muslim community, one family and business at a time.</p></div></div>
       </div>
-      <span class="proof-label">Proof of work</span>
-      <a class="podcast" href="#">
-        <div class="ph"><svg class="ph-icon"><use href="#i-mic"/></svg></div>
-        <div><small>Podcast</small><b>Listen to our podcast</b><span>[#] podcast link →</span></div>
-      </a>
-      <div class="community">
-        <div><b>[#]</b><span>community events hosted or sponsored</span></div>
-        <div><b>Wed</b><span>Live every Wednesday on Facebook</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PODCAST: its own section, proof of what Sira does in the community -->
+<section class="podcast-sec" id="podcast">
+  <div class="wrap pod-grid">
+    <a class="pod-cover ph" href="#" aria-label="Listen to the podcast"><svg class="ph-icon"><use href="#i-mic"/></svg><div class="ph-tag"><svg><use href="#i-cam"/></svg>[#] Podcast cover art</div><span class="play"><svg><use href="#i-play"/></svg></span></a>
+    <div class="pod-copy">
+      <span class="eyebrow">The podcast</span>
+      <h2>[#] Podcast name: real talk on <em class="s">halal wealth</em></h2>
+      <p>Muneer and guests talk through buying a home, investing and growing a business the halal way. Honest answers, no jargon.</p>
+      <ol class="episodes">
+        <li><a href="#"><span class="ep">Ep [#]</span><span class="t">[#] Latest episode title</span><span class="d">[#] min</span></a></li>
+        <li><a href="#"><span class="ep">Ep [#]</span><span class="t">[#] Episode title</span><span class="d">[#] min</span></a></li>
+        <li><a href="#"><span class="ep">Ep [#]</span><span class="t">[#] Episode title</span><span class="d">[#] min</span></a></li>
+      </ol>
+      <div class="listen"><span>Listen on</span><a href="#">Spotify</a><a href="#">Apple Podcasts</a><a href="#">YouTube</a></div>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#">Listen to our podcast <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#book">Book a call</a>
       </div>
     </div>
   </div>
